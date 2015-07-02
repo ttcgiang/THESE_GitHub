@@ -1,0 +1,683 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass amsart
+\begin_preamble
+\usepackage{babel}
+\end_preamble
+\use_default_options false
+\begin_modules
+theorems-ams
+eqs-within-sections
+figs-within-sections
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding utf8x
+\fontencoding T1
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement H
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 2
+\use_package amssymb 2
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 0
+\use_package mathtools 1
+\use_package mhchem 0
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 2cm
+\topmargin 2cm
+\rightmargin 2cm
+\bottommargin 2cm
+\headheight 2cm
+\headsep 2cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Itemize
+J'ai modifié les codes C++ pour que dans les sorties de simulations il y
+ ait les temps d’extinction et les temps de recolonisation (donc deux vecteurs
+ en plus des vecteurs t, S, E, I et R).
+\end_layout
+
+\begin_layout Itemize
+La prévision of MARC est décrite comme le schéma suivant : une métapopulation
+ est caractérisé par 3 paramètres : la taille N de la métapopulation, le
+ nombre n de sous-populations et la force de couplage 
+\begin_inset Formula $\rho$
+\end_inset
+
+ entre ces sous-populations (i.e.
+ intensité des migrations entre sous-populations).
+ La dynamique de métapopulation dépend essentiellement des taux d’extinctions
+ locales et de recolonisation.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename fig_MARC.png
+	scale 30
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Relation among : the global extinction rate, the local extinction rate,
+ the recolonisation rate, the number of subpopulaiton, the size of subpopulation
+, the size of metapopulation and the synchrony level.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Subpopulation :
+\end_layout
+
+\begin_layout Subsection*
+Result 1:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figExtRateN1E6PhiMAXchanged.pdf
+	scale 50
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Relation between the number of subpopulation and the local extinction rate
+ when the asynchrony level changes 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figRecolRateN1E6PhiMAXchanged.pdf
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Relation between the number of subpopulation and the recolonization rate
+ when the asynchrony level changes 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Analyse :
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+On voit que le taux de recolonisation et le taux d'extinction locale sont
+ significativement plus élevé lorsque les populations sont asynchrones que
+ lorsque les populations sont synchrones.
+ On voit par ailleurs que le taux de recolonisation augmente avec le nombre
+ de sous-populations.
+ Cependant, il semblerait que cette augmentation stagne après un certain
+ nombre de sous-populations et même que le taux de recolonisation diminue
+ au-delà d’un certain nombre de sous-populations.
+ 
+\end_layout
+
+\begin_layout Itemize
+Ce pattern expliqué par Marc comme suit : lorsque l’on augmente le nombre
+ de sous-populations on augmente les chances de recolonisation d’autres
+ populations.
+ Par contre lorsque l’on diminue Phi_max, on augmente la ressemblance entre
+ les sous-populations et donc on diminue les chances de recolonisation entre
+ les sous-populations (parce qu’il y a plus de chance qu’il y ait de faibles
+ incidences dans les populations voisines lorsque l’on atteint l’extinction
+ dans la population focale).
+ Enfin, l’effet de l’augmentation du nombre de sous-population sur le taux
+ de recolonisation sature forcément parce que, pour un phi_max donné, lorsque
+ l’on augmente le nombre de sous-populations, ces populations sont forcément
+ plus similaires.
+ La décroissance du taux de recolonisation lorsque le nombre de sous-populations
+ est grand est à mon avis dû au fait que les sous-populations sont de plus
+ en plus petites et que donc les chances de recolonisation sont d’autant
+ plus petites, soit parce qu’il y a moins de sous-populations avec la maladie,
+ soit parce que le nombre de malades total dans la métapopulation est moindre.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Subsection*
+Result 2:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figLocalExtNchangedPhipi.pdf
+	scale 50
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Influence of the metapopulation size on the relation between the number
+ of subpopulation and the local extinction rate
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figRecolNchangedPhipi.pdf
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Influence of the metapopulation size on the relation between the number
+ of subpopulation and the recolonization rate
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Analyse :
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Lorsque la taille N de la métapopulation augmente, la taille des sous-population
+ augmente également.
+ Par contre, lorsque le nombre n de sous-populations augmente, la taille
+ des sous-populations diminue forcément.
+ En résumé, la taille des sous-populations dépend positivement de la taille
+ de la métapopulation et négativement du nombre de sous-populations.
+ Plus le nombre de sous-populations est élevé, plus le taux de recolonisation
+ est élevé (parce qu’il y a potentiellement plus de population à partir
+ desquelles il peut y avoir recolonisation).
+ Par contre le taux d’extinction augmente aussi avec le nombre de sous-populatio
+ns (et ce parce que une augmentation du nombre de sous-populations entraîne
+ une diminution de la taille des sous-populations qui entraîne une augmentation
+ du taux d’extinction).
+ Par ailleurs, une augmentation du taux d’extinction entraîne également
+ une diminution du taux de recolonisation (parce que plus le taux d’extinction
+ est élevé, plus le nombre de sous-populations à partir desquelles il peut
+ y avoir recolonisation est petit).
+ Donc, au final le nombre de sous-population a un effet positif direct sur
+ le taux de recolonisation mais également un effet négatif indirect sur
+ le taux de recolonisation.
+ 
+\end_layout
+
+\begin_layout Itemize
+Donc, on peut s’attendre à ce que l’effet du nombre de sous-populations
+ sur le taux de recolonisation soit non-linéaire (en gros une courbe concave
+ ou une courbe convexe, voir même quelque chose de plus compliqué).
+\end_layout
+
+\end_deeper
+\begin_layout Subsection*
+Result 3:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figLocalEXTCouplingNbvil4.pdf
+	scale 50
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Influence of the coupling rate on the local extinction rate
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figDurReclCouplingNbvil4.pdf
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Influence of the coupling rate on the recolonisation rate
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Analyse
+\series default
+ :
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Le taux de migration à un effet positif sur le taux de recolonisation et
+ un effet négatif sur le taux d’extinction.
+ Ce qui veut dire que le taux de migration à des effets positifs sur le
+ taux de recolonisation à la fois direct et indirect.
+\end_layout
+
+\end_deeper
+\begin_layout Section
+Metapopulation :
+\end_layout
+
+\begin_layout Standard
+Maintenant, ce qu’il se passe au niveau d’une métapopulation (i.e.
+ extinction globale qui nous intéresse ici) dépend (1) du taux de recolonisation
+, (2) du taux d’extinction locale, mais aussi (3) de la synchronie entre
+ les sous-populations (et le lien entre synchronie et extinction globale
+ est ce qui nous intéresse particulièrement).
+ La synchronie est en fait quelque chose d’assez difficile à caractériser.
+ Je propose de la caractériser par la moyenne des différences de phases
+ deux-à-deux entre toutes les sous-populations.
+ Et ceci dépend de notre paramètre phi_max.
+\end_layout
+
+\begin_layout Subsection*
+Result 1:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figRelPhiMAXGolExtVIl610.pdf
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Relation between phiMAX and the global extinction rate 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Analyse
+\series default
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+On voit que le taux d'extinction globale diminue lorsque les différences
+ de phases deux-à-deux entre toutes les sous-populations.
+ Parce que lorsque les différences de phases augmentent, les niveaux de
+ synchrony sont réduits.
+ Plus, le taux d'extinction globale dépend positivement du niveau de synchrony.
+ 
+\end_layout
+
+\begin_layout Itemize
+Le taux d'extinction globale augmente lorsque le nombre de sous-population
+ augmente.
+ Parce que, plus le nombre de sous-population est élévé, plus le niveau
+ de synchrony est élévé.
+ Donc, si le nombre de sous-population augmente, alors la taille de sous-populat
+ion diminue and ces populations sont forcément plus similaires.
+\end_layout
+
+\end_deeper
+\begin_layout Subsection*
+Result 2:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figSYNPhiMAXLocalExtVil410.pdf
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Relation between phiMAX and the local extinction rate 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Analyse :
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Les même résultats avec le résultat 1.
+\end_layout
+
+\begin_layout Itemize
+On voit que le taux d'extinction locale diminue lorsque les différences
+ de phases deux-à-deux entre toutes les sous-populations et le nombre de
+ sous-population diminue.
+ Parce que lorsque les différences de phases augmentent, les niveaux de
+ synchrony sont réduits.
+ Plus, le taux d'extinction globale dépend positivement du niveau de synchrony.
+ Lorsque l’on augmente le nombre de sous-populations on augmente les chances
+ de recolonisation d’autres populations.
+ Par contre lorsque l’on diminue Phi_max, on augmente la ressemblance entre
+ les sous-populations et donc on diminue les chances de recolonisation entre
+ les sous-populations (parce qu’il y a plus de chance qu’il y ait de faibles
+ incidences dans les populations voisines lorsque l’on atteint l’extinction
+ dans la population focale).
+\end_layout
+
+\end_deeper
+\begin_layout Subsection*
+Result 3:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figSYNPhiMAXRecolVil610.pdf
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Relation between phiMAX and the recolonisation rate 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Analyse :
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Le taux de recolonisation augmente lorsque la différence de phase deux-à-deux
+ entre toutes les sous-populations.
+ Par contre, ce taux est réduit quand le nombre de sous-population est élévé.
+ 
+\end_layout
+
+\end_deeper
+\end_body
+\end_document

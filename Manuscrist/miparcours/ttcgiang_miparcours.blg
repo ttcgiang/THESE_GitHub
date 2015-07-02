@@ -1,0 +1,64 @@
+This is BibTeX, Version 0.99c (TeX Live 2009/Debian)
+The top-level auxiliary file: ttcgiang_miparcours.aux
+The style file: plain.bst
+Database file #1: bib_art_Pers.bib
+Warning--entry type for "http://healthmap.org/site/diseasedaily/article/measles-reemerges-vietnam-22814" isn't style-file defined
+--line 899 of file bib_art_Pers.bib
+Warning--entry type for "WHO2014a" isn't style-file defined
+--line 1491 of file bib_art_Pers.bib
+Database file #2: bikBokEpidemics.bib
+Repeated entry---line 4 of file bikBokEpidemics.bib
+ : @book{Anderson&May1992
+ :                       ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 30 of file bikBokEpidemics.bib
+ : @book{KeelingRohani2008
+ :                        ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 49 of file bikBokEpidemics.bib
+ : @book{renshaw1993modelling
+ :                           ,
+I'm skipping whatever remains of this entry
+Database file #3: bikCCS.bib
+You've used 13 entries,
+            2118 wiz_defined-function locations,
+            594 strings with 6176 characters,
+and the built_in function-call counts, 3734 in all, are:
+= -- 358
+> -- 158
+< -- 1
++ -- 64
+- -- 50
+* -- 253
+:= -- 638
+add.period$ -- 37
+call.type$ -- 13
+change.case$ -- 60
+chr.to.int$ -- 0
+cite$ -- 13
+duplicate$ -- 136
+empty$ -- 317
+format.name$ -- 50
+if$ -- 768
+int.to.chr$ -- 0
+int.to.str$ -- 13
+missing$ -- 13
+newline$ -- 66
+num.names$ -- 26
+pop$ -- 71
+preamble$ -- 1
+purify$ -- 51
+quote$ -- 0
+skip$ -- 95
+stack$ -- 0
+substring$ -- 232
+swap$ -- 15
+text.length$ -- 1
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 46
+warning$ -- 0
+while$ -- 37
+width$ -- 15
+write$ -- 136
+(There were 3 error messages)

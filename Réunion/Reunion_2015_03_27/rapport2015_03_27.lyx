@@ -1,0 +1,1872 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass amsart
+\begin_preamble
+\usepackage{babel}
+\end_preamble
+\use_default_options false
+\begin_modules
+theorems-ams
+eqs-within-sections
+figs-within-sections
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding utf8x
+\fontencoding T1
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 2
+\use_package amssymb 2
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 0
+\use_package mathtools 1
+\use_package mhchem 0
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 2cm
+\topmargin 2cm
+\rightmargin 2cm
+\bottommargin 2cm
+\headheight 2cm
+\headsep 2cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Section*
+
+\series bold
+Questions posées :
+\series default
+ 
+\end_layout
+
+\begin_layout Standard
+Effet du nombre de villes k à population globale constante sur le taux d'extinct
+ion ? A phase constante 0, pi/4, pi/2, 3pi/4 et pi 
+\end_layout
+
+\begin_layout Subsection*
+
+\series bold
+a.
+ tau décroit-il avec la synchronie (à N et k constant) ? Comment en fonction
+ de N et k ?
+\end_layout
+
+\begin_layout Subsection*
+
+\series bold
+b.
+ tau croit-il avec k (N constant) ? Comment en fonction de la synchronie ?
+\series default
+ 
+\end_layout
+
+\begin_layout Subsection*
+
+\series bold
+c.
+ tau décroit-il avec N (k constant) ? Comment en fonction de Phi ? CCS Critical
+ Community Size
+\end_layout
+
+\begin_layout Subsection*
+
+\series bold
+d.
+ Influence du taux de contact
+\end_layout
+
+\begin_layout Subsection*
+
+\series bold
+e.
+ Influence du couplage 
+\end_layout
+
+\begin_layout Subsection*
+
+\series bold
+f.
+ Comment augmenter le taux d'extinction (i.e augmente la synchronie) par
+ une vaccination optimale ?
+\end_layout
+
+\begin_layout Section*
+Discussion : 
+\end_layout
+
+\begin_layout Itemize
+Discussion sur Code EpiDynamics.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Giang a utilisé le package ode dans le cas déterministe.
+ 
+\end_layout
+
+\begin_layout Itemize
+Sur les aspects stochastiques ; Pb de la comparaison des résultats.
+ 
+\end_layout
+
+\begin_layout Itemize
+On peut utliser deux méthodes suivantes pour comparer les résultats : 
+\series bold
+Kullback-Leibler Divergence Kolmogorov–Smirnov test 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Analyse des résultats Garder N constants et k sous-populations de N/k, ajouter
+ l'intervalle de confiance.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+A faire : 
+\end_layout
+
+\begin_layout Itemize
+Connaitre date de fin de troisième année : Partager le plan de thèse 
+\end_layout
+
+\begin_layout Itemize
+Donne le temps nécessaire pour répondre à chaque question.
+ 
+\end_layout
+
+\begin_layout Itemize
+Enregistrer le nombre des extinctions locales et le nombre de recolonisation
+ locale.
+\end_layout
+
+\begin_layout Itemize
+ECRIRE : un rapport en latex/knitrR qui contient au moins les 3 sections :
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Title
+REMETTRE LES RESULTATS
+\end_layout
+
+\begin_layout Standard
+Here, we use the formula given by YANN.
+ The fore of infection is proposed for city 
+\begin_inset Formula $i$
+\end_inset
+
+ :
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\begin_inset Formula 
+\begin{equation}
+\lambda_{i}=\sum_{j}\rho_{ij}\kappa_{j}\log\left[1-\sum_{k=1}^{M}\left(\frac{\left|I_{k,t}\right|}{N_{k}}\times c_{ik}\times\xi_{jk}\right)\right]\label{eq:force-1}
+\end{equation}
+
+\end_inset
+
+ 
+\series default
+where
+\series bold
+ 
+\series default
+
+\begin_inset Formula $c_{i,k}$
+\end_inset
+
+ (
+\begin_inset Formula $0\leqslant c_{ij}\leqslant1$
+\end_inset
+
+) is the probability that a susceptible individual native from 
+\begin_inset Formula $i$
+\end_inset
+
+ being in contact with another infected individual native from 
+\begin_inset Formula $k$
+\end_inset
+
+ gets infected.
+ 
+\begin_inset Formula $\xi_{jk}$
+\end_inset
+
+ (
+\begin_inset Formula $0\leqslant\xi_{ij}\leqslant1$
+\end_inset
+
+) refers to the probability that an individual 
+\begin_inset Formula $y$
+\end_inset
+
+ meeting 
+\begin_inset Formula $x$
+\end_inset
+
+ in 
+\begin_inset Formula $C_{j}$
+\end_inset
+
+ comes from 
+\begin_inset Formula $C_{k}$
+\end_inset
+
+.
+
+\series bold
+ 
+\series default
+
+\begin_inset Formula $\kappa_{j}$
+\end_inset
+
+ is the average number of contacts per unit of time a susceptible will have
+ when visiting city 
+\begin_inset Formula $j$
+\end_inset
+
+.
+ 
+\begin_inset Formula $\rho_{i,j}$
+\end_inset
+
+ (
+\begin_inset Formula $0\leqslant\rho_{ij}\leqslant1$
+\end_inset
+
+) is denoted as the probability that an individual from subpopulation 
+\begin_inset Formula $i$
+\end_inset
+
+ visits subpopulation 
+\begin_inset Formula $j$
+\end_inset
+
+, of course, 
+\begin_inset Formula $\sum_{j=1}^{M}\rho_{ij}=1$
+\end_inset
+
+.
+ We can verify that in the limit case on one single subpopulation in the
+ metapopulation (
+\begin_inset Formula $i=j$
+\end_inset
+
+ and 
+\begin_inset Formula $n=1$
+\end_inset
+
+) we have 
+\begin_inset Formula 
+\begin{equation}
+\lambda_{i}=-\kappa_{i}\log(1-\frac{I_{i}}{N_{i}}\times c_{ii})
+\end{equation}
+
+\end_inset
+
+ Consider that the average number of contacts per unit of time 
+\begin_inset Formula $\kappa_{i}$
+\end_inset
+
+ is seasonally forced and seasonality is an annually periodic function of
+ time.
+ As a result, for the subpopulation 
+\begin_inset Formula $i$
+\end_inset
+
+ : 
+\begin_inset Formula 
+\begin{equation}
+\kappa_{i}(t)=\kappa_{i0}\left[1+\kappa_{i1}\cos\left(\frac{2\pi t}{T}+\varphi_{i}\right)\right]\label{eq:beta_i}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In order to run simulations, we use the same values of all parameters for
+ all subpopulations.
+ We have a table of the convenient values for parameters of measles as follows
+ :
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+placement tbph
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Some Disease Parameter Values for Measles from the Literature
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Tabular
+<lyxtabular version="3" rows="12" columns="4">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="left" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+parameter
+\series default
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+description
+\series default
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+value
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+unit
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\mu$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+birth and death rate per day 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1/(70*365)$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1/(people*day)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\kappa_{0}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+mean value of the number of contacts 
+\begin_inset Formula $\kappa$
+\end_inset
+
+ per unit of time 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\{30,50,80,100,150\}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+people/day
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\kappa_{1}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+amplitude of the number of contacts 
+\begin_inset Formula $\kappa$
+\end_inset
+
+ per unit of time 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\{0.01,0.1\}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\gamma$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+recovery rate per day 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1/8$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1/(people*day)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\sigma$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+average exposed duration per day 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1/5$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1/day
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\rho$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+coupling rate
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+\begin_inset Formula $\{0,0.001,...,0.5,0.8,1\}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\varphi_{max}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+synchrony parameter in radian 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\{0,\pi/4,\pi/2,3*\pi/4,\pi\}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+radian
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $N$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+population size of subpopulation
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\{5e5,7e5,1e6,2e6,5e6\}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+people
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $n$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+number of subpopulation
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\{2,3,...,10,15,20,30\}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+subpopulation
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $t_{max}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+simulation time
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $100$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+year
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="none" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+
+\backslash
+section{Analysis of the variation of tau in function of Phi}
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename plotIntvMeta15N1e6.pdf
+	scale 40
+
+\end_inset
+
+day
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Estimated global etinction rates in the metapopulation of fifteen subpopulations
+ after 100 different simulations with the metapopulation size 
+\begin_inset Formula $N=10^{6}$
+\end_inset
+
+, coupling rate 
+\begin_inset Formula $\rho=0.1$
+\end_inset
+
+.
+ Here, with 95% confidence interval, the red lines and the blue points are
+ respectively the confidence intervals and the estimated rates for the global
+ extinction rate of each value of 
+\begin_inset Formula $\varphi_{max}$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "FigNconstKconst"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Running time : 4.188hours
+\end_layout
+
+\begin_layout Itemize
+Analysis : The figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "FigNconstKconst"
+
+\end_inset
+
+ shows to us that the amplitude of the confidence intervals for each value
+ of 
+\begin_inset Formula $\varphi_{max}$
+\end_inset
+
+ are quite far to each other.
+ Furthermore, it goes down robustly when 
+\begin_inset Formula $\varphi_{max}$
+\end_inset
+
+ runs from 
+\begin_inset Formula $0$
+\end_inset
+
+ to 
+\begin_inset Formula $\pi$
+\end_inset
+
+.
+ The phase difference strongly influences the global disease extinction
+ rate.
+ The figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "FigNconstKconst"
+
+\end_inset
+
+ indicates the trend of the extinction rate with decreasing the level of
+ asynchrony.
+ The asynchrony between subpopulations is the main reason why the infectious
+ disease goes extinct in the slow way.
+\end_layout
+
+\begin_layout Section*
+
+\backslash
+section{Analysis of the variation of tau in function of k} 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename plotTOTALnbvillesPhipi2.pdf
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Estimated global etinction rates in different metapopulations after 100
+ different simulations with the metapopulation size fixed 
+\begin_inset Formula $N=5\times10^{5}$
+\end_inset
+
+, coupling rate 
+\begin_inset Formula $\rho=0.1$
+\end_inset
+
+ and 
+\begin_inset Formula $\varphi_{max}=\pi/2$
+\end_inset
+
+.
+ Here, with 95% confidence interval, the black lines and the red points
+ are respectively the confidence intervals and the estimated rates for the
+ global extinction rate of each metapopulaion.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "FigGlobExtNbVilles"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Running time : 8.589hours
+\end_layout
+
+\begin_layout Itemize
+Analyse : The result (figure
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "FigGlobExtNbVilles"
+
+\end_inset
+
+) exhibits to us that the number of subpopulations strongly has an influence
+ for the disease persistence time.
+ The global extinction rate of an infectious disease in a metapopulation
+ increases when the number of subpopulations in this metapopulation increases.
+ With the metapopulation size is fixed, when the number of cities in the
+ metapopulation goes up, it means that the population size of each city
+ is declined.
+ In particular, the population size of each city is very small when the
+ number of cities reaches to 30.
+ The dynamic in a small population goes fastly extinct.
+ Althought, the model used is the coupling metapopulations, there are interactio
+ns among subpopulations and recolonisations of desease.
+ But because the population size is small, the number of visiteurs going
+ to other city is very little.
+ The time of disease persistence in a population having the small size is
+ short.
+ We fastly find the mass extinction in the metapopulation.
+ In addition to the resultat above, we have the relation between the local
+ extinction number of the metapopulation and its number of cities as follows
+ (figure
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "FigNbLocalExtNbVilles"
+
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename plotTOTALnbvillesPhipi2_localEXT.pdf
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Number of local extinction in the metapopulation with the size N=5e+05,
+ 
+\begin_inset Formula $\phi_{max}=\pi/2$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "FigNbLocalExtNbVilles"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+As showed in the figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "FigNbLocalExtNbVilles"
+
+\end_inset
+
+, the number of the local extinction in the metapopulation has an increase
+ when the number of subpopulation in the metapopulation rises from 2 to
+ 30.
+ This is obvious that in the coupling metapopulation, there are the interactions
+ between cities.
+ One city gets the local extinction but it is fastly reinfected because
+ of the migration of infected individuals of the other cities.
+\end_layout
+
+\begin_layout Section*
+
+\backslash
+section{Analysis of the variation of tau in function of N}
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename resPOPSIZE_interval.pdf
+	scale 40
+
+\end_inset
+
+ccs
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+The relation between the metapopuldayation size and the global extinction
+ rate for the metapopulation of five cities.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "FigMetaSizeGlobExt"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Running time : 3 hours (3.231257hours)day
+\end_layout
+
+\begin_layout Itemize
+Analysis : From the figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "FigMetaSizeGlobExt"
+
+\end_inset
+
+, we find that the mass extinction rate goes down when the metapopulation
+ size augments, at the same time, these rates decreases when the asynchrony
+ 
+\begin_inset Formula $\phi_{max}$
+\end_inset
+
+ goes up.
+ It is obvious that the metapopualtion size is big, then the time of disease
+ persistence augments, then the mass extinction rates is declined.
+\end_layout
+
+\begin_layout Section*
+
+\series bold
+
+\backslash
+section{Influence du taux de contact}
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename plotresCONTACTvil6N1e6.pdf
+	scale 40
+
+\end_inset
+
+dayday
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Influence of the average number of contact per day 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Running time : 3.369hours
+\end_layout
+
+\begin_layout Itemize
+Analyse : Here we find that the average number of contact per day of a susceptib
+le influences also the mass extinction rates.
+ When we change the average number of a contact person per day.
+ We have (1) The global extinction rate also is declined when the asynchrony
+ parameter 
+\begin_inset Formula $\phi_{max}$
+\end_inset
+
+ increases, and (2) the mass extinction rate decreases when the average
+ number of contacts per day increases.
+ It is found that the curves highly goes down when the average number of
+ contact increases from 30 to 80 per day.
+ However, they are in the form of a gentle slope when the number of contacts
+ is bigger from 100 to 150.
+ It means that there is a threshold of the number of contact here, if the
+ number of contacts is greater than 150, I think that the global extinction
+ rates are smaller than the rates of nbCONTACT = 150 but not too small.
+ Thus, the probability of infection of a person has a limit.
+ A susceptible will be contaminated when he meets a threshold of the number
+ of persones daily.
+\end_layout
+
+\begin_layout Section*
+
+\backslash
+section{
+\series bold
+Influence du couplage}
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename plotprobVISITERVIl5N1e6PHIMAXpi_EXT.pdf
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Correlation between the coupling rate and the mass extinction rate in the
+ metapopulation of five subpopulations.
+ Here, the coupling rate
+\begin_inset Formula $ $
+\end_inset
+
+
+\begin_inset Formula $\rho$
+\end_inset
+
+ runs from 0 to 1.
+ The level of asynchrony 
+\begin_inset Formula $\varphi_{max}$
+\end_inset
+
+ is 
+\backslash
+pi and the metapopulation size N=1e6.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Running time : 8.884 hours
+\end_layout
+
+\begin_layout Itemize
+Analyse : One more factor that was pointed is coupling strength between
+ subpopulations.
+ Here, the coupling rate or the dispersal rate 
+\begin_inset Formula $\rho$
+\end_inset
+
+ can be considered as migration strength.
+ The disease transmission speed grows fast when coupling rate goes up in
+ metapopulations, but the global extinction rate is inverse.
+ In this part, we permit coupling rate change from weak to strong in a metapopua
+ltion of five subpopulations with the metapopulation size 
+\begin_inset Formula $N=10^{6}$
+\end_inset
+
+.
+ The dispersal rate 
+\begin_inset Formula $\rho$
+\end_inset
+
+ is divided into three intervals.
+ These are low, intermediate and high coupling rate intervals.
+ In each interval, we chose some coupling rates that highlight the coupling
+ strength among subpopulations in a metapopulation.
+ When the coupling rate is small from 0.0 to 0.005, the mass extinction rate
+ decreases very slowly.
+ Because, in this case, the subpopulations seem to be independent.
+ They fluctuate independently.
+ They are easy to go extinct.
+ We are also easy to find the mass extinction in the metapopulation.
+ However, this extinction rate is declined in a sudden way when the coupling
+ rate changes from 0.01 to 0.3.
+ Lastly, the extinction rate increases when the coupling rate is so robust
+ from 0.5 to 1.0.
+ Based on this figure, the mass extinction rate in a metapopulation is one
+ inverse bell for the coupling rate.
+ The medium coupling rate (from 0.01 to 0.1) minimizes the mass extinction
+ rate in metapopulation.
+ As in the case of the small and average coupling rates, the coupling rate
+ and the speed of migration among subpopulations are directly proportional.
+ The dispersal speed increases, thereby the local recolonization speed rises,
+ the duration of persistence grows.
+ However, this trend of global extinction rate with decreasing coupling
+ rate, is not right any more when the dispersal rate is strong.
+ The duration of persistence falls, because the metapopulation has tendency
+ to become one big population.
+ In this case, the phase difference or the recolonization among subpopulations
+ are no longer significant.
+\end_layout
+
+\begin_layout Section*
+
+\backslash
+section{#localExtinction/#souspop en fonction de #souspop selon-Variation
+ de Phi (asynchronie)
+\series bold
+}
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figRELA_LocalEXT_nbSUBPOP_phiMAXprobVISIT01.pdf
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "figRELA_LocalEXT_nbSUBPOP_phiMAXprobVISIT01"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Influence of the variation of asynchrony 
+\begin_inset Formula $\phi_{MAX}$
+\end_inset
+
+ on the relation between the average local extinction number and the number
+ of subpopulation in a metapopulation.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Running time : 2.5 hours
+\end_layout
+
+\begin_layout Itemize
+Analyse : As the result shown in the figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "figRELA_LocalEXT_nbSUBPOP_phiMAXprobVISIT01"
+
+\end_inset
+
+, the rate of asynchrony 
+\begin_inset Formula $\phi_{MAX}$
+\end_inset
+
+ robustly affects the relation between the average local extinction number
+ and the number of subpopulation in a metapopulation.
+ We can find two main results here.
+ First, the average local extinction number in any metapopulation has an
+ clear increase when the rate of asynchrony 
+\begin_inset Formula $\phi_{MAX}$
+\end_inset
+
+ augments.
+ At the rate 
+\begin_inset Formula $\phi_{MAX}=0.0$
+\end_inset
+
+, it means to set the entire metapopulation in the synchrony state, the
+ dynamics of all subpopulations are synchronous and the local extinction
+ positions of the subpopulation may be also synchronous.
+ Therefore, this average number in the metapopulation is minimum.
+ Inversely, when the rate of asynchrony 
+\begin_inset Formula $\phi_{MAX}$
+\end_inset
+
+ starts tending to increase, the fluctuations are also changed and fallen
+ into the difference phase.
+ It is the reason why when a subpopulation goes locally extinct and after
+ it is dominated back by disease due to the recolonisation among subpopulations.
+ At the rate 
+\begin_inset Formula $\phi_{MAX}=\pi$
+\end_inset
+
+, the difference phase is maximum.
+ The average number of local extinction in a metapopulation is maximum.
+ Second, in a metapopulation, if the subpopulation number increases, then
+ the local extinction number augments also.
+ Because when the subpopulation number is directly scaled with the metapopulatio
+n size and the time of disease persistence.
+ In addition, the interaction among subpopulation increases with the subpopulati
+on number.
+ One subpopulation is easy to be dominated by the other subpopulations due
+ to the recolonisation.
+\end_layout
+
+\begin_layout Section*
+
+\backslash
+section{#localExtinction/#souspop en fonction de #souspop selon - Variant
+ de N (pop globale)}
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figRELLocalEXTSubPOP_METASIZE_phiMAXpi.pdf
+	scale 40
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename figRELLocalEXTSubPOP_METASIZE_phiMAXpi2.pdf
+	scale 40
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Influence of the variation of metapopulation size 
+\series bold
+N
+\series default
+ on the relation between the average local extinction number and the number
+ of subpopulation in a metapopulation.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "figRELLocalEXTSubPOP_METASIZE_phiMAX"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Running time : 35,5 hours
+\end_layout
+
+\begin_layout Itemize
+Analyse : The figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "figRELLocalEXTSubPOP_METASIZE_phiMAX"
+
+\end_inset
+
+ shows the relation between the average local extinction number and the
+ number of subpopulation in a metapopulation.
+ We find that the local extinction number is minimum when the metapopulation
+ size is maximum.
+ Because with a big metapopulation, the size of a subpopulation is great.
+ It is the reason why this subpopulation is very difficile to find the local
+ extinction.
+ Inversely, when the metapopulation size is small, then the persistence
+ time is short.
+ Thus, this metapopulation goes to the global extinction in the easy way.
+ On the other hand, we can find that the metapopulation size in the interval
+ from 5e+05 to 1e+06, the local extinction number is high.
+ It means that the size of a subpopulation is approximately from 1e+05 to
+ 5e+05.
+ This is the interval that permit a disease to spread and permit the time
+ of disease persistence to be enough long to study.
+ Finally, we get also the same result, the local extinction number are in
+ increase with the number of subpopulation in a metapopulation.
+\end_layout
+
+\begin_layout Section*
+
+\backslash
+section{#localExtinction/#souspop en fonction de #souspop selon -Variation
+ du couplage}
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figRELALocalEXTnbSUBPOPphiPI_couplage.pdf
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "figRELALocalEXTnbSUBPOPphiPI_couplage"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Influence of the variation of coupling rate on the relation between the
+ average local extinction number and the number of subpopulation in a metapopula
+tion.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Running time: 4 hours
+\end_layout
+
+\begin_layout Itemize
+Analyse : The results are found in the figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "figRELALocalEXTnbSUBPOPphiPI_couplage"
+
+\end_inset
+
+, the local extinction number is minimum when the coupling rate is equal
+ 
+\begin_inset Formula $0.0$
+\end_inset
+
+.
+ It is obvious that in a metapopulation where the subpopulations are isolated,
+ there is no recolonisation among subpopulation.
+ After the local extinction number strongly increases when the coupling
+ rate augments.
+ However, this number is biggest when the coupling rate 
+\begin_inset Formula $\rho=0.01$
+\end_inset
+
+.
+ Because at this rate where the subpopulations are in the mediate interaction.
+ Moreover the coupling rate and the speed of migration among subpopulations
+ are directly proportional.
+ The dispersal speed increases, thereby the local recolonization speed rises,
+ the duration of persistence grows.
+ However, when the dispersal rate is more big, this trend of local extinction
+ number decreases.
+ Because the metapopulation has tendency to become one big population, so
+ the phase difference or the recolonization among subpopulations are no
+ longer significant.
+ The following figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "figLocalEXTCouplageSUBPOP4"
+
+\end_inset
+
+ is an other resultat for the influence of the coupling rate on the local
+ extinction number in the metapopulation.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figLocalEXTCouplageSUBPOP4.pdf
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "figLocalEXTCouplageSUBPOP4"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Relation between the average local extinction number and the coupling rate
+ in the metapopulation of four subpopulations with the metapopulation size
+ N=5e5 and 
+\begin_inset Formula $\phi_{MAX}=\pi$
+\end_inset
+
+.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Running time: 1 hours
+\end_layout
+
+\end_body
+\end_document

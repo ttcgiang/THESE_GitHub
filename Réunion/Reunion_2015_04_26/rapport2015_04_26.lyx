@@ -1,0 +1,1579 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass amsart
+\begin_preamble
+\usepackage{babel}
+\end_preamble
+\use_default_options false
+\begin_modules
+theorems-ams
+eqs-within-sections
+figs-within-sections
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding utf8x
+\fontencoding T1
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 2
+\use_package amssymb 2
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 0
+\use_package mathtools 1
+\use_package mhchem 0
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 2cm
+\topmargin 2cm
+\rightmargin 2cm
+\bottommargin 2cm
+\headheight 2cm
+\headsep 2cm
+\footskip 2cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Section*
+
+\series bold
+Questions posées :
+\series default
+ 
+\end_layout
+
+\begin_layout Standard
+Effet du nombre de villes k à population globale constante sur le taux d'extinct
+ion ? A phase constante 0, pi/4, pi/2, 3pi/4 et pi 
+\end_layout
+
+\begin_layout Subsection*
+
+\series bold
+a.
+ tau décroit-il avec la synchronie (à N et k constant) ? Comment en fonction
+ de N et k ?
+\end_layout
+
+\begin_layout Subsection*
+
+\series bold
+b.
+ tau croit-il avec k (N constant) ? Comment en fonction de la synchronie ?
+\series default
+ 
+\end_layout
+
+\begin_layout Subsection*
+
+\series bold
+c.
+ tau décroit-il avec N (k constant) ? Comment en fonction de Phi ? CCS Critical
+ Community Size
+\end_layout
+
+\begin_layout Subsection*
+
+\series bold
+d.
+ Influence du taux de contact
+\end_layout
+
+\begin_layout Subsection*
+
+\series bold
+e.
+ Influence du couplage 
+\end_layout
+
+\begin_layout Subsection*
+
+\series bold
+f.
+ Comment augmenter le taux d'extinction (i.e augmente la synchronie) par
+ une vaccination optimale ?
+\end_layout
+
+\begin_layout Section*
+Discussion : 
+\end_layout
+
+\begin_layout Itemize
+Discussion sur le taux d'extinction local.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Utiliser la fonction 
+\begin_inset Quotes eld
+\end_inset
+
+fitdistr
+\begin_inset Quotes erd
+\end_inset
+
+ du package MASS 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Discussion sur le taux de durée de recolonation.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Utiliser la fonction 
+\begin_inset Quotes eld
+\end_inset
+
+fitdistr
+\begin_inset Quotes erd
+\end_inset
+
+ du package MASS 
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+
+\series bold
+A faire : 
+\end_layout
+
+\begin_layout Itemize
+Envoyer un email à Christophe Cambier sur quelle language écrite pour le
+ mémoire.
+\end_layout
+
+\begin_layout Itemize
+Essayer de lancer des simulations sur une grille avec le nombre de simulations
+ différentes.
+ (100,500,1000) : Sang, il a fait ça, mais il n'est pas réussit.
+ Maintenant, je continue à utiliser la fonction 
+\begin_inset Quotes eld
+\end_inset
+
+mclapply
+\begin_inset Quotes erd
+\end_inset
+
+ de R pour lancer des simulations parallèles.
+\end_layout
+
+\begin_layout Itemize
+Calculer le taux d
+\begin_inset Quotes erd
+\end_inset
+
+extinction locale et le taux de durée de recolonisation : 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Etape 1 :
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+On a : n souspopulations, M simulations différentes.
+ Alors, on a n*M souspopulations simulée.
+\end_layout
+
+\begin_layout Itemize
+Pour chaque souspopulation simulée : on calcule la table comme suite :
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="4">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+temps
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+EtatExtLocl
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+nbExtLoclCul
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+DurReclT
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+100
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+7
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+120
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+10
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+125
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+300
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+8
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+...
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+...
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+...
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Etape 2 : On a n*M tables comme ci-dessus.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Intégrer les tables en une seule grande table.
+\end_layout
+
+\begin_layout Itemize
+Arranger la grande table en augmentation selon le temps t.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="10" columns="4">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+temps
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+EtatExtLocl
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+nbExtLoclCul
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+DurReclT
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+100
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+7
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+120
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+10
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+125
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+300
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+8
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+500
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+5
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+557
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+6
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+20
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+600
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+7
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+36
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+...
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+...
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+....
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+....
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+...
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+....
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+...
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+....
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Etape 3 : 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Le processus de recolonisation est un processus de Poisson de taux lambda
+ alors les durées d’extinction suivent une distribution exponentielle de
+ taux lambda.
+ Donc, pour estimer ton taux de recolonisation, on peux tout simplement
+ fitter une distribution exponentielle à la distribution de tes durées d’extinct
+ion.
+ Tu peux faire ça avec la fonction fitdistr du package MASS.
+\end_layout
+
+\begin_layout Itemize
+Utiliser la fonction 
+\begin_inset Quotes eld
+\end_inset
+
+fitdistr
+\begin_inset Quotes erd
+\end_inset
+
+ du package MASS pour trouver le taux lambda et son interval de confience
+ 
+\begin_inset Quotes eld
+\end_inset
+
+confint
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Section
+
+\backslash
+section{#localExtinction/#souspop en fonction de #souspop selon-Variation
+ de Phi (asynchronie)
+\series bold
+}
+\series default
+ 
+\end_layout
+
+\begin_layout Subsection
+Taux d'extinction locale et #souspopulation - Variation de Phi
+\end_layout
+
+\begin_layout Itemize
+Figure
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figLoclExtMETAN5e5PrbVIS01.pdf
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Relation between #subpopulation in the metapopulation and the rate of the
+ number of local extinction when 
+\begin_inset Formula $\varphi_{max}$
+\end_inset
+
+ is changed
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Running time : 5.3 hours
+\end_layout
+
+\begin_layout Itemize
+Analyse : 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+The rate of the number of local extinction goes down when the number of
+ subpopulation in the metapopulation rises : the rate of local extinction
+ decreases, so the curve of density of the number of local extinctions correspon
+dent to each the number of subpopulation augments.
+ It means that the number of local extinctions scales proportionately that
+ of subpopulations in the metapopulation.
+\end_layout
+
+\begin_layout Itemize
+The rate of the number of local extinctions goes down when the number of
+ subpopulations is small (2,4 or 6).
+ In this case, the rate of local extinctions with 
+\begin_inset Formula $\varphi_{max}=0$
+\end_inset
+
+ is smaller than that with 
+\begin_inset Formula $\varphi_{max}=\pi$
+\end_inset
+
+.
+ Because there are the phase differences among subpopulations, thus there
+ are recolonisations among them too.
+ We are difficult to find the local extinction in a metapopulation of many
+ subpopulations.
+ And this becomes more difficult than when the number of subpopulation increases.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+Taux de durée de recolonization et #souspopulation - Variation de Phi
+\end_layout
+
+\begin_layout Itemize
+Figure :
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figDurReclMETAN7e5PrbVIS01.pdf
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Relation between #subpopulation in the metapopulation and the rate of the
+ duration of recolonisation among subpopulations when 
+\begin_inset Formula $\varphi_{max}$
+\end_inset
+
+ is changed
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Running time : 5.1 hours
+\end_layout
+
+\begin_layout Itemize
+Analyse:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+The rate of the duration of recolonisation goes up when the number of subpopulat
+ion climbes.
+ It means that the duration of recolonisation among subpopulation decreased
+ when the number of subpopulation augments.
+ Because, the number of subpopulation augments, the emigration speed among
+ subpopulation have a significant increase.
+ The recolonisation of disease is very easy in subpopulation where the disease
+ is temporally extint.
+ 
+\end_layout
+
+\begin_layout Itemize
+The rates of the duration of recolonisation with 
+\begin_inset Formula $\varphi_{max}=0$
+\end_inset
+
+ are smaller than that with 
+\begin_inset Formula $\varphi_{max}=\pi$
+\end_inset
+
+.
+ It mean that the duration of recolonisation among subpopulations with 
+\begin_inset Formula $\varphi_{max}=\pi$
+\end_inset
+
+ is smaller than that with 
+\begin_inset Formula $\varphi_{max}=0$
+\end_inset
+
+.
+ It is right, because due to the recolonisation among subpopulations, thus
+ the duration of local extinction of a subpopulation is shorter.
+\end_layout
+
+\end_deeper
+\begin_layout Section
+
+\backslash
+section{#localExtinction/#souspop en fonction de #souspop selon - Variant
+ de N (pop globale)}
+\end_layout
+
+\begin_layout Subsection
+Taux d'extinction locale et #souspopulation - Variation de N (Metapopulation
+ size)
+\end_layout
+
+\begin_layout Itemize
+Figure
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figLoclExtNchanged.pdf
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Relation between #subpopulation in the metapopulation and the rate of the
+ number of local extinction when the metapopulation size 
+\begin_inset Formula $N$
+\end_inset
+
+ is changed
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Running time:
+\end_layout
+
+\begin_layout Itemize
+Analyse:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+The rate of the number of local extinction goes down when the number of
+ subpopulation in the metapopulation rises : the rate of local extinction
+ decreases, so the curve of density of the number of local extinctions correspon
+dent to each the number of subpopulation augments.
+ It means that the number of local extinctions scales proportionately that
+ of subpopulations in the metapopulation.
+\end_layout
+
+\begin_layout Itemize
+The rates of the number of local extinctions are bigger than when the metapopula
+tion size is very big or very small (
+\begin_inset Formula $ $
+\end_inset
+
+
+\begin_inset Formula $N=2e5$
+\end_inset
+
+ or 
+\begin_inset Formula $N=2e6$
+\end_inset
+
+).
+ In the case 
+\begin_inset Formula $N$
+\end_inset
+
+ very small, it is easy to find local extinctions in subpopulations, however,
+ the global persistence time of the metapopulation is short.
+ In the case 
+\begin_inset Formula $N$
+\end_inset
+
+ very big, it is more difficul to find local extinction in subpopulations,
+ however, the global persistence of the metapopulation is very long.
+ Therefore, in both cases, the total of local extinctions in the metapopulation
+ is bigger than when the metapopulation size is medium.
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+Taux de durée de recolonization et #souspopulation - Variation de N (Metapopulat
+ion size)
+\end_layout
+
+\begin_layout Itemize
+Figure
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figDurExtNchangedPhipi.pdf
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Relation between #subpopulation in the metapopulation and the rate of the
+ duration of recolonisation among subpopulations when the metapopulation
+ size 
+\begin_inset Formula $N$
+\end_inset
+
+ is changed
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Running time :3.45 hours
+\end_layout
+
+\begin_layout Itemize
+Analyse :
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+The CCS (Critical community size) is the minimum size of a closed population
+ within which a human-to-human.
+\end_layout
+
+\begin_layout Itemize
+In the case N small (N=2e5 and N=5e5), the curves have a trend towards going
+ down.
+ We find that, when the bigger the number of subpopulation is, the smaller
+ the subpopulation size is.
+ In this case, the subpopulation size falls below the CCS level.
+ (1) the metapopulation is easy to get global extinct and (2) the number
+ of people emigrating to other subpopulation is very small.
+ The duration of recolonisation is longer when the number of subpopulation
+ is larger.
+ 
+\end_layout
+
+\begin_layout Itemize
+In the case N big (N=7e5 and N=1e6), the curves have a trend towards going
+ up.
+ Because, here the subpopulation size starts being large.
+ It is in the CCS level.
+ The emigration rate is larger and thus the duration of recolonisation is
+ shorter.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Section
+
+\backslash
+section{#localExtinction/#souspop en fonction de #souspop selon -Variation
+ du couplage}
+\end_layout
+
+\begin_layout Subsection
+Taux d'extinction locale et #souspopulation - Variation du taux de couplage
+ 
+\end_layout
+
+\begin_layout Itemize
+Figure
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figLoclExtCouplingChanged.pdf
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Relation between #subpopulation in the metapopulation and the rate of the
+ number of local extinction when the coupling rate is changed
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Running time :
+\end_layout
+
+\begin_layout Itemize
+Analyse:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+In the case 
+\begin_inset Formula $coupling=0.0$
+\end_inset
+
+, subpopulations are independent in a metapopulation.
+ The number of local extinctions is the smaller.
+ Hence, the rate of the local extinction in the metapopulation is maximum.
+\end_layout
+
+\begin_layout Itemize
+In the case 
+\begin_inset Formula $coupling=0.001/0.01/0.1$
+\end_inset
+
+, the subpopulation are interactive.
+ The power of interaction between two subpopulation is presented by the
+ coupling rate.
+ The time of disease persistence is longer than in the case 
+\begin_inset Formula $coupling=0.0$
+\end_inset
+
+.
+ Thus, the number of local extinction is larger.
+ The rate of local extinction is smaller.
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+Taux de durée de recolonization et #souspopulation - Variation du taux de
+ couplage 
+\end_layout
+
+\begin_layout Itemize
+Figure
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figDurReclCouplingChanged.pdf
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Relation between #subpopulation in the metapopulation and the rate of the
+ duration of recolonisation among subpopulations when when the coupling
+ rate is changed
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Running time : 4.8 hours
+\end_layout
+
+\begin_layout Itemize
+Analyse:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+In the case 
+\begin_inset Formula $coupling=0.0$
+\end_inset
+
+, the rate of the duration of recolonisation is maximum.
+ It means that the duration of recolonisation at each local extinction moment
+ is minimum.
+ Because here the subpopulation are independent.
+ The time of the infectious disease persistence in a subpopulation only
+ depends on the number of susceptibles and the infection force in this subpopula
+tion.
+ The duration of recolonisation at each local extinction is quickly broken
+ by the represence of the infected persons in the own subpopulation.
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+Taux de durée de recolonization et #souspopulation - Variation du taux de
+ couplage 
+\end_layout
+
+\begin_layout Itemize
+Figure:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figLocalEXTCouplingNbvil4.pdf
+	scale 40
+
+\end_inset
+
+ 
+\begin_inset Graphics
+	filename figDurReclCouplingNbvil4.pdf
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Relation between the coupling rate in the metapopulation and the rate of
+ the number of local exticntion, and the duration of recolonisation among
+ subpopulations
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Running time: 1.5 hours
+\end_layout
+
+\begin_layout Itemize
+Analyse :
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+When the coupling rate is small, the subpopulations in the metapopulation
+ are independent.
+ The rate of local extinction increases.
+\end_layout
+
+\begin_layout Itemize
+When the coupling rate is larger, among the subpopulations there are the
+ big interactions, the metapopulation becomes one big population.
+ It is difficul to find local extinction in this population.
+ The rate of local extinction increases.
+\end_layout
+
+\begin_layout Itemize
+When the coupling rate is medium, the dynamic of the subpopulations depends
+ on the interactions among the subpopulations.
+ In this interval, the rate of local extinction is minimum.
+ 
+\end_layout
+
+\end_deeper
+\end_body
+\end_document

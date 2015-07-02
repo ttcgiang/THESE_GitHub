@@ -1,0 +1,1182 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass amsart
+\begin_preamble
+\usepackage{babel}
+\end_preamble
+\use_default_options false
+\begin_modules
+theorems-ams
+eqs-within-sections
+figs-within-sections
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding utf8x
+\fontencoding T1
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 2
+\use_package amssymb 2
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 0
+\use_package mathtools 1
+\use_package mhchem 0
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 2cm
+\topmargin 2cm
+\rightmargin 2cm
+\bottommargin 2cm
+\headheight 2cm
+\headsep 2cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Modélisation, Simulation multi-niveau pour l'optimisation de politiques
+ de vaccination 
+\end_layout
+
+\begin_layout Author
+TRAN Thi Cam Giang, Jean Daniel ZUCKER, Marc CHOISY, Yann CHEVALEYRE
+\end_layout
+
+\begin_layout Date
+03/04/2015
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Un plan pour ton mémoire de thèse pourrait être:
+\end_layout
+
+\begin_layout Section
+État de l’art: 
+\end_layout
+
+\begin_layout Subsection
+
+\series bold
+épidémiologie (et contrôle) 
+\end_layout
+
+\begin_layout Subsubsection
+Epidemiology
+\end_layout
+
+\begin_layout Standard
+As we know that public health problems are one of emerging troubles in the
+ entire world.
+ They directly influence the humain heath, the heath of one person, the
+ heath of a community.
+ In particular, any of news about infectious diseases for children has always
+ been a subject of worry to parents as well as all.
+ Hence, in the world, a discipline 
+\begin_inset Quotes eld
+\end_inset
+
+epidemiology
+\begin_inset Quotes erd
+\end_inset
+
+ has been rose for studying the factors, causes, and effects of the infectious
+ diseases.
+ 
+\end_layout
+
+\begin_layout Standard
+This thesis is proposed in context in which many public health serious events
+ have occurred in the world : SRAS in 2003, avian influenza in 2004 or swine
+ flu in 2009, etc.
+
+\series bold
+ 
+\series default
+In particular, in the start of the 2014, the World Health Organization (WHO)
+ had officially to state global measles epidemic outbreak.
+ In the first three months of the year 2014, there were about 56,000 cases
+ of measle infections in 75 countries 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "WHO2014a"
+
+\end_inset
+
+, particularly in southeast Asia and in Vietnam 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "http://healthmap.org/site/diseasedaily/article/measles-reemerges-vietnam-22814"
+
+\end_inset
+
+.
+ This has pointed out the important role of the epidemiological phenomena
+ anticipation when diseases occur.
+ Many works proposed by the WHO2, the Institute Pasteur3 and the Inserm4
+ in the field of "environmental security" try to understand disease phenomenas
+ and spread of disease over a territory, to better manage when diseases
+ occur.
+ These researches consist of mathematical or statistical studies via surveillanc
+e networks 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "chauvin1994constitution"
+
+\end_inset
+
+.
+ This is one of the axes of the UMMISCO laboratory's research themes (IRD
+ UMI 209).
+\end_layout
+
+\begin_layout Subsubsection
+Control
+\end_layout
+
+\begin_layout Standard
+As we know, pathogenic microorganisms such as bacteria, viruses, parasistes
+ or fungi are key factors causing infectious diseases.
+ The diseases can be spread directly or indirectly from one person to another,
+ through a mediate environment or contaminated tools.
+ For the directly infectious diseases, it means to directly transmit from
+ one person to another, we have some normal policies to prevent the spread
+ of diseases such as vaccines, anti-viral medications, and quarantine.
+ In this thesis, we focus on vaccines in the humain community.
+ A vaccine is understood as a biological preparation that provides active
+ acquired immunity to a particular disease for our body.
+ After having vaccinated, it means that we transport microorganisms in the
+ weakened or killed forms of the microbe into our body.
+ The body's immune system produces the right antibodies to recognize the
+ germs as a threat, destroy it and keep a record of it.
+ Due to that, when the disease occurs, our immune system can more recognize
+ and destroy any of these germs that it later encounters.
+ The administration of vaccines is called vaccination.
+ The humain world has thanked alot the vaccination.
+ The results of vaccination have been appreciated such as in the vaccination
+ of the influenza, HPV and chicken pox diseases.
+ Smallpox is a particular exemple.
+ This disease was terror of the human during the closing years of the 18th
+ century.
+ Smallpox killed an estimated 400,000 Europeans annually and the people
+ were lucky to be survival, a third of all were blind.
+ However, the World Health Organization (WHO) offcially stated the eradication
+ of smallpox in 2011 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "tognotti2010SmallpoxErad,fenner2001SmallpoxErad,Wikipedia_SmallpoxErad"
+
+\end_inset
+
+.
+ In addition, many infectious diseases are clearly restricted such as influenza,
+ polio, measles and tetanus from much of the world.
+ Thus, one big question proposed is why many infectious diseases still exist
+ in the world though we have produced vaccines for most of infectious diseases.
+ In order to answer to this question, first of all, we have to answer to
+ some following small questions :
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="5" columns="3">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Question
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Answer
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Why?
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Are vaccines safe?
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+YES
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Vaccines are generally quite safe
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Have all infectious diseases vaccines?
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+NO
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+For exemple: dengue
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Are all vaccines free? 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+NO
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Funding problem 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Are all people vaccinated before a requested age for each disease?
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+NO
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Funding/geographic/cultural problems
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Vaccine state
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+With four answers above, we can say that the human still faces up to infectious
+ diseases.
+ In order to implement proper infection control measures and prevention
+ campaigns with large scale, knowing well the features of the disease is
+ quite important.
+ Clear that the disease transmission methods depend on the characteristics
+ of each disease and the nature of the microorganism that causes it.
+ In the shape of this thesis, we will investigate popular infectious diseases
+ with transmission by direct contact.
+ This transmission requires a close contact between an infected person and
+ a susceptible person, such as touching an infected individual, kissing,
+ sexual contact with oral secreations, or contact with body lesions.
+ Therefore, these diseases usually occur between members of the same household
+ or close friends and family.
+ In particular, measles will be mainly studied throughout this thesis.
+ Because measles is a highly contagious, serious disease caused by a virus.
+ It is a typical disease for the infectious diseases with the direct transmissio
+n.
+ In 1980, it killed an estimated 2.6 milion deaths each year before we had
+ the widespread vaccination policies.
+ It is spread very fast by coughing and sneezing in human communities via
+ close interpersonal contact or direct contact with secretions.
+ Its main symptoms consist of high fever, cough, runny nose and red eyes.
+ These first symptoms usually take from 10 to 12 days after exposure to
+ an infectious person, and lasts 4 to 7 days 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "panum1988observations"
+
+\end_inset
+
+.
+ In fact, now there is no proper treatment for measles to totally prevent
+ the spread of measles except routine measles vaccination policy for children.
+ According to the report by the World Health Organization (WHO), since 2002
+ measles was eradicated from U.S.
+ However, especially in developing countries, measles vaccination has not
+ been extensively popularized in the entire world.
+ Beside the obtained results, for example, in 2013, there was about 84%
+ of the world's children having received one dose of measles vaccine, and
+ during 2000-2013, measles vaccination prevented an estimated 15.6 million
+ deaths; we have had to face upabout 145700 measles deaths globally- estimated
+ 400 deaths every day or 16 deaths every hour in 2013.
+ Measles becomes one of the leading causes of death among young children
+ in the world, although now we are having a big stock of measles vaccines
+ safe and always available.
+\end_layout
+
+\begin_layout Standard
+The mass policy (or the routine measles vaccination policy for mealses)
+ that vaccinates the maximum number of children before certain age, is the
+ oldest (started from the 1950s in the rich countries) and is now the most
+ used.
+ The policy has obtained clear results in the way where it has gotten a
+ clear decrease of the incidence in most of countries.
+ However, the problem of this vaccination policy is too expensive, ineffective
+ and quite impossible to implement in poor countries, especially in Africa
+ because of both financial and logistical problems.
+ (e.g.
+ the WHO project 
+\begin_inset Quotes eld
+\end_inset
+
+Extended Programm on Immunization
+\begin_inset Quotes erd
+\end_inset
+
+ in Vietnam for the measles extinction before 2012 is failed 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "WHOProjectEPI"
+
+\end_inset
+
+).
+
+\series bold
+ 
+\series default
+In addition, when a vaccination policy is performed in a country, there
+ is only one policy deployed, but in modeling, we can realize many policies
+ and assess their results.
+ 
+\end_layout
+
+\begin_layout Standard
+In short, measles is still a common and often fatal disease in the world.
+ We need still very much model the transmission dynamics of measles and
+ investigate the effect of vaccination on the spread of measles in the entire
+ world.
+ More largely, we need give new optimal vaccination policies in Artificial
+ Intelligence in order that these policies may become more effective, less
+ expensive, and take into account the spatial dimension for all popular
+ infectious diseases.
+\end_layout
+
+\begin_layout Subsection
+dynamiques/structures spatiales (théorie métapopulations, réseaux, etc…)
+ 
+\end_layout
+
+\begin_layout Itemize
+For directly transmitted infectious diseases by virus and bacterias, susceptible
+ individuals are not only infected by infected individuals in the same location,
+ but also by other infected individuals due to the movement of individuals
+ between population regions.
+ This is one very important part in the domain studying the geographical
+ spread of infectious diseases.
+ We care for host population characteristics, then characteristics of spatial
+ spread of an infectious disease among populations.
+ Through theses characteristics, we find optimal policies to minimize the
+ number of infected individuals in a community.
+ In fact, there are many researches about the interactions among populations.
+ However, we can divide the spatial structure of populations into two main
+ levels: 
+\begin_inset Quotes eld
+\end_inset
+
+inter-city level
+\begin_inset Quotes erd
+\end_inset
+
+ and 
+\begin_inset Quotes eld
+\end_inset
+
+intra-city level
+\begin_inset Quotes erd
+\end_inset
+
+.
+ At the inter-city level (or called 
+\begin_inset Quotes eld
+\end_inset
+
+micro-level
+\begin_inset Quotes erd
+\end_inset
+
+), we use the differential equations to control its models.
+ At the 
+\begin_inset Quotes eld
+\end_inset
+
+intra-city level
+\begin_inset Quotes erd
+\end_inset
+
+ ( or called 
+\begin_inset Quotes eld
+\end_inset
+
+macro-level
+\begin_inset Quotes erd
+\end_inset
+
+) in which we provide connections between the populations, simulate the
+ intra-city traffic.
+ We consider the effect of travel through the connections between population
+ regions as a means of spreading a virus 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "shaw2010effective"
+
+\end_inset
+
+.
+ We have two basic models considered in the 
+\begin_inset Quotes eld
+\end_inset
+
+macro-level
+\begin_inset Quotes erd
+\end_inset
+
+, the model has no explicit movement of individuals and the models describes
+ enough travels and movements of individuals among populations and even
+ takes account of the resident population as well as the current population
+ of individuals 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "van2008spatial"
+
+\end_inset
+
+.
+ A population may be considered in the simple way as a city, community,
+ or some other geographical region.
+ Population travel (e.g.
+ among animals and among people by foot, birds, mosquitoes and in particular,
+ people travel by air among cities), it is the main reason for that why
+ diseases can be spread quickly among very distant cities such as SARS disease
+ in 2003.
+ Therefore, the term 
+\begin_inset Quotes eld
+\end_inset
+
+metapopulation
+\begin_inset Quotes erd
+\end_inset
+
+ arrived in the ecological leterature in 1969 by Levins 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Levins1969,hanski1991metapopulation"
+
+\end_inset
+
+.
+ A metapopulation is a population of a set of spatially discrete local populatio
+ns (or subpopulations in short) with mutual interaction 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Levins1969"
+
+\end_inset
+
+.
+ In the metapopulation in which a subpopulation can only go extinct locally
+ and be recolonized by another after it is emptied by extinction 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Bolker1996,Hanski1998,Levins1969"
+
+\end_inset
+
+ and migration between subpopulaitons is significantly restricted.
+ In a metapopulation, if recolonization rates are smaller than extinction
+ rates, then the metapopulation is easy to obtain the extinction of all
+ local populations.
+ The persistence time of the metapopulation is measured as the time until
+ all subpopulations going extinct.
+ According to Harrison (1991) 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "hanski1991metapopulation"
+
+\end_inset
+
+ there are four types of spatially dynamic populations : classic Levins
+ metapopulation, mainland-island metapopualtion, patchy population and non-equil
+ibriul populations.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+The first metapopulation model was proposed in 1969 by Levins.
+ It is called the classic Levins Metapopulation 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Levins1969"
+
+\end_inset
+
+.
+ Wilson in 1980 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "wilson1980natural"
+
+\end_inset
+
+ stated that in this classic model 
+\begin_inset Quotes eld
+\end_inset
+
+A nexus of patches, each patch winking into life as a population colonizes
+ it, and winking out again as extinction occurs.
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename classicLevinsMeta.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Classic Levins Metapopulation Model 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "harrison1997empirical"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+All subpopulations in this classic model are relatively small.
+ The levels of interaction among individuals within a subpopulation is much
+ higher than between subpopulations.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+The second model is the mainland-island metapopulation in which there are
+ some small 
+\begin_inset Quotes eld
+\end_inset
+
+island
+\begin_inset Quotes erd
+\end_inset
+
+ subpopulations within dispersal distance of a much larger 
+\begin_inset Quotes eld
+\end_inset
+
+mainland
+\begin_inset Quotes erd
+\end_inset
+
+ subpopulation.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename mainlandIslandMeta.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Mainland-Island Metapopulation 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "harrison1997empirical"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+It is evident that smaller subpopulations have a hight probability of local
+ extinction, but the mainland population will hardly become extinct.
+ The migration from the mainland to the islands is independent of the islands
+ white or filled, but is propagule for the islands connected.
+ Therefore, if mainland population has a low individual density and without
+ immigration, then population growth rate is positive.
+ Inversely, if island populations are in the same conditions of the mainland,
+ then its population growth rate is negative.
+ Thus, the islands would go down to extinction if there isn't any emigrants.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+The third model is the patchy population.
+ The local populations exist in a big habitat population and the dispersal
+ rate between subpopulations is high.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figPatchyPopulation.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Patchy population 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "hanski1991metapopulation"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Here we can find that the population structure is grouped and the interaction
+ among them is frequent.
+ However, this model is not referred as a concept for metapopulation and
+ most researchers do not consider this a metapopulation too.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+The final model is the non-equilibrium population.
+ The local populations are patches, its local extinctions are much great
+ than its recolonisation.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figNonEquilibriumPopulation.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Non-equilibrium population 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "hanski1991metapopulation"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+It is obvious that white patches are rarely or never recolonized.
+ Therefore, this model is not considered as a functional metapopulation.
+ We can find this model in forested agricultural fields.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+We already have four metapopulation model.
+ In order to model the metapopulations above, we have three main model to
+ implement : spatially-implicit model, spatially-explicit model and spatially-re
+alistic model.
+ For the first model, this is the type of model used in Levins (1969) 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Levins1969"
+
+\end_inset
+
+ in which supposing that all local populations are connected with each other
+ and they have independent local fluctuations.
+ At any one time, we save track of the proportion of local populations and
+ don't care distance between them and population size of each subpopulation.
+ The advantages of this model are easy mathematically and conceptually.
+ But this model can only answer some metapopulation problems because it
+ ignores so many variables of a metapopulation.
+ This model should be used for metapopulation close to a steady state.
+ For the second model, spatially-explicit model is more complex than the
+ first model.
+ Subpopulations may be filled or vacant.
+ Local populations only have interactions with nearest neighbours.
+ Subpopulations are organized as cells on a grid and migration among them
+ depends on population density.
+ We also only consider presence or absence of a species in each subpopulation.
+ The advantage of this model is easy to model because of same local behaviors
+ from subpopulaiton to subpopulation.
+ However, we can not simply describe the state of the metapopulation through
+ filled subpopulations.
+ Finally, the spatially-realistic model uses GIS to realize attributes,
+ geometric coordinates, etc to a metapopulation.
+ The first author using this model is Hanski in 1994 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "hanski1994practical"
+
+\end_inset
+
+.
+ His model was defined as the incidence function (IF) model.
+ The advantage of this model is more realistic, and we can estimate quantitative
+ predictions about metapopulation fluctuation.
+ However, in fact, this model is very complicated, and many geographic data
+ have to be estimated.
+ Hence, the metapopulation concept start to exist any more in this model.
+\end_layout
+
+\begin_layout Standard
+In the scope of this thesis, we focus on a metapopulation model that is
+ result of combination between the spatially-explicit model and the patchy
+ population.
+ In general, this a simple spatial model, but is one of the most applicable
+ model to descrire spread of diseases in human communities.
+ This metapopulation consists of distinct 
+\begin_inset Quotes eld
+\end_inset
+
+subpopulation, each of which fluctuates independently, together with interaction
+ limited by a coupling parameter 
+\begin_inset Formula $\rho$
+\end_inset
+
+.
+ These subpopulations may be filled or empty and contact with any neighbours.
+\end_layout
+
+\begin_layout Subsection
+algorithmes de simulation stochastique 
+\end_layout
+
+\begin_layout Standard
+Stochastic simulation works on variables that both are random and can be
+ changed with certain probability.
+ Today, this stochastic models have been used widely in many domain because
+ of some reasons as following : before, in order to model chemically reacting
+ systems, in simple way, we solved a set of coupled ordinary differential
+ equations (ODEs) 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "li2007stochastic"
+
+\end_inset
+
+of deterministic approches.
+ Basically, these approches use the law of mass action that shows a simple
+ relation between reaction rate and molecular component concentrations.
+ We start with a given set of initial molecular concentrations, the law
+ of mass action permits us to see the component concentrations over time.
+ The states of a reaction are a homogeneous, free medium.
+ The reaction rate will be directly scaled with the concentrations of the
+ elements.
+ Most systems can use the traditional deterministic approches to simulate.
+ It is evident that many systems such as some biochemical systems consist
+ of random, discreate interactions between individual elements.
+ However, in the case, these systems becomes smaller and smaller, the traditiona
+l deterministic models may not be accurate.
+ It is the reason for that the fluctuations of these systems can be simulated
+ exactly by applying stochastic models, particularly as well as the Stochastic
+ Simulation Algorithms (SSA) 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "gillespie1976general,gillespie1977exact"
+
+\end_inset
+
+.
+ Using the stochastic models can solve three questions.
+ (1) These models take account the discrete character of the number of elements
+ anf the evidently randam character of collision among elements.
+ (2) They coincide with the theories of thermodynalics and stochastic processes.
+ (3) They are a good idea to describe 
+\begin_inset Quotes eld
+\end_inset
+
+small systems
+\begin_inset Quotes erd
+\end_inset
+
+ and 
+\begin_inset Quotes eld
+\end_inset
+
+instable systems
+\begin_inset Quotes erd
+\end_inset
+
+.
+ The main idea of the stochastic models is that molecular reactions are
+ essentially random processes.
+ We don't know certainly how a reaction occur at a moment.
+ 
+\end_layout
+
+\begin_layout Standard
+The stochastic models are divided into two main types, for the discrete-event
+ simulation and the continuous simulation.
+ 
+\end_layout
+
+\begin_layout Subsubsection
+Discrete-event simulation:
+\end_layout
+
+\begin_layout Subsubsection
+Continuous simulation : 
+\end_layout
+
+\begin_layout Subsection
+reinforcement learning 
+\end_layout
+
+\begin_layout Section
+Description du modèle (ce qui corretspond au package R) 
+\end_layout
+
+\begin_layout Itemize
+comparaison avec ce qui existe déjà en termes de (1) possibilité (ce que
+ l’on peut faire) et de (2) rapidité.
+ En gros il y a un compromis entre flexibilité et rapidité.
+ Il faut que tu montres où ce situe ton package.
+ Par exemple, sous R, à comparer avec “adaptivetau” et “GillespieSSA”.
+ Voir aussi les autres outils qu’il existe (par exemple ceux développés
+ par Petzold http://www.cs.ucsb.edu/~cse/index2.php?publications.php) 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Kullback-Leibler Divergence or Kolmogorov–Smirnov test to compare the simulation
+ results.
+\end_layout
+
+\begin_layout Section
+Relation structure/dynamique spatiale et persistence 
+\end_layout
+
+\begin_layout Standard
+C’est ce que tu es en train d’explorer pour le moment.
+ Plusieurs questions à explorer.
+ Chaque question constitue un sous-chapitre.
+ A toi de développer et structurer cette partie plus en détails.
+\end_layout
+
+\begin_layout Section
+Contrôle par reinforcement learning: 
+\end_layout
+
+\begin_layout Itemize
+comment utiliser ton simulateur pour faire du reinforcement learning.
+ Partie qui reste à développer.
+\end_layout
+
+\begin_layout Section
+Conclusion et discussion générales.
+\end_layout
+
+\begin_layout Standard
+Commence donc à écrire certaines parties dès que tu peux (un peu chaque
+ semaine et de plus en plus au fur et à fur que le temps avance).
+ Pense aussi à bien faire la bibliographie (il faut que tu sois incollable
+ sur le sujet).
+ Les nouveau login et mot de passe de Bibliovie (http://bibliovie.inist.fr)
+ sont 15SCBUMR5290 et 4NX9E5.
+ Ou, on peux utiliser l'account de Giang à UPMC selon les conseil de la
+ site : http://www.jubil.upmc.fr/fr/ressources_en_ligne2/mode_acces_ressources.html.
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+bibfiles "bib_art_Pers"
+
+\end_inset
+
+
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+bibfiles "bikBokEpidemics"
+
+\end_inset
+
+
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+bibfiles "bikCCS"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+bibfiles "bibManuscrit"
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

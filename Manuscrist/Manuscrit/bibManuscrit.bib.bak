@@ -1,0 +1,226 @@
+% This file was created with JabRef 2.10b2.
+% Encoding: UTF-8
+
+
+@Article{behbehani1983smallpox,
+  Title                    = {The smallpox story: life and death of an old disease.},
+  Author                   = {Behbehani, Abbas M},
+  Journal                  = {Microbiological reviews},
+  Year                     = {1983},
+  Number                   = {4},
+  Pages                    = {455},
+  Volume                   = {47},
+
+  Publisher                = {American Society for Microbiology (ASM)}
+}
+
+@Article{chauvin1994constitution,
+  Title                    = {Constitution and monitoring of an epidemiological surveillance network with sentinel general practitioners},
+  Author                   = {Chauvin, Pierre},
+  Journal                  = {European journal of epidemiology},
+  Year                     = {1994},
+  Number                   = {4},
+  Pages                    = {477--479},
+  Volume                   = {10},
+
+  Publisher                = {Springer}
+}
+
+@Article{fenner2001SmallpoxErad,
+  Title                    = {[Book Review: The Eradication of Smallpox: Edward Jenner and the First and Only Eradication of a Human Infectious Disease Herve Bazin, Andrew Morgan, Glenise Morgan]},
+  Author                   = {Fenner, Frank},
+  Journal                  = {Quarterly Review of Biology},
+  Year                     = {2001},
+  Number                   = {4},
+  Pages                    = {476},
+  Volume                   = {76}
+}
+
+@Article{gillespie1977exact,
+  Title                    = {Exact stochastic simulation of coupled chemical reactions},
+  Author                   = {Gillespie, Daniel T},
+  Journal                  = {The journal of physical chemistry},
+  Year                     = {1977},
+  Number                   = {25},
+  Pages                    = {2340--2361},
+  Volume                   = {81},
+
+  Publisher                = {ACS Publications}
+}
+
+@Article{gillespie1976general,
+  Title                    = {A general method for numerically simulating the stochastic time evolution of coupled chemical reactions},
+  Author                   = {Gillespie, Daniel T},
+  Journal                  = {Journal of computational physics},
+  Year                     = {1976},
+  Number                   = {4},
+  Pages                    = {403--434},
+  Volume                   = {22},
+
+  Publisher                = {Elsevier}
+}
+
+@Article{gross1995efficacy,
+  Title                    = {The efficacy of influenza vaccine in elderly persons: a meta-analysis and review of the literature},
+  Author                   = {Gross, Peter A and Hermogenes, Alicia W and Sacks, Henry S and Lau, Joseph and Levandowski, Roland A},
+  Journal                  = {Annals of Internal medicine},
+  Year                     = {1995},
+  Number                   = {7},
+  Pages                    = {518--527},
+  Volume                   = {123},
+
+  Publisher                = {Am Coll Physicians}
+}
+
+@Article{hanski1994practical,
+  Title                    = {A practical model of metapopulation dynamics},
+  Author                   = {Hanski, Ilkka},
+  Journal                  = {Journal of animal ecology},
+  Year                     = {1994},
+  Pages                    = {151--162},
+
+  Publisher                = {JSTOR}
+}
+
+@Article{hanski1991metapopulation,
+  Title                    = {Metapopulation dynamics: brief history and conceptual domain},
+  Author                   = {Hanski, Ilkka and Gilpin, Michael},
+  Journal                  = {Biological journal of the Linnean Society},
+  Year                     = {1991},
+  Number                   = {1-2},
+  Pages                    = {3--16},
+  Volume                   = {42},
+
+  Publisher                = {Wiley Online Library}
+}
+
+@Article{harrison1997empirical,
+  Title                    = {Empirical evidence for metapopulation dynamics},
+  Author                   = {Harrison, Susan and Taylor, Andrew D},
+  Journal                  = {Metapopulation biology: ecology, genetics, and evolution. Academic Press, San Diego, California, USA},
+  Year                     = {1997},
+  Pages                    = {27--42}
+}
+
+@Book{hays2005epidemics,
+  Title                    = {Epidemics and pandemics: their impacts on human history},
+  Author                   = {Hays, Jo N},
+  Publisher                = {Abc-clio},
+  Year                     = {2005}
+}
+
+@Misc{henderson20016,
+  Title                    = {6 Smallpox and Vaccinia},
+
+  Author                   = {Henderson, Donald A},
+  Year                     = {2001}
+}
+
+@Article{li2007stochastic,
+  Title                    = {Stochastic simulation of biochemical systems on the graphics processing unit},
+  Author                   = {Li, Hong and Petzold, Linda R},
+  Journal                  = {Bioinformatics. Cit{\'e} pages 32 et},
+  Year                     = {2007},
+  Volume                   = {35}
+}
+
+@Article{matrajt2010optimizing,
+  Title                    = {Optimizing vaccine allocation at different points in time during an epidemic},
+  Author                   = {Matrajt, Laura and Longini Jr, Ira M},
+  Journal                  = {PloS one},
+  Year                     = {2010},
+  Number                   = {11},
+  Pages                    = {e13767},
+  Volume                   = {5},
+
+  Publisher                = {Public Library of Science}
+}
+
+@Article{panum1988observations,
+  Title                    = {Observations made during the epidemic of measles on the Faroe Islands in the year 1846},
+  Author                   = {Panum, Peter Ludwig},
+  Journal                  = {The Challenge of Epidemiology: Issues and Selected Readings, Pan American Health Organization, New York},
+  Year                     = {1988},
+  Pages                    = {37--41}
+}
+
+@Article{shaw2010effective,
+  Title                    = {Effective vaccination policies},
+  Author                   = {Shaw, L and Spears, W and Billings, L and Maxim, P},
+  Journal                  = {Information sciences},
+  Year                     = {2010},
+  Number                   = {19},
+  Pages                    = {3728--3744},
+  Volume                   = {180},
+
+  Publisher                = {Elsevier}
+}
+
+@Article{tognotti2010SmallpoxErad,
+  Title                    = {The eradication of smallpox, a success story for modern medicine and public health: What lessons for the future?},
+  Author                   = {Tognotti, Eugenia},
+  Journal                  = {The Journal of Infection in Developing Countries},
+  Year                     = {2010},
+  Number                   = {5},
+  Pages                    = {264--266},
+  Volume                   = {4},
+
+  Publisher                = {OLoeP}
+}
+
+@InCollection{van2008spatial,
+  Title                    = {Spatial structure: Patch models},
+  Author                   = {Van den Driessche, P},
+  Booktitle                = {Mathematical Epidemiology},
+  Publisher                = {Springer},
+  Year                     = {2008},
+  Pages                    = {179--189}
+}
+
+@Article{WHOProjectEPI,
+  Title                    = {Project Extended Programm on Immunization},
+  Author                   = {WHO},
+
+  Url                      = {http://www.nihe.org.vn/items-en/chuong-trinh-tiem-chung-mo-rong-quoc-gia-703261429.vhtm}
+}
+
+@Article{Epidemiology_Wiki,
+  Title                    = {Epidemiology},
+  Author                   = {Wikipedia}
+}
+
+@Article{Wikipedia_DengueVaccine,
+  Title                    = {Dengue vaccine},
+  Author                   = {Wikipedia_Dengue_vaccine},
+
+  Url                      = {http://en.wikipedia.org/wiki/Dengue_vaccine}
+}
+
+@Article{Wikipedia_SmallpoxErad,
+  Title                    = {Rinderpest},
+  Author                   = {Wikipedia_Rinderpest},
+
+  Url                      = {http://en.wikipedia.org/wiki/Rinderpest}
+}
+
+@Article{Wikipedia_Smallpox,
+  Title                    = {Smallpox},
+  Author                   = {Wikipedia_Smallpox},
+
+  Url                      = {http://en.wikipedia.org/wiki/Smallpox}
+}
+
+@Article{Wikipedia_Vaccine,
+  Title                    = {Vaccine},
+  Author                   = {Wikipedia_Vaccine},
+
+  Url                      = {http://en.wikipedia.org/wiki/Vaccine}
+}
+
+@Book{wilson1980natural,
+  Title                    = {The natural selection of populations and communities},
+  Author                   = {Wilson, David Sloan},
+  Publisher                = {Benjamin/Cummings Pub. Co.},
+  Year                     = {1980}
+}
+

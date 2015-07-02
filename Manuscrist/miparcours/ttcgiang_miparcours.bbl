@@ -1,0 +1,70 @@
+\begin{thebibliography}{10}
+
+\bibitem{Altizer2006}
+S.~Altizer, A.~Dobson, P.~Hosseini, P.~Hudson, M.~Pascual, and P.~Rohani.
+\newblock Seasonality and the dynamics of infectious diseases.
+\newblock {\em Ecol Lett}, 9(4):467--484, Apr 2006.
+
+\bibitem{Anderson&May1992}
+R.~M. Anderson and R.~M. May.
+\newblock {\em Infectious Diseases of Humans: Dynamics and Control}.
+\newblock Oxford University Press, 1992.
+
+\bibitem{Bolker1995}
+B.~Bolker and B.~Grenfell.
+\newblock Space, persistence and dynamics of measles epidemics.
+\newblock {\em The Royal Society}, 348:309--320, 1995.
+
+\bibitem{gillespie1977exact}
+D.~T. Gillespie.
+\newblock Exact stochastic simulation of coupled chemical reactions.
+\newblock {\em The journal of physical chemistry}, 81(25):2340--2361, 1977.
+
+\bibitem{Grenfell1995}
+B.T. Grenfell, B.~M. Bolker, and A.~Klegzkowski.
+\newblock Seasonality and extinction in chaotic metapopulation.
+\newblock {\em The royal society}, 259:97--103, 1995.
+
+\bibitem{He2003}
+D.~He and L.~Stone.
+\newblock Spatio-temporal synchronization of recurrent epidemics.
+\newblock {\em Proc Biol Sci}, 270(1523):1519--1526, Jul 2003.
+
+\bibitem{http://healthmap.org/site/diseasedaily/article/measles-reemerges-viet%
+nam-22814}
+healthmap.org.
+\newblock Measles reemerges in vietnam, 2014.
+
+\bibitem{Keeling2002}
+M.~J. Keeling and B.~T. Grenfell.
+\newblock Understanding the persistence of measles: reconciling theory,
+  simulation and observation.
+\newblock {\em Proc Biol Sci}, 269(1489):335--343, Feb 2002.
+
+\bibitem{KeelingRohani2008}
+M.~J. Keeling and P.~Rohani.
+\newblock {\em Modeling Infectious Diseases in humans and animals}.
+\newblock Princeton University Press, 2008.
+
+\bibitem{Lloyd2001}
+A.~L. Lloyd.
+\newblock Realistic distributions of infectious periods in epidemic models:
+  changing patterns of persistence and dynamics.
+\newblock {\em Theor Popul Biol}, 60(1):59--71, Aug 2001.
+
+\bibitem{renshaw1993modelling}
+E.~Renshaw.
+\newblock {\em Modelling biological populations in space and time}, volume~11.
+\newblock Cambridge University Press, 1993.
+
+\bibitem{survival-package}
+T.~M. Therneau.
+\newblock {\em A Package for Survival Analysis in S}, 2014.
+\newblock R package version 2.37-7.
+
+\bibitem{WHO2014a}
+WHO.
+\newblock Reported measles cases with onset date from oct 2013 to mar 2014,
+  2014.
+
+\end{thebibliography}

@@ -1,0 +1,3092 @@
+#LyX file created by tex2lyx 2.0.2
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass article
+\begin_preamble
+\batchmode
+
+\def\input@path{{/home/tran/Bureau/miparcours//}}
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% LyX specific LaTeX commands.
+%% Because html converters don't know tabularnewline
+\providecommand{\tabularnewline}{\\}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Textclass specific LaTeX commands.
+\newenvironment{lyxlist}[1]{\begin{list}{}
+{\settowidth{\labelwidth}{#1}
+ \setlength{\leftmargin}{\labelwidth}
+ \addtolength{\leftmargin}{\labelsep}
+ \renewcommand{\makelabel}[1]{##1\hfil}}}{\end{list}}
+
+
+
+\usepackage{Sweave}
+
+
+
+
+\end_preamble
+\options noae
+\use_default_options false
+\language english
+\language_package none
+\inputencoding utf8x
+\fontencoding T1
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\paperfontsize default
+\spacing single
+\use_hyperref 0
+\papersize default
+\use_geometry true
+\use_amsmath 2
+\use_esint 1
+\use_mhchem 0
+\use_mathdots 0
+\cite_engine basic
+\use_bibtopic false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 0
+\leftmargin 4cm
+\topmargin 2.5cm
+\rightmargin 2.5cm
+\bottommargin 2.5cm
+\headsep 0.5cm
+\footskip 1cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+
+
+\series bold
+Modélisation, Simulation multi-niveau pour l'optimisation de politiques de vaccination 
+\series default
+
+\end_layout
+
+\begin_layout Author
+
+Rapport d'avancement à mi-parcours
+\end_layout
+
+\begin_layout Author
+
+
+\series bold
+TRAN Thi Cam Giang
+\series default
+
+\end_layout
+
+\begin_layout Author
+
+18 Aout 2014
+\end_layout
+
+\begin_layout Standard
+
+
+\series bold
+Thesis direction:
+\series default
+ Pr. Yann Chevaleyre (PR, Université Paris 13) Dr. Jean-Daniel Zucker (DR1, UMI UMMISCO, IFI-MSI, IRD)
+\end_layout
+
+\begin_layout Standard
+
+
+\series bold
+Co-supervision:
+\series default
+ Dr. Marc Choisy (CR1, MIVEGEC, NIHE, IRD) Dr. Vu Dinh Thiem (NIHE)
+\end_layout
+
+\begin_layout Section
+
+Introduction
+\end_layout
+
+\begin_layout Standard
+
+This thesis gives birth in the context where many recent events occur in the world, for epidemiologie : SRAS in 2003, avian influenza in 2004 or swine flu in 2009, for natural disaster : earthquake -Haiti, Chile, China-, tsunamis - Indian Ocean in 2004, France in 2010, Japan in 2011-floods,..., storm insects (cloud of locust), in particular, infectious disease Ebola being making the entier world worry. These events have revealed important risks of environment. The rapid spread of the flu virus recently illustrates how it is important to anticipate the epidemiological phenomena to better manage when they occur. Moreover, for vaccination policies, the mass policy (vaccinate the maximum number of children before certain age) is the oldest (started from the 1950s in the rich countries) and is now the most used. The problem of this vaccination policy is too expensive, ineffective and quite impossible to implement in poor countries, especially in Africa as both financial and logistical problems. (e.g. the WHO project of extinction measles in Vietnam before 2012 is failed). Therefore, OPTIMIZE the vaccination policies in Artificial Intelligence in order that these policies may become more effective, less expensive, and take into account the spatial dimension, is the goal of this thesis.
+\end_layout
+
+\begin_layout Standard
+
+To carry out this goal, the first task is to make a state of the art covering the different epidemic models being used in the field of epidemiological modeling. In the second step, we will focus on design or expand a representation language that allows a modelisator to express the goals of model simulations as well as constraints related to them. In the third step, we will set disease population in spatial context, then study its local/global disease persistence, disease periods and the influence of space on the disease persistence. Finally, we will perform vaccination policies in a metapopulation and optimize them.
+\end_layout
+
+\begin_layout Section
+
+Epidemic models
+\end_layout
+
+\begin_layout Subsection
+
+State of the art
+\end_layout
+
+\begin_layout Standard
+
+We know that, a mathematical model uses the language of mathematics in order that the description of a system becomes more refined and more precise. In epidemiology, this model permits us to translate between behavior at various scales, or extrapolate from a known set of conditions to another. More robustly, the mathematical models allow us to predict the epidemic dynamics of population-level, state of disease under individual as well as under population, spread of disease and impact of vaccination on the spread of disease infection. These mathematical models in the epidemiologic field are called the epidemic models.
+\end_layout
+
+\begin_layout Subsubsection
+
+Types of epidemic models
+\end_layout
+
+\begin_layout Standard
+
+There are two types of epidemic models : deterministic and stochastic
+\end_layout
+
+\begin_layout Standard
+
+
+\series bold
+Deterministic
+\series default
+
+\end_layout
+
+\begin_layout Standard
+
+The deterministic model is described by ordinary differential equations. It is used in large populations as in the case of infectious disease such as tuberculosis, mealses, dengue,etc. Here, individuals in the population are assigned to differents subgroups. Each subgroup represents a specific stage of the epidemic. The transition rates from one subgroup to another are derivative equations. The population size in a compartment is differentiable over time and the epidemic process is deterministic.
+\end_layout
+
+\begin_layout Standard
+
+
+\series bold
+Stochastic
+\series default
+
+\end_layout
+
+\begin_layout Standard
+
+
+\begin_inset Quotes eld
+\end_inset
+
+All the disease models that have been considered so far are deterministic
+\begin_inset Quotes erd
+\end_inset
+
+ is the words of Keeling(2008). It means that we have fixed 
+\begin_inset Quotes eld
+\end_inset
+
+clockwork
+\begin_inset Quotes erd
+\end_inset
+
+ processes with the same starting conditions, exactly the same trajectory is always observed. It isn't right for dynamics of real pathogens in the real-world. We can not observe exactly the same people becoming infected at exactly the same times. Therefore, the stochastic model comes into being. 
+\begin_inset Quotes eld
+\end_inset
+
+Stochastic
+\begin_inset Quotes erd
+\end_inset
+
+ here means having a random variable. A stochastic model is a tool for estimating probability distributions of potential outcomes by allowing for random variation in one or more inputs over time. Or, the stochastic models can be an approximation or mimicry of this random or probabilistic element. This model has a important role in special cases, such as when the number of infectious individuals is rather small, when global extinction is probable to occur, when the population size is also small and when an infection has just invaded or is in the trough phase of the epidemic cycle.
+\end_layout
+
+\begin_layout Standard
+
+
+\series bold
+Terminology
+\series default
+
+\end_layout
+
+\begin_layout Standard
+
+Here, we give some common terms used in epidemic models. 
+\end_layout
+
+\begin_layout Itemize
+
+M : passively immune infants 
+\end_layout
+
+\begin_layout Itemize
+
+S : susceptibles 
+\end_layout
+
+\begin_layout Itemize
+
+E : exposed individuals in the latent period 
+\end_layout
+
+\begin_layout Itemize
+
+I : infectives 
+\end_layout
+
+\begin_layout Itemize
+
+R : removed with immunity 
+\end_layout
+
+\begin_layout Itemize
+
+
+\begin_inset Formula $\beta$
+\end_inset
+
+ : contact rate such that a susceptible becomes an infectived 
+\end_layout
+
+\begin_layout Itemize
+
+
+\begin_inset Formula $\lambda$
+\end_inset
+
+ : infection rate 
+\end_layout
+
+\begin_layout Itemize
+
+
+\begin_inset Formula $\mu$
+\end_inset
+
+ : average death rate and at the same time, average birth rate 
+\end_layout
+
+\begin_layout Itemize
+
+
+\begin_inset Formula $\sigma$
+\end_inset
+
+ : average rate of the latent period 
+\end_layout
+
+\begin_layout Itemize
+
+
+\begin_inset Formula $\gamma$
+\end_inset
+
+ : average rate of the infectious period 
+\end_layout
+
+\begin_layout Itemize
+
+N : population size 
+\end_layout
+
+\begin_layout Subsubsection
+
+Epidemic models
+\end_layout
+
+\begin_layout Standard
+
+At present, there are many epidemic models. We can divide these models into two base types, the type of three base elements and the type of more than three base elements.
+\end_layout
+
+\begin_layout Standard
+
+
+\series bold
+Epidemic models with three base elements:
+\series default
+
+\end_layout
+
+\begin_layout Standard
+
+We have the SIR model, the SIR model with births and deaths, the SIS model with births and deaths, and the SIRS model. The first simplest model is the SIR model created by W. O. Kermack and A. G. McKendrick in 1927. The model is fixed with three elements: susceptible S(t), infected I(t) and removed R(t). These three elements are correspondant to its three classes. From the simplest SIR model, in order to accord each infectious disease and real property of disease, scientists have modified it, make it more multiforme. For example, for SIS models, the individuals recover with no immunity to the disease, that is, inviduals are immediately susceptible once they have recovered. This SIS models are used in sexually transmitted diseases like gonorrhoea because once recovered, the host is once again susceptible to infection.
+\end_layout
+
+\begin_layout Standard
+
+
+\series bold
+Epidemic models with more than three base elements:
+\series default
+
+\end_layout
+
+\begin_layout Standard
+
+Here, we also have a lot of epidemic models with more than three base elements, to accord many different disease types, such as the SEIS model, SEIR model, MSIR model, MSEIR model and MSEIRS model. However, in shape of this thesis, we concentrate on the SEIR model (as the figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:seirmodel"
+
+\end_inset
+
+)that consists with many currently infectious diseases in the world. Diseases have a latent or exposed phase, during which the individual is said to be infected but not infectious.
+\end_layout
+
+\begin_layout Standard
+
+
+\begin_inset Float figure
+placement tbph
+wide false
+sideways false
+status open
+
+
+\begin_layout Standard
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics 
+	filename seirmodel.png
+	width 50text%
+
+\end_inset
+
+ 
+\begin_inset Caption
+
+\begin_layout Standard
+
+SEIR model
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:seirmodel"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+In this model, the host population (N) is divided into four classes : susceptible S(t), exposed E(t), infected I(t) and recovered R(t). We have :
+\end_layout
+
+\begin_layout Standard
+
+
+\begin_inset Formula $N=S(t)+E(t)+I(t)+R(t)$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+
+Classe S(t) : contains the number of individuals not yet with the disease at time t, or those susceptible to the disease. 
+\end_layout
+
+\begin_layout Itemize
+
+Classe E(t) : contains the number of individuals who are in the exposed or latent period of the disease. 
+\end_layout
+
+\begin_layout Itemize
+
+Classe I(t) : contains the number of individuals who have been infected with the disease and are capable of spreading the disease to those in the susceptible category. 
+\end_layout
+
+\begin_layout Itemize
+
+Classe R(t) : contains the number of individuals who have been infected and then removed from the disease, either due to immunization or due to death. Individuals of this classe are not able to be infected again or to transmit the disease infection to others. 
+\end_layout
+
+\begin_layout Subsection
+
+Demographic stochasticity
+\end_layout
+
+\begin_layout Standard
+
+Demographic stochasticity is still called event-driven stochasticity, because it is built upon events. This stochasticity is considered as fluctuation in population process that arise from random differences among individuals. Therefore, demographic stochasticity becomes a common tool of scientists to epidemics model due to its mechanistic approach to including randomness and the individual nature of its formulation. The number of infectious, susceptible, exposed and recovered individuals in a population must here be integers.
+\end_layout
+
+\begin_layout Standard
+
+In short, in demographic stochasticity, there are two elements in common, one is event and the other is random number. The first algorithm "First Reaction Method
+\begin_inset Quotes erd
+\end_inset
+
+ is born in 1976 by Gillespie. Then, based on this first algorithm and these two key elements of demographic stochasticity, many scientists improved the first method, and created many better algorithms for stochastic simulations. But typically, there are only two main types of algorithms, exact algorithms and approximative algorithms. The typical algorithm that most practitioners use, among exact algorithms, is the algorithm 
+\begin_inset Quotes eld
+\end_inset
+
+Direct Method
+\begin_inset Quotes erd
+\end_inset
+
+ of Gillespie(1977) improved from the first algorithm 
+\begin_inset Quotes eld
+\end_inset
+
+First Reaction Method
+\begin_inset Quotes erd
+\end_inset
+
+, and among approximative algorithms, is the 
+\begin_inset Quotes eld
+\end_inset
+
+tau-leaping
+\begin_inset Quotes erd
+\end_inset
+
+ algorithm. With these two types of algorithms, each has its private advantages and its private disadvantages. They have a common point. Their processes are in continuous-time Markov process for which the transition rates are constants, isn't a function of time. The future state of the process, is only conditional on the present state, but independent of the past. In constract, privately, for the exact algorithm, its advantage give us a really exact approach of simulating population-based time-to-event through two step with many iterations of 1) searching the time of next event by an exponentially distributed function and 2) searching the nature of next event. This process is repeated to iterate the model. In addition to the exact algorithms, Gibson & Bruck (2000) modified the first reaction method and created the Next Reaction method that substantially more challenging to program but is significantly faster than even the method when there are a large number of different event types. The Direct, First Reaction and Next Reaction methods are all exact stochastic approaches of the underlying ODEs. For these exact methods, on the one hand, noise in simulation only affects the probabilities associated with fates of individuals and the updating of each consecutive event is independent – there is no assumption concerning environmental stochasticity. On the other hand, these exact solutions become too slow and impractical when any one transition rate is large, when there is a big number of subpopulations or one a big number of event in a metapopualtion. It is the reason for that, approximate models are born instead of the exact stochastic methods. Gillespie (2001) has proposed a new method that decreases the simulation accuracy, but increases simulation speed. This is the 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Formula $\tau-leap$
+\end_inset
+
+ method
+\begin_inset Quotes erd
+\end_inset
+
+ known as an approximate method reduces the number of iterations by treating transition rates as constant over time periods for which this approximation leads to little error 
+\begin_inset CommandInset citation
+LatexCommand cite
+after ""
+key "KeelingRohani2008"
+
+\end_inset
+
+. View the figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:speed"
+
+\end_inset
+
+. 
+\begin_inset Float figure
+placement tbph
+wide false
+sideways false
+status open
+
+
+\begin_layout Standard
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics 
+	filename speed.png
+	width 50text%
+
+\end_inset
+
+ 
+\begin_inset Caption
+
+\begin_layout Standard
+
+Figure is extrait from Keling (2008) The time (in seconds) to simulate 1000 years of SEIR epi- demics (
+\begin_inset Formula $\mu=0.02$
+\end_inset
+
+ per year, 
+\begin_inset Formula $1/\sigma=8$
+\end_inset
+
+ days, 
+\begin_inset Formula $1/\gamma=10$
+\end_inset
+
+ days) on a 3.4GHz Pentium PC. For Gillespie’s Direct (light grey line) and First Reaction (black line) methods, as the population size increases so does the simulation time, which, for very large populations, could become prohibitive. In contrast, the 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Formula $\tau-leap$
+\end_inset
+
+ method (dark grey) is fast and largely unaffected by population size 
+\begin_inset CommandInset citation
+LatexCommand cite
+after ""
+key "KeelingRohani2008"
+
+\end_inset
+
+. 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:speed"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+
+Disease transmission types in epidemic models 
+\end_layout
+
+\begin_layout Standard
+
+We know that, for each disease, knowing well its transmission methods is important for implementing proper infection control measures and prevention campaigns with large scale. The disease transmission methods depend on the characteristics of each disease and the nature of the microorganism that causes it. Here, we will point out some main types of transmission. For some infectious disease, its transmission method is complex and variant, such as anthrax. The anthrax can be spread through direct contact to a cut on the skin or through airborne spores which are inhaled. 
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+
+\series bold
+Transmission
+\series default
+ 
+\series bold
+by direct contact
+\series default
+ 
+\end_layout
+
+\begin_layout Standard
+
+This transmission requires a close contact between an infected person and a susceptible person, such as touching an infected individual, kissing, sexual contact, contact with oral secreations, or contact with body lesions. Therefore, disease usually occurs between members of the same household or close friends and family. 
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+
+\series bold
+Transmission
+\series default
+ 
+\series bold
+by indirect contact
+\series default
+ 
+\end_layout
+
+\begin_layout Standard
+
+The indirect transmission has an intermediate factor where a susceptible person can be infected by a contaminated surface. The touch surfaces are usually in the life : door knobs, door handles; tables, beds, chairs; washroom surfaces; cups, dishes, trays; medical instruments; children's toy, etc. So, in order to reduce the number of infected individuals, we always make frequent touch surfaces be properly disinfected. 
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+
+\series bold
+Transmission
+\series default
+ 
+\series bold
+by droplet contact
+\series default
+ 
+\end_layout
+
+\begin_layout Standard
+
+These droplets are infected droplets that we usually see on the eye, nose and mouth. Droplets containing microorganisms can spread diease when an infected person coughs, sneezes and talks or through medical procedures. Droplets are too large to be airborne for long periods of time, and quickly settle out of air. We know measles and SARS are two exemples of transmission with droplet transmission. However, to reduce the infection, we can take personal protective barriers such as face masks and googgles to prevent disease transmission. 
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+
+\series bold
+Transmission
+\series default
+ 
+\series bold
+by airborne
+\series default
+ 
+\end_layout
+
+\begin_layout Standard
+
+This is quite dangerous cas where droplets are dust particles containing microorganisms. These organisms can remain suspended in air for long periods of time. And we become infected when we inhale these organisms. Fortunately, only a limited number of diseases are capable of airborne transmission, such as tuberculosis, chickenpox and measles. 
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+
+\series bold
+Fecal-oral
+\series default
+ 
+\series bold
+transmission
+\series default
+ 
+\end_layout
+
+\begin_layout Standard
+
+Fecal-oral transmission is usually associated with organisms that infect the digestive system, through ingestion of contaminated food and water. Fecal-oral transmission can be reduced by 
+\end_layout
+
+\begin_layout Itemize
+
+Proper storage of food at proper temperatures 
+\end_layout
+
+\begin_layout Itemize
+
+Thorough cooking of food 
+\end_layout
+
+\begin_layout Itemize
+
+Frequent and thorough handwashing, especially after washroom use 
+\end_layout
+
+\begin_layout Itemize
+
+Adequate sewage treatment and water filtration/chlorination systems 
+\end_layout
+
+\begin_layout Itemize
+
+Disinfection of frequent touch surfaces to prevent indirect contact transmission 
+\end_layout
+
+\begin_layout Itemize
+
+Increased public awareness of proper hygiene and food handling 
+\end_layout
+
+\begin_layout Standard
+
+
+\series bold
+Vector-borne transmission
+\series default
+
+\end_layout
+
+\begin_layout Standard
+
+Vectors are animals that are capable of transmitting diseases, such as flies, mites, fleas, ticks, rats, dogs, and in particular, mosquito. Since vectors are mobile, they increase the transmission range of a disease. So, changes in vector behaviour will affect the transmission pattern of a disease. It is important to study the behaviour of the vector as well as the disease-causing microorganism in order to establish a proper method of disease prevention. 
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+
+\series bold
+Others
+\series default
+ 
+\begin_inset space ~
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+
+In addition to the transmission due to
+\series bold
+ 
+\series default
+the characteristics of each disease and the nature of the microorganism, we also study demographic factors as the following: 
+\end_layout
+
+\begin_layout Itemize
+
+Age-structured populations 
+\end_layout
+
+\begin_layout Itemize
+
+Variable infectivity 
+\end_layout
+
+\begin_layout Itemize
+
+Distributions that are spatially non-uniform 
+\end_layout
+
+\begin_layout Itemize
+
+Diseases caused by macroparasites 
+\end_layout
+
+\begin_layout Itemize
+
+Acquired immunity through vaccination 
+\end_layout
+
+\begin_layout Section
+
+Approaches in use
+\end_layout
+
+\begin_layout Standard
+
+In the shape of this thesis, we use the most general SEIR model for infectious diseases, feature as diseases with transmission by airborne, such as meales that the entier world in the beginning of the 2014 was quite interrested. The World Health Organization (WHO) had officially to state global measles epidemic outbreak. In the first three months of the year 2014, there were about 56,000 cases of measle infections in 75 countries 
+\begin_inset CommandInset citation
+LatexCommand cite
+after ""
+key "WHO2014a"
+
+\end_inset
+
+, in particular in southeast Asia particularly, in Vietnam 
+\begin_inset CommandInset citation
+LatexCommand cite
+after ""
+key "http://healthmap.org/site/diseasedaily/article/measles-reemerges-vietnam-22814"
+
+\end_inset
+
+. Moreover, in this thesis, we will introduce the SEIR model for many subpopulations in a metapopulation.
+\end_layout
+
+\begin_layout Subsection
+
+Deterministic model for many cities
+\end_layout
+
+\begin_layout Subsubsection
+
+Ordinary differential equations for the deterministic model of many cities
+\end_layout
+
+\begin_layout Standard
+
+The standard SEIR model (susceptible-exposed-infective-recovered) has been strongly developped for the dynamics of directly infectious disease 
+\begin_inset CommandInset citation
+LatexCommand cite
+after ""
+key "Bolker1995"
+
+\end_inset
+
+. For disease-based metapopulation models, we give here a suitable new version of the SEIR equation that would be as follows:
+\end_layout
+
+\begin_layout Standard
+
+Consider a metapopulation of 
+\begin_inset Formula $n$
+\end_inset
+
+ sub-populations. In a subpopulation 
+\begin_inset Formula $i$
+\end_inset
+
+ of size 
+\begin_inset Formula $N_{i}$
+\end_inset
+
+, disease dynamics can be deterministically described by the following set of differential equations 
+\begin_inset CommandInset citation
+LatexCommand cite
+after ""
+key "Anderson&May1992"
+
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+
+
+\begin_inset Formula \begin{eqnarray}
+\frac{dS_{i}}{dt} & = & \mu N_{i}-\lambda_{i}S_{i}-\mu S_{i}\label{eq:dS}\\
+\frac{dE_{i}}{dt} & = & \lambda_{i}S_{i}-\mu E_{i}-\sigma E_{i}\\
+\frac{dI_{i}}{dt} & = & \sigma E_{i}-\mu I_{i}-\gamma I_{i}\label{eq:infectieux}\\
+\frac{dR_{i}}{dt} & = & \gamma I_{i}-\mu R_{i}\label{eq:dR}
+\end{eqnarray}
+\end_inset
+
+ where 
+\begin_inset Formula $S_{i}$
+\end_inset
+
+, 
+\begin_inset Formula $E_{i}$
+\end_inset
+
+, 
+\begin_inset Formula $I_{i}$
+\end_inset
+
+ et 
+\begin_inset Formula $R_{i}$
+\end_inset
+
+ are the numbers of susceptible, exposed, infectious and recovered in this sub-population 
+\begin_inset Formula $i$
+\end_inset
+
+ respectively. Individuals are born susceptible, die at a rate 
+\begin_inset Formula $\mu$
+\end_inset
+
+, become infected with the force of infection 
+\begin_inset Formula $\lambda_{i}$
+\end_inset
+
+, infectious after a latency period of an average duration of 
+\begin_inset Formula $1/\sigma$
+\end_inset
+
+ and recover at the rate 
+\begin_inset Formula $\gamma$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection
+
+Formula for force of infection
+\end_layout
+
+\begin_layout Standard
+
+The force of infection depends not only on the total population size 
+\begin_inset Formula $N_{i}$
+\end_inset
+
+ and the number of infected 
+\begin_inset Formula $I_{i}$
+\end_inset
+
+ in subpopulation 
+\begin_inset Formula $i$
+\end_inset
+
+, but also in other sub-populations 
+\begin_inset CommandInset citation
+LatexCommand cite
+after ""
+key "KeelingRohani2008"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+
+\begin_inset Formula \begin{equation}
+\lambda_{i}=\beta_{i}\frac{I_{i}}{N_{i}}+\sum_{\substack{j=1\\
+j\neq i
+}
+}^{n}\rho_{ij}\left[\frac{\beta_{i}\text{[}(1-\varepsilon_{ij})I_{j}-I_{i}]}{N_{i}}+\frac{\varepsilon_{ij}\beta_{j}I_{j}}{N_{j}}\right]\label{eq:force-1}
+\end{equation}
+\end_inset
+
+ where 
+\begin_inset Formula $\beta_{i}$
+\end_inset
+
+ is the contact rate in population 
+\begin_inset Formula $i$
+\end_inset
+
+ and 
+\begin_inset Formula $\rho_{ij}=\rho_{ji}$
+\end_inset
+
+ (
+\begin_inset Formula $0\leqslant\rho_{ij}\leqslant1$
+\end_inset
+
+ and 
+\begin_inset Formula $\rho_{ii}=1$
+\end_inset
+
+) is the coupling between subpopulations 
+\begin_inset Formula $i$
+\end_inset
+
+ and 
+\begin_inset Formula $j$
+\end_inset
+
+. Among the infections caused by contacts with infected from other subpopulations, 
+\begin_inset Formula $\varepsilon_{ij}=\varepsilon_{ji}$
+\end_inset
+
+ (
+\begin_inset Formula $0\leqslant\varepsilon_{ij}\leqslant1$
+\end_inset
+
+) is the proportion of infections due to susceptible individuals visiting other populations as opposed to infected individuals from other populations visiting the focal population. See appendix for detail on the construction of this equation. We can verify that in the limit case on one single subpopulation in the metapopulation (
+\begin_inset Formula $i=j$
+\end_inset
+
+ and 
+\begin_inset Formula $n=1$
+\end_inset
+
+) we have 
+\begin_inset Formula \begin{equation}
+\lambda_{i}=\beta_{i}\frac{I_{i}}{N_{i}}.
+\end{equation}
+\end_inset
+
+ Consider that the contact rate 
+\begin_inset Formula $\beta_{i}$
+\end_inset
+
+ is seasonally forced 
+\begin_inset CommandInset citation
+LatexCommand cite
+after ""
+key "Altizer2006"
+
+\end_inset
+
+ and seasonality is an annually periodic function of time 
+\begin_inset CommandInset citation
+LatexCommand cite
+after ""
+key "Grenfell1995"
+
+\end_inset
+
+. As a result, 
+\begin_inset Formula \begin{equation}
+\beta_{i}(t)=b_{0}\left[1+b_{1}\cos\left(\frac{2\pi t}{T}+\varphi_{i}\right)\right]\label{eq:beta_i}
+\end{equation}
+\end_inset
+
+ where 
+\begin_inset Formula $t$
+\end_inset
+
+ is the time, 
+\begin_inset Formula $b_{0}$
+\end_inset
+
+ and 
+\begin_inset Formula $b_{1}$
+\end_inset
+
+ are the mean value and amplitude of the infection rate 
+\begin_inset Formula $\beta$
+\end_inset
+
+ at which susceptible individuals become infected, 
+\begin_inset Formula $T$
+\end_inset
+
+ and 
+\begin_inset Formula $\varphi_{i}$
+\end_inset
+
+ are the period and the phase of the forcing. With the annual sinusoidal form of the infection rate, we really have the sinusoidally forced SEIR metapopulation model.
+\end_layout
+
+\begin_layout Subsubsection
+
+Equilibrium values of the system
+\end_layout
+
+\begin_layout Standard
+
+In a case the infectious contact rate is constant, the equilibrium values of the variables 
+\begin_inset Formula $S$
+\end_inset
+
+, 
+\begin_inset Formula $E$
+\end_inset
+
+, 
+\begin_inset Formula $I$
+\end_inset
+
+ and 
+\begin_inset Formula $R$
+\end_inset
+
+ can be expressed analytically as follows. We know that, in simulation, the equilibrium state allow a disease to persist in a population for a long time. So, an infectious disease in the 
+\begin_inset Formula $subpopulation_{i}$
+\end_inset
+
+ is available in long term this system is at equilibrium. It means that at which 
+\begin_inset Formula $\frac{dS_{i}}{dt}=\frac{dE_{i}}{dt}=\frac{dI{}_{i}}{dt}=\frac{dR{}_{i}}{dt}=0$
+\end_inset
+
+ (*). Thus, we let all equations (equations 
+\begin_inset Formula $1$
+\end_inset
+
+ - 
+\begin_inset Formula $4$
+\end_inset
+
+ ) in the system be equal to zero, then calculate the values of the variables (now denoted by 
+\begin_inset Formula $S_{i}^{*}$
+\end_inset
+
+, 
+\begin_inset Formula $E_{i}^{*}$
+\end_inset
+
+, 
+\begin_inset Formula $I_{i}^{*}$
+\end_inset
+
+ , and 
+\begin_inset Formula $R{}_{i}^{*}$
+\end_inset
+
+) that satisfy this condition (*). We have these values as folllows:
+\end_layout
+
+\begin_layout Standard
+
+
+\begin_inset Formula \begin{eqnarray}
+S_{i}^{*} & = & N_{i}\frac{(\gamma+\mu)(\sigma+\mu)}{\beta\sigma}\\
+E_{i}^{*} & = & N_{i}\mu\left(\frac{1}{\sigma+\mu}-\frac{\gamma+\mu}{\beta\sigma}\right)\\
+I_{i}^{*} & = & N_{i}\mu\frac{\beta\sigma-(\sigma+\mu)(\gamma+\mu)}{\beta(\sigma+\mu)(\gamma+\mu)}\\
+R_{i}^{*} & = & N_{i}-S_{i}^{*}-E_{i}^{*}-I_{i}^{*}
+\end{eqnarray}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+Here, if we set 
+\begin_inset Formula $R_{0}=\frac{\beta\sigma}{(\gamma+\mu)(\sigma+\mu)}$
+\end_inset
+
+, so we have
+\end_layout
+
+\begin_layout Standard
+
+
+\begin_inset Formula \begin{eqnarray}
+S_{i}^{*} & = & N_{i}\frac{1}{R_{0}}\\
+E_{i}^{*} & = & N_{i}\frac{\mu\sigma}{R_{0}}\left(R_{0}-1\right)\\
+I_{i}^{*} & = & N_{i}\frac{\mu}{\beta}(R_{0}-1)\\
+R_{i}^{*} & = & N_{i}-S_{i}^{*}-E_{i}^{*}-I_{i}^{*}
+\end{eqnarray}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+One nomal conditions for all population availabes is that the equilibrium values cannot be negative. Therefore, an infectious disease is available in the 
+\begin_inset Formula $subpopulation_{i}$
+\end_inset
+
+ if 
+\begin_inset Formula $R_{0}>1$
+\end_inset
+
+. Now, the endemic equilibrium in the system is given by 
+\begin_inset Formula $(S_{i}^{*},E_{i}^{*},I{}_{i}^{*},R{}_{i}^{*})$
+\end_inset
+
+ = 
+\begin_inset Formula $(N_{i}\frac{1}{R_{0}}$
+\end_inset
+
+, 
+\begin_inset Formula $N_{i}\frac{\mu\sigma}{R_{0}}\left(R_{0}-1\right)$
+\end_inset
+
+, 
+\begin_inset Formula $N_{i}\frac{\mu}{\beta}(R_{0}-1)$
+\end_inset
+
+, 
+\begin_inset Formula $N_{i}(1-\frac{1}{R_{0}}-\frac{\mu\sigma}{R_{0}}\left(R_{0}-1\right)-\frac{\mu}{\beta}(R_{0}-1))$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+
+Stochastic model for many subpopulation in a metapopulation
+\end_layout
+
+\begin_layout Subsubsection
+
+Stochastic model for many subpopulations in a metapopulation
+\end_layout
+
+\begin_layout Standard
+
+In order to study the persistence of the disease, we must consider a stochastic version of the model 
+\begin_inset CommandInset citation
+LatexCommand cite
+after ""
+key "Keeling2002,Lloyd2001,renshaw1993modelling"
+
+\end_inset
+
+. We use for that a population-based time-to-next-event model based on Gillespie's algorithm 
+\begin_inset CommandInset citation
+LatexCommand cite
+after ""
+key "gillespie1977exact"
+
+\end_inset
+
+. Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:stoch_ev"
+
+\end_inset
+
+ lists all the events of the model, occurring in subpopulation 
+\begin_inset Formula $i$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+
+\begin_inset Float table
+placement tbph
+wide false
+sideways false
+status open
+
+
+\begin_layout Standard
+\align center
+
+
+\begin_inset Caption
+
+\begin_layout Standard
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:stoch_ev"
+
+\end_inset
+
+Events of the stochastic version of the model of equations 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:dS"
+
+\end_inset
+
+-
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:dR"
+
+\end_inset
+
+, occuring in subpopulation 
+\begin_inset Formula $i$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+{}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Tabular 
+<lyxtabular version="3" rows="10" columns="3">
+<features tabularvalignment="middle">
+<column alignment="left" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+
+\series bold
+Events
+\series default
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+
+\series bold
+Rates
+\series default
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+
+\series bold
+Transitions
+\series default
+ 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+birth 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+
+\begin_inset Formula $\mu N_{i}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+
+\begin_inset Formula $S_{i}\leftarrow S_{i}+1$
+\end_inset
+
+ and 
+\begin_inset Formula $N_{i}\leftarrow N_{i}+1$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+death of a susceptible 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+
+\begin_inset Formula $\mu S_{i}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+
+\begin_inset Formula $S_{i}\leftarrow S_{i}-1$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+death of an exposed 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+
+\begin_inset Formula $\mu E_{i}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+
+\begin_inset Formula $E_{i}\leftarrow E_{i}-1$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+death of an infected 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+
+\begin_inset Formula $\mu I_{i}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+
+\begin_inset Formula $I_{i}\leftarrow I_{i}-1$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+death of an immune 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+
+\begin_inset Formula $\mu R_{i}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+
+\begin_inset Formula $I_{i}\leftarrow I_{i}-1$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+infection 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+
+\begin_inset Formula $\lambda_{i}S_{i}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+
+\begin_inset Formula $S_{i}\leftarrow S_{i}-1$
+\end_inset
+
+ and 
+\begin_inset Formula $E_{i}\leftarrow E_{i}+1$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+becoming infectious 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+
+\begin_inset Formula $\sigma E_{i}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+
+\begin_inset Formula $E_{i}\leftarrow E_{i}-1$
+\end_inset
+
+ and 
+\begin_inset Formula $I_{i}\leftarrow I_{i}+1$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+recovery 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+
+\begin_inset Formula $\gamma I_{i}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+
+\begin_inset Formula $I_{i}\leftarrow I_{i}-1$
+\end_inset
+
+ and 
+\begin_inset Formula $R_{i}\leftarrow R_{i}+1$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\end_inset
+</cell>
+<cell alignment="none" valignment="top" usebox="none">
+\begin_inset Text
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+
+Exact method for many subpopulations in a metapopulation
+\end_layout
+
+\begin_layout Standard
+
+As pointed out above, the direct method is usually more computationally efficient. This is the exact stochastic method more commonly used of the underlying ODEs. However, this method is only proposed for one population, so here we modify a little the direct method in order to accord with a metapopulation of multi-subpopulation. We call it 
+\begin_inset Quotes eld
+\end_inset
+
+the direct method of multi-subpopulation
+\begin_inset Quotes erd
+\end_inset
+
+. View the figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:exactGil"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+This multi-subpopulation method add two steps into the direct method, these are steps 3 and 4. We generate one more new random number, and then we convert population rates into probabilities, finally this new random number is used to select one of the subpopulation in the metapopulation of 
+\begin_inset Formula $n$
+\end_inset
+
+ subpopulations.
+\end_layout
+
+\begin_layout Standard
+
+
+\begin_inset Float figure
+placement tbph
+wide false
+sideways false
+status open
+
+
+\begin_layout Standard
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics 
+	filename exactGil.png
+	width 50text%
+
+\end_inset
+
+ 
+\begin_inset Caption
+
+\begin_layout Standard
+
+Improving the exact algorithm of Gillespie (1977) for a metapopulation of multi-subpopulation.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:exactGil"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+
+Result
+\end_layout
+
+\begin_layout Subsubsection
+
+Package "dizzys
+\begin_inset Quotes erd
+\end_inset
+
+ for stochastic SEIR metapopulation model
+\end_layout
+
+\begin_layout Standard
+
+At present, we built successfully a package named 
+\begin_inset Quotes eld
+\end_inset
+
+dizzys
+\begin_inset Quotes erd
+\end_inset
+
+. This package in R implements both the exact and approximate methods for the deterministic/stochastic SEIR/SIR models by integrating the R package and the C++ implementation. We use C++ to perform the algorithms, and use R to create interfaces. Hence, this new integration is faster than any pure R implementation.
+\end_layout
+
+\begin_layout Standard
+
+
+\series bold
+Simulation 1:
+\series default
+
+\end_layout
+
+\begin_layout Standard
+
+Simulating the deterministic and stochastic SEIR model for one seul population. View the figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:smDetSto"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+
+\begin_inset Float figure
+placement htpb
+wide false
+sideways false
+status open
+
+
+\begin_layout Standard
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics 
+	filename smDertSto.pdf
+	width 50text%
+
+\end_inset
+
+ 
+\begin_inset Caption
+
+\begin_layout Standard
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:smDetSto"
+
+\end_inset
+
+Deterministic/stochastic SEIR model for one seul population with N=
+\begin_inset Formula $10^{7}$
+\end_inset
+
+, duration=10year. The blue fluctuation for the deterministic model and the red for the stochastic model.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+
+\series bold
+Simulation 2:
+\series default
+
+\end_layout
+
+\begin_layout Standard
+
+Simulating three subpopulations with the different population sizes, then continuing or redoing this simulation with other values of parameter, we can do it by exploiting the 'simul' function in the package. View the figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:multiSub"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+
+\begin_inset Float figure
+placement tbph
+wide false
+sideways false
+status open
+
+
+\begin_layout Standard
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics 
+	filename mulSubpop.pdf
+	width 50text%
+
+\end_inset
+
+ 
+\begin_inset Caption
+
+\begin_layout Standard
+
+Continuing or redoing this simulation. The start seir object with type="stochastic", duration=5*365, mu=1/(70*365), beta0=1000/365, beta1=.1, sigma=1/8, gamma=1/5, nbVilles=3, N=c(
+\begin_inset Formula $10^{7}$
+\end_inset
+
+,
+\begin_inset Formula $10^{6}$
+\end_inset
+
+), phi=0, duration=5*365; and the last seir object with type="stoch", continue=T, append=T, beta1=0.0, phi=pi, duration=10*365. The two red fluctuations for the two first subpopulations with N=
+\begin_inset Formula $10^{7}$
+\end_inset
+
+ and the blue for the third subpopulation with N=
+\begin_inset Formula $10^{6}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:multiSub"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+
+\series bold
+Simulation 3:
+\series default
+
+\end_layout
+
+\begin_layout Standard
+
+The SEIR stochastic model using 
+\begin_inset Quotes eld
+\end_inset
+
+adaptive tau-leaping
+\begin_inset Quotes erd
+\end_inset
+
+ algorithm by exploiting the function 
+\begin_inset Quotes eld
+\end_inset
+
+simul
+\begin_inset Quotes erd
+\end_inset
+
+ in the package. To do this algorithm, we only make the parameter 
+\begin_inset Formula $method="adaptivetau"$
+\end_inset
+
+. We can compare the result of the direct algorithm with the result of the adaptivetau algorithm as follows. View the figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:smDrectAdap"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+
+\begin_inset Float figure
+placement tbph
+wide false
+sideways false
+status open
+
+
+\begin_layout Standard
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics 
+	filename compDirectAdap.pdf
+	width 50text%
+
+\end_inset
+
+ 
+\begin_inset Caption
+
+\begin_layout Standard
+
+Compare the result of the direct algorithm with the result of the adaptivetau algorithm. The red fluctuation for the direct method and the blue for the "
+\begin_inset Formula $\tau$
+\end_inset
+
+ - leap
+\begin_inset Quotes erd
+\end_inset
+
+ method.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:smDrectAdap"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+Simulation 4:
+\end_layout
+
+\begin_layout Standard
+
+Plot in 3D, view the figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:plot3D"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+
+\begin_inset Float figure
+placement tbph
+wide false
+sideways false
+status open
+
+
+\begin_layout Standard
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics 
+	filename plot3D.png
+	width 50text%
+
+\end_inset
+
+ 
+\begin_inset Caption
+
+\begin_layout Standard
+
+Plot in 3D of the stochastic SEIR model with the three subpopulations in the metapopulation. We view the relation between the number of susceptible individuals, the number of infected individuals and the time. Then, we can also view the projection of these fluctions on the correspondent surface.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:plot3D"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+
+Global persistence in a metapopulation
+\end_layout
+
+\begin_layout Standard
+
+Here, we start exploiting the package "dizzys
+\begin_inset Quotes erd
+\end_inset
+
+. In order to illustrate the interaction between disease transmissibility and phase of seasonal forcing, we start in this section by studing the stochastic SEIR model in a metapopualtion of 
+\begin_inset Formula $n$
+\end_inset
+
+ subpopulations. For this meta-population, we observe the disease extinction in time due to spatial synchrony or spatial asynchrony that are influenced by phase difference in seasonal forcing. To create the phase difference, we change the value of the forcing phase for each city. In this experience, we use a parameter 
+\begin_inset Formula $\varphi_{max}$
+\end_inset
+
+ in radian that runs in the interval from zero to 
+\begin_inset Formula $\pi$
+\end_inset
+
+. With each value of 
+\begin_inset Formula $\varphi_{max}$
+\end_inset
+
+, based on 
+\series bold
+
+\begin_inset Formula $n$
+\end_inset
+
+
+\series default
+ the number of subpopulations in the metapopulation, we divide the interval [0, 
+\begin_inset Formula $\varphi_{max}$
+\end_inset
+
+] into a set of (n-1) equal samples, so the value of the forcing phase of the 
+\begin_inset Formula $i^{th}$
+\end_inset
+
+ city is correspondent to 
+\begin_inset Formula $i^{th}$
+\end_inset
+
+ value in the set. We call 
+\begin_inset Formula $\varphi_{max}$
+\end_inset
+
+ synchrony parameter.
+\end_layout
+
+\begin_layout Standard
+
+For our metapopulation of 
+\begin_inset Formula $n$
+\end_inset
+
+ subpopulations, to do so we run first 
+\begin_inset Formula $m$
+\end_inset
+
+ independent simulations of our stochastic model. We calculate then the average metapopulation size by summing subpopulations at each sample time and averaging across the entire time series for each metapopulation. Lastly, we record the dates 
+\begin_inset Formula $t$
+\end_inset
+
+ of global disease extinction in all these 
+\begin_inset Formula $m$
+\end_inset
+
+ metapopulations. These dates allowed to draw Kaplan-Meier survival curves from which we estimated the persistence rates 
+\begin_inset Formula $\chi$
+\end_inset
+
+: 
+\begin_inset Formula \begin{equation}
+M(t)=\exp(-\chi t)
+\end{equation}
+\end_inset
+
+ where 
+\begin_inset Formula $M(t)$
+\end_inset
+
+ (
+\begin_inset Formula $0\leqslant M(t)\leqslant m$
+\end_inset
+
+) is the number of metapopulations in which the disease is not extinct at time 
+\begin_inset Formula $t$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+To estimate the persistence rate, here, we use the parametric survival model for the exponential distribution (R package '
+\begin_inset Formula $survival$
+\end_inset
+
+' 
+\begin_inset CommandInset citation
+LatexCommand cite
+after ""
+key "survival-package"
+
+\end_inset
+
+). For that, we find the persistence rate of the number of metapopulations in which the disease is extinct in time. Based on this persistence rate, we study the relation between the global persistence and its average synchrony due to the phase of the forcing.
+\end_layout
+
+\begin_layout Paragraph
+
+Global persistence and time
+\end_layout
+
+\begin_layout Standard
+
+We fixe here the metapopulation of two subpopulations, 
+\begin_inset Formula $N_{1}=N_{2}=300,000$
+\end_inset
+
+, the rate of coupling 
+\begin_inset Formula $\rho=0.01$
+\end_inset
+
+, the simulation time 50 years, the number of simulations 
+\begin_inset Formula $m=100$
+\end_inset
+
+, and 
+\begin_inset Formula $\varphi_{max}=\{0,\pi/2,\pi\}$
+\end_inset
+
+. Now, we have 100 metapopulations, we gather the first time where the metapopualtion gets global extinction. We have three Kaplan-Meier survival curves for each value of 
+\begin_inset Formula $\varphi_{max}$
+\end_inset
+
+ as figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:persm100phi0pi2pi_01"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+
+\begin_inset Float figure
+placement tbph
+wide false
+sideways false
+status open
+
+
+\begin_layout Standard
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics 
+	filename smRep100Vil02R001N3e5.pdf
+	width 50text%
+
+\end_inset
+
+ 
+\begin_inset Caption
+
+\begin_layout Standard
+
+Kaplan-Meier survival curves for disease persistence after 100 different simulation
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+protect
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+protect
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Newline newline
+\end_inset
+
+ Disease persistence time after 100 simulations of 
+\begin_inset Formula $\varphi_{max}=0$
+\end_inset
+
+, 
+\begin_inset Formula $\varphi_{max}=\pi/2$
+\end_inset
+
+ and 
+\begin_inset Formula $\varphi_{max}=\pi$
+\end_inset
+
+. The blue survival curve for 
+\begin_inset Formula $\varphi_{max}=0$
+\end_inset
+
+, the red survival curve for 
+\begin_inset Formula $\varphi_{max}=\pi/2$
+\end_inset
+
+ and the black curve for 
+\begin_inset Formula $\varphi_{max}=\pi$
+\end_inset
+
+. The persistence time of 
+\begin_inset Formula $\varphi_{max}=0$
+\end_inset
+
+ is the shortest. The persistence time of 
+\begin_inset Formula $\varphi_{max}=\pi$
+\end_inset
+
+ is the longest.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:persm100phi0pi2pi_01"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+The phase of forcing of the 
+\begin_inset Formula $subpopulation_{1}$
+\end_inset
+
+ is always fixed 
+\begin_inset Formula $0$
+\end_inset
+
+, but this of the 
+\begin_inset Formula $subpopulation_{2}$
+\end_inset
+
+ increases from 
+\begin_inset Formula $0$
+\end_inset
+
+ to 
+\begin_inset Formula $\pi$
+\end_inset
+
+. It means that, in the first experience, 
+\begin_inset Formula $\varphi_{max}=0$
+\end_inset
+
+, the two subpopulations are in synchrony with all beginning conditions. The disease persistence time is the shortest. Then, the two subpopulations become asynchrony when 
+\begin_inset Formula $\varphi_{max}=\pi/2$
+\end_inset
+
+ or 
+\begin_inset Formula $\pi$
+\end_inset
+
+. The symmetry of fixed points is just broken at the starting moment. It is reason for that the level of synchrony of the metapopulation decreases. Additionally, we find that the value of the synchrony parameter 
+\begin_inset Formula $\varphi_{max}$
+\end_inset
+
+ change according to increasing tendency, the phase difference between the fluctuations of the two infection rates 
+\begin_inset Formula $\beta$
+\end_inset
+
+ increases also, and the global persistence time in the metapopulation thus augments. When 
+\series bold
+
+\begin_inset Formula $\varphi_{max}=\pi$
+\end_inset
+
+, 
+\series default
+the two subpopulations are in antiphase. This is the most difficult case to find global extinction, the persistence time is the longest. In short, the level of synchrony between subpopulation is stronger, metapopualtion is easier to find global extinction. Make all subpopulations synchronize is the easiest way at which disease goes to extinct.
+\end_layout
+
+\begin_layout Paragraph
+
+Global persistence rate and 
+\begin_inset Formula $\varphi_{max}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+In this part, the Kaplan-Meier survival curves of the global disease persistence time in a metapopulation for each value 
+\begin_inset Formula $\varphi_{max}$
+\end_inset
+
+ is considered as a parameter that is called global persistence rate of that 
+\begin_inset Formula $\varphi_{max}$
+\end_inset
+
+. We used survival functions to estimate this global persistence rate with confidence interval 95%. The result is shown as following figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:perrateVil2"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+
+\begin_inset Float figure
+placement tbph
+wide false
+sideways false
+status open
+
+
+\begin_layout Standard
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics 
+	filename resPop02Rho001N3e5Rep100.pdf
+	width 50text%
+
+\end_inset
+
+ 
+\begin_inset Caption
+
+\begin_layout Standard
+
+Estimated rate of global disease persistence in the metapopulation of the two subpopulations after 100 different simulations N=3e5, coupling rate 
+\begin_inset Formula $\rho=0.01$
+\end_inset
+
+. Here, with 95% confidence interval, blue lines are confidence intervals for persistence rate of each value of 
+\begin_inset Formula $\varphi_{max}$
+\end_inset
+
+. This intervals are limited by lower and upper confidence limits.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:perrateVil2"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+This figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:perrateVil2"
+
+\end_inset
+
+ points out to us that the amplitude of the confidence intervals for each value of 
+\begin_inset Formula $\varphi_{max}$
+\end_inset
+
+ are quite close to each other. However, it gradually rises when 
+\begin_inset Formula $\varphi_{max}$
+\end_inset
+
+ runs from 
+\begin_inset Formula $0$
+\end_inset
+
+ to 
+\begin_inset Formula $\pi$
+\end_inset
+
+. The phase difference strongly influences disease persistence time, at the same time, global disease persistence rate. The asynchrony between subpopulaitons is the main reason to respond very familiar question why has the infectious disease been never extinct.
+\end_layout
+
+\begin_layout Standard
+
+
+\begin_inset Float figure
+placement tbph
+wide false
+sideways false
+status open
+
+
+\begin_layout Standard
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics 
+	filename resVil3510Rho0001N2e5.pdf
+	width 50text%
+
+\end_inset
+
+ 
+\begin_inset Caption
+
+\begin_layout Standard
+
+Estimated persistence rate in the metapopulation of three, five and ten subpopulations after 100 different simulations. Here, with 95% confidence interval, black, red, and orange lines are for three, five and ten subpopulations, respectively. These intervals are limited by lower and upper confidence limits. 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:confintVil3510Rho0001N2e5"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+One more factor that was pointed in this introduction part is coupling strength between subpopulations. We can say that this coupling parameter can symbolize migration strength. The disease transmission speed fast augments when coupling rate goes up in metapopulation. Similar to that, global disease persistence increases also. Here, we permit coupling rate change from weak to strong in a metapopualtion of five subpopulations with 
+\begin_inset Formula $N=10^{5}$
+\end_inset
+
+ for each subpopulation. The dispersal rate 
+\begin_inset Formula $\rho$
+\end_inset
+
+ is divised into three intervals. These are low, intermediate and high coupling rate intervals. In each interval, we choose some coupling rates that highlight the coupling strength among subpopulations in a metapopulation. With each value of coupling rate, we estimated gradient coefficient for the relation between estimated persistence rates and values 
+\begin_inset Formula $\varphi_{max}$
+\end_inset
+
+, in condition 
+\begin_inset Formula $\varphi_{max}$
+\end_inset
+
+ belonging to the set {0, 
+\begin_inset Formula $\pi/2$
+\end_inset
+
+, 
+\begin_inset Formula $\pi$
+\end_inset
+
+}. Now, we had curves presenting the correlation between coupling rate and gradient of 
+\begin_inset Formula $\varphi_{max}$
+\end_inset
+
+ and persistence rate (view the following figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:perrateMultVil-1"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+
+
+\begin_inset Float figure
+placement tbph
+wide false
+sideways false
+status open
+
+
+\begin_layout Standard
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics 
+	filename resVil05RhoChageNchange.pdf
+	width 50text%
+
+\end_inset
+
+ 
+\begin_inset Caption
+
+\begin_layout Standard
+
+Correlation between coupling rate and gradient of level of synchrony and persistence rate in the metapopulation of five subpopulation. Here, the coupling rate 
+\begin_inset Formula $\rho$
+\end_inset
+
+ is in {0.001, 0.005, 0.01, 0.05, 0.1}, the level of synchrony 
+\begin_inset Formula $\varphi_{max}$
+\end_inset
+
+ in {0,
+\begin_inset Formula $\pi/2$
+\end_inset
+
+ ,
+\begin_inset Formula $\pi$
+\end_inset
+
+} and the population size of each subpopulaiton N from
+\begin_inset Formula $100,000$
+\end_inset
+
+ to 
+\begin_inset Formula $500,000$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:perrateMultVil-1"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+Due to this result (figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:perrateMultVil-1"
+
+\end_inset
+
+), we show that the coupling rate between subpopulation augments, thus we get an increase of gradient coefficient. It means that global disease persistence time in metapopulation strengthens for coupling rate between subpopulations though how many is population size of subpopulation with the interaction strength 
+\begin_inset Formula $\rho$
+\end_inset
+
+ from 
+\begin_inset Formula $10^{-3}$
+\end_inset
+
+ to 0.1 
+\begin_inset CommandInset citation
+LatexCommand cite
+after ""
+key "KeelingRohani2008"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+Moreover, because of dispersal rate 
+\begin_inset Formula $\rho$
+\end_inset
+
+, the persistence time of metapopulation is considered as a function of dispersal rate. In order to affirm this supposition, here, we permit coupling rate change from weak to strong in a metapopualtion of five subpopulations with 
+\begin_inset Formula $N=10^{5}$
+\end_inset
+
+ for each subpopulation. The dispersal rate 
+\begin_inset Formula $\rho$
+\end_inset
+
+ is divised into three intervals. These are low, intermediate and high coupling rate intervals. In each interval, we choose some coupling rates that highlight the coupling strength among subpopulations in a metapopulation. We have the result as follows ( figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:resPenteVil05multiRho-1"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+
+
+\begin_inset Float figure
+placement tbph
+wide false
+sideways false
+status open
+
+
+\begin_layout Standard
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics 
+	filename resPenteVil05multiRho.pdf
+	width 50text%
+
+\end_inset
+
+ 
+\begin_inset Caption
+
+\begin_layout Standard
+
+Correlation between coupling rate and gradient of level of synchrony and persistence rate in the metapopulation of five subpopulation. Here, the coupling rate 
+\begin_inset Formula $\rho$
+\end_inset
+
+ is in {0.001, 0.005, 0.01, 0.05, 0.1, 0.5, 1}, the level of synchrony 
+\begin_inset Formula $\varphi_{max}$
+\end_inset
+
+ in {0,
+\begin_inset Formula $\pi/2$
+\end_inset
+
+ ,
+\begin_inset Formula $\pi$
+\end_inset
+
+} and the population size of each subpopulaiton N=1e5.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:resPenteVil05multiRho-1"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+When the coupling rate is small from 0.001 to 0.005, the gradient of correlation between 
+\begin_inset Formula $\varphi_{max}$
+\end_inset
+
+ and persistence rate increases very slowly. However, the persistence rate augments in a sudden way when the coupling rate changes from 0.005 to 0.1. Lastly, the gradient strongly decreases when the coupling rate is so robust from 0.5 to 1. Based on this figure, the disease persistence is one humped function for the coupling rate and the coupling rate is . The medium coupling rate (from 0.005 to 0.1) maximizes disease persistence in metapopulation.
+\end_layout
+
+\begin_layout Section
+
+Conclusion and perspective
+\end_layout
+
+\begin_layout Standard
+
+We successfully built a version for the susceptible-infectied-recovered stochastic metapopulation model. The infection rate 
+\begin_inset Formula $\lambda_{i}$
+\end_inset
+
+ for 
+\series bold
+
+\begin_inset Formula $subpopulation_{i}$
+\end_inset
+
+ 
+\series default
+portrayed all effects inside as well as outside on disease tranmission chain between individuals in the same subpopulation or in other subpopulations. Moreover
+\series bold
+, 
+\series default
+our metapopulation model becames more detailed when we brought seasonality in metapopulation model to create periodic transmission in year that here highlights seasonal change as well as school period of children. We have metapopulation model with different contact rates. This is more complex model than any used metapopulation model. We sketched successfully in-phase and sometime out-of-phase (
+\begin_inset Quotes eld
+\end_inset
+
+antiphase
+\begin_inset Quotes erd
+\end_inset
+
+) models across suburbs of He's 2003 
+\begin_inset CommandInset citation
+LatexCommand cite
+after ""
+key "He2003"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+In order to continue my thesis, we will exploit the global persistence and the disease transimission among subpopulations under a new shape of metapopualtion in epidemiology. It is the gravity model in epidemiology. This model is a very simple model, and can be used to explain the spatial epidemiologic dynamics. We says it simply that the strength of coupling between any two populations depends on size of these two populations and the distance between them (so this model is quite similar to Newton's law of universal gravitation, the attraction between two bodies depends on the masses of the bodies and the distance between the bodies). In epidemiology, we will call the "mass" the population size. Then, we set a gravity metapopulation model with the different positions and the different population sizes of subpopulations. Finally, we will exploit the disease transmission in the gravity metapopulation model.
+\end_layout
+
+\begin_layout Standard
+
+One more main work in my thesis, it is the optimization of the vaccination policies. We set it in the last part of my thesis, because first of all, we must deeply exploit the actual nature of the infectious disease transmission in the different disease model, then we are going to have a good vaccination policy for a metapopulation
+\end_layout
+
+\begin_layout Standard
+
+ 
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+bibfiles "bib_art_Pers,bikBokEpidemics,bikCCS"
+options "plain"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+[1] http://microbiology.mtsinai.on.ca/faq/transmission.shtml
+\end_layout
+
+\begin_layout Standard
+
+[2] http://en.wikipedia.org/wiki/Epidemic_model 
+\end_layout
+
+\end_body
+\end_document

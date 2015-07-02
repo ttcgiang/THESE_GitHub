@@ -1,0 +1,85 @@
+\relax 
+\@writefile{toc}{\contentsline {section}{\numberline {1}Introduction}{1}}
+\@writefile{toc}{\contentsline {section}{\numberline {2}Epidemic models}{1}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}State of the art}{1}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.1.1}Types of epidemic models}{2}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.1.2}Epidemic models}{2}}
+\citation{KeelingRohani2008}
+\citation{KeelingRohani2008}
+\citation{KeelingRohani2008}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces SEIR model}}{3}}
+\newlabel{fig:seirmodel}{{1}{3}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Demographic stochasticity}{3}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Figure is extrait from Keling (2008) The time (in seconds) to simulate 1000 years of SEIR epi- demics ($\mu =0.02$ per year, $1/\sigma =8$ days, $1/\gamma =10$ days) on a 3.4GHz Pentium PC. For Gillespie\IeC {\textquoteright }s Direct (light grey line) and First Reaction (black line) methods, as the population size increases so does the simulation time, which, for very large populations, could become prohibitive. In contrast, the ``$\tau -leap$ method (dark grey) is fast and largely unaffected by population size \cite  {KeelingRohani2008}. }}{4}}
+\newlabel{fig:speed}{{2}{4}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.2.1}Disease transmission types in epidemic models }{4}}
+\citation{WHO2014a}
+\citation{http://healthmap.org/site/diseasedaily/article/measles-reemerges-vietnam-22814}
+\citation{Bolker1995}
+\citation{Anderson&May1992}
+\citation{KeelingRohani2008}
+\citation{Altizer2006}
+\citation{Grenfell1995}
+\@writefile{toc}{\contentsline {section}{\numberline {3}Approaches in use}{6}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Deterministic model for many cities}{6}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.1.1}Ordinary differential equations for the deterministic model of many cities}{6}}
+\newlabel{eq:dS}{{1}{6}}
+\newlabel{eq:infectieux}{{3}{6}}
+\newlabel{eq:dR}{{4}{6}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.1.2}Formula for force of infection}{6}}
+\newlabel{eq:force-1}{{5}{6}}
+\newlabel{eq:beta_i}{{7}{6}}
+\citation{Keeling2002}
+\citation{Lloyd2001}
+\citation{renshaw1993modelling}
+\citation{gillespie1977exact}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.1.3}Equilibrium values of the system}{7}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Stochastic model for many subpopulation in a metapopulation}{7}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.1}Stochastic model for many subpopulations in a metapopulation}{7}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.2}Exact method for many subpopulations in a metapopulation}{7}}
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Events of the stochastic version of the model of equations 1\hbox {}-4\hbox {}, occuring in subpopulation $i$.}}{8}}
+\newlabel{tab:stoch_ev}{{1}{8}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Improving the exact algorithm of Gillespie (1977) for a metapopulation of multi-subpopulation.}}{8}}
+\newlabel{fig:exactGil}{{3}{8}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Result}{9}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.3.1}Package \textquotedbl {}dizzys'' for stochastic SEIR metapopulation model}{9}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Deterministic/stochastic SEIR model for one seul population with N=$10^{7}$, duration=10year. The blue fluctuation for the deterministic model and the red for the stochastic model.}}{9}}
+\newlabel{fig:smDetSto}{{4}{9}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.3.2}Global persistence in a metapopulation}{9}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Continuing or redoing this simulation. The start seir object with type=\textquotedbl {}stochastic\textquotedbl {}, duration=5{*}365, mu=1/(70{*}365), beta0=1000/365, beta1=.1, sigma=1/8, gamma=1/5, nbVilles=3, N=c($10^{7}$,$10^{6}$), phi=0, duration=5{*}365; and the last seir object with type=\textquotedbl {}stoch\textquotedbl {}, continue=T, append=T, beta1=0.0, phi=pi, duration=10{*}365. The two red fluctuations for the two first subpopulations with N=$10^{7}$ and the blue for the third subpopulation with N=$10^{6}$}}{10}}
+\newlabel{fig:multiSub}{{5}{10}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Compare the result of the direct algorithm with the result of the adaptivetau algorithm. The red fluctuation for the direct method and the blue for the \textquotedbl {}$\tau $ - leap'' method.}}{10}}
+\newlabel{fig:smDrectAdap}{{6}{10}}
+\citation{survival-package}
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Plot in 3D of the stochastic SEIR model with the three subpopulations in the metapopulation. We view the relation between the number of susceptible individuals, the number of infected individuals and the time. Then, we can also view the projection of these fluctions on the correspondent surface.}}{11}}
+\newlabel{fig:plot3D}{{7}{11}}
+\@writefile{toc}{\contentsline {paragraph}{Global persistence and time}{11}}
+\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Kaplan-Meier survival curves for disease persistence after 100 different simulation\protect \GenericError  {               }{LaTeX Error: There's no line here to end}{See the LaTeX manual or LaTeX Companion for explanation.}{Your command was ignored.\MessageBreak Type  I <command> <return>  to replace it with another command,\MessageBreak or  <return>  to continue without it.}\par \let \reserved@d = *\def \par }}{12}}
+\newlabel{fig:persm100phi0pi2pi_01}{{8}{12}}
+\@writefile{toc}{\contentsline {paragraph}{Global persistence rate and $\varphi _{max}$}{12}}
+\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces Estimated rate of global disease persistence in the metapopulation of the two subpopulations after 100 different simulations N=3e5, coupling rate $\rho =0.01$. Here, with 95\% confidence interval, blue lines are confidence intervals for persistence rate of each value of $\varphi _{max}$. This intervals are limited by lower and upper confidence limits.}}{13}}
+\newlabel{fig:perrateVil2}{{9}{13}}
+\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces Estimated persistence rate in the metapopulation of three, five and ten subpopulations after 100 different simulations. Here, with 95\% confidence interval, black, red, and orange lines are for three, five and ten subpopulations, respectively. These intervals are limited by lower and upper confidence limits. }}{13}}
+\newlabel{fig:confintVil3510Rho0001N2e5}{{10}{13}}
+\citation{KeelingRohani2008}
+\citation{He2003}
+\@writefile{lof}{\contentsline {figure}{\numberline {11}{\ignorespaces Correlation between coupling rate and gradient of level of synchrony and persistence rate in the metapopulation of five subpopulation. Here, the coupling rate $\rho $ is in \{0.001, 0.005, 0.01, 0.05, 0.1\}, the level of synchrony $\varphi _{max}$ in \{0,$\pi /2$ ,$\pi $\} and the population size of each subpopulaiton N from$100,000$ to $500,000$.}}{14}}
+\newlabel{fig:perrateMultVil-1}{{11}{14}}
+\@writefile{toc}{\contentsline {section}{\numberline {4}Conclusion and perspective}{14}}
+\bibstyle{plain}
+\bibdata{bib_art_Pers,bikBokEpidemics,bikCCS}
+\bibcite{Altizer2006}{1}
+\bibcite{Anderson&May1992}{2}
+\bibcite{Bolker1995}{3}
+\bibcite{gillespie1977exact}{4}
+\bibcite{Grenfell1995}{5}
+\@writefile{lof}{\contentsline {figure}{\numberline {12}{\ignorespaces Correlation between coupling rate and gradient of level of synchrony and persistence rate in the metapopulation of five subpopulation. Here, the coupling rate $\rho $ is in \{0.001, 0.005, 0.01, 0.05, 0.1, 0.5, 1\}, the level of synchrony $\varphi _{max}$ in \{0,$\pi /2$ ,$\pi $\} and the population size of each subpopulaiton N=1e5.}}{15}}
+\newlabel{fig:resPenteVil05multiRho-1}{{12}{15}}
+\bibcite{He2003}{6}
+\bibcite{http://healthmap.org/site/diseasedaily/article/measles-reemerges-vietnam-22814}{7}
+\bibcite{Keeling2002}{8}
+\bibcite{KeelingRohani2008}{9}
+\bibcite{Lloyd2001}{10}
+\bibcite{renshaw1993modelling}{11}
+\bibcite{survival-package}{12}
+\bibcite{WHO2014a}{13}

@@ -1,0 +1,168 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass amsart
+\begin_preamble
+\usepackage{babel}
+\end_preamble
+\use_default_options false
+\begin_modules
+theorems-ams
+eqs-within-sections
+figs-within-sections
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding utf8x
+\fontencoding T1
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 2
+\use_package amssymb 2
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 0
+\use_package mathtools 1
+\use_package mhchem 0
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Modélisation, Simulation multi-niveau pour l'optimisation de politiques
+ de vaccination 
+\end_layout
+
+\begin_layout Author
+TRAN Thi Cam Giang, Jean Daniel ZUCKER, Marc CHOISY, Yann CHEVALEYRE
+\end_layout
+
+\begin_layout Date
+03/04/2015
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Un plan pour ton mémoire de thèse pourrait être:
+\end_layout
+
+\begin_layout Section
+État de l’art: 
+\end_layout
+
+\begin_layout Itemize
+épidémiologie (et contrôle) 
+\end_layout
+
+\begin_layout Itemize
+dynamiques/structures spatiales (théorie métapopulations, réseaux, etc…)
+ 
+\end_layout
+
+\begin_layout Itemize
+algorithmes de simulation stochastique 
+\end_layout
+
+\begin_layout Itemize
+reinforcement learning 
+\end_layout
+
+\begin_layout Section
+Description du modèle (ce qui correspond au package R) 
+\end_layout
+
+\begin_layout Itemize
+comparaison avec ce qui existe déjà en termes de (1) possibilité (ce que
+ l’on peut faire) et de (2) rapidité.
+ En gros il y a un compromis entre flexibilité et rapidité.
+ Il faut que tu montres où ce situe ton package.
+ Par exemple, sous R, à comparer avec “adaptivetau” et “GillespieSSA”.
+ Voir aussi les autres outils qu’il existe (par exemple ceux développés
+ par Petzold http://www.cs.ucsb.edu/~cse/index2.php?publications.php) 
+\end_layout
+
+\begin_layout Section
+Relation structure/dynamique spatiale et persistence 
+\end_layout
+
+\begin_layout Standard
+C’est ce que tu es en train d’explorer pour le moment.
+ Plusieurs questions à explorer.
+ Chaque question constitue un sous-chapitre.
+ A toi de développer et structurer cette partie plus en détails.
+\end_layout
+
+\begin_layout Section
+Contrôle par reinforcement learning: 
+\end_layout
+
+\begin_layout Itemize
+comment utiliser ton simulateur pour faire du reinforcement learning.
+ Partie qui reste à développer.
+\end_layout
+
+\begin_layout Section
+Conclusion et discussion générales.
+\end_layout
+
+\begin_layout Standard
+Commence donc à écrire certaines parties dès que tu peux (un peu chaque
+ semaine et de plus en plus au fur et à fur que le temps avance).
+ Pense aussi à bien faire la bibliographie (il faut que tu sois incollable
+ sur le sujet).
+ Les nouveau login et mot de passe de Bibliovie (http://bibliovie.inist.fr)
+ sont 15SCBUMR5290 et 4NX9E5.
+\end_layout
+
+\end_body
+\end_document
