@@ -1009,6 +1009,7 @@ subpopulation, each of which fluctuates independently, together with interaction
 
 .
  These subpopulations may be filled or empty and contact with any neighbours.
+ 
 \end_layout
 
 \begin_layout Subsection
@@ -1587,7 +1588,7 @@ key "KeelingRohani2008"
 \end_layout
 
 \begin_layout Subsection
-algorithmes de simulation stochastique 
+Algorithmes de simulation stochastique 
 \end_layout
 
 \begin_layout Standard
@@ -2183,7 +2184,24 @@ bottomrule
 To implement this SEIR stochastic model, there are many different methods,
  thought most researchers often use the method of Gillespie in 1977.
  Starting from the initial states, the stochastic simulation algorithms
- simulate the trajectory in population processes 
+ simulate the trajectory in population processes by repeatedly answering
+ the following two questions and updating the sates :*
+\end_layout
+
+\begin_layout Itemize
+When (time 
+\begin_inset Formula $\tau$
+\end_inset
+
+) will the next reaction fire?
+\end_layout
+
+\begin_layout Itemize
+Which (reaction channel index 
+\begin_inset Formula $\mu$
+\end_inset
+
+) reaction will fire next?
 \end_layout
 
 \begin_layout Standard
@@ -2192,12 +2210,19 @@ Below we will show some methods that simulate exactly stochastic models
 \end_layout
 
 \begin_layout Enumerate
-First reaction method by Gillespie :
+First reaction method (FRM) [GILLESPIE 1977] 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "gillespie1977exact"
+
+\end_inset
+
+:
 \end_layout
 
 \begin_deeper
 \begin_layout Standard
-The first reaction method was proposed by Gillespie in 1976.
+The first reaction method was proposed by Gillespie in 1977.
  It models demographic stochasticity in the more intuitive and slower way
  to the deterministic model.
  The obtained result is 
@@ -2227,6 +2252,15 @@ sideways false
 status open
 
 \begin_layout Plain Layout
+0.
+ Labell all species 
+\begin_inset Formula $X_{1},...,X_{k}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Plain Layout
 1.
  Label all possible events 
 \begin_inset Formula $E_{1}$
@@ -2254,15 +2288,77 @@ status open
 
 \begin_layout Plain Layout
 3.
- For each event m calculate the time until the next event is 
-\begin_inset Formula $\delta t_{m}=\frac{-1}{R_{m}}log(RAND_{m})$
+ 
+\series bold
+While
+\series default
+ 
+\begin_inset Formula $(t<t_{end}$
 \end_inset
 
+ and 
+\begin_inset Formula $R_{N}=\sum_{v=1}^{n}R_{v}\neq0)$
+\end_inset
 
+ 
+\series bold
+then
 \end_layout
 
 \begin_layout Plain Layout
 4.
+ 
+\series bold
+For
+\series default
+ 
+\begin_inset Formula $ $
+\end_inset
+
+
+\begin_inset Formula $m=1,n$
+\end_inset
+
+ 
+\series bold
+do
+\end_layout
+
+\begin_layout Plain Layout
+5.
+ Generate one random number 
+\begin_inset Formula $U(0,1)$
+\end_inset
+
+ : 
+\begin_inset Formula $RAND_{m}$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Plain Layout
+6.
+ At the event 
+\begin_inset Formula $m$
+\end_inset
+
+ calculate the time until the next event is 
+\begin_inset Formula $\delta t_{m}=\frac{-1}{R_{m}}log(RAND_{m})$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Plain Layout
+7.
+ 
+\series bold
+end for
+\end_layout
+
+\begin_layout Plain Layout
+8.
  Find the event, 
 \begin_inset Formula $p$
 \end_inset
@@ -2275,28 +2371,37 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
-5.
+9.
  The time is now updated, 
 \begin_inset Formula $t\rightarrow\delta t_{p}$
 \end_inset
 
-, and event 
-\begin_inset Formula $p$
-\end_inset
 
- is performed.
 \end_layout
 
 \begin_layout Plain Layout
-6.
- Return to Step 2.
+10.
+ Update 
+\begin_inset Formula $\{X_{i}\}$
+\end_inset
+
+ following the event 
+\begin_inset Formula $p$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Plain Layout
+11.
+ Return to Step 3.
 \end_layout
 
 \begin_layout Plain Layout
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Gillespie's first reaction method in 1976 - MONOPOPULATION
+Gillespie's first reaction method in 1977 - MONOPOPULATION
 \end_layout
 
 \end_inset
@@ -2313,11 +2418,239 @@ Gillespie's first reaction method in 1976 - MONOPOPULATION
 
 \end_layout
 
-\end_deeper
-\begin_layout Enumerate
-qsdsqf
+\begin_layout Standard
+If supposing that generate one random number takes 
+\begin_inset Formula $C_{rand}$
+\end_inset
+
+ time.
+ Then the FRM takes 
+\begin_inset Formula $nC_{rand}$
+\end_inset
+
+ time per step.
+ It is a big problem for that Gillespie proposed a new improved algorithm
+ in 1977.
+ The FRM has three main disadvantages : (1) generating random numbers is
+ relatively slow, (2) the FRM generates a cycle too many random numbers
+ in the case where the simulation time is big and the random number generator
+ will have tend on saturation when it generates too many numbers, (3) the
+ FRM is difficult for indexing the events to effectively implement the update
+ step.
 \end_layout
 
+\end_deeper
+\begin_layout Enumerate
+Direct method (DM) [GILLESPIE 1976] 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "gillespie1976general"
+
+\end_inset
+
+ :
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+The Direct Method was proposed by Gillespie in 1976.
+ The main objective is to present the stochastic simulation for chemically
+ reacting systems.
+ The following pseudo-code of this method is :
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float algorithm
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+0.
+ Labell all species 
+\begin_inset Formula $X_{1},...,X_{k}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Plain Layout
+1.
+ Label all possible events 
+\begin_inset Formula $E_{1}$
+\end_inset
+
+,...,
+\begin_inset Formula $E_{n}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Plain Layout
+2.
+ For each event determine the rate at which it occurs, 
+\begin_inset Formula $R_{1}$
+\end_inset
+
+,...,
+\begin_inset Formula $R_{n}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Plain Layout
+3.
+ 
+\series bold
+While
+\series default
+ 
+\begin_inset Formula $(t<t_{end}$
+\end_inset
+
+ and 
+\begin_inset Formula $R_{N}=\sum_{v=1}^{n}R_{v}\neq0)$
+\end_inset
+
+ 
+\series bold
+then
+\end_layout
+
+\begin_layout Plain Layout
+4.
+ 
+\series bold
+For
+\series default
+ 
+\begin_inset Formula $ $
+\end_inset
+
+
+\begin_inset Formula $m=1,n$
+\end_inset
+
+ 
+\series bold
+do
+\end_layout
+
+\begin_layout Plain Layout
+5.
+ Calculate 
+\begin_inset Formula $R_{m}$
+\end_inset
+
+ and 
+\begin_inset Formula $R_{m}=\sum_{v=1}^{m}R_{v}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+6.
+ 
+\series bold
+end for
+\end_layout
+
+\begin_layout Plain Layout
+7.
+ Generate uniformly distributed random numbers 
+\begin_inset Formula $(r_{1},r_{2})$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+8.
+ Determine when 
+\begin_inset Formula $(\tau=ln(1/r_{1})/R_{N}$
+\end_inset
+
+ and which 
+\begin_inset Formula $(min\{p|R_{p}\geq r_{2}R_{N}\})$
+\end_inset
+
+ reaction will occur 
+\end_layout
+
+\begin_layout Plain Layout
+9.
+ Set 
+\begin_inset Formula $t=t+\tau$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+10.
+ Update 
+\begin_inset Formula $\{X_{i}\}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+11.
+ Return to step 3
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Direct method of Gillespie in 1976 - MONOPOPULATION 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "gillespie1976general"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We can find that on each step, the Direct Method has to generate two random
+ numbers.
+ Supposing that generate one random number takes 
+\begin_inset Formula $C_{rand}$
+\end_inset
+
+ time.
+ Hense, on each step, the DM takes 
+\begin_inset Formula $(2C_{rand}+O(n))$
+\end_inset
+
+ where 
+\begin_inset Formula $O(n)$
+\end_inset
+
+ is time to search the index 
+\begin_inset Formula $p$
+\end_inset
+
+ of the next reaction channel.
+\end_layout
+
+\end_deeper
 \begin_layout Enumerate
 qsfsdf
 \end_layout
