@@ -1,0 +1,16 @@
+dizzys-package	dizzys-package
+coef.seir	coef.seir
+confint.pers.rate	confint.pers.rate
+dizzys	dizzys-package
+equilibrium	equilibrium
+lines.seir	lines.seir
+pers.rate.obj	pers.rate.obj
+persistence	persistence
+plot.pers	plot.pers
+plot.seir	plot.seir
+pop.seir	pop.seir
+print.seir	print.seir
+seir-class	seir-class
+simul	simul
+str.seir	str.seir
+summary.seir	summary.seir

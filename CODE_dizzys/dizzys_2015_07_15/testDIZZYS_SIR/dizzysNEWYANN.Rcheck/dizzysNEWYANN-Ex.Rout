@@ -1,0 +1,190 @@
+
+R version 3.2.0 (2015-04-16) -- "Full of Ingredients"
+Copyright (C) 2015 The R Foundation for Statistical Computing
+Platform: x86_64-pc-linux-gnu (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> pkgname <- "dizzysNEWYANN"
+> source(file.path(R.home("share"), "R", "examples-header.R"))
+> options(warn = 1)
+> library('dizzysNEWYANN')
+My package is so cool
+so I will print these lines each time you load it
+Loading required package: deSolve
+Loading required package: survival
+Loading required package: KMsurv
+> 
+> base::assign(".oldSearch", base::search(), pos = 'CheckExEnv')
+> cleanEx()
+> nameEx("coef.seir")
+> ### * coef.seir
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: coef.seir
+> ### Title: Coefficient of seir Object
+> ### Aliases: coef.seir
+> ### Keywords: coefficients seir object
+> 
+> ### ** Examples
+> 
+> 	seirobj1<-seir(N=1e7)
+  S.S.S   E.E.E   I.I.P   R.R.S 
+ 730371    2902    1813 9264914 
+    0    730371    2902    1813    9264914    10000000
+> 	coef(seirobj1)
+@initial values of variables:
+       N        S        E        I        R 
+10000000   730371     2902     1813  9264914 
+
+@values of parameters :
+    duration     unitTIME     nbVilles            T           mu        beta0 
+1.825000e+03 1.000000e+00 1.000000e+00 3.650000e+02 3.913894e-05 2.739726e+00 
+       beta1        sigma        gamma      epsilon          rho          phi 
+0.000000e+00 1.250000e-01 2.000000e-01 0.000000e+00 0.000000e+00 0.000000e+00 
+        seed 
+1.437366e+09 
+> 
+> 	seirobj2<-seir(nbVilles=3, N=c(1e7,1e6))
+  S.S.S   S.S.S   S.S.S   E.E.E   E.E.E   E.E.E   I.I.P   I.I.P   I.I.P   R.R.S 
+ 730371   73037  730371    2902     290    2902    1813     181    1813 9264914 
+  R.R.S   R.R.S 
+ 926492 9264914 
+    0    730371    2902    1813    9264914    10000000
+    0    73037    290    181    926492    1000000
+    0    730371    2902    1813    9264914    10000000
+> 	coef(seirobj2)
+@initial values of variables:
+      N1       N2       N3       S1       S2       S3       E1       E2 
+10000000  1000000 10000000   730371    73037   730371     2902      290 
+      E3       I1       I2       I3       R1       R2       R3 
+    2902     1813      181     1813  9264914   926492  9264914 
+
+@values of parameters :
+    duration     unitTIME     nbVilles            T          mu1          mu2 
+1.825000e+03 1.000000e+00 3.000000e+00 3.650000e+02 3.913894e-05 3.913894e-05 
+         mu3       beta01       beta02       beta03       beta11       beta12 
+3.913894e-05 2.739726e+00 2.739726e+00 2.739726e+00 0.000000e+00 0.000000e+00 
+      beta13       sigma1       sigma2       sigma3       gamma1       gamma2 
+0.000000e+00 1.250000e-01 1.250000e-01 1.250000e-01 2.000000e-01 2.000000e-01 
+      gamma3      epsilon          rho         phi1         phi2         phi3 
+2.000000e-01 0.000000e+00 0.000000e+00 0.000000e+00 0.000000e+00 0.000000e+00 
+        seed 
+1.437366e+09 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("confint.pers.rate")
+> ### * confint.pers.rate
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: confint.pers.rate
+> ### Title: Confidence interval for the estimated global disease persistence
+> ###   rate in a metapopulation.
+> ### Aliases: confint.pers.rate
+> ### Keywords: seir model R package
+> 
+> ### ** Examples
+> 
+> 	#STO, STO
+> 	sto<-seir(N=10e5,type="stoch",duration=30*365,beta1=0.1,nbVilles=10)
+ S.S.S  S.S.S  S.S.S  S.S.S  S.S.S  S.S.S  S.S.S  S.S.S  S.S.S  S.S.S  E.E.E 
+ 74156  74156  74156  74156  74156  74156  74156  74156  74156  74156    279 
+ E.E.E  E.E.E  E.E.E  E.E.E  E.E.E  E.E.E  E.E.E  E.E.E  E.E.E  I.I.P  I.I.P 
+   279    279    279    279    279    279    279    279    279    167    167 
+ I.I.P  I.I.P  I.I.P  I.I.P  I.I.P  I.I.P  I.I.P  I.I.P  R.R.S  R.R.S  R.R.S 
+   167    167    167    167    167    167    167    167 925398 925398 925398 
+ R.R.S  R.R.S  R.R.S  R.R.S  R.R.S  R.R.S  R.R.S 
+925398 925398 925398 925398 925398 925398 925398 
+    0    74156    279    167    925398    1000000
+    0    74156    279    167    925398    1000000
+    0    74156    279    167    925398    1000000
+    0    74156    279    167    925398    1000000
+    0    74156    279    167    925398    1000000
+    0    74156    279    167    925398    1000000
+    0    74156    279    167    925398    1000000
+    0    74156    279    167    925398    1000000
+    0    74156    279    167    925398    1000000
+    0    74156    279    167    925398    1000000
+> 	objper<- persistence(sto)
+> 	pers.obj<-pers.rate.obj(objper)
+> 	confint.pers.rate(pers.obj)
+               2.5 %   97.5 %
+(Intercept) 8.319497 9.559088
+> 	pause()
+press Enter to continue!
+[1] ""
+> 
+> 
+> 
+> cleanEx()
+> nameEx("equilibrium")
+> ### * equilibrium
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: equilibrium
+> ### Title: Finding Endemic Equilibrium of a seasonally-forced SEIR/SIR
+> ###   model
+> ### Aliases: equilibrium
+> ### Keywords: SEIR/SIR model limit cycle equilibrium
+> 
+> ### ** Examples
+> 
+> ## The point on the limit cycle depends on the input phase value 'phi':
+> 	equilibrium(mu=.000456, beta0=1000/365, beta1=.1, sigma=1/7, gamma=1/7, phi=0, T=365,duration=100,unitTIME=1)
+          S           E           P           R           N 
+  478771.87    27614.15    28998.98  9464615.00 10000000.00 
+> 	equilibrium(mu=.000456, beta0=1000/365, beta1=.1, sigma=1/7, gamma=1/7, phi=pi/2, T=365, duration=100,unitTIME=7)
+          S           E           P           R           N 
+  581004.45    23575.92    23600.65  9371818.97 10000000.00 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("lines.seir")
+> ### * lines.seir
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: lines.seir
+> ### Title: Add Connected Line Segments of an seir object to a Plot 2D/3D
+> ### Aliases: lines.seir
+> ### Keywords: lines projection on plane
+> 
+> ### ** Examples
+> 
+> #creating a plot
+> #adding a line to the plot
+> 	seir(nbVilles=2)->obj
+S.S.S S.S.S E.E.E E.E.E I.I.P I.I.P R.R.S R.R.S 
+ 7304  7304    29    29    18    18 92649 92649 
+    0    7304    29    18    92649    100000
+    0    7304    29    18    92649    100000
+> 	seir(nbVilles=1)->obj1
+S.S.S E.E.E I.I.P R.R.S 
+ 7304    29    18 92649 
+    0    7304    29    18    92649    100000
+> 	#2D
+> 	plot(obj,col="red")
+> 	lines(obj1,col="blue",lwd=2)
+> 	#3D
+> 	plot(obj,z="S",col="red",proj=list(c("time","P")))
+Error in eval(expr, envir, enclos) : could not find function "plot3d"
+Calls: plot -> plot.seir -> with -> with.default -> eval -> eval
+Execution halted

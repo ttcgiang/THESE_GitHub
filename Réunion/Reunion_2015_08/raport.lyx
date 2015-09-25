@@ -1,0 +1,765 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass amsart
+\begin_preamble
+\usepackage{babel}
+\end_preamble
+\use_default_options false
+\begin_modules
+theorems-ams
+eqs-within-sections
+figs-within-sections
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding utf8x
+\fontencoding T1
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 2
+\use_package amssymb 2
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 0
+\use_package mathtools 1
+\use_package mhchem 0
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Section
+Context
+\end_layout
+
+\begin_layout Itemize
+La censure est une forme de problème de données manquantes qui est commun
+ dans l'analyse de survie.
+ Idéalement, les deux dates de naissance et de décès d'un sujet sont connus,
+ dans ce cas, la durée de vie est connue.
+ Quand on estime les taux d'extinction, par exemple, on fait une seule simulatio
+n, avec le temps fixée, si ce temps de simulation est trop long, alors on
+ obtient aucunne donnée censurée, on trouve tout à fait les données non-censurée
+s.
+ Pour les données non-censurées, si on utilise la méthode non-paramétrique
+ pour estimer le taux de survie, alors ce n'est pas une bonne méthode.
+\end_layout
+
+\begin_layout Itemize
+En fait, pour un essai clinique, sa duration est trop long (100 ans), cela
+ est impossible.
+ Alors, choisir un temps de simulation raisonnable est un problem.
+\end_layout
+
+\begin_layout Itemize
+Plus, qu'est ce qui se passe quand le temps de simulation est trop grand.
+ Ensuite, pour les données qu'on a, l'information dans les donées conteint
+ deux types d'information, l'information qui a le coût, et l'information
+ qui a le perte.
+ On espère qu'on peut trouver les information valables à partir des donées.
+ Dans le cas, si le nombre d'information obtenue est beaucoup redondant
+ (grand), cela a beaucoup de désavantage comme suite : Gaspiller la ressource
+ du processeur quand on lance des simulations trop longes.
+ En particulier, pour le cas où le temps de simulation est exponentiel.
+ Information qui est contenu dans les données obtenues est redondante, il
+ y a beaucoup d'information non-valables.
+ Pour chaque intervalle de temps, la probabilité de survie est calculé comme
+ le nombre d'agents survivants divisé par le nombre de patients à risque.
+ Les agents qui sont morts, abandonné, ou déménagent ne sont pas comptés
+ comme «à risque», à savoir, les agents qui sont perdus sont considérés
+ comme «censurés» et ne sont pas comptés dans le dénominateur.
+ Quand on fait des simulation trop long, alors, on trouve toujours les données
+ non-censurées.
+ Tous les données obtenues sont non-censurées ce que nous voullons toujours
+ arriver, on peut estimer exactement le taux de survie.
+ Par contre, le temps de simulation est trop long, on gaspille beaucoup
+ de ressource de processeur, et on attends à gagner le résultat trop long.
+ Voilà, on doit trouver une méthod qui optimise les dynamiques du taux censuré
+ pour les temps d'extinctions simulées.
+\end_layout
+
+\begin_layout Itemize
+On demande une méthode qui est satisfaite de deux conditions : (1) apprendre
+ le meilleur « taux censuré » dynamiquement et (2) faire une bonne balance
+ entre l'exploration des nouvelles connaissances et l'exploitation des connaissa
+nces courants pour donner des bonnes décisions de la future.
+\end_layout
+
+\begin_layout Section
+IDÉE : Aprrendre le meilleur « taux censuré » dynamiquement.
+\end_layout
+
+\begin_layout Standard
+Alors, on doit donner un modèle qui peut répondre bien la hyphothèse pour
+ les simulations longes.
+ La titre est 
+\begin_inset Quotes eld
+\end_inset
+
+Simulate censored data such that most with longest time are censored
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+ETAT DE L'ART 
+\end_layout
+
+\begin_layout Subsection
+Bandit model
+\end_layout
+
+\begin_layout Standard
+Multi-armed bandit :
+\end_layout
+
+\begin_layout Standard
+The multi-armed bandit problem (sometimes called the K-[1] or N-armed bandit
+ problem[2]) is a problem in which a gambler at a row of slot machines (sometime
+s known as "one-armed bandits") has to decide which machines to play, how
+ many times to play each machine and in which order to play them.[3] When
+ played, each machine provides a random reward from a distribution specific
+ to that machine.
+ The objective of the gambler is to maximize the sum of rewards earned through
+ a sequence of lever pulls.
+ The multi-armed bandit problem models an agent that simultaneously attempts
+ to acquire new knowledge (called "exploration") and optimize his or her
+ decisions based on existing knowledge (called "exploitation").
+ The agent attempts to balance these competing tasks in order to maximize
+ his or her total value over the period of time considered.
+ There are many practical applications of the bandit model, for example:
+ clinical trials investigating the effects of different experimental treatments
+ while minimizing patient losses.
+\end_layout
+
+\begin_layout Itemize
+Le problème de bandit multi-armés stochastique est un modèle important pour
+ étudier le « tradeoff » exploration-exploitation dans l'apprentissage par
+ renforcement.
+ C'est une algorithme heuristique, une algorithme glouton (gourmand) qui
+ est un choix optimum local.
+\end_layout
+
+\begin_layout Subsubsection
+Bandits
+\end_layout
+
+\begin_layout Itemize
+There are 
+\begin_inset Formula $n$
+\end_inset
+
+ machines
+\end_layout
+
+\begin_layout Itemize
+Each machine 
+\begin_inset Formula $i$
+\end_inset
+
+ returns a reward 
+\begin_inset Formula $y\sim P(y;\theta_{i})$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The machine's parameter 
+\begin_inset Formula $\theta_{i}$
+\end_inset
+
+ is unknow.
+\end_layout
+
+\begin_layout Itemize
+Let 
+\begin_inset Formula $a_{t}\in\{1,...,n\}$
+\end_inset
+
+ be the choice of machine at time 
+\begin_inset Formula $t$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Let 
+\begin_inset Formula $y_{t}\in R$
+\end_inset
+
+ be the outcome with mean 
+\begin_inset Formula $y_{a_{t}}$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+A policy or strategy maps all the history to a new choice :
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula $\pi:[(a_{1},y_{i}),(a_{2},y_{2}),...,(a_{t-1},y_{t-1})]\mapsto a_{t}$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Problem : Find a policy 
+\begin_inset Formula $\pi$
+\end_inset
+
+ that :
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+Max\left(\sum_{t=1}^{T}y_{t}\right)\\
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Or
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+max\left(y_{T}\right)\\
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Or other objectives like discounted infinite horizon 
+\begin_inset Formula $max\left(\sum_{t=1}^{\infty}\gamma y_{y}^{t}\right)$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Subsubsection
+Trading off exploration and exploitation.
+ 
+\end_layout
+
+\begin_layout Standard
+L'Apprentissage par renforcement est une méthode d'apprentissage pour l'agent
+ dans un environnement non-fixe avec l'objectif de maximiser le résultat
+ final dans le long terme.
+ Dans cet environnement, on nécessite un équilibre entre l'exploitation
+ de connaissances actuelles et d'exploration de nouvelles connaissances
+ à partir de ces régions inexploitées.
+ Par exemple, le problème bandit multi-armés célèbre.
+\end_layout
+
+\begin_layout Subsection
+Adaptive design
+\end_layout
+
+\begin_layout Itemize
+Article : http://www.ncbi.nlm.nih.gov/pmc/articles/PMC2422839/
+\end_layout
+
+\begin_layout Itemize
+Adaptive designs Ici, « Adaptive designs » est un désign qui a pour de maximiser
+ le résultat obtenu et minimiser le résultat rédondant.
+ Pendant le temps de simulation, les agents apprendent pour adapter à ses
+ situation courentes et maximiser le résultat.
+ Le but est non seulement d'identifier efficacement les avantages du traitement
+ cliniques sous enquête, mais aussi pour accroître la probabilité de succès
+ du développement clinique.
+ La conception adaptative est définie comme une conception qui permet des
+ adaptations aux essais et / ou des procédures statistiques de l'essai après
+ l'ouverture sans supprimer à la validité et l'intégrité du procès [21].
+ Une conception adaptative est comme une conception de l'essai clinique
+ qui utilise des données acculantes pour décider de la façon de modifier
+ certains aspects de l'étude pour qu'il continue, sans supprimer à la validité
+ et l'intégrité du procès [19].
+ Dans de nombreux cas, un dessin ou modèle adaptatif est également connu
+ comme une conception flexible.
+\end_layout
+
+\begin_layout Itemize
+The use of adaptive design methods in clinical research and development
+ based on accrued data has become very popular due to its flexibility and
+ efficiency.
+ Based on adaptations applied, adaptive designs can be classified into three
+ categories: prospective, concurrent (ad hoc), and retrospective adaptive
+ designs.
+ An adaptive design allows modifications made to trial and/or statistical
+ procedures of ongoing clinical trials.
+ Adaptive design methods in clinical research are very attractive to clinical
+ scientists due to the following reasons.
+ First, it reflects medical practice in real world.
+ Second, it is ethical with respect to both efficacy and safety (toxicity)
+ of the test treatment under investigation.
+ Third, it is not only flexible, but also efficient in the early and late
+ phase of clinical development.
+ However, it is a concern whether the p-value or confidence interval regarding
+ the treatment effect obtained after the modification is reliable or correct.
+ In addition, it is also a concern that the use of adaptive design methods
+ in a clinical trial may lead to a totally different trial that is unable
+ to address scientific/medical questions that the trial is intended to answer
+ [17,18].
+ 
+\end_layout
+
+\begin_layout Itemize
+Maximizing patient survival times : The use of adaptive design methods in
+ clinical research and development based on accrued data has become very
+ popular due to its flexibility and efficiency.
+ Based on adaptations applied, adaptive designs can be classified into three
+ categories: prospective, concurrent (ad hoc), and retrospective adaptive
+ designs.
+ An adaptive design allows modifications made to trial and/or statistical
+ procedures of ongoing clinical trials.
+ Adaptive design methods in clinical research are very attractive to clinical
+ scientists due to the following reasons.
+ First, it reflects medical practice in real world.
+ Second, it is ethical with respect to both efficacy and safety (toxicity)
+ of the test treatment under investigation.
+ Third, it is not only flexible, but also efficient in the early and late
+ phase of clinical development.
+ However, it is a concern whether the p-value or confidence interval regarding
+ the treatment effect obtained after the modification is reliable or correct.
+ In addition, it is also a concern that the use of adaptive design methods
+ in a clinical trial may lead to a totally different trial that is unable
+ to address scientific/medical questions that the trial is intended to answer
+ [17,18].
+\end_layout
+
+\begin_layout Subsection
+Greedy algorithm
+\end_layout
+
+\begin_layout Subsection
+Heuristic algorithm
+\end_layout
+
+\begin_layout Section
+Solution
+\end_layout
+
+\begin_layout Subsection
+JEAN DANIEL :
+\end_layout
+
+\begin_layout Itemize
+https://communities.sas.com/
+\end_layout
+
+\begin_layout Itemize
+Problème : simulate censored data such that most with longest time are censored
+\end_layout
+
+\begin_layout Itemize
+Title of paper: Dynamic Optimization of Censor Rate for Simulated “Extinction
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Idée: Apprendre le meilleur censor rate dynamiquement
+\end_layout
+
+\begin_layout Standard
+Censored Data :
+\end_layout
+
+\begin_layout Itemize
+Donées censurées I:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Pendant les heures de test de T, il y a 
+\begin_inset Formula $r$
+\end_inset
+
+ échecs (où r peut être n'importe quel nombre de 
+\begin_inset Formula $0$
+\end_inset
+
+ à 
+\begin_inset Formula $n$
+\end_inset
+
+).
+ 
+\end_layout
+
+\begin_layout Itemize
+Les temps exacts de défaillance sont 
+\begin_inset Formula $t_{1},t_{2},...,t_{r}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Il y a 
+\begin_inset Formula $(n-r)$
+\end_inset
+
+ cas qui sont survécus à l'ensemble du test T-heure sans défaillance.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $T$
+\end_inset
+
+ est fixé à l'avance et r est aléatoire.
+ On ne sais pas combien échecs va se produire jusqu'à ce que le test est
+ fini.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Donées censurées II :
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+On observe 
+\begin_inset Formula $t_{1},t_{2},...,t_{r}$
+\end_inset
+
+, où 
+\begin_inset Formula $r$
+\end_inset
+
+ est défini à l'avance.
+ Le test se termine au temps 
+\begin_inset Formula $t=t_{r}$
+\end_inset
+
+, et 
+\begin_inset Formula $(n-r)$
+\end_inset
+
+ unités sont survécu.
+ 
+\end_layout
+
+\begin_layout Itemize
+Rarement utilisé.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+ALGO 
+\end_layout
+
+\begin_layout Itemize
+Input:  
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Budget de TS CPU time
+\end_layout
+
+\begin_layout Itemize
+N Sub Pop
+\end_layout
+
+\begin_layout Itemize
+NUMBER OF SIMU
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Float algorithm
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+REPEAT DURING TS CPU time
+\end_layout
+
+\begin_layout Itemize
+REPEAT DURING TS/10
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Select Random Population of N Sub-pop
+\end_layout
+
+\begin_layout Itemize
+Run and WAIT until Extinction to compute Extinction Time //FONCTIONNER combien
+ de fois, paramètre
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+END REPEAT 
+\end_layout
+
+\begin_layout Itemize
+COMPUTE OPTIMAL WaitingTime to have NUMBER SIMU 
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+OPTWAIT
+\end_layout
+
+\begin_layout Plain Layout
+REPEAT UNTIL END OF BUDGET  
+\end_layout
+
+\begin_layout Itemize
+RUN until OPTWAIT to cmpute
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Algorithm proposed by JEAN DANIEL
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Bandit
+\end_layout
+
+\begin_layout Standard
+UTILISER Bandit Algo : 
+\end_layout
+
+\begin_layout Itemize
+Bandit algorithm is a framework to balance the tradeoff of Exploitation
+ and Exploration.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Exploration : exploit existing knowledge 
+\end_layout
+
+\begin_layout Itemize
+Exploitation : explore new knowledge from these unknow regions.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Multi-armed bandit Algorithms : Estimate the reward of each item based on
+ the click and impression counts.
+ 
+\end_layout
+
+\begin_layout Itemize
+Contextual Bandit algorithms : Estimate the reward of each item based on
+ a feature-based prediction model, where the context is seen as a feature
+ vector.
+ 
+\end_layout
+
+\begin_layout Itemize
+Multi Armed Bandits:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Arms = possible treatments 
+\end_layout
+
+\begin_layout Itemize
+Arm Pulls = application of treatment to inidividual 
+\end_layout
+
+\begin_layout Itemize
+Rewards = outcome of treatment 
+\end_layout
+
+\begin_layout Itemize
+Objective = maximize cumulative 
+\end_layout
+
+\begin_layout Itemize
+reward = maximize benefit to trial population (or find best treatment quickly)
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+UniformBandit Algorithm Pull :
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Each arm 
+\begin_inset Formula $w$
+\end_inset
+
+ times (uniform pulling).
+ Return arm with best average reward.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Non-Uniform Sampling:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+If an arm is really bad, we should be able to eliminate it from consideration
+ early on Idea: try to allocate more pulls to arms that appear more promising
+ 
+\end_layout
+
+\begin_layout Itemize
+Median Elimination Algorithm : 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Median Elimination A = set of all arms 
+\end_layout
+
+\begin_layout Itemize
+For i = 1 to .....
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Pull each arm in A w i times 
+\end_layout
+
+\begin_layout Itemize
+m = median of the average rewards of the arms in A 
+\end_layout
+
+\begin_layout Itemize
+A = A – {arms with average reward less than m} 
+\end_layout
+
+\begin_layout Itemize
+If |A| = 1 then return the arm in A Eliminates half of the arms each round.
+ 
+\end_layout
+
+\end_deeper
+\end_deeper
+\end_deeper
+\begin_layout Standard
+
+\series bold
+UTILISER l'algorithm Bandit pour aprrendre le meilleur censor rate dynamiquement
+ :
+\end_layout
+
+\begin_layout Itemize
+Input
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Etat : Extinction globale ou NON
+\end_layout
+
+\begin_layout Itemize
+Action : N sub-pop
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+Greedy algorithm
+\end_layout
+
+\begin_layout Subsection
+Heuristic algorithm
+\end_layout
+
+\end_body
+\end_document

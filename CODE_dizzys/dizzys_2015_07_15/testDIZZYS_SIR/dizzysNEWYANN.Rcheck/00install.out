@@ -1,0 +1,13 @@
+* installing *source* package ‘dizzysNEWYANN’ ...
+** libs
+g++ -I/usr/share/R/include -DNDEBUG      -fpic  -g -O2 -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 -g  -c seirStoYANN.cpp -o seirStoYANN.o
+g++ -I/usr/share/R/include -DNDEBUG      -fpic  -g -O2 -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 -g  -c ssesYANN.cpp -o ssesYANN.o
+g++ -shared -L/usr/lib/R/lib -Wl,-Bsymbolic-functions -Wl,-z,relro -o dizzysNEWYANN.so cseirDetYANN.o equilibriumGENE.o equilibriumYANN.o initialFUNC.o rangenyan.o seirDetGENE.o seirStoGENE.o seirStoYANN.o ssesGENE.o ssesYANN.o -llapack -lblas -lgfortran -lm -lquadmath -L/usr/lib/R/lib -lR
+installing to /home/tran/Desktop/These_TTCGIANG/THESE_GitHub/CODE_dizzys/dizzys_2015_07_15/testDIZZYS_SIR/dizzysNEWYANN.Rcheck/dizzysNEWYANN/libs
+** R
+** preparing package for lazy loading
+** help
+*** installing help indices
+** building package indices
+** testing if installed package can be loaded
+* DONE (dizzysNEWYANN)

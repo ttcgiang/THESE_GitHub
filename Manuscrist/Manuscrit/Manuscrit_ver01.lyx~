@@ -1080,6 +1080,11 @@ The stochastic models are divided into two main types, for the discrete-event
 Discrete-event simulation:
 \end_layout
 
+\begin_layout Standard
+To specify the next event in a stochastic simulation, firstly the rates
+ 
+\end_layout
+
 \begin_layout Subsubsection
 Continuous simulation : 
 \end_layout

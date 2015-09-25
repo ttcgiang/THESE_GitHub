@@ -1,0 +1,304 @@
+* using log directory ‘/home/tran/Desktop/These_TTCGIANG/THESE_GitHub/CODE_dizzys/dizzys_2015_07_30/dizzysNEWYANN.Rcheck’
+* using R version 3.2.0 (2015-04-16)
+* using platform: x86_64-pc-linux-gnu (64-bit)
+* using session charset: UTF-8
+* checking for file ‘dizzysNEWYANN/DESCRIPTION’ ... OK
+* checking extension type ... Package
+* this is package ‘dizzysNEWYANN’ version ‘0.3’
+* checking package namespace information ... OK
+* checking package dependencies ... OK
+* checking if this is a source package ... WARNING
+Subdirectory ‘dizzysNEWYANN/src’ contains apparent object files/libraries
+  cseirDetYANN.o equilibriumGENE.o equilibriumYANN.o initialFUNC.o
+  rangenyan.o seirDetGENE.o seirStoGENE.o seirStoYANN.o ssesGENE.o
+  ssesYANN.o
+Object files/libraries should not be included in a source package.
+* checking if there is a namespace ... OK
+* checking for executable files ... OK
+* checking for hidden files and directories ... NOTE
+Found the following hidden files and directories:
+  R/.RData
+  R/.Rhistory
+  src/.RData
+These were most likely included in error. See section ‘Package
+structure’ in the ‘Writing R Extensions’ manual.
+* checking for portable file names ... OK
+* checking for sufficient/correct file permissions ... OK
+* checking whether package ‘dizzysNEWYANN’ can be installed ... OK
+* checking installed package size ... OK
+* checking package directory ... OK
+* checking DESCRIPTION meta-information ... WARNING
+Non-standard license specification:
+  0.4
+Standardizable: FALSE
+* checking top-level files ... OK
+* checking for left-over files ... OK
+* checking index information ... OK
+* checking package subdirectories ... OK
+* checking R files for non-ASCII characters ... OK
+* checking R files for syntax errors ... OK
+* checking whether the package can be loaded ... OK
+* checking whether the package can be loaded with stated dependencies ... WARNING
+My package is so cool
+so I will print these lines each time you load it
+Error : .onLoad failed in loadNamespace() for 'dizzysNEWYANN', details:
+  call: match(el, set, 0L)
+  error: could not find function "installed.packages"
+Error: package or namespace load failed for ‘dizzysNEWYANN’
+Execution halted
+
+It looks like this package (or one of its dependent packages) has an
+unstated dependence on a standard package.  All dependencies must be
+declared in DESCRIPTION.
+See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+manual.
+* checking whether the package can be unloaded cleanly ... WARNING
+Error : .onLoad failed in loadNamespace() for 'dizzysNEWYANN', details:
+  call: match(el, set, 0L)
+  error: could not find function "installed.packages"
+Error: package or namespace load failed for ‘dizzysNEWYANN’
+Execution halted
+* checking whether the namespace can be loaded with stated dependencies ... WARNING
+My package is so cool
+so I will print these lines each time you load it
+Error: .onLoad failed in loadNamespace() for 'dizzysNEWYANN', details:
+  call: match(el, set, 0L)
+  error: could not find function "installed.packages"
+Execution halted
+
+A namespace must be able to be loaded with just the base namespace
+loaded: otherwise if the namespace gets loaded by a saved object, the
+session will be unable to start.
+
+Probably some imports need to be declared in the NAMESPACE file.
+* checking whether the namespace can be unloaded cleanly ... OK
+* checking loading without being on the library search path ... OK
+* checking dependencies in R code ... NOTE
+Error: package or namespace load failed for ‘dizzysNEWYANN’
+Call sequence:
+2: stop(gettextf("package or namespace load failed for %s", sQuote(package)), 
+       call. = FALSE, domain = NA)
+1: library(package, lib.loc = lib.loc, character.only = TRUE, verbose = FALSE)
+Execution halted
+* checking S3 generic/method consistency ... WARNING
+print:
+  function(x, ...)
+print.seir:
+  function(object, ...)
+
+lines:
+  function(x, ...)
+lines.seir:
+  function(object, x, y, z, pop, col, type, unitTIME, proj, ...)
+
+plot:
+  function(x, ...)
+plot.pers:
+  function(object, ...)
+
+plot:
+  function(x, ...)
+plot.seir:
+  function(object, x, y, z, pop, col, type, unitTIME, proj, add, xlim,
+           ylim, zlim, xlab, ylab, zlab, ...)
+
+plot:
+  function(x, ...)
+plot.surv.prob:
+  function(object, ...)
+
+confint:
+  function(object, parm, level, ...)
+confint.pers.rate:
+  function(pers.rate.obj, level)
+
+See section ‘Generic functions and methods’ in the ‘Writing R
+Extensions’ manual.
+* checking replacement functions ... OK
+* checking foreign function calls ... OK
+* checking R code for possible problems ... NOTE
+File ‘dizzysNEWYANN/R/zzz.R’:
+  .onLoad calls:
+    packageStartupMessage("My package is so cool")
+    packageStartupMessage("so I will print these lines each time you load it")
+
+See section ‘Good practice’ in '?.onAttach'.
+
+!.seir: no visible binding for global variable ‘object’
+!=.seir: no visible binding for global variable ‘object’
+%%.seir: no visible binding for global variable ‘object’
+%/%.seir: no visible binding for global variable ‘object’
+&.seir: no visible binding for global variable ‘object’
+**.seir: no visible binding for global variable ‘object’
+*.seir: no visible binding for global variable ‘object’
++.seir: no visible binding for global variable ‘object’
+-.seir: no visible binding for global variable ‘object’
+/.seir: no visible binding for global variable ‘object’
+<.seir: no visible binding for global variable ‘object’
+<=.seir: no visible binding for global variable ‘object’
+==.seir: no visible binding for global variable ‘object’
+>.seir: no visible binding for global variable ‘object’
+>=.seir: no visible binding for global variable ‘object’
+^.seir: no visible binding for global variable ‘object’
+plot.seir: no visible global function definition for ‘lines3d’
+seir.stoch: no visible binding for global variable ‘tmax’
+sses.adaptivetau: no visible binding for global variable ‘nbthVilles’
+|.seir: no visible binding for global variable ‘object’
+* checking Rd files ... WARNING
+prepare_Rd: lines.seir.Rd:36: Dropping empty section \seealso
+pers.rate.obj.Rd: non-ASCII input and no declared encoding
+plot.pers.Rd: non-ASCII input and no declared encoding
+problems found in ‘pers.rate.obj.Rd’, ‘plot.pers.Rd’
+* checking Rd metadata ... OK
+* checking Rd cross-references ... OK
+* checking for missing documentation entries ... WARNING
+Undocumented code objects:
+  ‘!.seir’ ‘!=.seir’ ‘%%.seir’ ‘%/%.seir’ ‘&.seir’ ‘**.seir’ ‘*.seir’
+  ‘+.seir’ ‘-.seir’ ‘/.seir’ ‘<.seir’ ‘<=.seir’ ‘==.seir’ ‘>.seir’
+  ‘>=.seir’ ‘^.seir’ ‘callpackg’ ‘equilibriumYANN’ ‘initVarYANN’
+  ‘initVariables’ ‘is.installed’ ‘is.integer0’ ‘paramduration’ ‘pause’
+  ‘phiseq’ ‘plot.surv.prob’ ‘pop’ ‘resizeVector’ ‘seir’ ‘seir.det’
+  ‘seir.detYANN’ ‘seir.stoch’ ‘seir.stochYANN’ ‘seirYANN’
+  ‘sses.adaptivetau’ ‘statDIS’ ‘surv.prob’ ‘timeseq’ ‘transMATRIX’
+  ‘|.seir’
+Undocumented S4 classes:
+  ‘seirYANN’
+Undocumented S4 methods:
+  generic 'persistence' and siglist 'seir'
+  generic 'plot.pers' and siglist 'seir'
+  generic 'plot.surv.prob' and siglist 'seir'
+  generic 'surv.prob' and siglist 'seir'
+All user-level objects in a package (including S4 classes and methods)
+should have documentation entries.
+See chapter ‘Writing R documentation files’ in the ‘Writing R
+Extensions’ manual.
+* checking for code/documentation mismatches ... WARNING
+Functions or methods with usage in documentation object 'str.seir' but not in code:
+  str
+
+Codoc mismatches from documentation object 'persistence':
+persistence
+  Code: function(object, ...)
+  Docs: function(object)
+  Argument names in code not in docs:
+    ...
+
+Codoc mismatches from documentation object 'plot.pers':
+plot.pers
+  Code: function(object, ...)
+  Docs: function(object, x, y, type, col, xlim, ylim, curvetype,
+                 vilabline, ...)
+  Argument names in docs not in code:
+    x y type col xlim ylim curvetype vilabline
+  Mismatches in argument names:
+    Position: 2 Code: ... Docs: x
+
+Codoc mismatches from documentation object 'plot.seir':
+plot.seir
+  Code: function(object, x = "time", y = 4, z = NULL, pop = c(), col =
+                 "black", type = "l", unitTIME = 1, proj = list(), add
+                 = F, xlim = NULL, ylim = NULL, zlim = NULL, xlab = x,
+                 ylab = y, zlab = z, ...)
+  Docs: function(object, x = "time", y = 4, z = NULL, pop = c(), col =
+                 "black", type = "l", unitTIME = 1, proj = list(), add
+                 = F, xlim = NULL, ylim = NULL, zlim = NULL, xlab = x,
+                 ylab = y, zlab = z)
+  Argument names in code not in docs:
+    ...
+
+* checking Rd \usage sections ... WARNING
+Undocumented arguments in documentation object 'lines.seir'
+  ‘type’
+
+Objects in \usage without \alias in documentation object 'str.seir':
+  ‘str’
+
+Bad \usage lines found in documentation object 'confint.pers.rate':
+  confint.pers.rate<-function(object, level)
+Bad \usage lines found in documentation object 'pers.rate.obj':
+  pers.rate.obj<-function(object)
+
+Functions with \usage entries need to have the appropriate \alias
+entries, and all their arguments documented.
+The \usage entries must correspond to syntactically valid R code.
+See chapter ‘Writing R documentation files’ in the ‘Writing R
+Extensions’ manual.
+S3 methods shown with full name in documentation object 'coef.seir':
+  ‘coef.seir’
+
+S3 methods shown with full name in documentation object 'lines.seir':
+  ‘lines.seir’
+
+S3 methods shown with full name in documentation object 'plot.pers':
+  ‘plot.pers’
+
+S3 methods shown with full name in documentation object 'plot.seir':
+  ‘plot.seir’
+
+S3 methods shown with full name in documentation object 'pop.seir':
+  ‘pop.seir’
+
+S3 methods shown with full name in documentation object 'print.seir':
+  ‘print.seir’
+
+S3 methods shown with full name in documentation object 'summary.seir':
+  ‘summary.seir’
+
+The \usage entries for S3 methods should use the \method markup and not
+their full name.
+See chapter ‘Writing R documentation files’ in the ‘Writing R
+Extensions’ manual.
+* checking Rd contents ... OK
+* checking for unstated dependencies in examples ... OK
+* checking line endings in C/C++/Fortran sources/headers ... OK
+* checking line endings in Makefiles ... OK
+* checking compilation flags in Makevars ... OK
+* checking for GNU extensions in Makefiles ... OK
+* checking for portable use of $(BLAS_LIBS) and $(LAPACK_LIBS) ... OK
+* checking compiled code ... NOTE
+File ‘dizzysNEWYANN/libs/dizzysNEWYANN.so’:
+  Found ‘_ZSt4cout’, possibly from ‘std::cout’ (C++)
+    Objects: ‘initialFUNC.o’, ‘rangenyan.o’, ‘seirStoGENE.o’,
+      ‘seirStoYANN.o’, ‘ssesGENE.o’
+  Found ‘rand’, possibly from ‘rand’ (C)
+    Objects: ‘initialFUNC.o’, ‘seirStoGENE.o’, ‘seirStoYANN.o’
+  Found ‘srand’, possibly from ‘srand’ (C)
+    Objects: ‘seirStoGENE.o’, ‘seirStoYANN.o’
+
+Compiled code should not call entry points which might terminate R nor
+write to stdout/stderr instead of to the console, nor the system RNG.
+
+See ‘Writing portable packages’ in the ‘Writing R Extensions’ manual.
+* checking examples ... ERROR
+Running examples in ‘dizzysNEWYANN-Ex.R’ failed
+The error most likely occurred in:
+
+> ### Name: lines.seir
+> ### Title: Add Connected Line Segments of an seir object to a Plot 2D/3D
+> ### Aliases: lines.seir
+> ### Keywords: lines projection on plane
+> 
+> ### ** Examples
+> 
+> #creating a plot
+> #adding a line to the plot
+> 	seir(nbVilles=2)->obj
+S.S.S S.S.S E.E.E E.E.E I.I.P I.I.P R.R.S R.R.S 
+ 7304  7304    29    29    18    18 92649 92649 
+    0    7304    29    18    92649    100000
+    0    7304    29    18    92649    100000
+> 	seir(nbVilles=1)->obj1
+S.S.S E.E.E I.I.P R.R.S 
+ 7304    29    18 92649 
+    0    7304    29    18    92649    100000
+> 	#2D
+> 	plot(obj,col="red")
+> 	lines(obj1,col="blue",lwd=2)
+> 	#3D
+> 	plot(obj,z="S",col="red",proj=list(c("time","P")))
+Error in eval(expr, envir, enclos) : could not find function "plot3d"
+Calls: plot -> plot.seir -> with -> with.default -> eval -> eval
+Execution halted
+* checking PDF version of manual ... OK
+* DONE
+Status: 1 ERROR, 10 WARNINGs, 4 NOTEs
