@@ -2185,7 +2185,7 @@ To implement this SEIR stochastic model, there are many different methods,
  thought most researchers often use the method of Gillespie in 1977.
  Starting from the initial states, the stochastic simulation algorithms
  simulate the trajectory in population processes by repeatedly answering
- the following two questions and updating the sates :*
+ the following two questions and updating the states.
 \end_layout
 
 \begin_layout Itemize
@@ -2205,12 +2205,76 @@ Which (reaction channel index
 \end_layout
 
 \begin_layout Standard
-Below we will show some methods that simulate exactly stochastic models
- :
+So the key parameters in the SSA model are 
+\begin_inset Formula $\tau$
+\end_inset
+
+ and 
+\begin_inset Formula $\mu$
+\end_inset
+
+.
+ To calculate these distributions, we set 
+\begin_inset Formula $a_{0}(x)=\sum_{j=1}^{M}a_{j}(x)$
+\end_inset
+
+.
+ The time 
+\begin_inset Formula $\tau$
+\end_inset
+
+, given 
+\begin_inset Formula $X(t)=x$
+\end_inset
+
+, that the reaction will fire at 
+\begin_inset Formula $t+\tau$
+\end_inset
+
+, is the exponentially distributied random variable with mean 
+\begin_inset Formula $\frac{1}{a_{0}(x)}$
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+ & P(\tau=s)=a_{0}(x)exp(-a_{0}(x)s),\\
+\end{align*}
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "eqProbTau"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+and the index 
+\begin_inset Formula $\mu$
+\end_inset
+
+ of that firing reaction is 
+\end_layout
+
+\begin_layout Standard
+Below we will show some methods that simulate exactly stochastic models.
+ In this part, we will review the variant formulations of Gillespie's stochastic
+ simulation algorithm (SSA) about the overview and the computational cost
+ of each algorithm.
+ We will point out which algorithm that is most efficient, which algorithm
+ that we have used in this thesis.
 \end_layout
 
 \begin_layout Enumerate
-First reaction method (FRM) [GILLESPIE 1977] 
+First reaction method (FRM) [GILLESPIE 1976] 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "gillespie1977exact"
@@ -2222,7 +2286,7 @@ key "gillespie1977exact"
 
 \begin_deeper
 \begin_layout Standard
-The first reaction method was proposed by Gillespie in 1977.
+The first reaction method was proposed by Gillespie in 1976.
  It models demographic stochasticity in the more intuitive and slower way
  to the deterministic model.
  The obtained result is 
@@ -2401,7 +2465,7 @@ end for
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Gillespie's first reaction method in 1977 - MONOPOPULATION
+Gillespie's first reaction method in 1976 - MONOPOPULATION
 \end_layout
 
 \end_inset
@@ -2430,7 +2494,7 @@ If supposing that generate one random number takes
 
  time per step.
  It is a big problem for that Gillespie proposed a new improved algorithm
- in 1977.
+ in 1976.
  The FRM has three main disadvantages : (1) generating random numbers is
  relatively slow, (2) the FRM generates a cycle too many random numbers
  in the case where the simulation time is big and the random number generator
@@ -2607,7 +2671,7 @@ end for
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Direct method of Gillespie in 1976 - MONOPOPULATION 
+Direct method of Gillespie in 1977 - MONOPOPULATION 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "gillespie1976general"

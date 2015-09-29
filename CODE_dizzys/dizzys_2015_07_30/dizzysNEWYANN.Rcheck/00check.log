@@ -9,9 +9,9 @@
 * checking package dependencies ... OK
 * checking if this is a source package ... WARNING
 Subdirectory ‘dizzysNEWYANN/src’ contains apparent object files/libraries
-  cseirDetYANN.o equilibriumGENE.o equilibriumYANN.o initialFUNC.o
-  rangenyan.o seirDetGENE.o seirStoGENE.o seirStoYANN.o ssesGENE.o
-  ssesYANN.o
+  cseirDetYANN.o dizzysNEWYANN.so equilibriumGENE.o equilibriumYANN.o
+  initialFUNC.o rangenyan.o seirDetGENE.o seirStoGENE.o seirStoYANN.o
+  ssesGENE.o ssesYANN.o
 Object files/libraries should not be included in a source package.
 * checking if there is a namespace ... OK
 * checking for executable files ... OK

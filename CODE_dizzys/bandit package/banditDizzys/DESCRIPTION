@@ -1,0 +1,13 @@
+Package: banditDizzys
+Type: Package
+Title: Simulating EXP3 Bandit
+Version: 0.1
+Date: 2015-29-09
+Author: Tran Thi Cam Giang
+Maintainer: Tran Thi Cam Giang <camgiang2010@gmail.com>
+Description: 
+License: 0.4
+Repository: CRAN
+LazyLoad: true
+Collate: 'exp3Bandit.r' 'extRateMETAPOP.r'
+Packaged: 2015-02-04 09:16:27 UTC; tran

@@ -14,4 +14,4 @@ Collate: 'zzz.R' 'seir.r' 'equilibrium.r' 'seir.plot.r'
         'seir.generic.r' 'seir.simul.r' 'seir.adaptivetau.r'
         'equilibriumYANN.r' 'seirYANN.r'
 Packaged: 2015-02-04 09:16:27 UTC; tran
-Built: R 3.2.0; x86_64-pc-linux-gnu; 2015-07-31 08:01:19 UTC; unix
+Built: R 3.2.0; x86_64-pc-linux-gnu; 2015-09-29 04:47:54 UTC; unix

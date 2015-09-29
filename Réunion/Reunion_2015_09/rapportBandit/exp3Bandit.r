@@ -1,0 +1,82 @@
+###
+library("dizzysNEWYANN")
+source("extRateMETAPOP.r")
+##
+#exécuter algorithme Bandit EXP 3 (information partielle)
+#BANDIT EXP3 : 
+### Exp3 stands for Exponential-weight algorithm for Exploration and Exploitation. 
+### It works by maintaining a list of weights for each of the actions, using these weights to decide randomly which action to take next, and increasing (decreasing) the relevant weights when a payoff is good (bad). 
+### We further introduce an egalitarianism factor \gamma \in [0,1] which tunes the desire to pick an action uniformly at random. 
+### That is, if \gamma = 1, the weights have no effect on the choices at any step.
+#Ref: http://jeremykun.com/2013/11/08/adversarial-bandits-and-the-exp3-algorithm/
+##
+#TSCPU : temps de simulation de CPU en année
+#TStep : intervalle d'échantillon
+#KsubPOP : nombre de villes maximum
+#gamma : un facteur d'égalitarisme \ gamma \ in [0,1] qui règle le désir de prendre une action uniformément au hasard.
+##Parametre de simulation de SEIR
+EXP3Bandit <- function(TSCPU=30,TStep=10,KsubPOP=4,gamma=0.7,
+                       N=1e5,nbCONTACT0=100,nbCONTACT1=0.10,grain=1090,nbMulCONTACT=1,phiMIN=0.0,phiMAX=0.0,probVISITER=0.0,probINFECTER=0.01){
+
+t=1
+Round <- TSCPU/TStep
+vecweights2D <- vector("list",KsubPOP) # bras i, au moment t
+for (i in 1:KsubPOP) vecweights2D[[i]][1] <- 1  #t =1
+
+vecprob2D <- vector("list",KsubPOP) # probabilité de chaque bras i, au moment t 
+vecReward2D <- vector("list",KsubPOP)
+
+while(t <= Round){
+  # 1; Set pi(t)
+  sumWeight <- 0
+  for(j in 1:KsubPOP) sumWeight <- sumWeight + vecweights2D[[j]][t]  
+  for (i in 1:KsubPOP) vecprob2D[[i]][t] <- (1-gamma)*(vecweights2D[[i]][t]/sumWeight) + gamma/KsubPOP;
+
+  # 2. Draw i(t) randomly accordingly to the probabilities p1(t),...,pK(t).
+  rad <- runif(1, 0.0, 1.0)
+  drawIt <- 0
+  for(mu in 1:KsubPOP) {
+    if(mu==1){
+      if((0.0 <= rad) & (rad <= vecprob2D[[mu]][t])) drawIt <- 1;
+    }
+    else{
+      sumProbAvant <- 0
+      sumProbApres <- 0
+      #
+      for(i in 1:(mu-1)) sumProbAvant<- sumProbAvant + vecprob2D[[i]][t];
+      
+      sumProbApres <- sumProbAvant + vecprob2D[[mu]][t];
+      #
+      if((sumProbAvant <= rad) & (rad <= sumProbApres)) drawIt <- mu;
+      }
+  }
+  #Receive reward xit(t) in interval [0,1]
+  # Run and WAIT until Extinction to compute Extinction Time
+  resTAUX <- getExtRateMETAPOP(duration=t*TStep*365, nbVilles=as.numeric(drawIt),
+                               N=N,nbCONTACT0=nbCONTACT0,nbCONTACT1=nbCONTACT1,grain=grain,
+                               nbMulCONTACT=nbMulCONTACT,phiMIN=phiMIN,phiMAX=phiMAX,probVISITER=probVISITER,probINFECTER=probINFECTER)
+  tauxEXT <- resTAUX[5]
+  #3. save Reward i(t)
+  vecReward2D[[drawIt]][t] <- tauxEXT
+  
+  #4. For j = 1, 2,...,K set, xj(t) and wj(t+1) 
+
+  for(j in 1:KsubPOP){
+    #Update xj(t)
+    if(j == drawIt) vecReward2D[[j]][t]  <- vecReward2D[[j]][t]/vecprob2D[[j]][t]
+    else vecReward2D[[j]][t] <- 0
+    #update weight
+    vecweights2D[[j]][t+1]<- vecweights2D[[j]][t]* exp(gamma*vecReward2D[[j]][t]/KsubPOP)
+  }
+  t <- t + 1
+}
+
+#Colone  : le tour 
+#linge : metapopulation avec le nombre de villes correspondant
+namesRow <- c()
+for(i in 1:Round) namesRow <- c(namesRow,paste("Round",i))
+vecReward2D <-data.frame(matrix(unlist(vecReward2D), nrow=KsubPOP, byrow=T)); names(vecReward2D)<-namesRow
+vecweights2D <- data.frame(matrix(unlist(vecweights2D), nrow=KsubPOP, byrow=T)); names(vecweights2D)<-namesRow
+return(list(vecReward = vecReward2D, vecWeight = vecweights2D ))
+## en fin
+}

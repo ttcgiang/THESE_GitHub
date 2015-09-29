@@ -1,0 +1,58 @@
+#
+##
+# Library 'parallel' of R that helps us make simulation in parallel
+library(parallel)
+library(MASS)
+library(dizzysNEWYANN)
+# 
+
+####################################################
+# This fucntion does just one simulation (one time) with the values of parameters and variables given
+# parameter 'phi' here is a vector of two values, one is for phiMIN and other one is for phiMAX
+# Here, we forcus on exploit the parameters:
+# 	N: population size of subpopulation
+#	nbVilles: number of subpopulation in a metapopulation
+#	rho : coupling rate, coupling strength between any two subpopulations
+#	phi: lower and upper limits of phase of forcing in the meatapopulation
+#	epsilon: fixed is zero, infection rate from outside
+# 	duration: time of simulation, 50 years 
+getExtRateMETAPOP<- function(N=1e5,nbVilles=3,duration=100*365,nbCONTACT0=100,nbCONTACT1=0.10,grain=1090,
+			 nbMulCONTACT=1,phiMIN=0.0,phiMAX=0.0,probVISITER=0.0,probINFECTER=0.01){
+	# vector contains time of local disease persistence of each subpopulation in the metapopulation
+	#SEIR
+	# calling the function 'simul' in the package 'dizzys' to do simulation
+	obj<-seir.stochYANN(N=N,nbVilles=nbVilles,duration=duration,nbCONTACT0=nbCONTACT0,nbCONTACT1=nbCONTACT1,disSTAT=rep(1,nbVilles),#mu=1/(70*365),sigma=1/8,gamma=1/5,
+			nbMulCONTACT=nbMulCONTACT,phiMIN=phiMIN,phiMAX=phiMAX,probVISITER=probVISITER,probINFECTER=probINFECTER,seed=grain)
+	# finding the time of local disease persistences in the metapopulation
+	vecpersTimeMETA<-c()
+	for(ivil in 1:nbVilles){
+		postExtGol <- tail(subset(obj@pop[[ivil]],P>0),n=1)[,1]
+		vecpersTimeMETA<-c(vecpersTimeMETA,postExtGol)
+	}
+
+	#get the event with the survival time < simulation time
+	survalpersTimeMETA<-subset(vecpersTimeMETA,vecpersTimeMETA < (duration-1))
+	##estimer l'extinction locale
+	if(length(survalpersTimeMETA) >0){
+		sortVecPers<-sort(survalpersTimeMETA)
+		objEstGolEXT<-survreg(Surv(sortVecPers)~1, dist="exp")
+		#confidence rate
+		confRate<-confint(objEstGolEXT,level=0.95)	
+		perGolLOWER<-confRate[1]
+		extGolLOWER<-exp(-perGolLOWER)
+		perGolUPPER<-confRate[2]
+		extGolUPPER<-exp(-perGolUPPER)
+		# estimated rate
+		perGolRATE<-objEstGolEXT$coeff[1]
+		extGolRATE<-exp(-perGolRATE)
+
+		##res
+		resline<-c(nbVilles,N,phiMAX,extGolLOWER,extGolRATE,extGolUPPER,perGolLOWER,perGolRATE,perGolUPPER)
+	
+		return(resline)
+	}
+	else
+		print("No event during the simulation time!")
+}
+######
+

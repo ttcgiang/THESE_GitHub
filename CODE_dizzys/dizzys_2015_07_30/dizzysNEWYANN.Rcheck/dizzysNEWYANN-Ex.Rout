@@ -56,7 +56,7 @@ Loading required package: KMsurv
        beta1        sigma        gamma      epsilon          rho          phi 
 0.000000e+00 1.250000e-01 2.000000e-01 0.000000e+00 0.000000e+00 0.000000e+00 
         seed 
-1.438330e+09 
+1.443502e+09 
 > 
 > 	seirobj2<-seir(nbVilles=3, N=c(1e7,1e6))
   S.S.S   S.S.S   S.S.S   E.E.E   E.E.E   E.E.E   I.I.P   I.I.P   I.I.P   R.R.S 
@@ -83,7 +83,7 @@ Loading required package: KMsurv
       gamma3      epsilon          rho         phi1         phi2         phi3 
 2.000000e-01 0.000000e+00 0.000000e+00 0.000000e+00 0.000000e+00 0.000000e+00 
         seed 
-1.438330e+09 
+1.443502e+09 
 > 
 > 
 > 
@@ -125,7 +125,7 @@ Loading required package: KMsurv
 > 	pers.obj<-pers.rate.obj(objper)
 > 	confint.pers.rate(pers.obj)
                2.5 %   97.5 %
-(Intercept) 8.302543 9.542133
+(Intercept) 8.365187 9.604777
 > 	pause()
 press Enter to continue!
 [1] ""

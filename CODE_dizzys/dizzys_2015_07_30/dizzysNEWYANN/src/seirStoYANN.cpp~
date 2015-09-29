@@ -410,14 +410,14 @@ Entrée:
 		}*/
                 for(int i= 0; i< nbVilles; i++){
                     if((y[i][iE]==0) && (y[i][iI]==0) && (vecFlagExtLocal[i]==false)){
-			cout<<"khi co extinciton : <<"<<endl;
-			cout<<" S= "<<y[i][iS]<<"  E="<<y[i][iE]<<"  I="<<y[i][iI] <<"    R="<<y[i][iR] <<"   N="<<y[i][iN]<<endl;
+			//cout<<"khi co extinciton : <<"<<endl;
+			//cout<<" S= "<<y[i][iS]<<"  E="<<y[i][iE]<<"  I="<<y[i][iI] <<"    R="<<y[i][iR] <<"   N="<<y[i][iN]<<endl;
                         tableExtLocal[i].push_back(t);
                         vecFlagExtLocal[i]=true;
                     }
                     if(((y[i][iE]!=0) || (y[i][iI]!=0)) && (vecFlagExtLocal[i]==true)){
-			cout<<"khi co STOP extinciton : <<"<<endl;
-			cout<<" S= "<<y[i][iS]<<"  E="<<y[i][iE]<<"  I="<<y[i][iI] <<"    R="<<y[i][iR] <<"   N="<<y[i][iN]<<endl;
+			//cout<<"khi co STOP extinciton : <<"<<endl;
+			//cout<<" S= "<<y[i][iS]<<"  E="<<y[i][iE]<<"  I="<<y[i][iI] <<"    R="<<y[i][iR] <<"   N="<<y[i][iN]<<endl;
                         tableRecolLocal[i].push_back(t);
                         vecFlagExtLocal[i]=false;
                     }

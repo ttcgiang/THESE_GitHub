@@ -303,7 +303,7 @@ Entrée:
        //number 'seed'
        srand(seed);
        //simulation
-       while(t<tmax){
+       while(t<=tmax){
 
            /*
            //Calculating Value of \beta at time t

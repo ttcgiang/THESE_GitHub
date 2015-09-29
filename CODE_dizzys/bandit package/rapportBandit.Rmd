@@ -1,0 +1,37 @@
+---
+title: "exp3BanditDizzys"
+author: "TRAN THI CAM GIANG"
+date: "September 29, 2015"
+output: pdf_document
+---
+
+BANDIT EXP3 : 
+Exp3 bandit stands for Exponential-weight algorithm for Exploration and Exploitation. It works by maintaining a list of weights for each of the actions, using these weights to decide randomly which action to take next, and increasing (decreasing) the relevant weights when a payoff is good (bad). We further introduce an egalitarianism factor \gamma \in [0,1] which tunes the desire to pick an action uniformly at random. That is, if \gamma = 1, the weights have no effect on the choices at any step.
+#Ref: http://jeremykun.com/2013/11/08/adversarial-bandits-and-the-exp3-algorithm/
+
+The structure of the programme :
+1. call the package "dizzysNEWYANN" that includes the function simulating stochastically SEIR model according tho the formula \beta of YANN.
+2. call the function "getExtRateMETAPOP" in the file "extRateMETAPOP.r". This function simulates the SEIR model of a metapopulation of n subpopulations. After that, this function calculates the survival time of each subpopulation until the end of simulation. We have a censored data. based on the simulation time, we extract the uncensored data and estimate the extinction rate of the metapopulation.
+3. call the functions in the file "exp3Bandit.r", it is the main file in this work :
+  J' ai écrit les codes de Bandit partielle Exp3
+  J'ai modélisé l'algorithme Bandit Exp3 pour notre modèle :
+  a. Nombre de tour : basé sur le budget de CPU, ici le temps maximum de simualtion (e.x 100ans)
+  b. K bras : K est le nombre de villes dans une métapopulation. Ici, on a K différente métapopulations qui ont le nombre de villes de 1 à K.
+  c. Résultat obtenu : c'est une list qui contient deux événement :
+	  *) les poinds de chaque métapopulation à chaque tour
+	  *). les récompense obtenues de chaque métapopulation à chaque tour.
+  d. Fonctionner le programme
+
+
+```{r}
+source(exp3Bandit.r)
+ls()
+```
+
+You can also embed plots, for example:
+
+```{r, echo=FALSE}
+plot(cars)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
