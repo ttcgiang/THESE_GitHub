@@ -116,6 +116,16 @@
   Year                     = {2001}
 }
 
+@InProceedings{kurata2001feedback,
+  Title                    = {Feedback regulation of the heat shock response in E. coli},
+  Author                   = {Kurata, Hiroyuki and El-Samad, Hana and Yi, T-M and Khammash, Mustafa and Doyle, J},
+  Booktitle                = {Decision and Control, 2001. Proceedings of the 40th IEEE Conference on},
+  Year                     = {2001},
+  Organization             = {IEEE},
+  Pages                    = {837--842},
+  Volume                   = {1}
+}
+
 @Article{li2007stochastic,
   Title                    = {Stochastic simulation of biochemical systems on the graphics processing unit},
   Author                   = {Li, Hong and Petzold, Linda R},

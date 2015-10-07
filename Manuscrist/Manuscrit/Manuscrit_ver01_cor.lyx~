@@ -1715,20 +1715,20 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "tab:stoch_ev"
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Ref: tab:stoch_ev"
 
 \end_inset
 
-Events of the stochastic version of the model of equations 
+ Events of the stochastic version of the model of equations 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "eq:dS"
 
 \end_inset
 
--
+ - 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "eq:dR"
@@ -2205,7 +2205,109 @@ Which (reaction channel index
 \end_layout
 
 \begin_layout Standard
-Below we will show some methods that simulate exactly stochastic models.
+So the key parameters in the SSA model are 
+\begin_inset Formula $\tau$
+\end_inset
+
+ and 
+\begin_inset Formula $\mu$
+\end_inset
+
+.
+ To calculate these distributions, we set 
+\begin_inset Formula $a_{0}(x)=\sum_{j=1}^{M}a_{j}(x)$
+\end_inset
+
+.
+ The time 
+\begin_inset Formula $\tau$
+\end_inset
+
+, given 
+\begin_inset Formula $X(t)=x$
+\end_inset
+
+, that the reaction will fire at 
+\begin_inset Formula $t+\tau$
+\end_inset
+
+, is the exponentially distributied random variable with mean 
+\begin_inset Formula $\frac{1}{a_{0}(x)}$
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+ & P(\tau=s)=a_{0}(x)exp(-a_{0}(x)s),\\
+\end{align*}
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "eqProbTau"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+and the index 
+\begin_inset Formula $\mu$
+\end_inset
+
+ is the integer random variable of that firing reaction with probability
+ :
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+ & P(\mu=j)=\frac{a_{j}(x)}{a_{0}(x)}\\
+\end{align*}
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "eqProbMu"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In each step, the SSA generates random bumbers and calculates 
+\begin_inset Formula $\tau$
+\end_inset
+
+ and 
+\begin_inset Formula $\mu$
+\end_inset
+
+ according to the probability distribution 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eqProbTau"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eqProbMu"
+
+\end_inset
+
+.
+ Below we will show some methods that simulate exactly stochastic models.
  In this part, we will review the variant formulations of Gillespie's stochastic
  simulation algorithm (SSA) about the overview and the computational cost
  of each algorithm.
@@ -2656,11 +2758,458 @@ We can find that on each step, the Direct Method has to generate two random
 
 \end_deeper
 \begin_layout Enumerate
-qsfsdf
+Next Reaction Method (NRM) [GIBSON2000]
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+In 2000, Gibson and Bruck successful tranformed the algorithm FRM into an
+ equivalent but more efficient new structure.
+ The Next Reaction Method applies just a sigle random number per iteration.
+ Moreover, the initiation times of the reactions can be set as the firing
+ times of independent, unit rate Poisson processes with internal times given
+ by integrated propensity functions.
+ It is evaluated steady faster than the FRM and more efficient than DM in
+ special cases as the system includes many species and loosely coupled reaction
+ channels.
+ The NRM is presented as follows :
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float algorithm
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+1.
+ Initialize 
 \end_layout
 
 \begin_layout Enumerate
-qsfdsq
+set initial numbers of species, set 
+\begin_inset Formula $t=0$
+\end_inset
+
+, generate a dependency graph 
+\begin_inset Formula $G$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+calculate the propensity function 
+\begin_inset Formula $R{}_{j}(x)$
+\end_inset
+
+, for all 
+\begin_inset Formula $j$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+for each 
+\begin_inset Formula $j$
+\end_inset
+
+, generate a putative time 
+\begin_inset Formula $\tau_{j}$
+\end_inset
+
+ according to an exponential distribution with parameter 
+\begin_inset Formula $R_{j}(x)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+store the 
+\begin_inset Formula $\tau_{j}$
+\end_inset
+
+ values in an indexed priority queue 
+\begin_inset Formula $P$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+2.
+ Let 
+\begin_inset Formula $\mu$
+\end_inset
+
+ be the reaction whose putative time 
+\begin_inset Formula $\tau_{\mu}$
+\end_inset
+
+ stored in 
+\begin_inset Formula $P$
+\end_inset
+
+ is least.
+ Set 
+\begin_inset Formula $\tau=\tau_{\mu}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+3.
+ Update the states of the species to reflect execution of reaction 
+\begin_inset Formula $\mu$
+\end_inset
+
+.
+ Set 
+\begin_inset Formula $t=\tau$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+4.
+ For each edge 
+\begin_inset Formula $(\mu,\alpha)$
+\end_inset
+
+ in the dependency graph 
+\begin_inset Formula $G$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+update 
+\begin_inset Formula $R_{\alpha}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+if 
+\begin_inset Formula $\alpha\neq\mu$
+\end_inset
+
+, set
+\end_layout
+
+\begin_deeper
+\begin_layout Plain Layout
+\begin_inset Formula $\tau_{\alpha}=R_{\alpha,old}/R_{\alpha,new}(\tau_{\alpha}-t)+t$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+if 
+\begin_inset Formula $\alpha=\mu$
+\end_inset
+
+, generate a random number 
+\begin_inset Formula $r$
+\end_inset
+
+ and compute 
+\begin_inset Formula $\tau_{\alpha}$
+\end_inset
+
+ according to an equation similar to Step 8 of the DM
+\end_layout
+
+\begin_deeper
+\begin_layout Plain Layout
+\begin_inset Formula $\tau_{\alpha}=\frac{1}{R_{\alpha}(x)}log(\frac{1}{r})+t$
+\end_inset
+
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+replace the old 
+\begin_inset Formula $R_{\alpha}$
+\end_inset
+
+value in P with the new value.
+\end_layout
+
+\begin_layout Plain Layout
+Go to step 2.
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Next Reaction Method (NRM) [GIBSON2000]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The data structure presented in the NRM is a dependency graph.
+ Because a propensity function 
+\begin_inset Formula $R_{j}$
+\end_inset
+
+ should be modified when a given reaction is implemented.
+ A node in the graph is correspondent to a reaction channel.
+ A directed edge of the reactions 
+\begin_inset Formula $A_{i}$
+\end_inset
+
+ and 
+\begin_inset Formula $A_{j}$
+\end_inset
+
+ points out that the execution of 
+\begin_inset Formula $A_{i}$
+\end_inset
+
+ really affects the molecules in 
+\begin_inset Formula $A_{j}$
+\end_inset
+
+.
+ Due to the the dependency graph, in step 4, the number of propensity functions
+ recalculated is minimal.
+\end_layout
+
+\begin_layout Standard
+In addition, the indexed priority queue is similar to a heap tree in computer
+ science.
+ It is a tree that includes ordered pairs of the form 
+\begin_inset Formula $(i,\tau_{i})$
+\end_inset
+
+, where 
+\begin_inset Formula $i$
+\end_inset
+
+ is both the reaction channel index and the position in the tree, 
+\begin_inset Formula $\tau_{i}$
+\end_inset
+
+ is the corresponding time when the new 
+\begin_inset Formula $A_{i}$
+\end_inset
+
+ reaction is expected to occur.
+ In the tree, the value 
+\begin_inset Formula $\tau$
+\end_inset
+
+ of each parent is a smaller than that of its children.
+ The top node of the tree is always the minimum value of 
+\begin_inset Formula $\tau$
+\end_inset
+
+ and the order is only vertical.
+ In each step, the nodes of the tree will change its positions according
+ to its value to get the new prority queue.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Compare the direct method (DM) to the next reaction method (NRM), which
+ algorithm is most efficient?
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+We find that in the NRM, after the executed first initial step, all sequent
+ timesteps only ask one random number to be generated while the DM requests
+ two.
+ Even, the search step for the index 
+\begin_inset Formula $\mu$
+\end_inset
+
+ of the next reaction channel takes 
+\begin_inset Formula $O(M)$
+\end_inset
+
+ time for DM, but the corresponding task of updating the indexed priority
+ queue takes 
+\begin_inset Formula $log(M)$
+\end_inset
+
+.
+ It is the reason for that the NRM is always evaluated more efficient for
+ large scale problems.
+ To evaluate the real cost of two methods (NRM and DM) based on the total
+ simulation time, Yang Cao et al.
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "cao2004efficient"
+
+\end_inset
+
+ made experiments for both formulations of SSA on a 1.4 GHz Pentium IV Linux
+ workstation.
+ The problem used in their experiments is a stochastic model of the heat
+ shock response of E.
+ Coli 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "kurata2001feedback"
+
+\end_inset
+
+, which includes 28 variables and 61 reactions.
+ The experimental resultats pointed out that the average simulation time
+ for DM is larger than that for NRM due to its data structure maintenance.
+ In particular, for the loose coupling system where the components (or elements)
+ in a system are interconnected and dependant on each other to the least
+ extent practicable, NRM works better than DM.
+ Yang et al.
+ found that three main factors that strongly affect the CPU cost, are the
+ costs, 
+\begin_inset Formula $C_{p}$
+\end_inset
+
+ to calculate 
+\begin_inset Formula $M$
+\end_inset
+
+ propensities, 
+\begin_inset Formula $C_{a_{0}}$
+\end_inset
+
+to calculate the sum of all propensity probabilities, and 
+\begin_inset Formula $C_{s}$
+\end_inset
+
+ to search for a event 
+\begin_inset Formula $\mu$
+\end_inset
+
+.
+ Hence, to reduce these costs, Yang et al.
+ introduced a new method called the Optimized Directed Method (ODM).
+ They found that in a reaction set of a system, some reactions fire much
+ more frequently than others.
+ To reduce the search time 
+\begin_inset Formula $C_{s}$
+\end_inset
+
+, they arranged the index of the reactions in decreasing order based on
+ how often they fire.
+ So this new search depth will be much smaller than the original method
+ DM.
+ The obtained result is that 
+\begin_inset Formula $C_{s}$
+\end_inset
+
+ can be significantly declined.
+ In the next step to reduce the costs 
+\begin_inset Formula $C_{a_{0}}$
+\end_inset
+
+ and 
+\begin_inset Formula $C_{p}$
+\end_inset
+
+, the authors used an idea from the method NRM.
+ The ODM only recomputes the propensities for those reaction channels affected
+ by the last reaction.
+ Because of an extra cost used for accessing the dependency graph, so this
+ approach applies only to loose-coupling systems.
+ In conclusion, the obtained results of Yang et al.
+ broken the held belief for a long time that NRM is most efficient than
+ DM.
+ yang et al.
+ said that 
+\begin_inset Quotes eld
+\end_inset
+
+For all but a very specialized class of problems, the method DM is most
+ efficient
+\begin_inset Quotes erd
+\end_inset
+
+.
+ In particular, after two small optiminal improvements, the Optimized Direct
+ Method (ODM) has shown its cleanly optiminal CPU cost for the majority
+ of problems.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset Formula $\tau-leaping$
+\end_inset
+
+ method
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+As mentioned above, the Direct, First Reaction and Next Reaction methods
+ are all exact stochastic approaches of the underlying ordinary differential
+ equations.
+ Their advantage give us a really exact approach to simulate time-to-event
+ model.
+ This process is repeated to iterate the model.
+ But, their disavantages are 1) noise in exact simulations only affects
+ the probabilities associated with fates of individuals and the updating
+ of each consecutive event is independent – there is no assumption concerning
+ environmental stochasticity; 2) these exact solutions become too slow and
+ impractical when any one transition rate is large, when there is a big
+ number of subpopulations or one a big number of event in a metapopulation.
+ It is the reason for that, approximate models have been proposed instead
+ of the exact stochastic methods.
+ Gillespie (2001) has proposed a new method that decreases the simulation
+ accuracy, but increases simulation speed.
+ This is the 
+\begin_inset Formula $\tau-leap$
+\end_inset
+
+ method known as an approximate method reduces the number of iterations
+ by treating transition rates as constant over time periods for which this
+ approximation leads to little error 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "KeelingRohani2008"
+
+\end_inset
+
+ as mentioned above.
+ However, when we use the 
+\begin_inset Formula $\tau-leap$
+\end_inset
+
+ method, there is a possibility, the number of indivudal in each class can
+ become negative.
+ View the figure about simulation speed of methods 
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+;x;cxv;wskld,sqdf,
 \end_layout
 
 \begin_layout Subsection

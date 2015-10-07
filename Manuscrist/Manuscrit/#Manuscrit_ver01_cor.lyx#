@@ -3273,12 +3273,7 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
-These two equations represent the transition probabilities for transmission
- and recovery events occurring in the time interval 
-\begin_inset Formula $\delta t$
-\end_inset
-
-.
+These two equations 
 \end_layout
 
 \begin_layout Plain Layout
