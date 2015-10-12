@@ -1627,6 +1627,14 @@ key "gillespie1976general,gillespie1977exact"
 \end_inset
 
 .
+\end_layout
+
+\begin_layout Standard
+The SSA uses Monte Carlo (MC) methods to study the time evolution of the
+ jump process.
+ Because the basis feature of the Monte Carlo simulation is insensitive
+ to the dimensionality of the problem, and the work grows linearly with
+ the number of reaction channels in the model.
  The SSA describes time-evolution statistically correct trajectories of
  finite populations in continuous time by solving the corresponding stochastic
  differential equations.
@@ -2310,9 +2318,51 @@ reference "eqProbMu"
  Below we will show some methods that simulate exactly stochastic models.
  In this part, we will review the variant formulations of Gillespie's stochastic
  simulation algorithm (SSA) about the overview and the computational cost
- of each algorithm.
- We will point out which algorithm that is most efficient, which algorithm
+ of each algorithm, then approximate simulation methods, and finally hybrid
+ and multi-scale methods.
+ We will also point out which algorithm that is most efficient, which algorithm
  that we have used in this thesis.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+EXACT STOCHASTIC SIMULATION
+\end_layout
+
+\begin_layout Standard
+The key property for a discrete event simulation of a Markovian system basically
+ samples a time for the next event from this distribution and selecting
+ the reaction that occurs at that time.
+ The Markovian simulation methods have the basic steps of the widely used
+ kinetic Monte Carlo (KMC) method.
+ First persons introduced the method (also known as the KBL algorithm) are
+ Young and Elcock in 1966 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "young1966monte"
+
+\end_inset
+
+and independently Lebowitz, Bortz and Kalos in 1975 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "bortz1975new"
+
+\end_inset
+
+.
+ However, Gillespie really is the person who made kinetic Monte Carlo popular
+ in the chemical and biochemical domains, calling the algorithm the Stochastic
+ Simulation Algorithm (SSA) in his seminal articles 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "gillespie1976general,gillespie1977exact"
+
+\end_inset
+
+.
+ Below we will review his two papers.
 \end_layout
 
 \begin_layout Enumerate
@@ -2754,11 +2804,82 @@ We can find that on each step, the Direct Method has to generate two random
 \end_inset
 
  of the next reaction channel.
+ For this reason, the DM is more efficient than the FRM.
+ 
+\end_layout
+
+\begin_layout Standard
+The Gillespie algorithm plays an very important role and has become a fundamenta
+l method in computational systems biology.
+ Hence, many efforts have been proposed to improve its efficiency.
+ The key step in the DM is to choose the next reaction channel to implement.
+ This step applies a linear search with a complexity 
+\begin_inset Formula $O(n)$
+\end_inset
+
+ where 
+\begin_inset Formula $n$
+\end_inset
+
+ is the number of occurred event in the system.
+ Many methods have focused on this step to improve and give more efficient
+ formulations.
+ For example, Maksym in 1988 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "maksym1988fast"
+
+\end_inset
+
+ separated the set of reactions into subsets with a complexity of 
+\begin_inset Formula $O(n^{1/2})$
+\end_inset
+
+.
+ In 1995, Blue et al.
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "blue1995faster"
+
+\end_inset
+
+ extended the division approach of Maksym, where a 
+\begin_inset Formula $K-level$
+\end_inset
+
+ method results in a search time proportional to 
+\begin_inset Formula $n^{1/K}$
+\end_inset
+
+.
+ Then, in taking K to the limit, they applied a binary tree structure and
+ obtained the complexity 
+\begin_inset Formula $O(logR)$
+\end_inset
+
+.
+ Don't stop improving, the Next Reaction Method (NRM) by Gibson and Bruck
+ is more known to the systems biology domain 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "gibson2000efficient"
+
+\end_inset
+
+.
 \end_layout
 
 \end_deeper
 \begin_layout Enumerate
-Next Reaction Method (NRM) [GIBSON2000]
+Next Reaction Method (NRM) [GIBSON2000] 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "gibson2000efficient"
+
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -3033,6 +3154,36 @@ In addition, the indexed priority queue is similar to a heap tree in computer
  to its value to get the new prority queue.
 \end_layout
 
+\begin_layout Standard
+In short, the NRM solved two additional optimizations : (1) by switching
+ to absolute time, Gibson and Bruck reduced the number of random numbers
+ needed in each step from two to one; (2) because of the use of a dependency
+ graph, the number of propensities needing to be recomputed for every timestep
+ is minimum.
+ In estimating the computation time of the NRM, we find that, for every
+ reaction channel, the time until that reaction occurs is computed, maintained
+ in an indexed priority queue, and efficiently implemented as a binary heap.
+ However, the cost for maintaining the priority queue is relatively high.
+ The time to select the next event is done in constant time, but the time
+ to update the propensities is done in logarithmic time.
+ Hence, the NRM is commonly used for systems with many reaction channels
+ and where relatively few propensities change with each reaction.
+ The disadvantage of the NRM is that diffusion is added to the models and
+ the reaction-diffusion master equation is simulated, so systems arise.
+ For such models, in 2004, Elf et al.
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "elf2004spontaneous"
+
+\end_inset
+
+ proposed a variant of the NRM that is called the Next Subvolume Method
+ (NSM).
+ This method can be referred as a clever association of the ideas of NRM
+ and Maksym's method for intracellular 3D chemical reaction systems.
+\end_layout
+
 \end_deeper
 \begin_layout Enumerate
 Compare the direct method (DM) to the next reaction method (NRM), which
@@ -3110,17 +3261,29 @@ to calculate the sum of all propensity probabilities, and
 
 .
  Hence, to reduce these costs, Yang et al.
- introduced a new method called the Optimized Directed Method (ODM).
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "cao2004efficient"
+
+\end_inset
+
+ suggested that an optimization of the a new method called 
+\end_layout
+
+\begin_layout Standard
+the Optimized Directed Method (ODM).
  They found that in a reaction set of a system, some reactions fire much
  more frequently than others.
  To reduce the search time 
 \begin_inset Formula $C_{s}$
 \end_inset
 
-, they arranged the index of the reactions in decreasing order based on
- how often they fire.
- So this new search depth will be much smaller than the original method
- DM.
+, they arranged the index of the reaction ordering, placing the most frequently
+ occurring events first based on how often they fire, combined with a dependency
+ graph, achieves better results than the NRM for moderately large systems.
+ Their optimized direct method (ODM) gives a new search depth smaller than
+ the original method DM.
  The obtained result is that 
 \begin_inset Formula $C_{s}$
 \end_inset
@@ -3142,7 +3305,7 @@ to calculate the sum of all propensity probabilities, and
  In conclusion, the obtained results of Yang et al.
  broken the held belief for a long time that NRM is most efficient than
  DM.
- yang et al.
+ Yang et al.
  said that 
 \begin_inset Quotes eld
 \end_inset
@@ -3168,23 +3331,51 @@ For all but a very specialized class of problems, the method DM is most
 
 \begin_deeper
 \begin_layout Standard
-As mentioned above, the Direct, First Reaction and Next Reaction methods
+As mentioned above, the methods Direct, First Reaction and Next Reaction
  are all exact stochastic approaches of the underlying ordinary differential
  equations.
- Their advantage give us a really exact approach to simulate time-to-event
- model.
- This process is repeated to iterate the model.
+ Their advantage give us a really mathematically exact approach to simulate
+ time-to-event model (in condition that the definition of the propensity
+ functions accurately reflects the dynamics of the system).
  But, their disavantages are 1) noise in exact simulations only affects
  the probabilities associated with fates of individuals and the updating
  of each consecutive event is independent – there is no assumption concerning
  environmental stochasticity; 2) these exact solutions become too slow and
  impractical when any one transition rate is large, when there is a big
- number of subpopulations or one a big number of event in a metapopulation.
+ number of subpopulations or one a big number of event in a metapopulation;
+ because the exact algorithms SSA must proceed one reaction at a time and
+ take the task of explicitly simulating each and every reaction event, hence
+ they are much too slow for most practical problems.
  It is the reason for that, approximate models have been proposed instead
  of the exact stochastic methods.
- Gillespie (2001) has proposed a new method that decreases the simulation
- accuracy, but increases simulation speed.
- This is the 
+ The approximate approaches ask the question : 
+\begin_inset Quotes eld
+\end_inset
+
+How many times does each action channel fire in each subinterval? In each
+ step, the 
+\begin_inset Formula $\tau-leaping$
+\end_inset
+
+ method can proceed with many reactions?
+\begin_inset Quotes erd
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Gillespie (2001) 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "gillespie2001approximate"
+
+\end_inset
+
+ has proposed a new method that decreases the simulation accuracy, but speeds
+ up the stochastic simulation.
+ This is the explicit Poisson 
 \begin_inset Formula $\tau-leap$
 \end_inset
 
@@ -3197,17 +3388,276 @@ key "KeelingRohani2008"
 
 \end_inset
 
- as mentioned above.
- However, when we use the 
+.
+ The 
+\begin_inset Formula $\tau-leap$
+\end_inset
+
+ method applies a Poisson approximation to can 
+\begin_inset Quotes eld
+\end_inset
+
+leap over
+\begin_inset Quotes erd
+\end_inset
+
+ many fast reactions and approximate the stochastic behavior of the system
+ very well.
+ The 
+\begin_inset Formula $\tau-leap$
+\end_inset
+
+ method is described as follows :
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float algorithm
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+1.
+ Let 
+\begin_inset Formula $\delta t$
+\end_inset
+
+ be the time increment between steps, 
+\begin_inset Formula $\delta t$
+\end_inset
+
+ is fixed as a constant.
+\end_layout
+
+\begin_layout Plain Layout
+2.
+ Let 
+\begin_inset Formula $M_{T}(t)$
+\end_inset
+
+ and 
+\begin_inset Formula $M_{R}(t)$
+\end_inset
+
+ be the number of transmission and recovery events by time 
+\begin_inset Formula $t$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Plain Layout
+3.
+ Setting 
+\begin_inset Formula $\delta M_{i}=M_{i}(t+\delta t)-M_{i}(t)$
+\end_inset
+
+ 
+\begin_inset Formula $i=T,R)$
+\end_inset
+
+, then
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula 
+\begin{align*}
+ & P(\delta M_{T}=1|X,Y) & = & \frac{\beta XY}{N}\delta t+o(\delta t)\\
+ & P(\delta M_{R}=1|Y) & = & \gamma Y\delta t+o(\delta t)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+These two equations represent the transition probabilities for transmission
+ and recovery events occurring in the time interval 
+\begin_inset Formula $\delta t$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Plain Layout
+4.
+ For small 
+\begin_inset Formula $\delta t$
+\end_inset
+
+, the increments 
+\begin_inset Formula $\delta M_{i}$
+\end_inset
+
+ are approximately Poisson, such that:
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula 
+\begin{align*}
+\delta M_{T} & \approx & Poisson(\frac{\beta XY}{N}\delta t)\\
+\delta M_{R} & \approx & Poisson(\gamma Y\delta t)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+5.
+ Updating the values of the variables :
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula 
+\begin{align*}
+X(t+\delta t) & = & X(t)-\delta M_{T}+\delta M_{R}\\
+Y(t+\delta t) & = & Y(t)+\delta M_{T}-\delta M_{R}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+6.
+ Updating the time, 
+\begin_inset Formula $t=t+\delta t$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Plain Layout
+7.
+ Return to Step 4.
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Formula $\tau-leap$
+\end_inset
+
+ method proposed by Gillespie (2001)
+\begin_inset CommandInset citation
+LatexCommand cite
+key "KeelingRohani2008"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The main problem in the 
+\begin_inset Formula $\tau-leap$
+\end_inset
+
+ method is relative to the value of the time increment between steps, 
+\begin_inset Formula $\delta t$
+\end_inset
+
+.
+ How do we choose the value fixed of 
+\begin_inset Formula $\delta t$
+\end_inset
+
+? 
+\begin_inset Formula $\delta t$
+\end_inset
+
+ must satisfy two conditions, large enough so that many reaction events
+ occur in that time and small enough of the leap condition.
+ The leap condition is pointed out that 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "cao2007adaptive"
+
+\end_inset
+
+: For the current state 
+\begin_inset Formula $x$
+\end_inset
+
+, the value of 
+\begin_inset Formula $\delta t$
+\end_inset
+
+ is asked to be small enought that the modification in the state during
+ 
+\begin_inset Formula $[t,t+\delta t]$
+\end_inset
+
+ will be so small that no propensity function will suffer an appreciable
+ change in its value.
+ The best advantage of the 
+\begin_inset Formula $\tau-leap$
+\end_inset
+
+ method is to speed up the stochastic simulation of the loose coupling systems.
+ However, the number of firings of each reaction channels during a fixed
+ time step 
+\begin_inset Formula $\delta t$
+\end_inset
+
+ is approximated as a Poisson random varibale.
+ This Poisson variable can have arbitrarily large sample values.
+ Hence, there exists the possibility that this 
+\begin_inset Formula $\tau-leap$
+\end_inset
+
+ method will cause one or more reaction channels to fire so many times during
+ 
+\begin_inset Formula $\delta t$
+\end_inset
+
+ that number of reactants in each population will be became negative, in
+ particular in systems with multiple timescales (for short the stiff systems).
+\end_layout
+
+\begin_layout Standard
+To solve the first issue, Yang et al.
+ (2005) 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "cao2005avoiding"
+
+\end_inset
+
+ proposed a modified Poisson tau-leaping procedure that also avoids negative
+ populations, but is easier to implement than the binomial procedure.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+However, when we use the 
 \begin_inset Formula $\tau-leap$
 \end_inset
 
  method, there is a possibility, the number of indivudal in each class can
  become negative.
- View the figure about simulation speed of methods 
+ 
 \end_layout
 
-\end_deeper
 \begin_layout Enumerate
 ;x;cxv;wskld,sqdf,
 \end_layout

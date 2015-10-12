@@ -14,6 +14,66 @@
   Publisher                = {American Society for Microbiology (ASM)}
 }
 
+@Article{blue1995faster,
+  Title                    = {Faster monte carlo simulations},
+  Author                   = {Blue, James L and Beichl, Isabel and Sullivan, Francis},
+  Journal                  = {Physical Review E},
+  Year                     = {1995},
+  Number                   = {2},
+  Pages                    = {R867},
+  Volume                   = {51},
+
+  Publisher                = {APS}
+}
+
+@Article{bortz1975new,
+  Title                    = {A new algorithm for Monte Carlo simulation of Ising spin systems},
+  Author                   = {Bortz, Alfred B and Kalos, Malvin H and Lebowitz, Joel L},
+  Journal                  = {Journal of Computational Physics},
+  Year                     = {1975},
+  Number                   = {1},
+  Pages                    = {10--18},
+  Volume                   = {17},
+
+  Publisher                = {Elsevier}
+}
+
+@Article{cao2007adaptive,
+  Title                    = {Adaptive explicit-implicit tau-leaping method with automatic tau selection},
+  Author                   = {Cao, Yang and Gillespie, Daniel T and Petzold, Linda R},
+  Journal                  = {The Journal of chemical physics},
+  Year                     = {2007},
+  Number                   = {22},
+  Pages                    = {224101},
+  Volume                   = {126},
+
+  Publisher                = {AIP Publishing}
+}
+
+@Article{cao2005avoiding,
+  Title                    = {Avoiding negative populations in explicit Poisson tau-leaping},
+  Author                   = {Cao, Yang and Gillespie, Daniel T and Petzold, Linda R},
+  Journal                  = {The Journal of chemical physics},
+  Year                     = {2005},
+  Number                   = {5},
+  Pages                    = {054104},
+  Volume                   = {123},
+
+  Publisher                = {AIP Publishing}
+}
+
+@Article{cao2004efficient,
+  Title                    = {Efficient formulation of the stochastic simulation algorithm for chemically reacting systems},
+  Author                   = {Cao, Yang and Li, Hong and Petzold, Linda},
+  Journal                  = {The journal of chemical physics},
+  Year                     = {2004},
+  Number                   = {9},
+  Pages                    = {4059--4067},
+  Volume                   = {121},
+
+  Publisher                = {AIP Publishing}
+}
+
 @Article{chauvin1994constitution,
   Title                    = {Constitution and monitoring of an epidemiological surveillance network with sentinel general practitioners},
   Author                   = {Chauvin, Pierre},
@@ -26,6 +86,18 @@
   Publisher                = {Springer}
 }
 
+@Article{elf2004spontaneous,
+  Title                    = {Spontaneous separation of bi-stable biochemical systems into spatial domains of opposite phases},
+  Author                   = {Elf, Johan and Ehrenberg, M{\aa}ns},
+  Journal                  = {Systems biology},
+  Year                     = {2004},
+  Number                   = {2},
+  Pages                    = {230--236},
+  Volume                   = {1},
+
+  Publisher                = {IET}
+}
+
 @Article{fenner2001SmallpoxErad,
   Title                    = {[Book Review: The Eradication of Smallpox: Edward Jenner and the First and Only Eradication of a Human Infectious Disease Herve Bazin, Andrew Morgan, Glenise Morgan]},
   Author                   = {Fenner, Frank},
@@ -34,6 +106,30 @@
   Number                   = {4},
   Pages                    = {476},
   Volume                   = {76}
+}
+
+@Article{gibson2000efficient,
+  Title                    = {Efficient exact stochastic simulation of chemical systems with many species and many channels},
+  Author                   = {Gibson, Michael A and Bruck, Jehoshua},
+  Journal                  = {The journal of physical chemistry A},
+  Year                     = {2000},
+  Number                   = {9},
+  Pages                    = {1876--1889},
+  Volume                   = {104},
+
+  Publisher                = {ACS Publications}
+}
+
+@Article{gillespie2001approximate,
+  Title                    = {Approximate accelerated stochastic simulation of chemically reacting systems},
+  Author                   = {Gillespie, Daniel T},
+  Journal                  = {The Journal of Chemical Physics},
+  Year                     = {2001},
+  Number                   = {4},
+  Pages                    = {1716--1733},
+  Volume                   = {115},
+
+  Publisher                = {AIP Publishing}
 }
 
 @Article{gillespie1977exact,
@@ -134,6 +230,18 @@
   Volume                   = {35}
 }
 
+@Article{maksym1988fast,
+  Title                    = {Fast Monte Carlo simulation of MBE growth},
+  Author                   = {Maksym, PA},
+  Journal                  = {Semiconductor Science and Technology},
+  Year                     = {1988},
+  Number                   = {6},
+  Pages                    = {594},
+  Volume                   = {3},
+
+  Publisher                = {IOP Publishing}
+}
+
 @Article{matrajt2010optimizing,
   Title                    = {Optimizing vaccine allocation at different points in time during an epidemic},
   Author                   = {Matrajt, Laura and Longini Jr, Ira M},
@@ -232,5 +340,17 @@
   Author                   = {Wilson, David Sloan},
   Publisher                = {Benjamin/Cummings Pub. Co.},
   Year                     = {1980}
+}
+
+@Article{young1966monte,
+  Title                    = {Monte Carlo studies of vacancy migration in binary ordered alloys: I},
+  Author                   = {Young, WM and Elcock, EW},
+  Journal                  = {Proceedings of the Physical Society},
+  Year                     = {1966},
+  Number                   = {3},
+  Pages                    = {735},
+  Volume                   = {89},
+
+  Publisher                = {IOP Publishing}
 }
 
