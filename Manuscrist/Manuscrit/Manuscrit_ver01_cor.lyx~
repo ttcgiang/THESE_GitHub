@@ -3268,11 +3268,8 @@ key "cao2004efficient"
 
 \end_inset
 
- suggested that an optimization of the a new method called 
-\end_layout
-
-\begin_layout Standard
-the Optimized Directed Method (ODM).
+ suggested that a new optimization called the Optimized Directed Method
+ (ODM).
  They found that in a reaction set of a system, some reactions fire much
  more frequently than others.
  To reduce the search time 

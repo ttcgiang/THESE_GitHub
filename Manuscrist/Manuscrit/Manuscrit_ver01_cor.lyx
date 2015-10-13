@@ -3318,6 +3318,18 @@ For all but a very specialized class of problems, the method DM is most
  of problems.
 \end_layout
 
+\begin_layout Standard
+Through this result, we can say that the efficience of the ODM, currently
+ is evaluated to be the fastest known algorithm for stochastic simulation
+ for most biological problems.
+ This method can be negatively impacted by transient shifts in the frequency
+ at which reactions occur, and commonly used in biochemical reaction networks
+ because of the inductive and repressive nature of genetic regulation.
+ Due to these shifts, the ODM defeats the pre-simulation strategy employed
+ within the ODM to decrease the time complexity of the SSA's reaction selection
+ step and thus degrade performance.
+\end_layout
+
 \end_deeper
 \begin_layout Enumerate
 \begin_inset Formula $\tau-leaping$
