@@ -362,7 +362,7 @@ is one of the most applicable model to descrire spread of diseases
 in human communities. This metapopulation consists of distinct ``subpopulation,
 each of which fluctuates independently, together with interaction
 limited by a coupling parameter $\rho$. These subpopulations may
-be filled or empty and contact with any neighbours.
+be filled or empty and contact with any neighbours. 
 
 
 \subsection{Epidemiologic models}
@@ -538,7 +538,7 @@ It is why we will use the stochastic models to predict extinction
 propability of disease in spatial context\cite{KeelingRohani2008}. 
 
 
-\subsection{algorithmes de simulation stochastique }
+\subsection{Algorithmes de simulation stochastique }
 
 Stochastic simulation works on variables that both are random and
 can be changed with certain probability. Today, these stochastic models
@@ -560,7 +560,12 @@ deterministic models may not be accurate. It is the reason for that
 the fluctuations of these systems can be simulated exactly by applying
 stochastic models, particularly as well as the Stochastic Simulation
 Algorithms (SSA) \cite{gillespie1976general,gillespie1977exact}.
-The SSA describes time-evolution statistically correct trajectories
+
+The SSA uses Monte Carlo (MC) methods to study the time evolution
+of the jump process. Because the basis feature of the Monte Carlo
+simulation is insensitive to the dimensionality of the problem, and
+the work grows linearly with the number of reaction channels in the
+model. The SSA describes time-evolution statistically correct trajectories
 of finite populations in continuous time by solving the corresponding
 stochastic differential equations. Using the stochastic models can
 solve three questions. (1) These models take account the discrete
@@ -594,39 +599,96 @@ randomness in such a system. The methods modelling the event-driven
 model demands explicit presentation of events. For the santard SEIR
 model, we have to consider the nine events that can occur, each causing
 the numbers in the relative groups to go up or down by one. Table
-\ref{tab:stoch_ev} lists all the events of the model, occurring in
-subpopulation $i$ of a metapopulation:
+\ref{tab:stoch_event} lists all the events of the model, occurring
+in subpopulation $i$ of a metapopulation:
 
-\begin{table}[tbph]
-\begin{centering}
-\protect\caption{\label{tab:stoch_ev}Events of the stochastic version of the model
-of equations \ref{eq:dS}-\ref{eq:dR}, occuring in subpopulation
-$i$.}
-
-\par\end{centering}
-
-\centering{}%
-\begin{tabular}{lcc}
-\toprule Events  & Rates  & Transitions \tabularnewline
-\midrule birth  & $\mu N_{i}$  & $S_{i}\leftarrow S_{i}+1$ and $N_{i}\leftarrow N_{i}+1$ \tabularnewline
-death of a susceptible  & $\mu S_{i}$  & $S_{i}\leftarrow S_{i}-1$ \tabularnewline
-death of an exposed  & $\mu E_{i}$  & $E_{i}\leftarrow E_{i}-1$ \tabularnewline
+\begin{table}
+\begin{tabular}{|c|c|c|}
+\hline 
+Events  & Rates & Transitions \tabularnewline
+\hline 
+\hline 
+birth  & $\mu N_{i}$  & $S_{i}\leftarrow S_{i}+1$ and $N_{i}\leftarrow N_{i}+1$\tabularnewline
+\hline 
+death of a susceptible & $\mu S_{i}$  & $S_{i}\leftarrow S_{i}-1$ \tabularnewline
+\hline 
+death of an exposed  & $\mu E_{i}$  & \multicolumn{1}{c|}{$E_{i}\leftarrow E_{i}-1$ }\tabularnewline
+\hline 
 death of an infected  & $\mu I_{i}$  & $I_{i}\leftarrow I_{i}-1$ \tabularnewline
-death of an immune  & $\mu R_{i}$  & $I_{i}\leftarrow I_{i}-1$ \tabularnewline
-infection  & $\lambda_{i}S_{i}$  & $S_{i}\leftarrow S_{i}-1$ and $E_{i}\leftarrow E_{i}+1$ \tabularnewline
+\hline 
+death of an immune  & $\mu R_{i}$ & $I_{i}\leftarrow I_{i}-1$ \tabularnewline
+\hline 
+infection  & $\lambda_{i}S_{i}$ & $S_{i}\leftarrow S_{i}-1$ and $E_{i}\leftarrow E_{i}+1$ \tabularnewline
+\hline 
 becoming infectious  & $\sigma E_{i}$  & $E_{i}\leftarrow E_{i}-1$ and $I_{i}\leftarrow I_{i}+1$ \tabularnewline
+\hline 
 recovery  & $\gamma I_{i}$  & $I_{i}\leftarrow I_{i}-1$ and $R_{i}\leftarrow R_{i}+1$ \tabularnewline
-\bottomrule  &  & \tabularnewline
+\hline 
 \end{tabular}
+
+\protect\caption{Events of the stochastic version of the model of equations, occuring
+in subpopulation $i$.}
+
+
+\label{tab:stoch_event}
 \end{table}
 
 
 To implement this SEIR stochastic model, there are many different
 methods, thought most researchers often use the method of Gillespie
-in 1977. Below we will show some methods that simulate exactly stochastic
-models :
+in 1977. Starting from the initial states, the stochastic simulation
+algorithms simulate the trajectory in population processes by repeatedly
+answering the following two questions and updating the states.
+\begin{itemize}
+\item When (time $\tau$) will the next reaction fire?
+\item Which (reaction channel index $\mu$) reaction will fire next?
+\end{itemize}
+So the key parameters in the SSA model are $\tau$ and $\mu$. To
+calculate these distributions, we set $a_{0}(x)=\sum_{j=1}^{M}a_{j}(x)$.
+The time $\tau$, given $X(t)=x$, that the reaction will fire at
+$t+\tau$, is the exponentially distributied random variable with
+mean $\frac{1}{a_{0}(x)}$,
+
+\begin{align*}
+ & P(\tau=s)=a_{0}(x)exp(-a_{0}(x)s),\\
+\end{align*}
+\label{eqProbTau}
+
+and the index $\mu$ is the integer random variable of that firing
+reaction with probability :
+
+\begin{align*}
+ & P(\mu=j)=\frac{a_{j}(x)}{a_{0}(x)}\\
+\end{align*}
+\label{eqProbMu}
+
+In each step, the SSA generates random bumbers and calculates $\tau$
+and $\mu$ according to the probability distribution \ref{eqProbTau}
+and \ref{eqProbMu}. Below we will show some methods that simulate
+exactly stochastic models. In this part, we will review the variant
+formulations of Gillespie's stochastic simulation algorithm (SSA)
+about the overview and the computational cost of each algorithm, then
+approximate simulation methods, and finally hybrid and multi-scale
+methods. We will also point out which algorithm that is most efficient,
+which algorithm that we have used in this thesis.
+
+
+\subsubsection{Exact stochastic simulation}
+
+The key property for a discrete event simulation of a Markovian system
+basically samples a time for the next event from this distribution
+and selecting the reaction that occurs at that time. The Markovian
+simulation methods have the basic steps of the widely used kinetic
+Monte Carlo (KMC) method. First persons introduced the method (also
+known as the KBL algorithm) are Young and Elcock in 1966 \cite{young1966monte}and
+independently Lebowitz, Bortz and Kalos in 1975 \cite{bortz1975new}.
+However, Gillespie really is the person who made kinetic Monte Carlo
+popular in the chemical and biochemical domains, calling the algorithm
+the Stochastic Simulation Algorithm (SSA) in his seminal articles
+\cite{gillespie1976general,gillespie1977exact}. Below we will review
+his two papers.
 \begin{enumerate}
-\item First reaction method by Gillespie :
+\item First reaction method (FRM) {[}GILLESPIE 1976{]} \cite{gillespie1977exact}:
 
 
 The first reaction method was proposed by Gillespie in 1976. It models
@@ -639,18 +701,438 @@ method :
 
 
 \begin{algorithm}
-1. Label all possible events E1,...,En
+0. Labell all species $X_{1},...,X_{k}$.
 
-\protect\caption{Gillespie's first reaction method in 1976}
+1. Label all possible events $E_{1}$,...,$E_{n}$.
 
+2. For each event determine the rate at which it occurs, $R_{1}$,...,$R_{n}$.
 
+3. \textbf{While} $(t<t_{end}$ and $R_{N}=\sum_{v=1}^{n}R_{v}\neq0)$
+\textbf{then}
+
+4. \textbf{For} $ $$m=1,n$ \textbf{do}
+
+5. Generate one random number $U(0,1)$ : $RAND_{m}$ 
+
+6. At the event $m$ calculate the time until the next event is $\delta t_{m}=\frac{-1}{R_{m}}log(RAND_{m})$ 
+
+7. \textbf{end for}
+
+8. Find the event, $p$ , that happens first (has the smallest $\delta t$)
+
+9. The time is now updated, $t\rightarrow\delta t_{p}$
+
+10. Update $\{X_{i}\}$ following the event $p$.
+
+11. Return to Step 3.
+
+\protect\caption{Gillespie's first reaction method in 1976 - MONOPOPULATION}
 \end{algorithm}
 
 
-\item qsdsqf
-\item qsfsdf
-\item qsfdsq
+
+If supposing that generate one random number takes $C_{rand}$ time.
+Then the FRM takes $nC_{rand}$ time per step. It is a big problem
+for that Gillespie proposed a new improved algorithm in 1976. The
+FRM has three main disadvantages : (1) generating random numbers is
+relatively slow, (2) the FRM generates a cycle too many random numbers
+in the case where the simulation time is big and the random number
+generator will have tend on saturation when it generates too many
+numbers, (3) the FRM is difficult for indexing the events to effectively
+implement the update step.
+
+\item Direct method (DM) {[}GILLESPIE 1977{]} \cite{gillespie1976general}
+:
+
+
+The Direct Method was proposed by Gillespie in 1977. The main objective
+is to present the stochastic simulation for chemically reacting systems.
+The following pseudo-code of this method is :
+
+
+\begin{algorithm}
+0. Labell all species $X_{1},...,X_{k}$.
+
+1. Label all possible events $E_{1}$,...,$E_{n}$.
+
+2. For each event determine the rate at which it occurs, $R_{1}$,...,$R_{n}$.
+
+3. \textbf{While} $(t<t_{end}$ and $R_{N}=\sum_{v=1}^{n}R_{v}\neq0)$
+\textbf{then}
+
+4. \textbf{For} $ $$m=1,n$ \textbf{do}
+
+5. Calculate $R_{m}$ and $R_{m}=\sum_{v=1}^{m}R_{v}$
+
+6. \textbf{end for}
+
+7. Generate uniformly distributed random numbers $(r_{1},r_{2})$
+
+8. Determine when $(\tau=ln(1/r_{1})/R_{N}$ and which $(min\{p|R_{p}\geq r_{2}R_{N}\})$
+reaction will occur 
+
+9. Set $t=t+\tau$
+
+10. Update $\{X_{i}\}$
+
+11. Return to step 3
+
+\protect\caption{Direct method of Gillespie in 1977 - MONOPOPULATION \cite{gillespie1976general}}
+\end{algorithm}
+
+
+
+We can find that on each step, the Direct Method has to generate two
+random numbers. Supposing that generate one random number takes $C_{rand}$
+time. Hense, on each step, the DM takes $(2C_{rand}+O(n))$ where
+$O(n)$ is time to search the index $p$ of the next reaction channel.
+For this reason, the DM is more efficient than the FRM. 
+
+
+The Gillespie algorithm plays an very important role and has become
+a fundamental method in computational systems biology. Hence, many
+efforts have been proposed to improve its efficiency. The key step
+in the DM is to choose the next reaction channel to implement. This
+step applies a linear search with a complexity $O(n)$ where $n$
+is the number of occurred event in the system. Many methods have focused
+on this step to improve and give more efficient formulations. For
+example, Maksym in 1988 \cite{maksym1988fast} separated the set of
+reactions into subsets with a complexity of $O(n^{1/2})$. In 1995,
+Blue et al. \cite{blue1995faster} extended the division approach
+of Maksym, where a $K-level$ method results in a search time proportional
+to $n^{1/K}$. Then, in taking K to the limit, they applied a binary
+tree structure and obtained the complexity $O(logR)$. Don't stop
+improving, the Next Reaction Method (NRM) by Gibson and Bruck is more
+known to the systems biology domain \cite{gibson2000efficient}.
+
+\item Next Reaction Method (NRM) {[}GIBSON2000{]} \cite{gibson2000efficient}
+
+
+In 2000, Gibson and Bruck successful tranformed the algorithm FRM
+into an equivalent but more efficient new structure. The Next Reaction
+Method applies just a sigle random number per iteration. Moreover,
+the initiation times of the reactions can be set as the firing times
+of independent, unit rate Poisson processes with internal times given
+by integrated propensity functions. It is evaluated steady faster
+than the FRM and more efficient than DM in special cases as the system
+includes many species and loosely coupled reaction channels. The NRM
+is presented as follows :
+
+
+\begin{algorithm}
+1. Initialize 
+\begin{enumerate}
+\item set initial numbers of species, set $t=0$, generate a dependency
+graph $G$
+\item calculate the propensity function $R{}_{j}(x)$, for all $j$
+\item for each $j$, generate a putative time $\tau_{j}$ according to an
+exponential distribution with parameter $R_{j}(x)$
+\item store the $\tau_{j}$ values in an indexed priority queue $P$
 \end{enumerate}
+2. Let $\mu$ be the reaction whose putative time $\tau_{\mu}$ stored
+in $P$ is least. Set $\tau=\tau_{\mu}$
+
+3. Update the states of the species to reflect execution of reaction
+$\mu$. Set $t=\tau$
+
+4. For each edge $(\mu,\alpha)$ in the dependency graph $G$
+\begin{enumerate}
+\item update $R_{\alpha}$
+\item if $\alpha\neq\mu$, set
+
+
+$\tau_{\alpha}=R_{\alpha,old}/R_{\alpha,new}(\tau_{\alpha}-t)+t$
+
+\item if $\alpha=\mu$, generate a random number $r$ and compute $\tau_{\alpha}$
+according to an equation similar to Step 8 of the DM
+
+
+$\tau_{\alpha}=\frac{1}{R_{\alpha}(x)}log(\frac{1}{r})+t$ 
+
+\item replace the old $R_{\alpha}$value in P with the new value.
+\end{enumerate}
+Go to step 2.
+
+\protect\caption{Next Reaction Method (NRM) {[}GIBSON2000{]}}
+\end{algorithm}
+
+
+
+The data structure presented in the NRM is a dependency graph. Because
+a propensity function $R_{j}$ should be modified when a given reaction
+is implemented. A node in the graph is correspondent to a reaction
+channel. A directed edge of the reactions $A_{i}$ and $A_{j}$ points
+out that the execution of $A_{i}$ really affects the molecules in
+$A_{j}$. Due to the the dependency graph, in step 4, the number of
+propensity functions recalculated is minimal.
+
+
+In addition, the indexed priority queue is similar to a heap tree
+in computer science. It is a tree that includes ordered pairs of the
+form $(i,\tau_{i})$, where $i$ is both the reaction channel index
+and the position in the tree, $\tau_{i}$ is the corresponding time
+when the new $A_{i}$ reaction is expected to occur. In the tree,
+the value $\tau$ of each parent is a smaller than that of its children.
+The top node of the tree is always the minimum value of $\tau$ and
+the order is only vertical. In each step, the nodes of the tree will
+change its positions according to its value to get the new prority
+queue.
+
+
+In short, the NRM solved two additional optimizations : (1) by switching
+to absolute time, Gibson and Bruck reduced the number of random numbers
+needed in each step from two to one; (2) because of the use of a dependency
+graph, the number of propensities needing to be recomputed for every
+timestep is minimum. In estimating the computation time of the NRM,
+we find that, for every reaction channel, the time until that reaction
+occurs is computed, maintained in an indexed priority queue, and efficiently
+implemented as a binary heap. However, the cost for maintaining the
+priority queue is relatively high. The time to select the next event
+is done in constant time, but the time to update the propensities
+is done in logarithmic time. Hence, the NRM is commonly used for systems
+with many reaction channels and where relatively few propensities
+change with each reaction. The disadvantage of the NRM is that diffusion
+is added to the models and the reaction-diffusion master equation
+is simulated, so systems arise. For such models, in 2004, Elf et al.
+\cite{elf2004spontaneous} proposed a variant of the NRM that is called
+the Next Subvolume Method (NSM). This method can be referred as a
+clever association of the ideas of NRM and Maksym's method for intracellular
+3D chemical reaction systems.
+
+\item Compare the direct method (DM) to the next reaction method (NRM),
+which algorithm is most efficient?
+
+
+We find that in the NRM, after the executed first initial step, all
+sequent timesteps only ask one random number to be generated while
+the DM requests two. Even, the search step for the index $\mu$ of
+the next reaction channel takes $O(M)$ time for DM, but the corresponding
+task of updating the indexed priority queue takes $log(M)$. It is
+the reason for that the NRM is always evaluated more efficient for
+large scale problems. To evaluate the real cost of two methods (NRM
+and DM) based on the total simulation time, Yang Cao et al. \cite{cao2004efficient}
+made experiments for both formulations of SSA on a 1.4 GHz Pentium
+IV Linux workstation. The problem used in their experiments is a stochastic
+model of the heat shock response of E. Coli \cite{kurata2001feedback},
+which includes 28 variables and 61 reactions. The experimental resultats
+pointed out that the average simulation time for DM is larger than
+that for NRM due to its data structure maintenance. In particular,
+for the loose coupling system where the components (or elements) in
+a system are interconnected and dependant on each other to the least
+extent practicable, NRM works better than DM. Yang et al. found that
+three main factors that strongly affect the CPU cost, are the costs,
+$C_{p}$ to calculate $M$ propensities, $C_{a_{0}}$to calculate
+the sum of all propensity probabilities, and $C_{s}$ to search for
+a event $\mu$. Hence, to reduce these costs, Yang et al. \cite{cao2004efficient}
+suggested that a new optimization called the Optimized Directed Method
+(ODM). They found that in a reaction set of a system, some reactions
+fire much more frequently than others. To reduce the search time $C_{s}$,
+they arranged the index of the reaction ordering, placing the most
+frequently occurring events first based on how often they fire, combined
+with a dependency graph, achieves better results than the NRM for
+moderately large systems. Their optimized direct method (ODM) gives
+a new search depth smaller than the original method DM. The obtained
+result is that $C_{s}$ can be significantly declined. In the next
+step to reduce the costs $C_{a_{0}}$ and $C_{p}$, the authors used
+an idea from the method NRM. The ODM only recomputes the propensities
+for those reaction channels affected by the last reaction. Because
+of an extra cost used for accessing the dependency graph, so this
+approach applies only to loose-coupling systems. In conclusion, the
+obtained results of Yang et al. have shown that the ODM is faster
+than NRM, in particular, unless the system is very nearly uncoupled.
+This result broken the held belief for a long time that NRM was the
+fastest. 
+
+
+Through this result, we can say that the efficience of the ODM, currently
+is evaluated to be the fastest known algorithm for stochastic simulation
+for most biological problems. This method can be negatively impacted
+by transient shifts in the frequency at which reactions occur, and
+commonly used in biochemical reaction networks because of the inductive
+and repressive nature of genetic regulation. Due to these shifts,
+the ODM defeats the pre-simulation strategy employed within the ODM
+to decrease the time complexity of the SSA's reaction selection step
+and thus degrade performance. In order to decrease this degradation,
+in 2005, McCollum et al. \cite{mccollum2006sorting} introduced the
+sorting direct method (SDM) that improves on ODM. This method eliminates
+the pre-simulations required by the ODM and permits the simulator
+to adapt to sharp changes in reaction execution frequencies. The common
+point of these two methods is to focus on the optimization of the
+system instead of the method itself by reducing the average number
+of operations required to obtain the index of the next reaction to
+fire. This average number of operations is called the search depth
+that is hightly dependent on the biochemical system. For these two
+methods, the search depth us $O(M)$. Besides, within the paper of
+McCollum et al. \cite{mccollum2006sorting}, the authors also gave
+a detailed overview of the difference in the implementation of DM,
+NRM, ODM and SDM. In 2006, Li and Petzold introduced an alternative
+formulation of the SSA, named the Logarithmic Direct Method (LDM).
+In this method, the computational cost is independent of the ordering
+of the reactions and no need for a pre-simulation. The LDM declined
+the search depth to $O(logM)$, and pointed out the efficiency of
+the logarithmic method.
+
+
+Two years later, in 2008, a different approach is proposed by Hellander
+\cite{hellander2008efficient} where the authors used the uniformization
+and quasi-Monte Carlo to reduce the number of trajectories needed
+to compute an approximation of the probability density function (PDF)
+at the price of a higher cost per trajectory. Another is also found
+to reduce the number of simulation in \cite{lecot2004quasi}.
+
+\end{enumerate}
+A new search direction is very beneficial to generate ensembles of
+trajectories in parallel. Because the parallelization of a single
+trajectory is very hard. Apply clusters to implement SSA is proposed
+by Li \cite{liStochKit}. Then, Li et al. continued executing SSA
+on the graphics processing unit \cite{li2007stochastic,li2010efficient}. 
+
+
+\subsubsection{Approximate methods}
+
+As mentioned above, the methods Direct, First Reaction and Next Reaction
+are all exact stochastic approaches of the underlying ordinary differential
+equations. Their advantage give us a really mathematically exact approach
+to simulate time-to-event model (in condition that the definition
+of the propensity functions accurately reflects the dynamics of the
+system). But, their disavantages are 1) noise in exact simulations
+only affects the probabilities associated with fates of individuals
+and the updating of each consecutive event is independent – there
+is no assumption concerning environmental stochasticity; 2) these
+exact solutions become too slow and impractical when any one transition
+rate is large, when there is a big number of subpopulations or one
+a big number of event in a metapopulation; because the exact algorithms
+SSA must proceed one reaction at a time and take the task of explicitly
+simulating each and every reaction event, hence they are much too
+slow for most practical problems. It is the reason for that, approximate
+models have been proposed instead of the exact stochastic methods.
+The approximate approaches ask the question : ``How many times does
+each action channel fire in each subinterval?''
+
+These approaches could be used in larger systems, and made much faster
+than the exact methods. However, the exact structure of the Markov
+chain is no logner simulated in the approximate approaches, hence
+the validity of the approximations become a main issue. Now we will
+show some mostly used approximate methods. 
+\begin{enumerate}
+\item $\tau-leaping$ method
+
+
+Gillespie (2001) \cite{gillespie2001approximate} has proposed a new
+method that decreases the simulation accuracy, but speeds up the stochastic
+simulation. This is the explicit Poisson $\tau-leap$ method known
+as an approximate method reduces the number of iterations by treating
+transition rates as constant over time periods for which this approximation
+leads to little error \cite{KeelingRohani2008}. The $\tau-leap$
+method applies a Poisson approximation to can ``leap over'' many
+fast reactions and approximate the stochastic behavior of the system
+very well. The $\tau-leap$ method is described as follows :
+
+
+\begin{algorithm}
+1. Let $\delta t$ be the time increment between steps, $\delta t$
+is fixed as a constant.
+
+2. Let $M_{T}(t)$ and $M_{R}(t)$ be the number of transmission and
+recovery events by time $t$.
+
+3. Setting $\delta M_{i}=M_{i}(t+\delta t)-M_{i}(t)$ $i=T,R)$, then
+
+\begin{align*}
+ & P(\delta M_{T}=1|X,Y) & = & \frac{\beta XY}{N}\delta t+o(\delta t)\\
+ & P(\delta M_{R}=1|Y) & = & \gamma Y\delta t+o(\delta t)
+\end{align*}
+
+
+These two equations represent the transition probabilities for transmission
+and recovery events occurring in the time interval $\delta t$.
+
+4. For small $\delta t$, the increments $\delta M_{i}$ are approximately
+Poisson, such that:
+
+\begin{align*}
+\delta M_{T} & \approx & Poisson(\frac{\beta XY}{N}\delta t)\\
+\delta M_{R} & \approx & Poisson(\gamma Y\delta t)
+\end{align*}
+
+
+5. Updating the values of the variables :
+
+\begin{align*}
+X(t+\delta t) & = & X(t)-\delta M_{T}+\delta M_{R}\\
+Y(t+\delta t) & = & Y(t)+\delta M_{T}-\delta M_{R}
+\end{align*}
+
+
+6. Updating the time, $t=t+\delta t$.
+
+7. Return to Step 4.
+
+\protect\caption{$\tau-leap$ method proposed by Gillespie (2001)\cite{KeelingRohani2008}}
+\end{algorithm}
+
+
+
+The main problem in the $\tau-leap$ method is relative to the value
+of the time increment between steps, $\delta t$. How do we choose
+the value fixed of $\delta t$? $\delta t$ must satisfy two conditions,
+large enough so that many reaction events occur in that time and small
+enough of the leap condition. The leap condition is pointed out that
+\cite{cao2007adaptive}: For the current state $x$, the value of
+$\delta t$ is asked to be small enought that the modification in
+the state during $[t,t+\delta t]$ will be so small that no propensity
+function will suffer an appreciable change in its value. Thus, the
+key to the success of this technique is to choose a leap size large
+enough to allow many reactions to occur during the leap (reducing
+computation) and small enough that none of the propensity functions
+will change significantly in value (causing an error). Cao et al.
+\cite{cao2005avoiding} pointed also out a method to estimating the
+largest value of $\delta t$, the expected change in each propensity
+function during a leap be limited by $\epsilon a_{0}(x)$, where $\epsilon$
+$(0<\epsilon\ll1)$ is the error control parameter. In short, the
+best advantage of the $\tau-leap$ method is to speed up the stochastic
+simulation for many ``not-too-stiff'' systems $-$i.e., systems
+in which the difference between the characteristic time scales of
+the fastest and slowest dynamical modes is not too large. However,
+the number of firings of each reaction channels during a fixed time
+step $\delta t$ is approximated as a Poisson random varibale. This
+Poisson variable can have arbitrarily large sample values. Hence,
+there exists the possibility that this $\tau-leap$ method will cause
+one or more reaction channels to fire so many times during $\delta t$
+that number of reactants in each population will be became negative,
+in particular in systems with multiple timescales (for short the stiff
+systems). Due its obtained advantage, so this technique has continued
+to mature, specially in the area of leap-size selection, through the
+work of a variety of researchers : procedure for determining the maximum
+leap size for a specified degree of accuracy \cite{gillespie2003improved};
+a binomial leaping method developed independently Tian et al.\cite{tian2004binomial}
+and Chatterjee et al. \cite{chatterjee2005binomial}; based on the
+multinominal distribution by Pettigrew et al. in \cite{pettigrew2007multinomial}
+and a further work in this area can be expected. In detail for the
+binomial leaping method, this method replaces the Poisson random variables
+with binominal random variables, whose values are naturally bounded.
+However, the disadvantage of this method appeared when the system
+is in the state : there are multiple reactions with common consumed
+reactants, so the issues of the binomial tau-leaping stratery have
+not yet been fully resolved, and to write a general binominal tau-leaping
+program that reliably handles all situations that could possibly arise,
+this task would seem to be a very challenging task. It is the reason
+for that, Yang et al. (2005) \cite{cao2005avoiding} is introduced
+a modified Poisson tau-leaping procedure that also avoids negative
+populations and these particular issues, but is easier to implement
+than the binomial procedure.
+
+
+years later, many presented different approximation methods include
+multi-scale Yang et al. (2005)
+
+\end{enumerate}
+However, when we use the $\tau-leap$ method, there is a possibility,
+the number of indivudal in each class can become negative.
+
+
+\subsubsection{Hybrid and multiscale methods}
+
 
 \subsection{reinforcement learning }
 

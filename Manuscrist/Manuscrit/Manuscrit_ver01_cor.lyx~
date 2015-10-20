@@ -30,7 +30,7 @@ figs-within-sections
 \graphics default
 \default_output_format default
 \output_sync 0
-\bibtex_command default
+\bibtex_command bibtex
 \index_command default
 \paperfontsize default
 \spacing single
@@ -47,8 +47,8 @@ figs-within-sections
 \use_package stackrel 1
 \use_package stmaryrd 1
 \use_package undertilde 1
-\cite_engine basic
-\cite_engine_type default
+\cite_engine natbib
+\cite_engine_type numerical
 \biblio_style plain
 \use_bibtopic false
 \use_indices false
@@ -1116,7 +1116,7 @@ reference "fig:seirmodel"
 placement tbph
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset ERT
@@ -1700,7 +1700,7 @@ key "gillespie1976general"
  Table 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "tab:stoch_ev"
+reference "tab:stoch_event"
 
 \end_inset
 
@@ -1713,111 +1713,37 @@ reference "tab:stoch_ev"
 
 \begin_layout Standard
 \begin_inset Float table
-placement tbph
 wide false
 sideways false
 status open
 
 \begin_layout Plain Layout
-\align center
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "Ref: tab:stoch_ev"
-
-\end_inset
-
- Events of the stochastic version of the model of equations 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "eq:dS"
-
-\end_inset
-
- - 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "eq:dR"
-
-\end_inset
-
-, occuring in subpopulation 
-\begin_inset Formula $i$
-\end_inset
-
-.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-centering
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-
 \begin_inset Tabular
-<lyxtabular version="3" rows="10" columns="3">
+<lyxtabular version="3" rows="9" columns="3">
 <features rotate="0" tabularvalignment="middle">
-<column alignment="left" valignment="top">
+<column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <row>
-<cell alignment="left" valignment="top" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-toprule
-\end_layout
-
-\end_inset
-
- Events 
+Events 
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-Rates 
+Rates
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1828,28 +1754,16 @@ Transitions
 </cell>
 </row>
 <row>
-<cell alignment="left" valignment="top" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-midrule
-\end_layout
-
-\end_inset
-
- birth 
+birth 
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1861,7 +1775,7 @@ midrule
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1872,23 +1786,23 @@ midrule
 \begin_inset Formula $N_{i}\leftarrow N_{i}+1$
 \end_inset
 
- 
+
 \end_layout
 
 \end_inset
 </cell>
 </row>
 <row>
-<cell alignment="left" valignment="top" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-death of a susceptible 
+death of a susceptible
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1900,7 +1814,7 @@ death of a susceptible
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1914,7 +1828,7 @@ death of a susceptible
 </cell>
 </row>
 <row>
-<cell alignment="left" valignment="top" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1923,7 +1837,7 @@ death of an exposed
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1935,7 +1849,7 @@ death of an exposed
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" usebox="none">
+<cell multicolumn="1" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1949,7 +1863,7 @@ death of an exposed
 </cell>
 </row>
 <row>
-<cell alignment="left" valignment="top" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1958,7 +1872,7 @@ death of an infected
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1970,7 +1884,7 @@ death of an infected
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1984,7 +1898,7 @@ death of an infected
 </cell>
 </row>
 <row>
-<cell alignment="left" valignment="top" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1993,19 +1907,19 @@ death of an immune
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
 \begin_inset Formula $\mu R_{i}$
 \end_inset
 
- 
+
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -2019,7 +1933,7 @@ death of an immune
 </cell>
 </row>
 <row>
-<cell alignment="left" valignment="top" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -2028,19 +1942,19 @@ infection
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
 \begin_inset Formula $\lambda_{i}S_{i}$
 \end_inset
 
- 
+
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -2058,7 +1972,7 @@ infection
 </cell>
 </row>
 <row>
-<cell alignment="left" valignment="top" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -2067,7 +1981,7 @@ becoming infectious
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -2079,7 +1993,7 @@ becoming infectious
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -2097,7 +2011,7 @@ becoming infectious
 </cell>
 </row>
 <row>
-<cell alignment="left" valignment="top" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -2106,7 +2020,7 @@ recovery
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -2118,7 +2032,7 @@ recovery
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -2135,48 +2049,34 @@ recovery
 \end_inset
 </cell>
 </row>
-<row>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-bottomrule
-\end_layout
-
-\end_inset
-
- 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="none" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
 </lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Events of the stochastic version of the model of equations, occuring in
+ subpopulation 
+\begin_inset Formula $i$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:stoch_event"
 
 \end_inset
 
@@ -2324,10 +2224,10 @@ reference "eqProbMu"
  that we have used in this thesis.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Subsubsection
 
 \series bold
-EXACT STOCHASTIC SIMULATION
+Exact stochastic simulation
 \end_layout
 
 \begin_layout Standard
@@ -2405,7 +2305,7 @@ key "KeelingRohani2008"
 \begin_inset Float algorithm
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 0.
@@ -2565,10 +2465,6 @@ Gillespie's first reaction method in 1976 - MONOPOPULATION
 
 \end_layout
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 
 
@@ -2619,7 +2515,7 @@ The Direct Method was proposed by Gillespie in 1977.
 \begin_inset Float algorithm
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 0.
@@ -3082,10 +2978,6 @@ Next Reaction Method (NRM) [GIBSON2000]
 
 \end_layout
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 
 
@@ -3300,33 +3192,115 @@ key "cao2004efficient"
  Because of an extra cost used for accessing the dependency graph, so this
  approach applies only to loose-coupling systems.
  In conclusion, the obtained results of Yang et al.
- broken the held belief for a long time that NRM is most efficient than
- DM.
- Yang et al.
- said that 
-\begin_inset Quotes eld
+ have shown that the ODM is faster than NRM, in particular, unless the system
+ is very nearly uncoupled.
+ This result broken the held belief for a long time that NRM was the fastest.
+ 
+\end_layout
+
+\begin_layout Standard
+Through this result, we can say that the efficience of the ODM, currently
+ is evaluated to be the fastest known algorithm for stochastic simulation
+ for most biological problems.
+ This method can be negatively impacted by transient shifts in the frequency
+ at which reactions occur, and commonly used in biochemical reaction networks
+ because of the inductive and repressive nature of genetic regulation.
+ Due to these shifts, the ODM defeats the pre-simulation strategy employed
+ within the ODM to decrease the time complexity of the SSA's reaction selection
+ step and thus degrade performance.
+ In order to decrease this degradation, in 2005, McCollum et al.
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "mccollum2006sorting"
+
 \end_inset
 
-For all but a very specialized class of problems, the method DM is most
- efficient
-\begin_inset Quotes erd
+ introduced the sorting direct method (SDM) that improves on ODM.
+ This method eliminates the pre-simulations required by the ODM and permits
+ the simulator to adapt to sharp changes in reaction execution frequencies.
+ The common point of these two methods is to focus on the optimization of
+ the system instead of the method itself by reducing the average number
+ of operations required to obtain the index of the next reaction to fire.
+ This average number of operations is called the search depth that is hightly
+ dependent on the biochemical system.
+ For these two methods, the search depth us 
+\begin_inset Formula $O(M)$
 \end_inset
 
 .
- In particular, after two small optiminal improvements, the Optimized Direct
- Method (ODM) has shown its cleanly optiminal CPU cost for the majority
- of problems.
+ Besides, within the paper of McCollum et al.
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "mccollum2006sorting"
+
+\end_inset
+
+, the authors also gave a detailed overview of the difference in the implementat
+ion of DM, NRM, ODM and SDM.
+ In 2006, Li and Petzold introduced an alternative formulation of the SSA,
+ named the Logarithmic Direct Method (LDM).
+ In this method, the computational cost is independent of the ordering of
+ the reactions and no need for a pre-simulation.
+ The LDM declined the search depth to 
+\begin_inset Formula $O(logM)$
+\end_inset
+
+, and pointed out the efficiency of the logarithmic method.
+\end_layout
+
+\begin_layout Standard
+Two years later, in 2008, a different approach is proposed by Hellander
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "hellander2008efficient"
+
+\end_inset
+
+ where the authors used the uniformization and quasi-Monte Carlo to reduce
+ the number of trajectories needed to compute an approximation of the probabilit
+y density function (PDF) at the price of a higher cost per trajectory.
+ Another is also found to reduce the number of simulation in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "lecot2004quasi"
+
+\end_inset
+
+.
 \end_layout
 
 \end_deeper
-\begin_layout Enumerate
-\begin_inset Formula $\tau-leaping$
+\begin_layout Standard
+A new search direction is very beneficial to generate ensembles of trajectories
+ in parallel.
+ Because the parallelization of a single trajectory is very hard.
+ Apply clusters to implement SSA is proposed by Li 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "liStochKit"
+
 \end_inset
 
- method
+.
+ Then, Li et al.
+ continued executing SSA on the graphics processing unit 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "li2007stochastic,li2010efficient"
+
+\end_inset
+
+.
+ 
 \end_layout
 
-\begin_deeper
+\begin_layout Subsubsection
+Approximate methods
+\end_layout
+
 \begin_layout Standard
 As mentioned above, the methods Direct, First Reaction and Next Reaction
  are all exact stochastic approaches of the underlying ordinary differential
@@ -3349,19 +3323,31 @@ As mentioned above, the methods Direct, First Reaction and Next Reaction
 \begin_inset Quotes eld
 \end_inset
 
-How many times does each action channel fire in each subinterval? In each
- step, the 
-\begin_inset Formula $\tau-leaping$
-\end_inset
-
- method can proceed with many reactions?
+How many times does each action channel fire in each subinterval?
 \begin_inset Quotes erd
 \end_inset
 
-.
+
+\end_layout
+
+\begin_layout Standard
+These approaches could be used in larger systems, and made much faster than
+ the exact methods.
+ However, the exact structure of the Markov chain is no logner simulated
+ in the approximate approaches, hence the validity of the approximations
+ become a main issue.
+ Now we will show some mostly used approximate methods.
  
 \end_layout
 
+\begin_layout Enumerate
+\begin_inset Formula $\tau-leaping$
+\end_inset
+
+ method
+\end_layout
+
+\begin_deeper
 \begin_layout Standard
 Gillespie (2001) 
 \begin_inset CommandInset citation
@@ -3555,10 +3541,6 @@ key "KeelingRohani2008"
 
 \end_layout
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 
 
@@ -3606,11 +3588,54 @@ key "cao2007adaptive"
 
  will be so small that no propensity function will suffer an appreciable
  change in its value.
- The best advantage of the 
+ Thus, the key to the success of this technique is to choose a leap size
+ large enough to allow many reactions to occur during the leap (reducing
+ computation) and small enough that none of the propensity functions will
+ change significantly in value (causing an error).
+ Cao et al.
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "cao2005avoiding"
+
+\end_inset
+
+ pointed also out a method to estimating the largest value of 
+\begin_inset Formula $\delta t$
+\end_inset
+
+, the expected change in each propensity function during a leap be limited
+ by 
+\begin_inset Formula $\epsilon a_{0}(x)$
+\end_inset
+
+, where 
+\begin_inset Formula $\epsilon$
+\end_inset
+
+ 
+\begin_inset Formula $(0<\epsilon\ll1)$
+\end_inset
+
+ is the error control parameter.
+ In short, the best advantage of the 
 \begin_inset Formula $\tau-leap$
 \end_inset
 
- method is to speed up the stochastic simulation of the loose coupling systems.
+ method is to speed up the stochastic simulation for many 
+\begin_inset Quotes eld
+\end_inset
+
+not-too-stiff
+\begin_inset Quotes erd
+\end_inset
+
+ systems 
+\begin_inset Formula $-$
+\end_inset
+
+i.e., systems in which the difference between the characteristic time scales
+ of the fastest and slowest dynamical modes is not too large.
  However, the number of firings of each reaction channels during a fixed
  time step 
 \begin_inset Formula $\delta t$
@@ -3629,10 +3654,50 @@ key "cao2007adaptive"
 
  that number of reactants in each population will be became negative, in
  particular in systems with multiple timescales (for short the stiff systems).
-\end_layout
+ Due its obtained advantage, so this technique has continued to mature,
+ specially in the area of leap-size selection, through the work of a variety
+ of researchers : procedure for determining the maximum leap size for a
+ specified degree of accuracy 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "gillespie2003improved"
 
-\begin_layout Standard
-To solve the first issue, Yang et al.
+\end_inset
+
+; a binomial leaping method developed independently Tian et al.
+\begin_inset CommandInset citation
+LatexCommand cite
+key "tian2004binomial"
+
+\end_inset
+
+ and Chatterjee et al.
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "chatterjee2005binomial"
+
+\end_inset
+
+; based on the multinominal distribution by Pettigrew et al.
+ in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "pettigrew2007multinomial"
+
+\end_inset
+
+ and a further work in this area can be expected.
+ In detail for the binomial leaping method, this method replaces the Poisson
+ random variables with binominal random variables, whose values are naturally
+ bounded.
+ However, the disadvantage of this method appeared when the system is in
+ the state : there are multiple reactions with common consumed reactants,
+ so the issues of the binomial tau-leaping stratery have not yet been fully
+ resolved, and to write a general binominal tau-leaping program that reliably
+ handles all situations that could possibly arise, this task would seem
+ to be a very challenging task.
+ It is the reason for that, Yang et al.
  (2005) 
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -3640,8 +3705,15 @@ key "cao2005avoiding"
 
 \end_inset
 
- proposed a modified Poisson tau-leaping procedure that also avoids negative
- populations, but is easier to implement than the binomial procedure.
+ is introduced a modified Poisson tau-leaping procedure that also avoids
+ negative populations and these particular issues, but is easier to implement
+ than the binomial procedure.
+\end_layout
+
+\begin_layout Standard
+years later, many presented different approximation methods include multi-scale
+ Yang et al.
+ (2005)
 \end_layout
 
 \end_deeper
@@ -3652,11 +3724,10 @@ However, when we use the
 
  method, there is a possibility, the number of indivudal in each class can
  become negative.
- 
 \end_layout
 
-\begin_layout Enumerate
-;x;cxv;wskld,sqdf,
+\begin_layout Subsubsection
+Hybrid and multiscale methods
 \end_layout
 
 \begin_layout Subsection
