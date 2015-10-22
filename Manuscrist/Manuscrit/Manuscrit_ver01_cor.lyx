@@ -47,10 +47,10 @@ figs-within-sections
 \use_package stackrel 1
 \use_package stmaryrd 1
 \use_package undertilde 1
-\cite_engine natbib
-\cite_engine_type authoryear
+\cite_engine basic
+\cite_engine_type default
 \biblio_style plain
-\use_bibtopic false
+\use_bibtopic true
 \use_indices false
 \paperorientation portrait
 \suppress_date false
@@ -93,13 +93,7 @@ TRAN Thi Cam Giang, Jean Daniel ZUCKER, Marc CHOISY, Yann CHEVALEYRE
 \end_layout
 
 \begin_layout Date
-03/04/2015
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-Un plan pour ton mémoire de thèse pourrait être:
+03/06/2015
 \end_layout
 
 \begin_layout Section
@@ -146,21 +140,8 @@ This thesis is proposed in a context in which many public health serious
 In particular, at the start of 2014, the World Health Organization (WHO)
  officially stated global measles epidemic outbreak.
  In the first three months of the year 2014, there were about 56,000 cases
- of measle infections in 75 countries 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "WHO2014a"
-
-\end_inset
-
-, particularly in southeast Asia and in Vietnam 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "http://healthmap.org/site/diseasedaily/article/measles-reemerges-vietnam-22814"
-
-\end_inset
-
-.
+ of measle infections in 75 countries, particularly in southeast Asia and
+ in Vietnam.
  This has pointed out the important role of the epidemiological phenomena
  anticipation when diseases occur.
  Many studies proposed by the WHO, the Pasteur Institute and the Inserm
@@ -185,8 +166,8 @@ Control
 \end_layout
 
 \begin_layout Standard
-As we know, pathogenic microorganisms such as bacteria, viruses, parasites
- or fungi are key factors causing infectious diseases.
+Pathogenic microorganisms such as bacteria, viruses, parasites or fungi
+ are key factors causing infectious diseases.
  The diseases can be spread directly or indirectly from one person to another,
  through a mediate environment or contaminated tools.
  As far as directly infectious diseases are concerned, meaninf diseases
@@ -216,7 +197,7 @@ As we know, pathogenic microorganisms such as bacteria, viruses, parasites
  of smallpox in 2011 
 \begin_inset CommandInset citation
 LatexCommand cite
-key "tognotti2010SmallpoxErad,fenner2001SmallpoxErad,Wikipedia_SmallpoxErad"
+key "tognotti2010SmallpoxErad,fenner2001SmallpoxErad"
 
 \end_inset
 
@@ -487,14 +468,7 @@ Extended Program on Immunization
 \begin_inset Quotes erd
 \end_inset
 
- in Vietnam for the measles extinction before 2012 failed 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "WHOProjectEPI"
-
-\end_inset
-
-).
+ in Vietnam for the measles extinction before 2012 failed.
 
 \series bold
  
@@ -3108,7 +3082,7 @@ We find that in the NRM, after the executed first initial step, all sequent
  
 \begin_inset CommandInset citation
 LatexCommand cite
-key "cao2004efficient"
+key "Cao2004"
 
 \end_inset
 
@@ -3156,7 +3130,7 @@ to calculate the sum of all propensity probabilities, and
  
 \begin_inset CommandInset citation
 LatexCommand cite
-key "cao2004efficient"
+key "Cao2004"
 
 \end_inset
 
@@ -3687,7 +3661,14 @@ key "pettigrew2007multinomial"
 
 \end_inset
 
- and a further work in this area can be expected.
+; the post-leap checks of Anderson 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Anderson&May1992"
+
+\end_inset
+
+; and a further work in this area can be expected.
  In detail for the binomial leaping method, this method replaces the Poisson
  random variables with binominal random variables, whose values are naturally
  bounded.
@@ -3710,24 +3691,83 @@ key "cao2005avoiding"
  than the binomial procedure.
 \end_layout
 
-\begin_layout Standard
-years later, many presented different approximation methods include multi-scale
- Yang et al.
- (2005)
-\end_layout
-
 \end_deeper
-\begin_layout Standard
-However, when we use the 
-\begin_inset Formula $\tau-leap$
-\end_inset
-
- method, there is a possibility, the number of indivudal in each class can
- become negative.
-\end_layout
-
 \begin_layout Subsubsection
 Hybrid and multiscale methods
+\end_layout
+
+\begin_layout Itemize
+Key word : Langevin equation, a Langevin equation is a stochastic differential
+ equation that could present the time advance of a subset pf the degrees
+ of freedom.
+ In the epidemiology, the Langevin equations are the equation that describe
+ of the dynamics of the individuals between the different compartments depends
+ on the specific disease considered.
+\end_layout
+
+\begin_layout Standard
+Here, we show an other kind of approximation methods that are based on the
+ validity of different approximations, and are the combination of the determinis
+tic equations and the Langevin equations for subsets of the reactions, the
+ chemical species or both.
+ The results of these methods have pointed out that the speedup obtained
+ applying this hybrid idea can be substantly.
+ For example, Adalsteinsson et al.
+ combine the deterministic and stochastic approaches in order to develop
+ the software package Biochemical Network Stochastic Simulator (BioNetS)
+ for efficiently and accurately simulating stochastic models of biochemical
+ networks in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "adalsteinsson2004biochemical"
+
+\end_inset
+
+; the method that applies chemical Langevin equations in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "gillespie2000chemical"
+
+\end_inset
+
+ and in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "simpson2003frequency,simpson2004frequency"
+
+\end_inset
+
+; Poisson-Runge-Kutta methods 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "burrage2004poisson"
+
+\end_inset
+
+; multiscale algorithms like the slow-scale stochastic simulation algorithm
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "cao2005slow"
+
+\end_inset
+
+ and use of the quasi-steady state assumption 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "rao2003stochastic"
+
+\end_inset
+
+.
+ Besides, there are many varieties of others, for exemple : Haseltine and
+ Rawlings associate deterministic or Langevin equations for fast reactions
+ with SSA for slow channels.
+ 
+\end_layout
+
+\begin_layout Standard
+These method
 \end_layout
 
 \begin_layout Subsection

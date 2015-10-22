@@ -1191,10 +1191,11 @@ sur le sujet). Les nouveau login et mot de passe de Bibliovie (http://bibliovie.
 sont 15SCBUMR5290 et 4NX9E5. Ou, on peux utiliser l'account de Giang
 à UPMC selon les conseil de la site : http://www.jubil.upmc.fr/fr/ressources\_en\_ligne2/mode\_acces\_ressources.html.
 
-\bibliography{plain}
 \bibliography{bib_art_Pers}
 \bibliography{bikBokEpidemics}
 \bibliography{bikCCS}
+
+
 \bibliography{bibManuscrit}
 
 \end{document}

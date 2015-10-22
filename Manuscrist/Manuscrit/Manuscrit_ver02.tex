@@ -1,6 +1,6 @@
 %% LyX 2.1.3 created this file.  For more info, see http://www.lyx.org/.
 %% Do not edit unless you really know what you are doing.
-\documentclass[english]{amsart}
+\documentclass[english]{article}
 \usepackage[T1]{fontenc}
 \usepackage[utf8x]{inputenc}
 \usepackage{geometry}
@@ -12,7 +12,7 @@
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{graphicx}
-
+\bibliographystyle{plain}
 \makeatletter
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% LyX specific LaTeX commands.
@@ -46,14 +46,13 @@ de vaccination }
 
 \maketitle
 
-\section{State of the art: }
+\section{State of the art}
 
 
 \subsection{Epidemiology ( and monitoring) }
 
 
 \subsubsection{Epidemiology}
-
 As we know that public health problems are one of the emerging troubles
 in the entire world. They directly influence human heath, the health
 of one person, the health of a community. In particular, any news
@@ -64,16 +63,16 @@ of infectious diseases.
 
 This thesis is proposed in a context in which many public health serious
 events have occurred in the world : SRAS in 2003, avian influenza
-in 2004 or swine flu in 2009, etc.\textbf{ }In particular, at the
+in 2004 or swine flu in 2009, etc. In particular, at the
 start of 2014, the World Health Organization (WHO) officially stated
 global measles epidemic outbreak. In the first three months of the
 year 2014, there were about 56,000 cases of measle infections in 75
-countries \cite{WHO2014a}, particularly in southeast Asia and in
-Vietnam \cite{http://healthmap.org/site/diseasedaily/article/measles-reemerges-vietnam-22814}.
+countries, particularly in southeast Asia and in
+Vietnam.
 This has pointed out the important role of the epidemiological phenomena
 anticipation when diseases occur. Many studies proposed by the WHO,
-the Pasteur Institute and the Inserm in the field of \textquotedbl{}environmental
-security\textquotedbl{} try to understand disease phenomena and spread
+the Pasteur Institute and the Inserm in the field of environmental
+security try to understand disease phenomena and spread
 of disease over a territory, to better manage when diseases occur.
 These researches consist of mathematical or statistical studies via
 surveillance networks \cite{chauvin1994constitution}. This is one
@@ -105,7 +104,7 @@ This disease was filled people with terror during the closing years
 of the 18th century. Smallpox killed an estimated 400,000 Europeans
 annually and among the people that luckily survived, a third had been
 blinded by the disease. However, the World Health Organization (WHO)
-offcially stated the eradication of smallpox in 2011 \cite{tognotti2010SmallpoxErad,fenner2001SmallpoxErad,Wikipedia_SmallpoxErad}.
+offcially stated the eradication of smallpox in 2011 \cite{tognotti2010SmallpoxErad,fenner2001SmallpoxErad}.
 In addition, many infectious diseases are clearly restricted such
 as influenza, polio, measles and tetanus from much of the world. Thus,
 one big question proposed is why many infectious diseases still exist
@@ -113,7 +112,7 @@ in the world though we have produced vaccines for most infectious
 diseases. In order to answer this question, first of all, we have
 to answer to some following small questions :
 
-\begin{table}
+\begin{table}[h]
 \begin{tabular}{|c|c|c|}
 \hline 
 \textbf{Question} & \textbf{Answer} & \textbf{Why?}\tabularnewline
@@ -179,7 +178,7 @@ of this vaccination policy is too expensive, really ineffective and
 quite impossible to implement in poor countries, especially in Africa
 because of both financial and logistical problems. (e.g. the WHO project
 ``Extended Program on Immunization'' in Vietnam for the measles
-extinction before 2012 failed \cite{WHOProjectEPI}).\textbf{ }In
+extinction before 2012 failed \cite{WHOProjectEPI}). In
 addition, when a vaccination policy is performed in a country, there
 is only one policy deployed, but in modeling, we can realize many
 policies and assess their results. 
@@ -193,7 +192,7 @@ these policies may become more effective, less expensive, and take
 into account the spatial dimension for all popular infectious diseases.
 
 
-\subsection{dynamiques/structures spatiales (théorie métapopulations, réseaux,
+\subsection{Dynamiques/structures spatiales (théorie métapopulations, réseaux,
 etc…) }
 \begin{itemize}
 \item For directly transmitted infectious diseases by virus and bacteria,
@@ -248,9 +247,9 @@ in 1980 \cite{wilson1980natural} stated that in this classic model
 colonizes it, and winking out again as extinction occurs.''
 
 
-\begin{figure}
+\begin{figure}[h]
+\centering
 \includegraphics{classicLevinsMeta}
-
 \protect\caption{Classic Levins Metapopulation Model \cite{harrison1997empirical}}
 \end{figure}
 
@@ -265,9 +264,9 @@ are some small ``island'' subpopulations within dispersal distance
 of a much larger ``mainland'' subpopulation.
 
 
-\begin{figure}
+\begin{figure}[h]
+\centering
 \includegraphics{mainlandIslandMeta}
-
 \protect\caption{Mainland-Island Metapopulation \cite{harrison1997empirical}}
 
 
@@ -287,7 +286,7 @@ in a big habitat population and the dispersal rate between subpopulations
 is high. 
 
 
-\begin{figure}
+\begin{figure}[h]
 \includegraphics{figPatchyPopulation}
 
 \protect\caption{Patchy population \cite{hanski1991metapopulation}}
@@ -306,7 +305,8 @@ this a meta-population either.
 are patches, its local extinctions are much greater than its recolonisation.
 
 
-\begin{figure}
+\begin{figure}[h]
+\centering
 \includegraphics{figNonEquilibriumPopulation}
 
 \protect\caption{Non-equilibrium population \cite{hanski1991metapopulation}}
@@ -600,7 +600,7 @@ the numbers in the relative groups to go up or down by one. Table
 \ref{tab:stoch_event} lists all the events of the model, occurring
 in subpopulation $i$ of a metapopulation:
 
-\begin{table}
+\begin{table}[h]
 \begin{tabular}{|c|c|c|}
 \hline 
 Events  & Rates & Transitions \tabularnewline
@@ -698,7 +698,7 @@ pseudo-code provides a clean implementation of Gillespie's first reaction
 method :
 
 
-\begin{algorithm}
+\begin{algorithm}[h]
 0. Labell all species $X_{1},...,X_{k}$.
 
 1. Label all possible events $E_{1}$,...,$E_{n}$.
@@ -748,7 +748,7 @@ is to present the stochastic simulation for chemically reacting systems.
 The following pseudo-code of this method is :
 
 
-\begin{algorithm}
+\begin{algorithm}[h]
 0. Labell all species $X_{1},...,X_{k}$.
 
 1. Label all possible events $E_{1}$,...,$E_{n}$.
@@ -817,7 +817,7 @@ includes many species and loosely coupled reaction channels. The NRM
 is presented as follows :
 
 
-\begin{algorithm}
+\begin{algorithm}[h]
 1. Initialize 
 \begin{enumerate}
 \item set initial numbers of species, set $t=0$, generate a dependency
@@ -1148,8 +1148,11 @@ methods \cite{burrage2004poisson}; multiscale algorithms like the
 slow-scale stochastic simulation algorithm \cite{cao2005slow} and
 use of the quasi-steady state assumption \cite{rao2003stochastic}.
 Besides, there are many varieties of others, for exemple : Haseltine
-and Rawlings associate deterministic or Langevin equations for fast
-reactions with SSA for slow channels. 
+and Rawlings  \cite{haseltine2002approximate} associate deterministic or Langevin equations for fast
+reactions with SSA for slow channels. Saliz and Kazessis \cite{salis2005accurate} introduced a hybrid stochastic method that divides 
+the reaction set of the system into fast and slow reaction subsets, applies a chemical Langevin equation for approximating
+the fast reactions as a continuous Markov process, and has been used successful to the simulation of the dynamics of a system
+based on stochastic differential, ordinary differential, and Master equations.
 
 These method
 
@@ -1191,10 +1194,7 @@ sur le sujet). Les nouveau login et mot de passe de Bibliovie (http://bibliovie.
 sont 15SCBUMR5290 et 4NX9E5. Ou, on peux utiliser l'account de Giang
 à UPMC selon les conseil de la site : http://www.jubil.upmc.fr/fr/ressources\_en\_ligne2/mode\_acces\_ressources.html.
 
-\bibliography{plain}
-\bibliography{bib_art_Pers}
-\bibliography{bikBokEpidemics}
-\bibliography{bikCCS}
+\bibliographystyle{plain}
 \bibliography{bibManuscrit}
 
 \end{document}

@@ -1,0 +1,51 @@
+This is BibTeX, Version 0.99d (TeX Live 2013/Debian)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: Manuscrit_ver02.aux
+The style file: plain.bst
+Database file #1: bibManuscrit.bib
+Warning--I didn't find a database entry for "WHOProjectEPI"
+Warning--empty journal in burrage2004poisson
+Warning--empty journal in liStochKit
+Warning--empty year in liStochKit
+You've used 50 entries,
+            2118 wiz_defined-function locations,
+            820 strings with 12456 characters,
+and the built_in function-call counts, 16617 in all, are:
+= -- 1679
+> -- 669
+< -- 7
++ -- 272
+- -- 214
+* -- 1223
+:= -- 2755
+add.period$ -- 152
+call.type$ -- 50
+change.case$ -- 254
+chr.to.int$ -- 0
+cite$ -- 53
+duplicate$ -- 611
+empty$ -- 1345
+format.name$ -- 214
+if$ -- 3448
+int.to.chr$ -- 0
+int.to.str$ -- 50
+missing$ -- 53
+newline$ -- 252
+num.names$ -- 100
+pop$ -- 203
+preamble$ -- 1
+purify$ -- 207
+quote$ -- 0
+skip$ -- 430
+stack$ -- 0
+substring$ -- 1293
+swap$ -- 100
+text.length$ -- 7
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 194
+warning$ -- 3
+while$ -- 178
+width$ -- 52
+write$ -- 548
+(There were 4 warnings)

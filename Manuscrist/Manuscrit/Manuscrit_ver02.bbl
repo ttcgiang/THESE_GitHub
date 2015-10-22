@@ -1,0 +1,285 @@
+\begin{thebibliography}{10}
+
+\bibitem{adalsteinsson2004biochemical}
+David Adalsteinsson, David McMillen, and Timothy~C Elston.
+\newblock Biochemical network stochastic simulator (bionets): software for
+  stochastic modeling of biochemical networks.
+\newblock {\em BMC bioinformatics}, 5(1):24, 2004.
+
+\bibitem{Altizer2006}
+S.~Altizer, A.~Dobson, P.~Hosseini, P.~Hudson, M.~Pascual, and P.~Rohani.
+\newblock Seasonality and the dynamics of infectious diseases.
+\newblock {\em Ecol Lett}, 9(4):467--484, Apr 2006.
+
+\bibitem{Anderson&May1992}
+R.~M. Anderson and R.~M. May.
+\newblock {\em Infectious Diseases of Humans: Dynamics and Control}.
+\newblock Oxford University Press, 1992.
+
+\bibitem{blue1995faster}
+James~L Blue, Isabel Beichl, and Francis Sullivan.
+\newblock Faster monte carlo simulations.
+\newblock {\em Physical Review E}, 51(2):R867, 1995.
+
+\bibitem{Bolker1995}
+B.~Bolker and B.~Grenfell.
+\newblock Space, persistence and dynamics of measles epidemics.
+\newblock {\em The Royal Society}, 348:309--320, 1995.
+
+\bibitem{Bolker1996}
+B.~M. Bolker and B.~T. Grenfell.
+\newblock Impact of vaccination on the spatial correlation and persistence of
+  measles dynamics.
+\newblock {\em Proc Natl Acad Sci U S A}, 93(22):12648--12653, Oct 1996.
+
+\bibitem{bortz1975new}
+Alfred~B Bortz, Malvin~H Kalos, and Joel~L Lebowitz.
+\newblock A new algorithm for monte carlo simulation of ising spin systems.
+\newblock {\em Journal of Computational Physics}, 17(1):10--18, 1975.
+
+\bibitem{burrage2004poisson}
+Kevin Burrage and Tianhai Tian.
+\newblock Poisson runge-kutta methods for chemical reaction systems.
+\newblock 1(1):82--96, 2004.
+
+\bibitem{cao2005avoiding}
+Yang Cao, Daniel~T Gillespie, and Linda~R Petzold.
+\newblock Avoiding negative populations in explicit poisson tau-leaping.
+\newblock {\em The Journal of chemical physics}, 123(5):054104, 2005.
+
+\bibitem{cao2005slow}
+Yang Cao, Daniel~T Gillespie, and Linda~R Petzold.
+\newblock The slow-scale stochastic simulation algorithm.
+\newblock {\em The Journal of chemical physics}, 122(1):014116, 2005.
+
+\bibitem{cao2007adaptive}
+Yang Cao, Daniel~T Gillespie, and Linda~R Petzold.
+\newblock Adaptive explicit-implicit tau-leaping method with automatic tau
+  selection.
+\newblock {\em The Journal of chemical physics}, 126(22):224101, 2007.
+
+\bibitem{Cao2004}
+Yang Cao, Hong Li, and Linda Petzold.
+\newblock Efficient formulation of the stochastic simulation algorithm for
+  chemically reacting systems.
+\newblock {\em The journal of chemical physics}, 121(9):4059--4067, 2004.
+
+\bibitem{chatterjee2005binomial}
+Abhijit Chatterjee, Dionisios~G Vlachos, and Markos~A Katsoulakis.
+\newblock Binomial distribution based $\tau$-leap accelerated stochastic
+  simulation.
+\newblock {\em The Journal of chemical physics}, 122(2):024112, 2005.
+
+\bibitem{chauvin1994constitution}
+Pierre Chauvin.
+\newblock Constitution and monitoring of an epidemiological surveillance
+  network with sentinel general practitioners.
+\newblock {\em European journal of epidemiology}, 10(4):477--479, 1994.
+
+\bibitem{elf2004spontaneous}
+Johan Elf and M{\aa}ns Ehrenberg.
+\newblock Spontaneous separation of bi-stable biochemical systems into spatial
+  domains of opposite phases.
+\newblock {\em Systems biology}, 1(2):230--236, 2004.
+
+\bibitem{fenner2001SmallpoxErad}
+Frank Fenner.
+\newblock [book review: The eradication of smallpox: Edward jenner and the
+  first and only eradication of a human infectious disease herve bazin, andrew
+  morgan, glenise morgan].
+\newblock {\em Quarterly Review of Biology}, 76(4):476, 2001.
+
+\bibitem{gibson2000efficient}
+Michael~A Gibson and Jehoshua Bruck.
+\newblock Efficient exact stochastic simulation of chemical systems with many
+  species and many channels.
+\newblock {\em The journal of physical chemistry A}, 104(9):1876--1889, 2000.
+
+\bibitem{gillespie1976general}
+Daniel~T Gillespie.
+\newblock A general method for numerically simulating the stochastic time
+  evolution of coupled chemical reactions.
+\newblock {\em Journal of computational physics}, 22(4):403--434, 1976.
+
+\bibitem{gillespie1977exact}
+Daniel~T Gillespie.
+\newblock Exact stochastic simulation of coupled chemical reactions.
+\newblock {\em The journal of physical chemistry}, 81(25):2340--2361, 1977.
+
+\bibitem{gillespie2000chemical}
+Daniel~T Gillespie.
+\newblock The chemical langevin equation.
+\newblock {\em The Journal of Chemical Physics}, 113(1):297--306, 2000.
+
+\bibitem{gillespie2001approximate}
+Daniel~T Gillespie.
+\newblock Approximate accelerated stochastic simulation of chemically reacting
+  systems.
+\newblock {\em The Journal of Chemical Physics}, 115(4):1716--1733, 2001.
+
+\bibitem{gillespie2003improved}
+Daniel~T Gillespie and Linda~R Petzold.
+\newblock Improved leap-size selection for accelerated stochastic simulation.
+\newblock {\em The Journal of Chemical Physics}, 119(16):8229--8234, 2003.
+
+\bibitem{Grenfell1995}
+B.T. Grenfell, B.~M. Bolker, and A.~Klegzkowski.
+\newblock Seasonality and extinction in chaotic metapopulation.
+\newblock {\em The royal society}, 259:97--103, 1995.
+
+\bibitem{Hanski1998}
+I.~Hanski.
+\newblock Metapopulation dynamics.
+\newblock {\em Nature}, 396, 1998.
+
+\bibitem{hanski1994practical}
+Ilkka Hanski.
+\newblock A practical model of metapopulation dynamics.
+\newblock {\em Journal of animal ecology}, pages 151--162, 1994.
+
+\bibitem{hanski1991metapopulation}
+Ilkka Hanski and Michael Gilpin.
+\newblock Metapopulation dynamics: brief history and conceptual domain.
+\newblock {\em Biological journal of the Linnean Society}, 42(1-2):3--16, 1991.
+
+\bibitem{harrison1997empirical}
+Susan Harrison and Andrew~D Taylor.
+\newblock Empirical evidence for metapopulation dynamics.
+\newblock {\em Metapopulation biology: ecology, genetics, and evolution.
+  Academic Press, San Diego, California, USA}, pages 27--42, 1997.
+
+\bibitem{haseltine2002approximate}
+Eric~L Haseltine and James~B Rawlings.
+\newblock Approximate simulation of coupled fast and slow reactions for
+  stochastic chemical kinetics.
+\newblock {\em The Journal of chemical physics}, 117(15):6959--6969, 2002.
+
+\bibitem{hellander2008efficient}
+Andreas Hellander.
+\newblock Efficient computation of transient solutions of the chemical master
+  equation based on uniformization and quasi-monte carlo.
+\newblock {\em The Journal of chemical physics}, 128(15):154109, 2008.
+
+\bibitem{KeelingRohani2008}
+M.~J. Keeling and P.~Rohani.
+\newblock {\em Modeling Infectious Diseases in humans and animals}.
+\newblock Princeton University Press, 2008.
+
+\bibitem{kurata2001feedback}
+Hiroyuki Kurata, Hana El-Samad, T-M Yi, Mustafa Khammash, and J~Doyle.
+\newblock Feedback regulation of the heat shock response in e. coli.
+\newblock In {\em Decision and Control, 2001. Proceedings of the 40th IEEE
+  Conference on}, volume~1, pages 837--842. IEEE, 2001.
+
+\bibitem{lecot2004quasi}
+Christian L{\'e}cot and Bruno Tuffin.
+\newblock Quasi-monte carlo methods for estimating transient measures of
+  discrete time markov chains.
+\newblock In {\em Monte Carlo and Quasi-Monte Carlo Methods 2002}, pages
+  329--343. Springer, 2004.
+
+\bibitem{Levins1969}
+R.~Levins.
+\newblock Some demographic and genetic consequences of environmental
+  heterogeneity for biological control.
+\newblock {\em Bulletin of the Entomological Society of America}, 15:237–240,
+  1969.
+
+\bibitem{liStochKit}
+Li.
+\newblock User's guide for stochkit.
+
+\bibitem{li2010efficient}
+Hong Li and Linda Petzold.
+\newblock Efficient parallelization of the stochastic simulation algorithm for
+  chemically reacting systems on the graphics processing unit.
+\newblock {\em International Journal of High Performance Computing
+  Applications}, 24(2):107--116, 2010.
+
+\bibitem{li2007stochastic}
+Hong Li and Linda~R Petzold.
+\newblock Stochastic simulation of biochemical systems on the graphics
+  processing unit.
+\newblock {\em Bioinformatics. Cit{\'e} pages 32 et}, 35, 2007.
+
+\bibitem{maksym1988fast}
+PA~Maksym.
+\newblock Fast monte carlo simulation of mbe growth.
+\newblock {\em Semiconductor Science and Technology}, 3(6):594, 1988.
+
+\bibitem{mccollum2006sorting}
+James~M McCollum, Gregory~D Peterson, Chris~D Cox, Michael~L Simpson, and
+  Nagiza~F Samatova.
+\newblock The sorting direct method for stochastic simulation of biochemical
+  systems with varying reaction execution behavior.
+\newblock {\em Computational biology and chemistry}, 30(1):39--49, 2006.
+
+\bibitem{panum1988observations}
+Peter~Ludwig Panum.
+\newblock Observations made during the epidemic of measles on the faroe islands
+  in the year 1846.
+\newblock {\em The Challenge of Epidemiology: Issues and Selected Readings, Pan
+  American Health Organization, New York}, pages 37--41, 1988.
+
+\bibitem{pettigrew2007multinomial}
+Michel~F Pettigrew and Haluk Resat.
+\newblock Multinomial tau-leaping method for stochastic kinetic simulations.
+\newblock {\em The Journal of chemical physics}, 126(8):084101, 2007.
+
+\bibitem{rao2003stochastic}
+Christopher~V Rao and Adam~P Arkin.
+\newblock Stochastic chemical kinetics and the quasi-steady-state assumption:
+  application to the gillespie algorithm.
+\newblock {\em The Journal of chemical physics}, 118(11):4999--5010, 2003.
+
+\bibitem{salis2005accurate}
+Howard Salis and Yiannis Kaznessis.
+\newblock Accurate hybrid stochastic simulation of a system of coupled chemical
+  or biochemical reactions.
+\newblock {\em The Journal of chemical physics}, 122(5):054103, 2005.
+
+\bibitem{shaw2010effective}
+L~Shaw, W~Spears, L~Billings, and P~Maxim.
+\newblock Effective vaccination policies.
+\newblock {\em Information sciences}, 180(19):3728--3744, 2010.
+
+\bibitem{simpson2003frequency}
+Michael~L Simpson, Chris~D Cox, and Gary~S Sayler.
+\newblock Frequency domain analysis of noise in autoregulated gene circuits.
+\newblock {\em Proceedings of the National Academy of Sciences},
+  100(8):4551--4556, 2003.
+
+\bibitem{simpson2004frequency}
+Michael~L Simpson, Chris~D Cox, and Gary~S Sayler.
+\newblock Frequency domain chemical langevin analysis of stochasticity in gene
+  transcriptional regulation.
+\newblock {\em Journal of theoretical biology}, 229(3):383--394, 2004.
+
+\bibitem{tian2004binomial}
+Tianhai Tian and Kevin Burrage.
+\newblock Binomial leap methods for simulating stochastic chemical kinetics.
+\newblock {\em The Journal of chemical physics}, 121(21):10356--10364, 2004.
+
+\bibitem{tognotti2010SmallpoxErad}
+Eugenia Tognotti.
+\newblock The eradication of smallpox, a success story for modern medicine and
+  public health: What lessons for the future?
+\newblock {\em The Journal of Infection in Developing Countries},
+  4(5):264--266, 2010.
+
+\bibitem{van2008spatial}
+P~Van~den Driessche.
+\newblock Spatial structure: Patch models.
+\newblock In {\em Mathematical Epidemiology}, pages 179--189. Springer, 2008.
+
+\bibitem{wilson1980natural}
+David~Sloan Wilson.
+\newblock {\em The natural selection of populations and communities}.
+\newblock Benjamin/Cummings Pub. Co., 1980.
+
+\bibitem{young1966monte}
+WM~Young and EW~Elcock.
+\newblock Monte carlo studies of vacancy migration in binary ordered alloys: I.
+\newblock {\em Proceedings of the Physical Society}, 89(3):735, 1966.
+
+\end{thebibliography}
