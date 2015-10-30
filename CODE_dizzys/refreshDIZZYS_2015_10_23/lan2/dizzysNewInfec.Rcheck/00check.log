@@ -1,0 +1,321 @@
+* using log directory ‘/home/tran/Desktop/These_TTCGIANG/THESE_GitHub/CODE_dizzys/refreshDIZZYS_2015_10_23/lan2/dizzysNewInfec.Rcheck’
+* using R version 3.2.0 (2015-04-16)
+* using platform: x86_64-pc-linux-gnu (64-bit)
+* using session charset: UTF-8
+* checking for file ‘dizzysNewInfec/DESCRIPTION’ ... OK
+* checking extension type ... Package
+* this is package ‘dizzysNewInfec’ version ‘0.4’
+* checking package namespace information ... OK
+* checking package dependencies ... OK
+* checking if this is a source package ... WARNING
+Subdirectory ‘dizzysNewInfec/src’ contains apparent object files/libraries
+  adapSEIRNewInfec.o cseirDetNewInfec.o dizzysNewInfec.so
+  equiNewInfec.o initialFUNC.o randYANN.o seirRCNewInfec.o
+  stoSEIRNewInfec.o
+Object files/libraries should not be included in a source package.
+* checking if there is a namespace ... OK
+* checking for executable files ... OK
+* checking for hidden files and directories ... NOTE
+Found the following hidden files and directories:
+  R/.RData
+  R/.Rhistory
+  src/.RData
+These were most likely included in error. See section ‘Package
+structure’ in the ‘Writing R Extensions’ manual.
+* checking for portable file names ... OK
+* checking for sufficient/correct file permissions ... OK
+* checking whether package ‘dizzysNewInfec’ can be installed ... WARNING
+Found the following significant warnings:
+  Warning: /home/tran/Desktop/These_TTCGIANG/THESE_GitHub/CODE_dizzys/refreshDIZZYS_2015_10_23/lan2/dizzysNewInfec/man/dizzysNewInfec-package.Rd:27: All text must be in a section
+  Warning: /home/tran/Desktop/These_TTCGIANG/THESE_GitHub/CODE_dizzys/refreshDIZZYS_2015_10_23/lan2/dizzysNewInfec/man/dizzysNewInfec-package.Rd:28: All text must be in a section
+See ‘/home/tran/Desktop/These_TTCGIANG/THESE_GitHub/CODE_dizzys/refreshDIZZYS_2015_10_23/lan2/dizzysNewInfec.Rcheck/00install.out’ for details.
+* checking installed package size ... OK
+* checking package directory ... OK
+* checking DESCRIPTION meta-information ... WARNING
+Non-standard license specification:
+  0.4
+Standardizable: FALSE
+* checking top-level files ... OK
+* checking for left-over files ... OK
+* checking index information ... WARNING
+Demos with missing or empty index information:
+[1] "sirmodel"
+Demo index entries without corresponding demo:
+      Item 
+"sirModel" 
+Vignettes with missing or empty \VignetteIndexEntry:
+[1] "dizzys.Rnw"
+See sections ‘The INDEX file’ and ‘Package subdirectories’ in the
+‘Writing R Extensions’ manual.
+* checking package subdirectories ... OK
+* checking R files for non-ASCII characters ... OK
+* checking R files for syntax errors ... OK
+* checking whether the package can be loaded ... OK
+* checking whether the package can be loaded with stated dependencies ... OK
+* checking whether the package can be unloaded cleanly ... OK
+* checking whether the namespace can be loaded with stated dependencies ... OK
+* checking whether the namespace can be unloaded cleanly ... OK
+* checking loading without being on the library search path ... OK
+* checking dependencies in R code ... WARNING
+'library' or 'require' call not declared from: ‘deSolve’
+'library' or 'require' call to ‘deSolve’ in package code.
+  Please use :: or requireNamespace() instead.
+  See section 'Suggested packages' in the 'Writing R Extensions' manual.
+Namespaces in Imports field not imported from:
+  ‘base’ ‘methods’ ‘stats’
+  All declared Imports should be used.
+* checking S3 generic/method consistency ... WARNING
+print:
+  function(x, ...)
+print.seirNewInfec:
+  function(object, ...)
+
+lines:
+  function(x, ...)
+lines.seir:
+  function(object, x, y, z, pop, col, type, unitTIME, proj, ...)
+
+plot:
+  function(x, ...)
+plot.persNewInfec:
+  function(object, ...)
+
+plot:
+  function(x, ...)
+plot.seir:
+  function(object, x, y, z, pop, col, type, unitTIME, proj, add, xlim,
+           ylim, zlim, xlab, ylab, zlab, ...)
+
+plot:
+  function(x, ...)
+plot.surv.probNewInfec:
+  function(object, ...)
+
+confint:
+  function(object, parm, level, ...)
+confint.pers.rateNewInfec:
+  function(pers.rate.obj, level)
+
+See section ‘Generic functions and methods’ in the ‘Writing R
+Extensions’ manual.
+* checking replacement functions ... OK
+* checking foreign function calls ... OK
+* checking R code for possible problems ... NOTE
+File ‘dizzysNewInfec/R/zzz.R’:
+  .onLoad calls:
+    packageStartupMessage("My package is so cool")
+    packageStartupMessage("so I will print these lines each time you load it")
+
+See section ‘Good practice’ in '?.onAttach'.
+
+!.seirNewInfec: no visible binding for global variable ‘object’
+!=.seirNewInfec: no visible binding for global variable ‘object’
+%%.seirNewInfec: no visible binding for global variable ‘object’
+%/%.seirNewInfec: no visible binding for global variable ‘object’
+&.seirNewInfec: no visible binding for global variable ‘object’
+**.seirNewInfec: no visible binding for global variable ‘object’
+*.seirNewInfec: no visible binding for global variable ‘object’
++.seirNewInfec: no visible binding for global variable ‘object’
+-.seirNewInfec: no visible binding for global variable ‘object’
+/.seirNewInfec: no visible binding for global variable ‘object’
+<.seirNewInfec: no visible binding for global variable ‘object’
+<=.seirNewInfec: no visible binding for global variable ‘object’
+==.seirNewInfec: no visible binding for global variable ‘object’
+>.seirNewInfec: no visible binding for global variable ‘object’
+>=.seirNewInfec: no visible binding for global variable ‘object’
+^.seirNewInfec: no visible binding for global variable ‘object’
+coef.seirNewInfec: no visible binding for global variable ‘probVISITER’
+coef.seirNewInfec: no visible binding for global variable
+  ‘probINFECTER’
+detSEIRNewInfec: no visible global function definition for
+  ‘resizeVector’
+detSEIRNewInfec: no visible global function definition for ‘timeseq’
+equiNewInfec: no visible global function definition for ‘seirDet’
+globSEIRSimulNewInfec: no visible global function definition for
+  ‘resizeVector’
+globSEIRSimulNewInfec: no visible global function definition for
+  ‘is.integer0’
+globSEIRSimulNewInfec: no visible binding for global variable ‘phiPHAS’
+initVarSEIRNNewInfec: no visible global function definition for
+  ‘resizeVector’
+initVarSEIRNNewInfec: no visible global function definition for
+  ‘equilibrium’
+pers.rate.objNewInfec: no visible global function definition for
+  ‘persistence’
+plot.seir: no visible global function definition for ‘is.integer0’
+plot.seir: no visible global function definition for ‘resizeVector’
+pop.seirNewInfec: no visible global function definition for
+  ‘is.integer0’
+sses.adaptivetau: no visible global function definition for
+  ‘initVarSEIRN’
+stoSEIRNewInfec: no visible binding for global variable ‘beta0’
+stoSEIRNewInfec: no visible binding for global variable ‘beta1’
+stoSEIRNewInfec: no visible binding for global variable ‘phi’
+stoSEIRNewInfec: no visible binding for global variable ‘arr_rho’
+stoSEIRNewInfec: no visible binding for global variable ‘arr_epsilon’
+stoSEIRNewInfec: no visible binding for global variable ‘tmax’
+stoSEIRNewInfec: no visible global function definition for
+  ‘resizeVector’
+str.seirNewInfec: no visible binding for global variable ‘beta1’
+|.seirNewInfec: no visible binding for global variable ‘object’
+plot.surv.probNewInfec,seirNewInfec: no visible global function
+  definition for ‘surv.prob’
+* checking Rd files ... WARNING
+prepare_Rd: dizzysNewInfec-package.Rd:27: All text must be in a section
+prepare_Rd: dizzysNewInfec-package.Rd:28: All text must be in a section
+prepare_Rd: lines.seir.Rd:36: Dropping empty section \seealso
+pers.rate.obj.Rd: non-ASCII input and no declared encoding
+plot.pers.Rd: non-ASCII input and no declared encoding
+problems found in ‘pers.rate.obj.Rd’, ‘plot.pers.Rd’
+* checking Rd metadata ... OK
+* checking Rd cross-references ... WARNING
+Unknown package ‘<pkg>’ in Rd xrefs
+* checking for missing documentation entries ... WARNING
+Undocumented code objects:
+  ‘!.seirNewInfec’ ‘!=.seirNewInfec’ ‘%%.seirNewInfec’
+  ‘%/%.seirNewInfec’ ‘&.seirNewInfec’ ‘**.seirNewInfec’
+  ‘*.seirNewInfec’ ‘+.seirNewInfec’ ‘-.seirNewInfec’ ‘/.seirNewInfec’
+  ‘<.seirNewInfec’ ‘<=.seirNewInfec’ ‘==.seirNewInfec’ ‘>.seirNewInfec’
+  ‘>=.seirNewInfec’ ‘^.seirNewInfec’ ‘callpackg’ ‘coef.seirNewInfec’
+  ‘confint.pers.rateNewInfec’ ‘detSEIRNewInfec’ ‘equiNewInfec’
+  ‘globSEIRNewInfec’ ‘globSEIRSimulNewInfec’ ‘initVarSEIRNNewInfec’
+  ‘is.installed’ ‘is.integer0NewInfec’ ‘paramdurNewInfec’
+  ‘pauseNewInfec’ ‘pers.rate.objNewInfec’ ‘persNewInfec’
+  ‘plot.persNewInfec’ ‘plot.surv.probNewInfec’ ‘pop’ ‘pop.seirNewInfec’
+  ‘print.seirNewInfec’ ‘resizeVectorNewInfec’ ‘sses.adaptivetau’
+  ‘statDIS’ ‘stoSEIRNewInfec’ ‘str.seirNewInfec’ ‘summary.seirNewInfec’
+  ‘surv.probNewInfec’ ‘timeseqNewInfec’ ‘transMATRIX’ ‘|.seirNewInfec’
+Undocumented S4 classes:
+  ‘seirNewInfec’
+Undocumented S4 methods:
+  generic 'persNewInfec' and siglist 'seirNewInfec'
+  generic 'plot.persNewInfec' and siglist 'seirNewInfec'
+  generic 'plot.surv.probNewInfec' and siglist 'seirNewInfec'
+  generic 'surv.probNewInfec' and siglist 'seirNewInfec'
+All user-level objects in a package (including S4 classes and methods)
+should have documentation entries.
+See chapter ‘Writing R documentation files’ in the ‘Writing R
+Extensions’ manual.
+* checking for code/documentation mismatches ... WARNING
+Functions or methods with usage in documentation object 'coef.seir' but not in code:
+  coef.seir
+
+Functions or methods with usage in documentation object 'equilibrium' but not in code:
+  equilibrium
+
+Functions or methods with usage in documentation object 'persistence' but not in code:
+  persistence
+
+Functions or methods with usage in documentation object 'plot.pers' but not in code:
+  plot.pers
+
+Functions or methods with usage in documentation object 'pop.seir' but not in code:
+  pop.seir
+
+Functions or methods with usage in documentation object 'print.seir' but not in code:
+  print.seir
+
+Functions or methods with usage in documentation object 'simul' but not in code:
+  simul
+
+Functions or methods with usage in documentation object 'str.seir' but not in code:
+  str
+
+Functions or methods with usage in documentation object 'summary.seir' but not in code:
+  summary.seir
+
+Codoc mismatches from documentation object 'plot.seir':
+plot.seir
+  Code: function(object, x = "time", y = 4, z = NULL, pop = c(), col =
+                 "black", type = "l", unitTIME = 1, proj = list(), add
+                 = F, xlim = NULL, ylim = NULL, zlim = NULL, xlab = x,
+                 ylab = "#infected", zlab = z, ...)
+  Docs: function(object, x = "time", y = 4, z = NULL, pop = c(), col =
+                 "black", type = "l", unitTIME = 1, proj = list(), add
+                 = F, xlim = NULL, ylim = NULL, zlim = NULL, xlab = x,
+                 ylab = y, zlab = z)
+  Argument names in code not in docs:
+    ...
+  Mismatches in argument default values:
+    Name: 'ylab' Code: "#infected" Docs: y
+
+* checking Rd \usage sections ... WARNING
+Undocumented arguments in documentation object 'lines.seir'
+  ‘type’
+
+Objects in \usage without \alias in documentation object 'str.seir':
+  ‘str’
+
+Bad \usage lines found in documentation object 'confint.pers.rate':
+  confint.pers.rate<-function(object, level)
+Bad \usage lines found in documentation object 'pers.rate.obj':
+  pers.rate.obj<-function(object)
+
+Functions with \usage entries need to have the appropriate \alias
+entries, and all their arguments documented.
+The \usage entries must correspond to syntactically valid R code.
+See chapter ‘Writing R documentation files’ in the ‘Writing R
+Extensions’ manual.
+S3 methods shown with full name in documentation object 'lines.seir':
+  ‘lines.seir’
+
+S3 methods shown with full name in documentation object 'plot.seir':
+  ‘plot.seir’
+
+The \usage entries for S3 methods should use the \method markup and not
+their full name.
+See chapter ‘Writing R documentation files’ in the ‘Writing R
+Extensions’ manual.
+* checking Rd contents ... OK
+* checking for unstated dependencies in examples ... WARNING
+Warning: parse error in file 'dizzysNewInfec-Ex.R':
+64:11: unexpected symbol
+63: 
+64: ~~ simple examples
+              ^
+* checking line endings in C/C++/Fortran sources/headers ... OK
+* checking line endings in Makefiles ... OK
+* checking compilation flags in Makevars ... OK
+* checking for GNU extensions in Makefiles ... OK
+* checking for portable use of $(BLAS_LIBS) and $(LAPACK_LIBS) ... OK
+* checking compiled code ... NOTE
+File ‘dizzysNewInfec/libs/dizzysNewInfec.so’:
+  Found ‘_ZSt4cout’, possibly from ‘std::cout’ (C++)
+    Objects: ‘adapSEIRNewInfec.o’, ‘initialFUNC.o’, ‘randYANN.o’,
+      ‘seirRCNewInfec.o’, ‘stoSEIRNewInfec.o’
+  Found ‘rand’, possibly from ‘rand’ (C)
+    Objects: ‘initialFUNC.o’, ‘stoSEIRNewInfec.o’
+  Found ‘srand’, possibly from ‘srand’ (C)
+    Object: ‘stoSEIRNewInfec.o’
+
+Compiled code should not call entry points which might terminate R nor
+write to stdout/stderr instead of to the console, nor the system RNG.
+
+See ‘Writing portable packages’ in the ‘Writing R Extensions’ manual.
+* checking sizes of PDF files under ‘inst/doc’ ... OK
+* checking installed files from ‘inst/doc’ ... NOTE
+The following files should probably not be installed:
+  ‘dizzys.Rnw~’, ‘dizzys.lyx~’
+
+Consider the use of a .Rinstignore file: see ‘Writing R Extensions’,
+or move the vignette sources from ‘inst/doc’ to ‘vignettes’.
+* checking for old-style vignette sources ... NOTE
+Vignette sources only in ‘inst/doc’:
+  ‘dizzys.Rnw’
+A ‘vignettes’ directory is required as from R 3.1.0
+and these will not be indexed nor checked
+* checking examples ... ERROR
+Running examples in ‘dizzysNewInfec-Ex.R’ failed
+The error most likely occurred in:
+
+> ### Name: coef.seir
+> ### Title: Coefficient of seir Object
+> ### Aliases: coef.seir
+> ### Keywords: coefficients seir object
+> 
+> ### ** Examples
+> 
+> 	seirobj1<-seir(N=1e7)
+Error: could not find function "seir"
+Execution halted
+* checking PDF version of manual ...

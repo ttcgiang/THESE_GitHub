@@ -1,0 +1,15 @@
+demo.comp.exact.adaptau <- function(){
+	nbRep = 30	
+	exact <- replicate(nbRep,system.time(seir.stoch(method="exact",duration=20,nbVilles=1,rng="fast"))[3])	
+ 	adaptau <- replicate(nbRep,system.time(seir.stoch.adaptivetau(method="adaptivetau",duration=20,nbVilles=1))[3])	
+	plot(rep(1:nbRep,2),c(exact,adaptau),lwd=5,col="red")
+	pause()
+}
+demo.comp.exact.adaptau()
+
+demo.plot.exact.adaptau <- function(){
+	plot(seir.stoch(duration=20,nbVilles=3),add=F,col="red",colPops="red")
+	plot(seir.stoch(duration=20,nbVilles=3,rng="fast"),add=T,col="blue",colPops="blue")	
+	pause()
+}
+demo.plot.exact.adaptau()

@@ -1,0 +1,16 @@
+* installing *source* package ‘dizzysNewInfec’ ...
+** libs
+make: Nothing to be done for `all'.
+make: `symbols.rds' is up to date.
+installing to /home/tran/Desktop/These_TTCGIANG/THESE_GitHub/CODE_dizzys/refreshDIZZYS_2015_10_23/lan2/dizzysNewInfec.Rcheck/dizzysNewInfec/libs
+** R
+** demo
+** inst
+** preparing package for lazy loading
+** help
+Warning: /home/tran/Desktop/These_TTCGIANG/THESE_GitHub/CODE_dizzys/refreshDIZZYS_2015_10_23/lan2/dizzysNewInfec/man/dizzysNewInfec-package.Rd:27: All text must be in a section
+Warning: /home/tran/Desktop/These_TTCGIANG/THESE_GitHub/CODE_dizzys/refreshDIZZYS_2015_10_23/lan2/dizzysNewInfec/man/dizzysNewInfec-package.Rd:28: All text must be in a section
+*** installing help indices
+** building package indices
+** testing if installed package can be loaded
+* DONE (dizzysNewInfec)

@@ -1,0 +1,46 @@
+#comparing the exact() function of C++ and the exact() function of Philip 
+comp.exact.exact<-function(){
+	nbRep = 10	
+	S=c(741559);E=c(2794);I=c(1673);R=(9253972)
+	par(mfrow=c(2,2))
+	#exactsses, exactadap
+	exactsses <- replicate(nbRep,system.time(seir.stoch(S=S,E=E,I=I,R=R,duration=1,rng="good",method="exact"))[3])	
+ 	exactadap <- replicate(nbRep,system.time(seir.adap.philip(S=S,E=E,I=I,R=R,duration=1,method="exact"))[3])	
+	plot(c(1:nbRep),exactsses,ylim=range(0,exactsses,exactadap),lwd=5,col="blue", ylab="time of simulation", xlab="number of repeations")
+	points(c(1:nbRep),exactadap,lwd=5,col="black")
+	title(main="the run-time of the exactsses and exactadap",cex=0.6)
+	box()
+	legend(nbRep/2,max(exactsses,exactadap)/2, c("exactsses","exactadap"),pch=19,cex=0.5,col=c("blue","black"),lty=c(1,1))
+
+	#adapsses, exactadap
+	adapsses <- replicate(nbRep,system.time(seir.stoch(S=S,E=E,I=I,R=R,duration=1,rng="good",method="adaptivetau"))[3])	
+ 	exactadap <- replicate(nbRep,system.time(seir.adap.philip(S=S,E=E,I=I,R=R,duration=1,method="exact"))[3])		
+	plot(c(1:nbRep),adapsses,ylim=range(0,adapsses,exactadap),lwd=5,col="blue", ylab="time of simulation", xlab="number of repeations")
+	points(c(1:nbRep),exactadap,lwd=5,col="black")
+	title(main="the run-time of the adapsses and exactadap",cex=0.5)
+	box()
+	legend(nbRep/2,max(adapsses,exactadap)/2, c("adapsses","exactadap"),pch=19,cex=0.5,col=c("blue","black"),lty=c(1,1))
+
+	#exactsses, adapadap
+	exactsses <- replicate(nbRep,system.time(seir.stoch(S=S,E=E,I=I,R=R,duration=1,rng="good",method="exact"))[3])	
+ 	adapadap <- replicate(nbRep,system.time(seir.adap.philip(S=S,E=E,I=I,R=R,duration=1,method="adaptivetau"))[3])	
+	plot(c(1:nbRep),exactsses,ylim=range(0,exactsses,adapadap),lwd=5,col="blue", ylab="time of simulation", xlab="number of repeations")
+	points(c(1:nbRep),adapadap,lwd=5,col="black")
+	title(main="the run-time of the exactsses and adapadap",cex=0.5)
+	box()
+	legend(nbRep/2,max(exactsses,adapadap)/2, c("exactsses","adapadap"),pch=19,cex=0.5,col=c("blue","black"),lty=c(1,1))
+
+	#adapsses, adapadap
+	adapsses <- replicate(nbRep,system.time(seir.stoch(S=S,E=E,I=I,R=R,duration=1,rng="good",method="adaptivetau"))[3])
+ 	adapadap <- replicate(nbRep,system.time(seir.adap.philip(S=S,E=E,I=I,R=R,duration=1,method="adaptivetau"))[3])	
+	plot(c(1:nbRep),adapsses,ylim=range(0,adapsses,adapadap),lwd=5,col="blue", ylab="time of simulation", xlab="number of repeations")
+	points(c(1:nbRep),adapadap,lwd=5,col="black")
+	title(main="the run-time of the adapsses and adapadap",cex=0.5)
+	box()
+	legend(nbRep/2,max(adapsses,adapadap)/2, c("adapsses","adapadap"),pch=19,cex=0.5,col=c("blue","black"),lty=c(1,1))
+
+	
+}
+comp.exact.exact()
+
+#comparing the exact() function of C++ and the exact() function of Philip 

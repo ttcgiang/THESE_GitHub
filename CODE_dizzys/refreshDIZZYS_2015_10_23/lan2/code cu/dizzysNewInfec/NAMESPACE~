@@ -1,0 +1,17 @@
+useDynLib("dizzysNewInfec")
+importFrom(graphics, "plot")
+exportPattern(".")
+exportClasses(
+    "seirNewInfec"    
+)
+export(seirSimul)
+export(seirDet)
+export(globSEIRNewInfec)
+export(detSEIRNewInfec)
+export(stoSEIRNewInfec)
+export(globSEIRSimulNewInfec)
+export(equiNewInfec)
+export(plot.persNewInfec)
+export(plot.surv.probNewInfec)
+
+

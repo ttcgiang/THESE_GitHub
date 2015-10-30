@@ -1,0 +1,31 @@
+* using log directory ‘/home/tran/Desktop/These_TTCGIANG/THESE_GitHub/CODE_dizzys/refreshDIZZYS_2015_10_23/dizzysNEWYANN.Rcheck’
+* using R version 3.2.0 (2015-04-16)
+* using platform: x86_64-pc-linux-gnu (64-bit)
+* using session charset: UTF-8
+* checking for file ‘dizzysNEWYANN/DESCRIPTION’ ... OK
+* checking extension type ... Package
+* this is package ‘dizzysNEWYANN’ version ‘0.4’
+* checking package namespace information ... OK
+* checking package dependencies ... OK
+* checking if this is a source package ... WARNING
+Subdirectory ‘dizzysNEWYANN/src’ contains apparent object files/libraries
+  cseirDetYANN.o dizzysNEWYANN.so equilibriumYANN.o initialFUNC.o
+  rangenyan.o seirStoYANN.o seir_adaptivetau.o ssesYANN.o
+Object files/libraries should not be included in a source package.
+* checking if there is a namespace ... OK
+* checking for executable files ... OK
+* checking for hidden files and directories ... NOTE
+Found the following hidden files and directories:
+  .RData
+  .Rhistory
+  R/.RData
+  R/.Rhistory
+  src/.RData
+These were most likely included in error. See section ‘Package
+structure’ in the ‘Writing R Extensions’ manual.
+* checking for portable file names ... OK
+* checking for sufficient/correct file permissions ... OK
+* checking whether package ‘dizzysNEWYANN’ can be installed ... ERROR
+Installation failed.
+See ‘/home/tran/Desktop/These_TTCGIANG/THESE_GitHub/CODE_dizzys/refreshDIZZYS_2015_10_23/dizzysNEWYANN.Rcheck/00install.out’ for details.
+Status: 1 ERROR, 1 WARNING, 1 NOTE

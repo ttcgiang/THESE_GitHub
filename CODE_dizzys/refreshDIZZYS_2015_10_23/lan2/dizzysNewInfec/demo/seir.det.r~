@@ -1,0 +1,51 @@
+#demo.seir.det
+demo.seir.det <- function(){
+	#default
+	detObj<- seir.det(N=10e6)
+	pause()
+	#S,E,I
+	plot(detObj,add=F,y="I")
+	pause()
+	#changing the values of parameters or variables
+	detObj<-seir.det(duration=50,unitTIME=7, N=10000,S=5000,E=1000,I=10,T=365,
+			mu=1/(70*365),sigma=1/7,gamma=1/7,phi=pi/2)
+	plot(detObj,y="I",col="blue")
+	
+}
+demo.seir.det()
+
+#testing the generic functions
+demo.det.gene<- function(){
+	#print
+	det<-seir.det()
+	print(det)
+	pause()
+	pop(det)
+	pause()
+	summary(det)
+	pause()
+	str(det)
+	pause()
+	coef(det)
+
+}
+demo.det.gene()
+
+#testing plot
+#add parameter
+#2d and 3d for plotting
+demo.plot.det <- function(){
+	plot(seir.det(),add=F,y="I")
+	pause()
+	plot(seir.det(duration=10),add=T,col="black")
+	pause()
+	plot(seir.det(duration=20,phi=pi),add=T,col="blue")
+	pause()
+	plot(seir.det(duration=10),z="S",add=F,y="I")
+	pause()
+	plot(seir.det(duration=10),z="E",add=F,y="I")
+		
+}
+demo.plot.det()
+
+

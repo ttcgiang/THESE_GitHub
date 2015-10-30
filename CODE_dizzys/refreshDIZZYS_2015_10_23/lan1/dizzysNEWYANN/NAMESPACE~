@@ -1,0 +1,15 @@
+useDynLib("dizzysNEWYANN")
+importFrom(graphics, "plot")
+exportPattern(".")
+exportClasses(
+    "seir"    
+)
+export(seirSimul)
+export(seirDet)
+export(seirStoch)
+export(simul)
+export(equilibrium)
+export(plot.pers)
+export(plot.surv.prob)
+
+

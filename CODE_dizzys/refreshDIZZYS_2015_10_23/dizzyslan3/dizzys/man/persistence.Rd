@@ -1,0 +1,30 @@
+\name{persistence}
+
+\alias{persistence}
+
+\title{Persistence in a Metapopulation}
+
+\description{Generic function for calculing number of subpopulations in a metapopulation not extincts at time t.}
+
+\usage{persistence(object)}
+
+\arguments{
+  \item{object}{a seir object.}
+}
+
+\details{The function 'persistence' gives us the number of subpopulations, in a metapopualtion, in which the disease is not extinct at time t by using the parameter 'object' given.}
+
+\value{'persistence' returns a seir object with the value of the slot 'persistence'. The slot 'persistence' is a data frame. This data frame has five columns, 'time' means being the time at which there are some extinct subpopulations, at time t, we have, 'nbVilles' is the number of not extinct subpopulations before the time t, 'ndie' means being the number of died subpopulations, 'dieVille' gives us which subpopulation is died, 'remain' is the number of not extinct subpopulations after the time t.}
+
+\references{Matt J. Keeling and Pejman Rohani (2008) Modeling Infectious Diseases IN HUMANS AND ANIMALS. Princeton University Press.}
+
+\author{TRAN Thi Cam Giang}
+
+\examples{
+	obj1<-seir.stoch(nbVilles=10,N=1e5)
+	objper<-persistence(obj1)
+	objper@persistence
+}
+
+\keyword{ metapopulation }
+\keyword{ persistence }% __ONLY ONE__ keyword per line

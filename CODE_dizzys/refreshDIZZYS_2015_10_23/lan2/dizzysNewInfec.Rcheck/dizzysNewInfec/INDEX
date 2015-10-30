@@ -1,0 +1,22 @@
+coef.seir               Coefficient of seir Object
+confint.pers.rate       Confidence interval for the estimated global
+                        disease persistence rate in a metapopulation.
+dizzys-package          Modelling of Infectious Diseases
+dizzysNewInfec-package
+                        Simulating SEIR/SIR models
+equilibrium             Finding Endemic Equilibrium of a
+                        seasonally-forced SEIR/SIR model
+lines.seir              Add Connected Line Segments of an seir object
+                        to a Plot 2D/3D
+pers.rate.obj           Calculating the global disease persistence rate
+                        in a metapopulation.
+persistence             Persistence in a Metapopulation
+plot.pers               Plotting Kaplan Meier Survival Curve
+plot.seir               Plotting 2D/3D a seir Object
+pop.seir                Extract Values of State Variables of each City
+                        according to Time.
+print.seir              Printing seir Object
+seir-class              seir Class '"seir"'
+simul                   Redoing or Continuing a Simulation.
+str.seir                Describe the Structure of a seir Object.
+summary.seir            Object Summaries

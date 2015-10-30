@@ -1,0 +1,9 @@
+demo.oper <- function(){
+	det <- seir.det()
+	stoch <- seir.stoch.exact()
+	det + det; pause(); stoch + stoch; pause(); stoch + det; pause(); det + stoch; pause()
+	det - det; pause(); stoch - stoch; pause(); stoch - det; pause(); det - stoch; pause()
+	det * det; pause(); stoch * stoch; pause(); stoch * det; pause(); det * stoch; pause()
+	det / det; pause(); stoch / stoch; pause(); stoch / det; pause(); det / stoch; pause()
+}
+demo.oper()

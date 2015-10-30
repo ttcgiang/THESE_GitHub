@@ -1,0 +1,246 @@
+* installing *source* package ‘dizzysNEWYANN’ ...
+** libs
+g++ -I/usr/share/R/include -DNDEBUG      -fpic  -g -O2 -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 -g  -c seirAdaptivetauver02.cpp -o seirAdaptivetauver02.o
+In file included from /usr/include/c++/4.8/fstream:40:0,
+                 from seirStoYANN.h:12,
+                 from seirAdaptivetauver02.cpp:41:
+/usr/include/c++/4.8/bits/codecvt.h:215:45: error: macro "length" passed 4 arguments, but takes just 1
+       const extern_type* __end, size_t __max) const
+                                             ^
+In file included from /usr/include/c++/4.8/fstream:936:0,
+                 from seirStoYANN.h:12,
+                 from seirAdaptivetauver02.cpp:41:
+/usr/include/c++/4.8/bits/fstream.tcc:824:60: error: macro "length" passed 4 arguments, but takes just 1
+                                this->gptr() - this->eback());
+                                                            ^
+/usr/include/c++/4.8/bits/fstream.tcc:941:39: error: macro "length" passed 4 arguments, but takes just 1
+           this->gptr() - this->eback());
+                                       ^
+In file included from /usr/include/c++/4.8/fstream:40:0,
+                 from seirStoYANN.h:12,
+                 from seirAdaptivetauver02.cpp:41:
+/usr/include/c++/4.8/bits/codecvt.h:214:7: error: expected ‘;’ at end of member declaration
+       length(state_type& __state, const extern_type* __from,
+       ^
+/usr/include/c++/4.8/bits/codecvt.h:216:7: error: expected unqualified-id before ‘{’ token
+       { return this->do_length(__state, __from, __end, __max); }
+       ^
+seirAdaptivetauver02.cpp: In constructor ‘CStochasticEqns::CStochasticEqns(SEXP, SEXP, SEXP, SEXP, SEXP, double*, SEXP, SEXP, SEXP)’:
+seirAdaptivetauver02.cpp:271:13: error: ‘CRMatrix’ was not declared in this scope
+             CRMatrix<int> mat(coerceVector(nu,INTSXP), true);
+             ^
+seirAdaptivetauver02.cpp:271:22: error: expected primary-expression before ‘int’
+             CRMatrix<int> mat(coerceVector(nu,INTSXP), true);
+                      ^
+seirAdaptivetauver02.cpp:271:22: error: expected ‘;’ before ‘int’
+seirAdaptivetauver02.cpp:272:25: error: ‘mat’ was not declared in this scope
+             m_Nu.resize(mat.ncol());
+                         ^
+seirAdaptivetauver02.cpp:283:13: error: ‘CRList’ was not declared in this scope
+             CRList list(nu);
+             ^
+seirAdaptivetauver02.cpp:283:20: error: expected ‘;’ before ‘list’
+             CRList list(nu);
+                    ^
+seirAdaptivetauver02.cpp:284:25: error: ‘list’ was not declared in this scope
+             m_Nu.resize(list.size());
+                         ^
+seirAdaptivetauver02.cpp:291:23: error: ‘CRVector’ does not name a type
+                 const CRVector<int> trans(coerceVector(list[j],INTSXP), true);
+                       ^
+seirAdaptivetauver02.cpp:292:32: error: ‘trans’ was not declared in this scope
+                 m_Nu[j].resize(trans.size());
+                                ^
+seirAdaptivetauver02.cpp: In member function ‘SEXPREC* CStochasticEqns::GetResult() const’:
+seirAdaptivetauver02.cpp:524:13: error: ‘CRList’ was not declared in this scope
+             CRList res(2, true);
+             ^
+seirAdaptivetauver02.cpp:524:20: error: expected ‘;’ before ‘res’
+             CRList res(2, true);
+                    ^
+seirAdaptivetauver02.cpp:525:13: error: ‘res’ was not declared in this scope
+             res.SetSEXP(0, GetTimeSeriesSEXP(), "dynamics");
+             ^
+seirAdaptivetauver02.cpp:526:13: error: ‘CRVector’ was not declared in this scope
+             CRVector<int> lastTrans(1, false);
+             ^
+seirAdaptivetauver02.cpp:526:22: error: expected primary-expression before ‘int’
+             CRVector<int> lastTrans(1, false);
+                      ^
+seirAdaptivetauver02.cpp:526:22: error: expected ‘;’ before ‘int’
+seirAdaptivetauver02.cpp:527:13: error: ‘lastTrans’ was not declared in this scope
+             lastTrans[0] = (m_LastTransition < 0  ||
+             ^
+seirAdaptivetauver02.cpp: In member function ‘void CStochasticEqns::x_SetCat(SEXP, CStochasticEqns::ETransCat)’:
+seirAdaptivetauver02.cpp:847:9: error: ‘CRVector’ was not declared in this scope
+         CRVector<bool> logic(trans);
+         ^
+seirAdaptivetauver02.cpp:847:18: error: expected primary-expression before ‘bool’
+         CRVector<bool> logic(trans);
+                  ^
+seirAdaptivetauver02.cpp:847:18: error: expected ‘;’ before ‘bool’
+seirAdaptivetauver02.cpp:848:13: error: ‘logic’ was not declared in this scope
+         if (logic.size() > m_TransCats.size()) {
+             ^
+seirAdaptivetauver02.cpp:853:39: error: ‘logic’ was not declared in this scope
+         for (unsigned int i = 0;  i < logic.size();  ++i) {
+                                       ^
+seirAdaptivetauver02.cpp:860:9: error: ‘CRVector’ was not declared in this scope
+         CRVector<int> w(coerceVector(trans, INTSXP), true);
+         ^
+seirAdaptivetauver02.cpp:860:18: error: expected primary-expression before ‘int’
+         CRVector<int> w(coerceVector(trans, INTSXP), true);
+                  ^
+seirAdaptivetauver02.cpp:860:18: error: expected ‘;’ before ‘int’
+seirAdaptivetauver02.cpp:861:39: error: ‘w’ was not declared in this scope
+         for (unsigned int i = 0;  i < w.size();  ++i) {
+                                       ^
+seirAdaptivetauver02.cpp: In function ‘SEXPREC* ssesAdaptiveTauRETRY(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP)’:
+seirAdaptivetauver02.cpp:1662:49: error: ‘INTEGER_VALUE’ was not declared in this scope
+           int cnbVilles = INTEGER_VALUE(nbVilles);
+                                                 ^
+seirAdaptivetauver02.cpp:1668:46: error: ‘NUMERIC_VALUE’ was not declared in this scope
+           double cgamma = NUMERIC_VALUE(gamma);
+                                              ^
+seirAdaptivetauver02.cpp:1722:23: error: ‘unitTIME’ was not declared in this scope
+           if (!isReal(unitTIME)  ||  length(unitTIME) != 1) {
+                       ^
+seirAdaptivetauver02.cpp:1725:42: error: ‘unitTIME’ was not declared in this scope
+           double cunitTIME=NUMERIC_VALUE(unitTIME);
+                                          ^
+seirAdaptivetauver02.cpp:1824:55: error: no matching function for call to ‘CStochasticEqns::CStochasticEqns(SEXPREC*&, int*&, unsigned int&, SEXPREC*&, SEXPREC*&, int&, double&, double&, double&, double**&, double**&, double**&, double**&, double**&, double*&, double&, double&, double*, SEXPREC*&, SEXPREC*&)’
+                             s_fMaxtau, s_deterministic);
+                                                       ^
+seirAdaptivetauver02.cpp:1824:55: note: candidates are:
+seirAdaptivetauver02.cpp:247:5: note: CStochasticEqns::CStochasticEqns(SEXP, SEXP, SEXP, SEXP, SEXP, double*, SEXP, SEXP, SEXP)
+     CStochasticEqns(SEXP initVal, SEXP nu,
+     ^
+seirAdaptivetauver02.cpp:247:5: note:   candidate expects 9 arguments, 20 provided
+seirAdaptivetauver02.cpp:245:7: note: CStochasticEqns::CStochasticEqns(const CStochasticEqns&)
+ class CStochasticEqns {
+       ^
+seirAdaptivetauver02.cpp:245:7: note:   candidate expects 1 argument, 20 provided
+make: *** [seirAdaptivetauver02.o] Error 1
+g++ -I/usr/share/R/include -DNDEBUG      -fpic  -g -O2 -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 -g  -c seirAdaptivetauver02.cpp -o seirAdaptivetauver02.o
+In file included from /usr/include/c++/4.8/fstream:40:0,
+                 from seirStoYANN.h:12,
+                 from seirAdaptivetauver02.cpp:41:
+/usr/include/c++/4.8/bits/codecvt.h:215:45: error: macro "length" passed 4 arguments, but takes just 1
+       const extern_type* __end, size_t __max) const
+                                             ^
+In file included from /usr/include/c++/4.8/fstream:936:0,
+                 from seirStoYANN.h:12,
+                 from seirAdaptivetauver02.cpp:41:
+/usr/include/c++/4.8/bits/fstream.tcc:824:60: error: macro "length" passed 4 arguments, but takes just 1
+                                this->gptr() - this->eback());
+                                                            ^
+/usr/include/c++/4.8/bits/fstream.tcc:941:39: error: macro "length" passed 4 arguments, but takes just 1
+           this->gptr() - this->eback());
+                                       ^
+In file included from /usr/include/c++/4.8/fstream:40:0,
+                 from seirStoYANN.h:12,
+                 from seirAdaptivetauver02.cpp:41:
+/usr/include/c++/4.8/bits/codecvt.h:214:7: error: expected ‘;’ at end of member declaration
+       length(state_type& __state, const extern_type* __from,
+       ^
+/usr/include/c++/4.8/bits/codecvt.h:216:7: error: expected unqualified-id before ‘{’ token
+       { return this->do_length(__state, __from, __end, __max); }
+       ^
+seirAdaptivetauver02.cpp: In constructor ‘CStochasticEqns::CStochasticEqns(SEXP, SEXP, SEXP, SEXP, SEXP, double*, SEXP, SEXP, SEXP)’:
+seirAdaptivetauver02.cpp:271:13: error: ‘CRMatrix’ was not declared in this scope
+             CRMatrix<int> mat(coerceVector(nu,INTSXP), true);
+             ^
+seirAdaptivetauver02.cpp:271:22: error: expected primary-expression before ‘int’
+             CRMatrix<int> mat(coerceVector(nu,INTSXP), true);
+                      ^
+seirAdaptivetauver02.cpp:271:22: error: expected ‘;’ before ‘int’
+seirAdaptivetauver02.cpp:272:25: error: ‘mat’ was not declared in this scope
+             m_Nu.resize(mat.ncol());
+                         ^
+seirAdaptivetauver02.cpp:283:13: error: ‘CRList’ was not declared in this scope
+             CRList list(nu);
+             ^
+seirAdaptivetauver02.cpp:283:20: error: expected ‘;’ before ‘list’
+             CRList list(nu);
+                    ^
+seirAdaptivetauver02.cpp:284:25: error: ‘list’ was not declared in this scope
+             m_Nu.resize(list.size());
+                         ^
+seirAdaptivetauver02.cpp:291:23: error: ‘CRVector’ does not name a type
+                 const CRVector<int> trans(coerceVector(list[j],INTSXP), true);
+                       ^
+seirAdaptivetauver02.cpp:292:32: error: ‘trans’ was not declared in this scope
+                 m_Nu[j].resize(trans.size());
+                                ^
+seirAdaptivetauver02.cpp: In member function ‘SEXPREC* CStochasticEqns::GetResult() const’:
+seirAdaptivetauver02.cpp:524:13: error: ‘CRList’ was not declared in this scope
+             CRList res(2, true);
+             ^
+seirAdaptivetauver02.cpp:524:20: error: expected ‘;’ before ‘res’
+             CRList res(2, true);
+                    ^
+seirAdaptivetauver02.cpp:525:13: error: ‘res’ was not declared in this scope
+             res.SetSEXP(0, GetTimeSeriesSEXP(), "dynamics");
+             ^
+seirAdaptivetauver02.cpp:526:13: error: ‘CRVector’ was not declared in this scope
+             CRVector<int> lastTrans(1, false);
+             ^
+seirAdaptivetauver02.cpp:526:22: error: expected primary-expression before ‘int’
+             CRVector<int> lastTrans(1, false);
+                      ^
+seirAdaptivetauver02.cpp:526:22: error: expected ‘;’ before ‘int’
+seirAdaptivetauver02.cpp:527:13: error: ‘lastTrans’ was not declared in this scope
+             lastTrans[0] = (m_LastTransition < 0  ||
+             ^
+seirAdaptivetauver02.cpp: In member function ‘void CStochasticEqns::x_SetCat(SEXP, CStochasticEqns::ETransCat)’:
+seirAdaptivetauver02.cpp:847:9: error: ‘CRVector’ was not declared in this scope
+         CRVector<bool> logic(trans);
+         ^
+seirAdaptivetauver02.cpp:847:18: error: expected primary-expression before ‘bool’
+         CRVector<bool> logic(trans);
+                  ^
+seirAdaptivetauver02.cpp:847:18: error: expected ‘;’ before ‘bool’
+seirAdaptivetauver02.cpp:848:13: error: ‘logic’ was not declared in this scope
+         if (logic.size() > m_TransCats.size()) {
+             ^
+seirAdaptivetauver02.cpp:853:39: error: ‘logic’ was not declared in this scope
+         for (unsigned int i = 0;  i < logic.size();  ++i) {
+                                       ^
+seirAdaptivetauver02.cpp:860:9: error: ‘CRVector’ was not declared in this scope
+         CRVector<int> w(coerceVector(trans, INTSXP), true);
+         ^
+seirAdaptivetauver02.cpp:860:18: error: expected primary-expression before ‘int’
+         CRVector<int> w(coerceVector(trans, INTSXP), true);
+                  ^
+seirAdaptivetauver02.cpp:860:18: error: expected ‘;’ before ‘int’
+seirAdaptivetauver02.cpp:861:39: error: ‘w’ was not declared in this scope
+         for (unsigned int i = 0;  i < w.size();  ++i) {
+                                       ^
+seirAdaptivetauver02.cpp: In function ‘SEXPREC* ssesAdaptiveTauRETRY(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP)’:
+seirAdaptivetauver02.cpp:1662:49: error: ‘INTEGER_VALUE’ was not declared in this scope
+           int cnbVilles = INTEGER_VALUE(nbVilles);
+                                                 ^
+seirAdaptivetauver02.cpp:1668:46: error: ‘NUMERIC_VALUE’ was not declared in this scope
+           double cgamma = NUMERIC_VALUE(gamma);
+                                              ^
+seirAdaptivetauver02.cpp:1722:23: error: ‘unitTIME’ was not declared in this scope
+           if (!isReal(unitTIME)  ||  length(unitTIME) != 1) {
+                       ^
+seirAdaptivetauver02.cpp:1725:42: error: ‘unitTIME’ was not declared in this scope
+           double cunitTIME=NUMERIC_VALUE(unitTIME);
+                                          ^
+seirAdaptivetauver02.cpp:1824:55: error: no matching function for call to ‘CStochasticEqns::CStochasticEqns(SEXPREC*&, int*&, unsigned int&, SEXPREC*&, SEXPREC*&, int&, double&, double&, double&, double**&, double**&, double**&, double**&, double**&, double*&, double&, double&, double*, SEXPREC*&, SEXPREC*&)’
+                             s_fMaxtau, s_deterministic);
+                                                       ^
+seirAdaptivetauver02.cpp:1824:55: note: candidates are:
+seirAdaptivetauver02.cpp:247:5: note: CStochasticEqns::CStochasticEqns(SEXP, SEXP, SEXP, SEXP, SEXP, double*, SEXP, SEXP, SEXP)
+     CStochasticEqns(SEXP initVal, SEXP nu,
+     ^
+seirAdaptivetauver02.cpp:247:5: note:   candidate expects 9 arguments, 20 provided
+seirAdaptivetauver02.cpp:245:7: note: CStochasticEqns::CStochasticEqns(const CStochasticEqns&)
+ class CStochasticEqns {
+       ^
+seirAdaptivetauver02.cpp:245:7: note:   candidate expects 1 argument, 20 provided
+make: *** [seirAdaptivetauver02.o] Error 1
+ERROR: compilation failed for package ‘dizzysNEWYANN’
+* removing ‘/home/tran/Desktop/These_TTCGIANG/THESE_GitHub/CODE_dizzys/refreshDIZZYS_2015_10_23/dizzysNEWYANN.Rcheck/dizzysNEWYANN’

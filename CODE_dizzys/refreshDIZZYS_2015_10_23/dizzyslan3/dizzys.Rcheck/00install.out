@@ -1,0 +1,24 @@
+* installing *source* package ‘dizzys’ ...
+** libs
+g++ -I/usr/share/R/include -DNDEBUG      -fpic  -g -O2 -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 -g  -c equilibrium.cpp -o equilibrium.o
+g++ -I/usr/share/R/include -DNDEBUG      -fpic  -g -O2 -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 -g  -c main.cpp -o main.o
+g++ -I/usr/share/R/include -DNDEBUG      -fpic  -g -O2 -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 -g  -c rangenyan.cpp -o rangenyan.o
+g++ -I/usr/share/R/include -DNDEBUG      -fpic  -g -O2 -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 -g  -c seir_adaptivetau.cpp -o seir_adaptivetau.o
+g++ -I/usr/share/R/include -DNDEBUG      -fpic  -g -O2 -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 -g  -c seir_det.cpp -o seir_det.o
+g++ -I/usr/share/R/include -DNDEBUG      -fpic  -g -O2 -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 -g  -c seir_stoch.cpp -o seir_stoch.o
+seir_stoch.cpp: In function ‘void writeInFileToTal_00(std::string, std::vector<std::vector<double> >)’:
+seir_stoch.cpp:349:230: warning: too many arguments for format [-Wformat-extra-args]
+         sprintf(line, "%.2f \t\t %.0f \t\t %.0f \t\t\t %.0f \t\t\t %.0f \t\t\t %.0f \n",tableauToTal[i][it], tableauToTal[i][iS], tableauToTal[i][iE],tableauToTal[i][iI],tableauToTal[i][iR],tableauToTal[i][iN],tableauToTal[i][iP]);
+                                                                                                                                                                                                                                      ^
+g++ -I/usr/share/R/include -DNDEBUG      -fpic  -g -O2 -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 -g  -c sses.cpp -o sses.o
+g++ -shared -L/usr/lib/R/lib -Wl,-Bsymbolic-functions -Wl,-z,relro -o dizzys.so equilibrium.o main.o rangenyan.o seir_adaptivetau.o seir_det.o seir_stoch.o sses.o -llapack -lblas -lgfortran -lm -lquadmath -L/usr/lib/R/lib -lR
+installing to /home/tran/Desktop/These_TTCGIANG/THESE_GitHub/CODE_dizzys/refreshDIZZYS_2015_10_23/dizzyslan3/dizzys.Rcheck/dizzys/libs
+** R
+** demo
+** inst
+** preparing package for lazy loading
+** help
+*** installing help indices
+** building package indices
+** testing if installed package can be loaded
+* DONE (dizzys)

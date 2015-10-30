@@ -1,0 +1,32 @@
+* using log directory ‘/home/tran/Desktop/These_TTCGIANG/THESE_GitHub/CODE_dizzys/refreshDIZZYS_2015_10_23/lan2/dizzysNewInfec.Rcheck’
+* using R version 3.2.0 (2015-04-16)
+* using platform: x86_64-pc-linux-gnu (64-bit)
+* using session charset: UTF-8
+* checking for file ‘dizzysNewInfec/DESCRIPTION’ ... OK
+* checking extension type ... Package
+* this is package ‘dizzysNewInfec’ version ‘0.4’
+* checking package namespace information ... OK
+* checking package dependencies ... OK
+* checking if this is a source package ... WARNING
+Subdirectory ‘dizzysNewInfec/src’ contains apparent object files/libraries
+  adapSEIRNewInfec.o cseirDetNewInfec.o dizzysNewInfec.so
+  equiNewInfec.o initialFUNC.o randYANN.o seirRCNewInfec.o
+  stoSEIRNewInfec.o
+Object files/libraries should not be included in a source package.
+* checking if there is a namespace ... OK
+* checking for executable files ... OK
+* checking for hidden files and directories ... NOTE
+Found the following hidden files and directories:
+  .RData
+  .Rhistory
+  R/.RData
+  R/.Rhistory
+  src/.RData
+These were most likely included in error. See section ‘Package
+structure’ in the ‘Writing R Extensions’ manual.
+* checking for portable file names ... OK
+* checking for sufficient/correct file permissions ... OK
+* checking whether package ‘dizzysNewInfec’ can be installed ... ERROR
+Installation failed.
+See ‘/home/tran/Desktop/These_TTCGIANG/THESE_GitHub/CODE_dizzys/refreshDIZZYS_2015_10_23/lan2/dizzysNewInfec.Rcheck/00install.out’ for details.
+Status: 1 ERROR, 1 WARNING, 1 NOTE

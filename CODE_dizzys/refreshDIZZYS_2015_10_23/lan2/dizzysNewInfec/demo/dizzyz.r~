@@ -1,0 +1,8 @@
+# all sses2722013 demos
+demo(seir.det)
+demo(seir.stoch)
+demo(plot.simul.cont)
+demo(sirmodel)
+demo(comp.sses.adap)
+
+

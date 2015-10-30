@@ -1,0 +1,1404 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass article
+\use_default_options true
+\begin_modules
+sweave
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding utf8-plain
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_amsmath 1
+\use_esint 1
+\use_mhchem 1
+\use_mathdots 1
+\cite_engine basic
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+\begin_inset Formula $\mathbf{dizzys}$
+\end_inset
+
+: efficient deterministic/stochastic simulations in R for a metapopulation
+ by using SIR/SEIR models
+\end_layout
+
+\begin_layout Author
+TRAN Thi Cam Giang
+\end_layout
+
+\begin_layout Abstract
+Predicting the potential spread of an infectious disease is still a difficult
+ problem for scientists.
+ It requires much more than simple connecting subpopulations in a metapopulation
+ and takes into account many factors about the pathogen and the affected
+ subpopulation.
+ Therefore, this 'dizzys' package allows us to simulate dynamics of an infectiou
+s disease throught subpopulations by using the SIR/SEIR models and by implementi
+ng the direct algorithm of Gillespie in 1977 and the adaptive tau leaping
+ to approximate the trajectory of a continuous-time stochastic process.
+ Consequently, result returned is biological data in time horizon about
+ the disease dynamic, we can perform analysis on this biological data.
+ This vignette presents a few examples of SIR/SEIR applied to biological
+ problems.
+ 
+\end_layout
+
+\begin_layout Section*
+Introduction
+\end_layout
+
+\begin_layout Standard
+Fundamentally, Kermack-McKendrick gave the first epidemic model to provide
+ a mathematical description of the kinetic transmission of an infectious
+ disease in an unstructured subpopulation.
+ According to this model, today we known well the SIR/SEIR deterministic
+ epidemic models.
+ This is the two basic models very populary used by scientists.
+ However, 
+\series bold
+Keeling and Pejman Rohani
+\series default
+ show that all the deterministic models are essentially fixed 
+\begin_inset Quotes eld
+\end_inset
+
+clockwork
+\begin_inset Quotes erd
+\end_inset
+
+ systems with the same starting conditions, exactly the same trajectory
+ is always observed.
+ It isn't right for dynamics of real pathogens in the real-world.
+ So stochastic models are created and concerned with approximating or mimicking
+ the random or probabilistic element from the deterministic models.
+ Moreover, when the quantities in a system are small enough and extinction
+ is probable to occur, then stochastic effects become critical to take into
+ account.
+ This is reason, in the 'dizzys' package, it permits us to obtain the dynamics
+ of the deterministic and the approximate dynamics of the stochastic epidemic
+ models.
+\end_layout
+
+\begin_layout Standard
+Based on the stochastic models, their processes are in Markov process, it
+ means that the future state of the process, conditional on the present
+ state, is independent of the past.
+ In the case, our package focus on simulating dynamics from a continuous-time
+ Markov process for which the transition rates are constants, aren't a function
+ of time.
+ We use the exact algorithm of Gillespie in 1977 and the approximate algorithm
+ described as the 
+\begin_inset Quotes eld
+\end_inset
+
+adaptive tau-leaping algorithm
+\begin_inset Quotes erd
+\end_inset
+
+.
+ With these two algorithms, each has its private advantages and its private
+ disadvantages.
+ For the exact algorithm, it give us a really exact approach of simulating
+ population-based time-to-event throught two step with many iterations of
+ 1) searching the time of next event by an expenentially distributed function
+ and 2) searching the nature of next event.
+ This Gillespie's solution becomes too slow and impractical as any one transitio
+n rate growns large.
+ Hence, approximate models are born instead of the Gillespie's solution,
+ they are concerned with larger transition rates and with increasing simulation
+ speed while still maintaining reasonable accuracy.
+ The 
+\begin_inset Quotes eld
+\end_inset
+
+adaptive tau-leaping algorithm
+\begin_inset Quotes erd
+\end_inset
+
+ known as an approximate method reduces the number of iterations by treating
+ transition rates as constant over time periods for which this approximation
+ leads to little error 
+\series bold
+[Cao et al., 2007] 
+\series default
+.
+ 
+\end_layout
+
+\begin_layout Standard
+The 
+\series bold
+dizzys
+\series default
+ package in R implements both the exact solution and the approximate solution
+ for the SIR and SEIR models by integrating the R package and the C++ implementa
+tion.
+ We can chose one of the two solutions to simulate when the number of subpopulat
+ions in a metapopulation increases.
+ We use C++ to performe the algorithms, in contrast, we use R to create
+ interfaces.
+ Therefore, new implementation is much faster than the GillespieSSA R package
+\series bold
+ [Pineda-Krch, 2008]
+\series default
+.
+\end_layout
+
+\begin_layout Section*
+Methods
+\end_layout
+
+\begin_layout Standard
+In this section, first we will talk about the deterministic model, the stochasti
+c model of the SEIR model.
+ Then, we will have tranformation the SEIR model into the SIR model through
+ the usage of the two algorithms.
+ We hope that the models and the algorithms should be well understood before
+ obtainning simulation results.
+\end_layout
+
+\begin_layout Subsection*
+
+\series bold
+Deterministic model:
+\end_layout
+
+\begin_layout Standard
+To describe infectious diseases in a in a spatial context, we consider a
+ metapopulation of n sub-populations.
+ In subpopulation 
+\begin_inset Formula $i$
+\end_inset
+
+ of size 
+\begin_inset Formula $N_{i}$
+\end_inset
+
+, disease dynamics can be deterministically described by the following set
+ of differential equations: 
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Anderson1991a"
+
+\end_inset
+
+: 
+\begin_inset Formula 
+\begin{eqnarray}
+\frac{dS_{i}}{dt} & = & \mu N_{i}-\lambda_{i}S_{i}-\mu S_{i}\label{eq:dS-1}\\
+\frac{dE_{i}}{dt} & = & \lambda_{i}S_{i}-\mu E_{i}-\sigma E_{i}\\
+\frac{dI_{i}}{dt} & = & \sigma E_{i}-\mu I_{i}-\gamma I_{i}\label{eq:infectieux-1}\\
+\frac{dR_{i}}{dt} & = & \gamma I_{i}-\mu R_{i}\label{eq:dR-1}
+\end{eqnarray}
+
+\end_inset
+
+ where 
+\begin_inset Formula $S_{i}$
+\end_inset
+
+, 
+\begin_inset Formula $E_{i}$
+\end_inset
+
+, 
+\begin_inset Formula $I_{i}$
+\end_inset
+
+ et 
+\begin_inset Formula $R_{i}$
+\end_inset
+
+ are respectively the numbers of susceptible, exposed, infectious and recovered
+ in this sub-population 
+\begin_inset Formula $i$
+\end_inset
+
+.
+ Individuals are born susceptible and die at a rate 
+\begin_inset Formula $\mu$
+\end_inset
+
+, become infected with the force of infection 
+\begin_inset Formula $\lambda_{i}$
+\end_inset
+
+, infectious after a latency period of an average duration of 
+\begin_inset Formula $1/\sigma$
+\end_inset
+
+ and recover at the rate 
+\begin_inset Formula $\gamma$
+\end_inset
+
+.
+ In case the infectious contact rate is constant, the equilibrium values
+ of the variables 
+\begin_inset Formula $S$
+\end_inset
+
+, 
+\begin_inset Formula $E$
+\end_inset
+
+, 
+\begin_inset Formula $I$
+\end_inset
+
+ and 
+\begin_inset Formula $R$
+\end_inset
+
+ can be expressed analytically (see appendix).
+ The force of infection depends not only on the total population size 
+\begin_inset Formula $N_{i}$
+\end_inset
+
+ and the number of infected 
+\begin_inset Formula $I_{i}$
+\end_inset
+
+ in subpopulation 
+\begin_inset Formula $i$
+\end_inset
+
+, but also in other sub-populations 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Keeling2002b,Keeling2008b"
+
+\end_inset
+
+ : 
+\begin_inset Formula 
+\begin{equation}
+\lambda_{i}=\left(1-\sum_{\substack{k=1\\
+k\neq i
+}
+}^{n}\rho_{ik}\right)\beta_{i}\frac{I_{i}}{N_{i}}+\sum_{\substack{k=1\\
+k\neq i
+}
+}^{n}\rho_{ik}\frac{(1-\varepsilon_{ik})\beta_{i}N_{k}+\varepsilon_{ik}\beta_{k}N_{i}}{N_{i}N_{k}}I_{k}\label{eq:force-1}
+\end{equation}
+
+\end_inset
+
+ where 
+\begin_inset Formula $\sum_{\substack{k=1\\
+k\neq i
+}
+}^{n}\rho_{ik}<1$
+\end_inset
+
+, 
+\begin_inset Formula $\beta_{i}$
+\end_inset
+
+ is the contact rate in population 
+\begin_inset Formula $i$
+\end_inset
+
+ and 
+\begin_inset Formula $\rho_{ij}=\rho_{ji}$
+\end_inset
+
+ (
+\begin_inset Formula $0\leqslant\rho_{ij}\leqslant1$
+\end_inset
+
+ and 
+\begin_inset Formula $\rho_{ii}=1$
+\end_inset
+
+) is the coupling between subpopulations 
+\begin_inset Formula $i$
+\end_inset
+
+ and 
+\begin_inset Formula $j$
+\end_inset
+
+.
+ Among the infections caused by contacts with infected from other subpopulations
+, 
+\begin_inset Formula $\varepsilon_{ij}=\varepsilon_{ji}$
+\end_inset
+
+ (
+\begin_inset Formula $0\leqslant\varepsilon_{ij}\leqslant1$
+\end_inset
+
+) is the proportion of infections due to susceptible individuals visiting
+ other populations as opposed to infected individuals from other populations
+ visiting the focal population.
+ See appendix for detail on the construction of this equation.
+ We can verify that in the limit case on one single subpopulation in the
+ metapopulation (
+\begin_inset Formula $i=j$
+\end_inset
+
+ et 
+\begin_inset Formula $n=1$
+\end_inset
+
+) we have 
+\begin_inset Formula 
+\begin{equation}
+\lambda_{i}=\beta_{i}\frac{I_{i}}{N_{i}}.
+\end{equation}
+
+\end_inset
+
+ consider that the contact rate 
+\begin_inset Formula $\beta_{i}$
+\end_inset
+
+ is seasonally forced 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Altizer2006"
+
+\end_inset
+
+: 
+\begin_inset Formula 
+\begin{equation}
+\beta_{i}(t)=b_{0}\left[1+b_{1}\cos\left(\frac{2\pi t}{T}+\varphi_{i}\right)\right]\label{eq:beta_i-1}
+\end{equation}
+
+\end_inset
+
+ where 
+\begin_inset Formula $b_{0}$
+\end_inset
+
+ and 
+\begin_inset Formula $b_{1}$
+\end_inset
+
+ are the mean value and amplitude of the contact rate and 
+\begin_inset Formula $T$
+\end_inset
+
+ and 
+\begin_inset Formula $\varphi_{i}$
+\end_inset
+
+ are the period and the phase of the forcing.
+\end_layout
+
+\begin_layout Subsection*
+
+\series bold
+Stochastic model using Gillespie's exact algorithm:
+\end_layout
+
+\begin_layout Standard
+Based on the differential equations above, we give a stochastic version
+ of this model.
+ We use for that a population-based time-to-next-event model based on Gillespie'
+s algorithm 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Gillespie1977"
+
+\end_inset
+
+.
+ Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:stoch_ev"
+
+\end_inset
+
+ lists all the events of the model, occurring in subpopulation 
+\begin_inset Formula $i$
+\end_inset
+
+.
+ 
+\begin_inset Float table
+placement htpb
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:stoch_ev"
+
+\end_inset
+
+Events of the stochastic version of the model of equations 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:dS-1"
+
+\end_inset
+
+-
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:dR-1"
+
+\end_inset
+
+, occuring in subpopulation 
+\begin_inset Formula $i$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+
+\series bold
+\begin_inset Tabular
+<lyxtabular version="3" rows="10" columns="3">
+<features tabularvalignment="middle">
+<column alignment="left" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Events 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Rates 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Transitions 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+birth
+\series default
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\mu N_{i}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $S_{i}\leftarrow S_{i}+1$
+\end_inset
+
+ and 
+\begin_inset Formula $N_{i}\leftarrow N_{i}+1$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+death of a susceptible 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+\begin_inset Formula $\mu S_{i}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+\begin_inset Formula $S_{i}\leftarrow S_{i}-1$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+death of an exposed 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+\begin_inset Formula $\mu E_{i}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+\begin_inset Formula $E_{i}\leftarrow E_{i}-1$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+death of an infected 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+\begin_inset Formula $\mu I_{i}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+\begin_inset Formula $I_{i}\leftarrow I_{i}-1$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+death of an immune 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+\begin_inset Formula $\mu R_{i}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+\begin_inset Formula $I_{i}\leftarrow I_{i}-1$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+infection 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+\begin_inset Formula $\lambda_{i}S_{i}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+\begin_inset Formula $S_{i}\leftarrow S_{i}-1$
+\end_inset
+
+ 
+\series default
+and
+\series bold
+ 
+\begin_inset Formula $E_{i}\leftarrow E_{i}+1$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+becoming infectious 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+\begin_inset Formula $\sigma E_{i}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+\begin_inset Formula $E_{i}\leftarrow E_{i}-1$
+\end_inset
+
+ 
+\series default
+and
+\series bold
+ 
+\begin_inset Formula $I_{i}\leftarrow I_{i}+1$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+recovery 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+\begin_inset Formula $\gamma I_{i}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+\begin_inset Formula $I_{i}\leftarrow I_{i}-1$
+\end_inset
+
+ 
+\series default
+and
+\series bold
+ 
+\begin_inset Formula $R_{i}\leftarrow R_{i}+1$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="none" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="none" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+
+\series bold
+Stochastic model using 
+\begin_inset Quotes eld
+\end_inset
+
+adaptive tau-leaping algorithm
+\begin_inset Quotes erd
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+In this step, we provide basic concepts for the adaptive tau-leaping algorithm
+ by using the detailed description of 
+\series bold
+Cao et al.
+ [2007]
+\series default
+.
+ 
+\end_layout
+
+\begin_layout Standard
+For the Markov process at time t, to describe a metapopulation of n subpopulatio
+ns, we have:
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+state set:
+\series default
+ X(t)
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $X(t):=[S_{1}(t),S_{2}(t),...,S_{n}(t),E_{1}(t),E_{2}(t),...,E_{n}(t),I_{1}(t),I_{2}(t),...,I_{n}(t),R_{1}(t),R_{2}(t),...,R_{n}(t)]$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+each variables of 
+\begin_inset Formula $X(t)$
+\end_inset
+
+ is defined on the non-negative integers.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+set of allowable transitions:
+\series default
+ 
+\begin_inset Formula ${\triangle_{j}}$
+\end_inset
+
+, for each allowable transition, 
+\begin_inset Formula $j$
+\end_inset
+
+, we define a rate 
+\begin_inset Formula $\lambda_{j}$
+\end_inset
+
+, by using a function independent on t but dependent on the current state
+ 
+\begin_inset Formula $X(t)$
+\end_inset
+
+, to calculate transition rates given the state 
+\begin_inset Formula $(\lambda(X))$
+\end_inset
+
+ through the deterministic model, and a vector of 
+\begin_inset Formula $n$
+\end_inset
+
+ integers, 
+\begin_inset Formula $\triangle_{j}:=[\triangle_{j,1},...,\triangle_{j,n}]$
+\end_inset
+
+, that reflects the change in state if this transition were followed: 
+\begin_inset Formula $X(t)+\triangle_{j}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+time process: 
+\series default
+modeling on a time-homogeneous process.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+operation:
+\series default
+ with the SEIR model, the package simulates a trajectory from time 
+\begin_inset Formula $0$
+\end_inset
+
+ to a stopping time 
+\begin_inset Formula $tmax$
+\end_inset
+
+.
+ Based on the description of Cao and al.[2007], a good time period of length
+ 
+\begin_inset Formula $\tau$
+\end_inset
+
+ is during which all transition rates remain approximately constant and
+ all 
+\begin_inset Formula $n$
+\end_inset
+
+ state variables remain greater than zero with probability
+\begin_inset Formula $\thicksim1$
+\end_inset
+
+.
+ Then, by using the Poisson-dustributed number of transitions, that should
+ have occurred during this period: 
+\begin_inset Formula $X(t+\tau)\approx X(t)+\sum_{j}y_{j}\triangle_{j}$
+\end_inset
+
+ where 
+\begin_inset Formula $y_{j}\thicksim Poisson(\tau\lambda_{j})$
+\end_inset
+
+.
+ To successfully apply this algorithm, we need to know that, transition
+ rates frequently change and in balancing efficiency with accuracy when
+ selecting these time periods to leap over.
+\end_layout
+
+\begin_layout Subsubsection*
+
+\series bold
+Transformation SEIR model into SIR model:
+\end_layout
+
+\begin_layout Standard
+The SIR model used in this package is the SIR model with births and death
+\series bold
+.
+ 
+\series default
+By observing this SEIR model, if we give a numerical value for the parameter
+ 
+\begin_inset Formula $\sigma$
+\end_inset
+
+ then a SEIR model would have.
+ On the other side, if we give 
+\begin_inset Formula $Inf$
+\end_inset
+
+ (to infinity) the parameter 
+\begin_inset Formula $\sigma$
+\end_inset
+
+ then we have a SIR model with birth and death (because, basically, a SEIR
+ model tends to a SIR model when 
+\begin_inset Formula $\sigma$
+\end_inset
+
+ tends to infinity).
+\end_layout
+
+\begin_layout Section*
+Example 1
+\end_layout
+
+\begin_layout Standard
+skfdksfk
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<fig=T,echo=T>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+1+1
+\end_layout
+
+\begin_layout Plain Layout
+
+plot(x=c(1:10))
+\end_layout
+
+\begin_layout Plain Layout
+
+library(dizzys)
+\end_layout
+
+\begin_layout Plain Layout
+
+seir()
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+Example 2
+\end_layout
+
+\begin_layout Standard
+The SEIR stochastic model using Gillespie's algorithm with one subpopulation:
+\end_layout
+
+\begin_layout Standard
+>obj<-seir(type="stochastic",duration=5*365,method="direct",mu=1/(70*365),beta0=
+1000/365,beta1=.1,sigma=1/8,gamma=1/5, T=365,phi=0,nbVilles=1,epsilon=0.0,rho=0.0,S
+=NULL,E=NULL,I=NULL,R=NULL,N=1e7)
+\end_layout
+
+\begin_layout Standard
+#call the 'plot' function for the 'seir' class
+\end_layout
+
+\begin_layout Standard
+>plot(obj,col="red", xlab="time (day)",ylab="number of infectives") 
+\end_layout
+
+\begin_layout Section*
+Example 3
+\end_layout
+
+\begin_layout Standard
+sqdsqf
+\end_layout
+
+\begin_layout Standard
+sfsdfs
+\end_layout
+
+\begin_layout Standard
+fsf
+\end_layout
+
+\begin_layout Section*
+Conclusion
+\end_layout
+
+\begin_layout Standard
+sqfsdf
+\end_layout
+
+\begin_layout Standard
+fsdfqqs
+\end_layout
+
+\begin_layout Standard
+qsfqsd
+\end_layout
+
+\begin_layout Section*
+Acknowledgment 
+\end_layout
+
+\begin_layout Standard
+qsdqsd
+\end_layout
+
+\begin_layout Standard
+qsfqs
+\end_layout
+
+\begin_layout Standard
+qsFD
+\end_layout
+
+\begin_layout Section*
+References 
+\end_layout
+
+\begin_layout Standard
+WXFQ
+\end_layout
+
+\begin_layout Standard
+QSFQ
+\end_layout
+
+\begin_layout Standard
+QF
+\end_layout
+
+\begin_layout Standard
+F
+\end_layout
+
+\begin_layout Standard
+dsfds
+\end_layout
+
+\begin_layout Standard
+sqfdsfsq
+\end_layout
+
+\begin_layout Standard
+qsfsq
+\end_layout
+
+\begin_layout Standard
+qfqf
+\end_layout
+
+\begin_layout Standard
+qfqf
+\end_layout
+
+\begin_layout Standard
+qsdsqdq
+\end_layout
+
+\begin_layout Section*
+Example 1
+\end_layout
+
+\begin_layout Standard
+qdqsdqfsq
+\end_layout
+
+\begin_layout Standard
+qsfdsqf
+\end_layout
+
+\begin_layout Standard
+qsfdsqf
+\end_layout
+
+\begin_layout Section*
+Example 2
+\end_layout
+
+\begin_layout Standard
+sqdqsdf
+\end_layout
+
+\begin_layout Standard
+sdsqf
+\end_layout
+
+\begin_layout Standard
+qfdsqf
+\end_layout
+
+\begin_layout Section*
+Example 3
+\end_layout
+
+\begin_layout Standard
+sqdsqf
+\end_layout
+
+\begin_layout Standard
+sfsdfs
+\end_layout
+
+\begin_layout Standard
+fsf
+\end_layout
+
+\begin_layout Section*
+Conclusion
+\end_layout
+
+\begin_layout Standard
+sqfsdf
+\end_layout
+
+\begin_layout Standard
+fsdfqqs
+\end_layout
+
+\begin_layout Standard
+qsfqsd
+\end_layout
+
+\begin_layout Section*
+Acknowledgment 
+\end_layout
+
+\begin_layout Standard
+qsdqsd
+\end_layout
+
+\begin_layout Standard
+qsfqs
+\end_layout
+
+\begin_layout Standard
+qsFD
+\end_layout
+
+\begin_layout Section*
+References 
+\end_layout
+
+\begin_layout Standard
+WXFQ
+\end_layout
+
+\begin_layout Standard
+QSFQ
+\end_layout
+
+\begin_layout Standard
+QF
+\end_layout
+
+\begin_layout Standard
+F
+\end_layout
+
+\end_body
+\end_document

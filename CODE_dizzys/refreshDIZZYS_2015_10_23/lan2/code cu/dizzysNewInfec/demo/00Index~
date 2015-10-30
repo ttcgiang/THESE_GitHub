@@ -1,0 +1,6 @@
+dizzys			dizzys Demonstration
+dizzysgene		generic method in dizzys
+plot.simul.cont		Plotting the "redo" function
+sirModel		modeling SIR model (deterministic and stochastic)
+comp.dizzys.adap	Comparing the sses and adaptivetau packages
+

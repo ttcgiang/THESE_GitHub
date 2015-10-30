@@ -1,0 +1,16 @@
+useDynLib("dizzys")
+importFrom(graphics, "plot")
+exportPattern(".")
+exportClasses(
+    "seir"    
+)
+export(seir)
+export(seir.det)
+export(seir.stoch)
+export(simul)
+export(equilibrium)
+export(plot.pers)
+export(plot.surv.prob)
+export(plot.comp.surv.estim)
+
+

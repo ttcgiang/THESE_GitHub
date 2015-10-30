@@ -1,0 +1,98 @@
+----------------------------
+Version 2.2 - 19 Nov 2014
+----------------------------
+  - Add check for infinite transition rate; if found, abort with a
+    meaningful warning message and return results generated until this point.
+  - If abort due to user interrupt, now return results generated so far.
+
+----------------------------
+Version 2.1 - 8 May 2014
+----------------------------
+  - Remove automatic byte-code compilation of R rate functions handed
+    to ssa.adaptivetau (previously had ben using library(compile)).
+    Previous behavior led to significant inefficiencies if
+    ssa.adaptivetau was called multiple times with the same rate
+    function; thanks to Sebastian Funk for raising this issue.
+    Instead, modify documentation to recommend that users use
+    enableJIT(1).
+
+----------------------------
+Version 2.0 - 24 Mar 2014
+----------------------------
+  - transition matrix ("nu") can now be specified with an
+    alternative data structure to reduce memory usage for large sparse
+    matrices
+  - new feature: transitions may be designated as "halting", which
+    will cause simulation to stop after executing one of these
+    transitions
+  - streamlined code for dealing with transition classification
+  - call PutRNGstate before calling user-supplied rate function.
+    While the rate function itself must not be stochastic, if a
+    unnecessary call to Get/PutRNGState were to occur (e.g., as done
+    by Rcpp at entry/exit to all exported functions), the adaptivetau
+    algorithm could get scrambled.  Adding this call covers this
+    situation at relatively low cost.
+  - fix vignette typo
+  - bug fix: incorrect type allocation for R_NamesSymbol; thanks to
+    Brian Ripley for catching.
+  - handle case where final time ("tf" parameter) is an integer data
+    type; thanks to Sebastian Funk for sending a patch.
+
+----------------------------
+Version 1.1-1 - 11 Nov 2013
+----------------------------
+  - Remove #include <cmath>, which appears (?) to have been
+    unnecessary and causes a conflict when using isnan with -std=c++11
+    and "using namespace std".
+  - Replace "isnan" (from standard) with "ISNAN" (R macro to ensure
+    portability)
+  - also remove stray files from vignette directory
+
+----------------------------
+Version 1.1 - 27 July 2013
+----------------------------
+  - Fix use of "eval" by using R_EmptyEnv instead of NULL.
+  - Revert memory leak prevention / error handling code due to not
+    being part of the public R API (as pointed out by Brian Ripley,
+    only public API is allowed in CRAN).  Unfortunately interrupting
+    execution will now almost certainly lead to memory leaking.
+
+----------------------------
+Version 1.0-1 - 27 Sept 2012
+----------------------------
+  - Fixed validity check that aborts on non-integer initial conditions
+    (previously was being too permissive).
+  - removed .Rhistory file accidently left under /vignettes directory
+
+------------------------
+Version 1.0 - 9 Apr 2012
+------------------------
+  - Fixed memory bug which could, under some circumstances, have lead
+    to segmentation fault from premature garbage collection.
+  - Fixed implementation of implicit tau-leaping algorithm (used when
+    Jacobian supplied & specified by adaptive tau algorithm) and
+    clarified corresponding documentation.
+  - Fixed error handling to free memory allocated in heap upon abort
+  - Added new entrypoint -- ssa.exact -- that directly runs the "exact"
+    simulation C++ function rather than the tau-leaping algorithm.
+  - Made algorithm more robust for deterministic transitions.
+  - Improved error messages when passed invalid initial conditions or
+    rate function.
+  - Byte-code compile user rate functions if compiler package is available.
+  - Allow ssa.maketrans to handle variable names in addition to indices.
+  - Wrote vignette with three examples.
+
+---------------------------
+Version 0.902 - 30 Dec 2010
+---------------------------
+  - Fix Solaris compiler errors.
+
+---------------------------
+Version 0.901 - 12 Nov 2010
+---------------------------
+  - Fix non-portable use of LAPACK_LIBS.  Thanks to Brian Ripley.
+
+-------------------------
+Version 0.9 - 19 Oct 2010
+-------------------------
+  - First version in CRAN
