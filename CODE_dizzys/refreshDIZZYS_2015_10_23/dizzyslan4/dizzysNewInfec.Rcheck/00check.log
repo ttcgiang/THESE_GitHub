@@ -1,0 +1,290 @@
+* using log directory ‘/home/tran/Desktop/These_TTCGIANG/THESE_GitHub/CODE_dizzys/refreshDIZZYS_2015_10_23/dizzyslan4/dizzysNewInfec.Rcheck’
+* using R version 3.2.0 (2015-04-16)
+* using platform: x86_64-pc-linux-gnu (64-bit)
+* using session charset: UTF-8
+* checking for file ‘dizzysNewInfec/DESCRIPTION’ ... OK
+* checking extension type ... Package
+* this is package ‘dizzysNewInfec’ version ‘0.4’
+* checking package namespace information ... OK
+* checking package dependencies ... OK
+* checking if this is a source package ... WARNING
+Subdirectory ‘dizzysNewInfec/src’ contains apparent object files/libraries
+  adapSEIRNewInfec.o cseirDetNewInfec.o dizzysNewInfec.so
+  equiNewInfec.o initialFUNC.o randYANN.o seirRCNewInfec.o
+  stoSEIRNewInfec.o
+Object files/libraries should not be included in a source package.
+* checking if there is a namespace ... OK
+* checking for executable files ... OK
+* checking for hidden files and directories ... NOTE
+Found the following hidden files and directories:
+  R/.RData
+  R/.Rhistory
+  inst/doc/.Rhistory
+  src/.RData
+These were most likely included in error. See section ‘Package
+structure’ in the ‘Writing R Extensions’ manual.
+* checking for portable file names ... OK
+* checking for sufficient/correct file permissions ... OK
+* checking whether package ‘dizzysNewInfec’ can be installed ... OK
+* checking installed package size ... OK
+* checking package directory ... OK
+* checking DESCRIPTION meta-information ... WARNING
+Non-standard license specification:
+  0.4
+Standardizable: FALSE
+* checking top-level files ... OK
+* checking for left-over files ... OK
+* checking index information ... WARNING
+Demos with missing or empty index information:
+[1] "sirmodel"
+Demo index entries without corresponding demo:
+      Item 
+"sirModel" 
+Vignettes with missing or empty \VignetteIndexEntry:
+[1] "dizzysNewInfec.Rnw"
+See sections ‘The INDEX file’ and ‘Package subdirectories’ in the
+‘Writing R Extensions’ manual.
+* checking package subdirectories ... OK
+* checking R files for non-ASCII characters ... OK
+* checking R files for syntax errors ... OK
+* checking whether the package can be loaded ... OK
+* checking whether the package can be loaded with stated dependencies ... OK
+* checking whether the package can be unloaded cleanly ... OK
+* checking whether the namespace can be loaded with stated dependencies ... OK
+* checking whether the namespace can be unloaded cleanly ... OK
+* checking loading without being on the library search path ... OK
+* checking dependencies in R code ... WARNING
+'library' or 'require' call not declared from: ‘deSolve’
+'library' or 'require' call to ‘deSolve’ in package code.
+  Please use :: or requireNamespace() instead.
+  See section 'Suggested packages' in the 'Writing R Extensions' manual.
+Namespaces in Imports field not imported from:
+  ‘base’ ‘methods’ ‘stats’
+  All declared Imports should be used.
+* checking S3 generic/method consistency ... WARNING
+print:
+  function(x, ...)
+print.seirNewInfec:
+  function(object, ...)
+
+lines:
+  function(x, ...)
+lines.seirNewInfec:
+  function(object, x, y, z, pop, col, type, unitTIME, proj, ...)
+
+plot:
+  function(x, ...)
+plot.persNewInfec:
+  function(object, ...)
+
+plot:
+  function(x, ...)
+plot.seirNewInfec:
+  function(object, x, y, z, pop, col, type, unitTIME, proj, add, xlim,
+           ylim, zlim, xlab, ylab, zlab, ...)
+
+plot:
+  function(x, ...)
+plot.surv.probNewInfec:
+  function(object, ...)
+
+confint:
+  function(object, parm, level, ...)
+confint.pers.rateNewInfec:
+  function(pers.rate.obj, level)
+
+See section ‘Generic functions and methods’ in the ‘Writing R
+Extensions’ manual.
+* checking replacement functions ... OK
+* checking foreign function calls ... OK
+* checking R code for possible problems ... NOTE
+File ‘dizzysNewInfec/R/zzz.R’:
+  .onLoad calls:
+    packageStartupMessage("My package is so cool")
+    packageStartupMessage("so I will print these lines each time you load it")
+
+See section ‘Good practice’ in '?.onAttach'.
+
+!.seirNewInfec: no visible binding for global variable ‘object’
+!=.seirNewInfec: no visible binding for global variable ‘object’
+%%.seirNewInfec: no visible binding for global variable ‘object’
+%/%.seirNewInfec: no visible binding for global variable ‘object’
+&.seirNewInfec: no visible binding for global variable ‘object’
+**.seirNewInfec: no visible binding for global variable ‘object’
+*.seirNewInfec: no visible binding for global variable ‘object’
++.seirNewInfec: no visible binding for global variable ‘object’
+-.seirNewInfec: no visible binding for global variable ‘object’
+/.seirNewInfec: no visible binding for global variable ‘object’
+<.seirNewInfec: no visible binding for global variable ‘object’
+<=.seirNewInfec: no visible binding for global variable ‘object’
+==.seirNewInfec: no visible binding for global variable ‘object’
+>.seirNewInfec: no visible binding for global variable ‘object’
+>=.seirNewInfec: no visible binding for global variable ‘object’
+^.seirNewInfec: no visible binding for global variable ‘object’
+globSEIRSimulNewInfec: no visible binding for global variable ‘phiPHAS’
+pers.rate.objNewInfec: no visible global function definition for
+  ‘persistence’
+sses.adaptivetau: no visible global function definition for
+  ‘initVarSEIRN’
+str.seirNewInfec: no visible binding for global variable ‘beta1’
+|.seirNewInfec: no visible binding for global variable ‘object’
+plot.surv.probNewInfec,seirNewInfec: no visible global function
+  definition for ‘surv.prob’
+* checking Rd files ... WARNING
+prepare_Rd: lines.seirNewInfec.Rd:37: Dropping empty section \seealso
+plot.persNewInfec.Rd: non-ASCII input and no declared encoding
+problem found in ‘plot.persNewInfec.Rd’
+* checking Rd metadata ... WARNING
+Rd files with duplicated alias 'plot':
+  ‘plot.persNewInfec.Rd’ ‘plot.seirNewInfec.Rd’
+* checking Rd cross-references ... OK
+* checking for missing documentation entries ... WARNING
+Undocumented code objects:
+  ‘!.seirNewInfec’ ‘!=.seirNewInfec’ ‘%%.seirNewInfec’
+  ‘%/%.seirNewInfec’ ‘&.seirNewInfec’ ‘**.seirNewInfec’
+  ‘*.seirNewInfec’ ‘+.seirNewInfec’ ‘-.seirNewInfec’ ‘/.seirNewInfec’
+  ‘<.seirNewInfec’ ‘<=.seirNewInfec’ ‘==.seirNewInfec’ ‘>.seirNewInfec’
+  ‘>=.seirNewInfec’ ‘^.seirNewInfec’ ‘callpackg’ ‘coef.seirNewInfec’
+  ‘confint.pers.rateNewInfec’ ‘initVarSEIRNNewInfec’ ‘is.installed’
+  ‘is.integer0’ ‘lines.seirNewInfec’ ‘paramdurNewInfec’ ‘pause’
+  ‘pauseNewInfec’ ‘pers.rate.objNewInfec’ ‘plot.persNewInfec’
+  ‘plot.seirNewInfec’ ‘plot.surv.probNewInfec’ ‘pop’
+  ‘print.seirNewInfec’ ‘resizeVectorNewInfec’ ‘sses.adaptivetau’
+  ‘statDIS’ ‘str.seirNewInfec’ ‘summary.seirNewInfec’
+  ‘surv.probNewInfec’ ‘timeseqNewInfec’ ‘transMATRIX’ ‘|.seirNewInfec’
+Undocumented S4 classes:
+  ‘seirNewInfec’
+Undocumented S4 methods:
+  generic 'persNewInfec' and siglist 'seirNewInfec'
+  generic 'plot.persNewInfec' and siglist 'seirNewInfec'
+  generic 'plot.surv.probNewInfec' and siglist 'seirNewInfec'
+  generic 'surv.probNewInfec' and siglist 'seirNewInfec'
+All user-level objects in a package (including S4 classes and methods)
+should have documentation entries.
+See chapter ‘Writing R documentation files’ in the ‘Writing R
+Extensions’ manual.
+* checking for code/documentation mismatches ... WARNING
+Functions or methods with usage in documentation object 'coef.seirNewInfec' but not in code:
+  coef
+
+Functions or methods with usage in documentation object 'lines.seirNewInfec' but not in code:
+  lines
+
+Functions or methods with usage in documentation object 'plot.persNewInfec' but not in code:
+  plot
+
+Functions or methods with usage in documentation object 'plot.seirNewInfec' but not in code:
+  plot
+
+Codoc mismatches from documentation object 'detSEIRNewInfec':
+detSEIRNewInfec
+  Code: function(nbVilles = 1, duration = 10 * 365, unitTIME = 1, S =
+                 NULL, E = NULL, I = NULL, R = NULL, N = 1e+07,
+                 periDISE = 365, mu = 1/(70 * 365), nbCONTACT0 = 300,
+                 nbCONTACT1 = 0.1, probINFECTER = 0.01, sigma = 1/8,
+                 gamma = 1/5, phiPHASE = c(0), ...)
+  Docs: function(nbVilles = 1, duration = 10 * 365, unitTIME = 1, S =
+                 NULL, E = NULL, I = NULL, R = NULL, N = 1e+07,
+                 periDISE = 365, mu = 1/(70 * 365), nbCONTACT0 = 300,
+                 nbCONTACT1 = 0.1, probINFECTER = 0.01, sigma = 1/8,
+                 gamma = 1/5, phiPHASE = c(0))
+  Argument names in code not in docs:
+    ...
+
+Codoc mismatches from documentation object 'globSEIRNewInfec':
+globSEIRNewInfec
+  Code: function(typeSIMU = "stoch", duration = 5 * 365, method =
+                 "direct", unitTIME = 1, mu = 1/(70 * 365), nbCONTACT0
+                 = 100, nbCONTACT1 = 0, probINFECTER = 0.01,
+                 probVISITER = 0.01, sigma = 1/8, gamma = 1/5, periDISE
+                 = 365, phiPHASE = c(0), nbVilles = 1, seed =
+                 as.numeric(Sys.time()), typeRNG = "good", S = NULL, E
+                 = NULL, I = NULL, R = NULL, N = 1e+05, ...)
+  Docs: function(typeSIMU = "stoch", duration = 5 * 365, method =
+                 "direct", unitTIME = 1, mu = 1/(70 * 365), nbCONTACT0
+                 = 100, nbCONTACT1 = 0, probINFECTER = 0.01,
+                 probVISITER = 0.01, sigma = 1/8, gamma = 1/5, periDISE
+                 = 365, phiPHASE = c(0), nbVilles = 1, seed =
+                 as.numeric(Sys.time()), typeRNG = "good", S = NULL, E
+                 = NULL, I = NULL, R = NULL, N = 1e+05)
+  Argument names in code not in docs:
+    ...
+
+Codoc mismatches from documentation object 'persNewInfec':
+persNewInfec
+  Code: function(object, ...)
+  Docs: function(object)
+  Argument names in code not in docs:
+    ...
+
+Codoc mismatches from documentation object 'stoSEIRNewInfec':
+stoSEIRNewInfec
+  Code: function(sigma = 1/8, gamma = 1/5, mu = 1/(70 * 365), seed =
+                 as.numeric(Sys.time()), S = NULL, E = NULL, I = NULL,
+                 R = NULL, N = 1e+05, nbCONTACT0 = 300, nbCONTACT1 =
+                 0.1, phiPHASE = c(0), probVISITER = 0.01, probINFECTER
+                 = 0.01, duration = 1000, nbVilles = 2, unitTIME = 1,
+                 periDISE = 365, typeRNG = "good", typeSIMU = "stoch",
+                 method = "direct", statSTATE = FALSE, ...)
+  Docs: function(sigma = 1/8, gamma = 1/5, mu = 1/(70 * 365), seed =
+                 as.numeric(Sys.time()), S = NULL, E = NULL, I = NULL,
+                 R = NULL, N = 1e+05, nbCONTACT0 = 300, nbCONTACT1 =
+                 0.1, phiPHASE = c(0), probVISITER = 0.01, probINFECTER
+                 = 0.01, duration = 1000, nbVilles = 2, unitTIME = 1,
+                 periDISE = 365, typeRNG = "good", typeSIMU = "stoch",
+                 method = "direct", statSTATE = FALSE)
+  Argument names in code not in docs:
+    ...
+
+* checking Rd \usage sections ... WARNING
+Duplicated \argument entries in documentation object 'globSEIRSimulNewInfec':
+  ‘phiPHASE’
+
+Functions with \usage entries need to have the appropriate \alias
+entries, and all their arguments documented.
+The \usage entries must correspond to syntactically valid R code.
+See chapter ‘Writing R documentation files’ in the ‘Writing R
+Extensions’ manual.
+S3 methods shown with full name in documentation object 'pop.seirNewInfec':
+  ‘pop.seirNewInfec’
+
+The \usage entries for S3 methods should use the \method markup and not
+their full name.
+See chapter ‘Writing R documentation files’ in the ‘Writing R
+Extensions’ manual.
+* checking Rd contents ... OK
+* checking for unstated dependencies in examples ... OK
+* checking line endings in C/C++/Fortran sources/headers ... OK
+* checking line endings in Makefiles ... OK
+* checking compilation flags in Makevars ... OK
+* checking for GNU extensions in Makefiles ... OK
+* checking for portable use of $(BLAS_LIBS) and $(LAPACK_LIBS) ... OK
+* checking compiled code ... NOTE
+File ‘dizzysNewInfec/libs/dizzysNewInfec.so’:
+  Found ‘_ZSt4cout’, possibly from ‘std::cout’ (C++)
+    Objects: ‘adapSEIRNewInfec.o’, ‘initialFUNC.o’, ‘randYANN.o’,
+      ‘stoSEIRNewInfec.o’
+  Found ‘rand’, possibly from ‘rand’ (C)
+    Objects: ‘initialFUNC.o’, ‘stoSEIRNewInfec.o’
+  Found ‘srand’, possibly from ‘srand’ (C)
+    Object: ‘stoSEIRNewInfec.o’
+
+Compiled code should not call entry points which might terminate R nor
+write to stdout/stderr instead of to the console, nor the system RNG.
+
+See ‘Writing portable packages’ in the ‘Writing R Extensions’ manual.
+* checking installed files from ‘inst/doc’ ... NOTE
+The following files should probably not be installed:
+  ‘dizzys.Rnw~’, ‘dizzysNewInfec.Rnw~’
+
+Consider the use of a .Rinstignore file: see ‘Writing R Extensions’,
+or move the vignette sources from ‘inst/doc’ to ‘vignettes’.
+* checking for old-style vignette sources ... NOTE
+Vignette sources only in ‘inst/doc’:
+  ‘dizzysNewInfec.Rnw’
+A ‘vignettes’ directory is required as from R 3.1.0
+and these will not be indexed nor checked
+* checking examples ... OK
+* checking PDF version of manual ... OK
+* DONE
+Status: 10 WARNINGs, 5 NOTEs

@@ -1,0 +1,47 @@
+
+R version 3.2.0 (2015-04-16) -- "Full of Ingredients"
+Copyright (C) 2015 The R Foundation for Statistical Computing
+Platform: x86_64-pc-linux-gnu (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> pkgname <- "dizzysNewInfec"
+> source(file.path(R.home("share"), "R", "examples-header.R"))
+> options(warn = 1)
+> library('dizzysNewInfec')
+My package is so cool
+so I will print these lines each time you load it
+Loading required package: deSolve
+Loading required package: rgl
+Loading required package: survival
+Loading required package: KMsurv
+> 
+> base::assign(".oldSearch", base::search(), pos = 'CheckExEnv')
+> cleanEx()
+> nameEx("coef.seir")
+> ### * coef.seir
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: coef.seir
+> ### Title: Coefficient of seir Object
+> ### Aliases: coef.seir
+> ### Keywords: coefficients seir object
+> 
+> ### ** Examples
+> 
+> 	seirobj1<-seir(N=1e7)
+Error: could not find function "seir"
+Execution halted

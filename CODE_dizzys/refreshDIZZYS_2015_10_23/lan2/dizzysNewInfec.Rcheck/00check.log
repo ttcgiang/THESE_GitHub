@@ -318,4 +318,6 @@ The error most likely occurred in:
 > 	seirobj1<-seir(N=1e7)
 Error: could not find function "seir"
 Execution halted
-* checking PDF version of manual ...
+* checking PDF version of manual ... OK
+* DONE
+Status: 1 ERROR, 12 WARNINGs, 5 NOTEs

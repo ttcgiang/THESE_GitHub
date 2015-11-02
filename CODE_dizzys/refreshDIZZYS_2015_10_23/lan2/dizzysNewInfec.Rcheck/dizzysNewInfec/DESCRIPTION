@@ -13,4 +13,4 @@ LazyLoad: true
 Collate: 'zzz.R' 'modelSEIRNewInfec.r' 'equiNewInfec.r'
         'plotSEIRNewInfec.r' 'globSEIRNewInfec.r'
         'globModelSEIRNewInfec.r' 'adapNewInfec.r'
-Built: R 3.2.0; x86_64-pc-linux-gnu; 2015-10-30 11:26:57 UTC; unix
+Built: R 3.2.0; x86_64-pc-linux-gnu; 2015-10-31 00:21:11 UTC; unix

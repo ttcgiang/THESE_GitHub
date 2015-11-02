@@ -1,0 +1,16 @@
+coef                    Coefficient of seirNewInfec Object
+detSEIRNewInfec         Creat a seir Object
+dizzysNewInfec-package
+                        Modelling of Infectious Diseases
+equiNewInfec            Finding Endemic Equilibrium of a
+                        seasonally-forced SEIR/SIR model
+globSEIRNewInfec        Creat a seir Object
+globSEIRSimulNewInfec   Redoing or Continuing a Simulation.
+lines                   Add Connected Line Segments of an seir object
+                        to a Plot 2D/3D
+persNewInfec            persNewInfec in a Metapopulation
+plot                    Plotting Kaplan Meier Survival Curve
+plot                    Plotting 2D/3D a seir Object
+pop.seirNewInfec        Extract Values of State Variables of each City
+                        according to Time.
+stoSEIRNewInfec         Creat a seir stochastic Object

@@ -1,0 +1,14 @@
+* installing *source* package ‘dizzysNewInfec’ ...
+** libs
+make: Nothing to be done for `all'.
+make: `symbols.rds' is up to date.
+installing to /home/tran/Desktop/These_TTCGIANG/THESE_GitHub/CODE_dizzys/refreshDIZZYS_2015_10_23/dizzyslan4/dizzysNewInfec.Rcheck/dizzysNewInfec/libs
+** R
+** demo
+** inst
+** preparing package for lazy loading
+** help
+*** installing help indices
+** building package indices
+** testing if installed package can be loaded
+* DONE (dizzysNewInfec)

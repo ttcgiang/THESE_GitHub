@@ -1,0 +1,13 @@
+dizzysNewInfec-package	dizzysNewInfec-package
+coef	coef.seirNewInfec
+detSEIRNewInfec	detSEIRNewInfec
+dizzysNewInfec	dizzysNewInfec-package
+equiNewInfec	equiNewInfec
+globSEIRNewInfec	globSEIRNewInfec
+globSEIRSimulNewInfec	globSEIRSimulNewInfec
+lines	lines.seirNewInfec
+persNewInfec	persNewInfec
+plot	plot.persNewInfec
+plot	plot.seirNewInfec
+pop.seirNewInfec	pop.seirNewInfec
+stoSEIRNewInfec	stoSEIRNewInfec

@@ -1,0 +1,318 @@
+
+R version 3.2.0 (2015-04-16) -- "Full of Ingredients"
+Copyright (C) 2015 The R Foundation for Statistical Computing
+Platform: x86_64-pc-linux-gnu (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> pkgname <- "dizzysNewInfec"
+> source(file.path(R.home("share"), "R", "examples-header.R"))
+> options(warn = 1)
+> library('dizzysNewInfec')
+My package is so cool
+so I will print these lines each time you load it
+Loading required package: deSolve
+Loading required package: rgl
+Loading required package: survival
+Loading required package: KMsurv
+> 
+> base::assign(".oldSearch", base::search(), pos = 'CheckExEnv')
+> cleanEx()
+> nameEx("coef.seirNewInfec")
+> ### * coef.seirNewInfec
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: coef.seirNewInfec
+> ### Title: Coefficient of seirNewInfec Object
+> ### Aliases: coef
+> ### Keywords: coefficients seirNewInfec object
+> 
+> ### ** Examples
+> 
+> 	seirobj1<-globSEIRSimulNewInfec(N=1e7)
+> 	coef(seirobj1)
+@initial values of variables:
+       N        S        E        I        R 
+10000000  1006357     2716     1629  8989298 
+
+@values of parameters :
+    duration     unitTIME     nbVilles     duration           mu   nbCONTACT0 
+1.825000e+03 1.000000e+00 1.000000e+00 1.825000e+03 3.913894e-05 2.000000e+02 
+  nbCONTACT1  probVISITER probINFECTER        sigma        gamma     phiPHASE 
+1.000000e-01 1.000000e-01 1.000000e-02 1.250000e-01 2.000000e-01 0.000000e+00 
+        seed 
+1.446462e+09 
+> 
+> 	seirobj2<-globSEIRSimulNewInfec(nbVilles=3, N=c(1e7,1e6))
+> 	coef(seirobj2)
+@initial values of variables:
+      N1       N2       N3       S1       S2       S3       E1       E2 
+10000000  1000000 10000000  1006357   100636  1006357     2716      272 
+      E3       I1       I2       I3       R1       R2       R3 
+    2716     1629      163     1629  8989298   898929  8989298 
+
+@values of parameters :
+    duration     unitTIME     nbVilles     duration           mu   nbCONTACT0 
+1.825000e+03 1.000000e+00 3.000000e+00 1.825000e+03 3.913894e-05 2.000000e+02 
+  nbCONTACT1  probVISITER probINFECTER        sigma        gamma     phiPHASE 
+1.000000e-01 1.000000e-01 1.000000e-02 1.250000e-01 2.000000e-01 0.000000e+00 
+        seed 
+1.446462e+09 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("detSEIRNewInfec")
+> ### * detSEIRNewInfec
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: detSEIRNewInfec
+> ### Title: Creat a seir Object
+> ### Aliases: detSEIRNewInfec
+> ### Keywords: deterministic model
+> 
+> ### ** Examples
+> 
+> 	obj<-globSEIRNewInfec(typeSIMU="deter",nbVilles=3,N=c(1e7,1e6))
+> 	plot(obj)	
+> 
+> 
+> 
+> cleanEx()
+> nameEx("equiNewInfec")
+> ### * equiNewInfec
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: equiNewInfec
+> ### Title: Finding Endemic Equilibrium of a seasonally-forced SEIR/SIR
+> ###   model
+> ### Aliases: equiNewInfec
+> ### Keywords: SEIR/SIR model limit cycle equilibrium
+> 
+> ### ** Examples
+> 
+> ## The point on the limit cycle depends on the input phase value 'phi':
+> 	res<-equiNewInfec(duration=100*365,unitTIME=1,N=10e6,mu=1/(70*365),
++     nbCONTACT0=300,nbCONTACT1=.1,probINFECTER=0.1,sigma=1/7,gamma=1/7,phiPHASE=c(0),periDISE=365)	
+> 	print(res)
+           S            E            P            R            N 
+   37198.083     2784.898     2927.623  9957089.396 10000000.000 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("globSEIRNewInfec")
+> ### * globSEIRNewInfec
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: globSEIRNewInfec
+> ### Title: Creat a seir Object
+> ### Aliases: globSEIRNewInfec
+> ### Keywords: deterministic model stochastic model
+> 
+> ### ** Examples
+> 
+> 	obj<-globSEIRNewInfec()
+> 	plot(obj)
+> 	obj<-globSEIRNewInfec(typeSIMU="sto",nbVilles=3,N=c(1e7,1e6))
+> 	plot(obj)
+> 	obj<-globSEIRNewInfec(typeSIMU="deter",nbVilles=3,N=c(1e7,1e6))
+> 	plot(obj)	
+> 
+> 
+> 
+> cleanEx()
+> nameEx("globSEIRSimulNewInfec")
+> ### * globSEIRSimulNewInfec
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: globSEIRSimulNewInfec
+> ### Title: Redoing or Continuing a Simulation.
+> ### Aliases: globSEIRSimulNewInfec
+> ### Keywords: seir model R package
+> 
+> ### ** Examples
+> 
+> 	#STO, STO
+> 	sto<-globSEIRNewInfec(N=1e6,typeSIMU="stoch",duration=5*365,nbVilles=2)
+> 	plot(globSEIRSimulNewInfec(sto,typeSIMU="stoch",continue=TRUE,duration=5*365,nbCONTACT1=0,phiPHASE=c(pi/2,0)),col=c(1,2))
+> 	#DET, DET
+> 	det<-globSEIRNewInfec(N=10e4,typeSIMU="deter",duration=50*365)
+> 	plot(globSEIRSimulNewInfec(det,typeSIMU="deter",continue=TRUE,duration=5*365,nbCONTACT1=0.1,phiPHASE=pi))
+> 
+> 
+> 
+> cleanEx()
+> nameEx("lines.seirNewInfec")
+> ### * lines.seirNewInfec
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: lines.seirNewInfec
+> ### Title: Add Connected Line Segments of an seir object to a Plot 2D/3D
+> ### Aliases: lines
+> ### Keywords: lines projection on plane
+> 
+> ### ** Examples
+> 
+> #creating a plot
+> #adding a line to the plot
+> 	globSEIRSimulNewInfec(nbVilles=2)->obj
+> 	globSEIRSimulNewInfec(nbVilles=1)->obj1
+> 	#2D
+> 	plot(obj,col="red")
+> 	lines(obj1,col="blue",lwd=2)
+> 	#3D
+> 	plot(obj,z="S",col="red",proj=list(c("time","P")))
+Warning in par3d(userMatrix = c(1, 0, 0, 0, 0, 0.342020143325668, -0.939692620785909,  :
+  font family "sans" not found, using "bitmap"
+> 	lines(obj1,z="S",col="blue",proj=list(c("time","P")))
+> 
+> 
+> 
+> cleanEx()
+> nameEx("persNewInfec")
+> ### * persNewInfec
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: persNewInfec
+> ### Title: persNewInfec in a Metapopulation
+> ### Aliases: persNewInfec
+> ### Keywords: metapopulation persNewInfec
+> 
+> ### ** Examples
+> 
+> 	obj1<-obj1<-globSEIRSimulNewInfec(nbVilles=5,N=1e5,nbCONTACT0=100,duration=365*30)
+> 	objper<-persNewInfec(obj1)
+> 	objper@persistence
+      time resVil ndie ville
+pop 4 6125      5    1     4
+pop 1 6134      4    1     1
+pop 3 6137      3    1     3
+pop 2 6138      2    1     2
+pop 5 6143      1    1     5
+> 
+> 
+> 
+> cleanEx()
+> nameEx("plot.persNewInfec")
+> ### * plot.persNewInfec
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: plot.persNewInfec
+> ### Title: Plotting Kaplan Meier Survival Curve
+> ### Aliases: plot
+> ### Keywords: Kaplan–Meier curve Kaplan–Meier estimator
+> 
+> ### ** Examples
+> 
+> 	p<-persNewInfec(globSEIRSimulNewInfec(nbVilles=5,N=1e5,nbCONTACT0=100,duration=365*30))
+> 	plot.persNewInfec(p)
+> 	x11()
+> 	plot.persNewInfec(p,curvetype="pop",col=c("green","blue"),vilabline=c(1,3))
+> 
+> 
+> 
+> cleanEx()
+> nameEx("plot.seirNewInfec")
+> ### * plot.seirNewInfec
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: plot.seirNewInfec
+> ### Title: Plotting 2D/3D a seir Object
+> ### Aliases: plot
+> ### Keywords: seir model
+> 
+> ### ** Examples
+> 
+> 	obj<-globSEIRSimulNewInfec(nbVilles=3, N=1e6, nbCONTACT0=100)
+> 	plot(obj,col=c("red","blue"),lwd=2,xlab="time (day)", ylab="number of infectives")
+> 	pause()
+press Enter to continue!
+[1] ""
+> 	plot(obj,z="S",col=c("red","blue"),lwd=2,xlab="time (day)", ylab="number of infectives",zlab="number of susceptible")
+> 	pause()
+press Enter to continue!
+[1] ""
+> 	#plot(obj,z="S",col=c("red","blue"),lwd=2,proj=list(c("time","P"),c("time","S")),box=F,xlab="time (day)", ylab="number of infectives",zlab="number of susceptible")
+> 
+> 
+> 
+> cleanEx()
+> nameEx("pop.seirNewInfec")
+> ### * pop.seirNewInfec
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: pop.seirNewInfec
+> ### Title: Extract Values of State Variables of each City according to
+> ###   Time.
+> ### Aliases: pop.seirNewInfec
+> 
+> ### ** Examples
+> 
+> 	obj<-globSEIRSimulNewInfec(nbVilles=3, N=1e6)
+> 	tpobj<-pop(obj) 
+> 	class(tpobj)
+[1] "matrix"
+> 	tpobj<-pop(obj,fct="sum")
+> 	class(tpobj)
+[1] "matrix"
+> 	tpobj<-pop(obj,subset=c(1,2),fct="sum")	
+> 	class(tpobj)
+[1] "matrix"
+> 
+> 
+> 
+> cleanEx()
+> nameEx("stoSEIRNewInfec")
+> ### * stoSEIRNewInfec
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: stoSEIRNewInfec
+> ### Title: Creat a seir stochastic Object
+> ### Aliases: stoSEIRNewInfec
+> ### Keywords: stochastic model
+> 
+> ### ** Examples
+> 
+> 	obj<-globSEIRNewInfec(typeSIMU="sto",nbVilles=3,N=c(1e7,1e6))
+> 	plot(obj)	
+> 
+> 
+> 
+> ### * <FOOTER>
+> ###
+> options(digits = 7L)
+> base::cat("Time elapsed: ", proc.time() - base::get("ptime", pos = 'CheckExEnv'),"\n")
+Time elapsed:  229.592 0.3 230.133 0 0.007 
+> grDevices::dev.off()
+pdf 
+  2 
+> ###
+> ### Local variables: ***
+> ### mode: outline-minor ***
+> ### outline-regexp: "\\(> \\)?### [*]+" ***
+> ### End: ***
+> quit('no')
