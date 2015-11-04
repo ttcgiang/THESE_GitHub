@@ -1,5 +1,5 @@
 demo.globaldizzysNewInfec<-function(){
-	globSEIRSimulNewInfec(N=1e7,nbVilles=3,type="stoc")->a
+	globSEIRSimulNewInfec(N=1e7,nbVilles=3,typeSIMU="stoc")->a
 	plot(a,col=c(1,2,5))
 	pause()
 	plot(a,z="S",col=c(1,2,5))
@@ -26,24 +26,24 @@ demo.globaldizzysNewInfec<-function(){
 	plot(b)
 	pause()
 
-	b<-globSEIRSimulNewInfec(a,type="sto",continue=T,append=F,t0=1000)
+	b<-globSEIRSimulNewInfec(a,typeSIMU="sto",continue=T,append=F,t0=1000)
 	plot(b)
 	pause()
-	b<-globSEIRSimulNewInfec(a,type="sto",nbVilles=4,continue=T,append=T,t0=1000)
+	b<-globSEIRSimulNewInfec(a,typeSIMU="sto",nbVilles=4,continue=T,append=T,t0=1000)
 	plot(b,col=c(1,2)) 
 	pause()
-	b<-globSEIRSimulNewInfec(a,type="sto",nbVilles=4,continue=T,append=F,t0=800)
+	b<-globSEIRSimulNewInfec(a,typeSIMU="sto",nbVilles=4,continue=T,append=F,t0=800)
 	plot(b)
 	pause()
 
-	globSEIRSimulNewInfec(type="sto",N=1e7)->a
+	globSEIRSimulNewInfec(typeSIMU="sto",N=1e7)->a
 	plot(a)
 	pause()
-	globSEIRSimulNewInfec(a,type="det",continue=T,append=F)->b
+	globSEIRSimulNewInfec(a,typeSIMU="det",continue=T,append=F)->b
 	plot(b)
 	pause()
-	globSEIRSimulNewInfec(type="sto",nbVilles=3,N=c(1e7,1e6))->a
-	globSEIRSimulNewInfec(a,type="det",continue=T,append=T)->b
+	globSEIRSimulNewInfec(typeSIMU="sto",nbVilles=3,N=c(1e7,1e6))->a
+	globSEIRSimulNewInfec(a,typeSIMU="det",continue=T,append=T)->b
 	plot(b)
 	pause()
 	summary(b)

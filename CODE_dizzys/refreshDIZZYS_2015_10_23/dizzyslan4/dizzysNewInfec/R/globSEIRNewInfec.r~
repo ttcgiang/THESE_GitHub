@@ -5,7 +5,7 @@
 
 # Initializing the method
 pop <- function (object,...) 
-  UseMethod("popNewInfec")
+  UseMethod("pop")
 
 # Defining the method
 # object: one seirNewInfec object
@@ -582,7 +582,7 @@ str.seirNewInfec<-function(object,...){
 			}
 		}	
 		######
-		parami<-c(N=N,S=S,E=E,I=I,R=R,duration=duration,unitTIME=unitTIME,nbCONTACT0=nbCONTACT0,beta1=beta1,sigma=sigma,gamma=gamma,mu=mu,phiPHASE=phiPHASE)
+		parami<-c(N=N,S=S,E=E,I=I,R=R,duration=duration,unitTIME=unitTIME,nbCONTACT0=nbCONTACT0,nbCONTACT1=nbCONTACT1,sigma=sigma,gamma=gamma,mu=mu,phiPHASE=phiPHASE)
 		names(parami)[1:5]<-c("N","S","E","I","R")	
 		print(parami)
 		if(i!=nbVilles) cat("\n",fill=60)

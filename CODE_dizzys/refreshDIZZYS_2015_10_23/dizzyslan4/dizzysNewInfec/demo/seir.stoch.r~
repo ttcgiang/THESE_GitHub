@@ -103,7 +103,7 @@ demo.plot()
 #testing for persistence
 demo.stoch.persistence<-function(){
 	#curvetypeSIMU="KM"
-	p<-persistence(globSEIRNewInfec(typeSIMU="sto",nbVilles=15,N=1e5))	
+	p<-perNewInfec(globSEIRNewInfec(typeSIMU="sto",nbVilles=15,N=1e5))	
 	plot.pers(p)
 	pause()
 	plot.comp.surv.estim(p)

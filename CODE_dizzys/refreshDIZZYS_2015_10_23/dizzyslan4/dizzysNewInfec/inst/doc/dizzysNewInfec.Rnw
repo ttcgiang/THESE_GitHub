@@ -50,7 +50,7 @@ provide a mathematical description of the kinetic transmission of
 an infectious disease in an unstructured subpopulation. According
 to this model, today we have known well the SIR/SEIR deterministic epidemic
 models. This is the two basic models very popularly used by scientists.
-However, Keeling2008 \cite{KeelingRohani2008} show that all the deterministic
+However, Keeling2008 [KeelingRohani2008] show that all the deterministic
 models are essentially fixed "clockwork" systems with the same
 starting conditions, exactly the same trajectory is always observed.
 It isn't right for dynamics of real pathogens in the real-world. So
@@ -81,15 +81,13 @@ larger transition rates and with increasing simulation speed while
 still maintaining reasonable accuracy. The "adaptive tau-leaping
 algorithm" known as an approximate method reduces the number of
 iterations by treating transition rates as constant over time periods
-for which this approximation leads to little error\cite{Cao2007}. 
+for which this approximation leads to little error [Cao2007]. 
+
+Moreover, in this package, we introduce a new formula of the probabilistic derivation of multi-population epidemic model with $\beta_{ijk}=-\kappa_{j}*log(1-c_{ik})$. We study the case where agent $x$ native from city $i$ visits city $j$. In a metapopulation of multi-subpopulation, during a small interval of time $\delta t$, each native individual of the city $i$ visits one single city $j$ (with probability $\rho_{ij}$) and will see on avarage $K_{j}$. These individuals come fromm all cities. This is absolutely a new interpretation about the infection between individuals and the propagation of disease between subpopulation. 
+In previous research described in [keeling2011], the authors always assumed that both the number of people we meet and the number of infected people we meet are fixed. This assumption simplifies the relations between individuals and between subpopulations. It's the reason for that the formula of the infection force did not presente clearly the complex connexions between individuals and between subpopulations in a metapopulation. In our interpretation, we assume that for each city $k$, the number of people native fom $k$ that we meet during $\delta t$ follows a Poisson process. So both the number of people we meet and the number of infected people we meet during $\delta t$ should be random variables.
 
 The \textbf{dizzysNewYann} package in R implements both the exact solution
-and the approximate solution for the SIR and SEIR models by integrating
-the R package and the C++ implementation. We can choose one of the
-two solutions to simulate when the number of subpopulations in a metapopulation
-increases. We use C++ to perform the algorithms, and R to create interfaces. Therefore, new implementation is much
-faster than any pure R implementation.
-
+and the approximate solution for the SIR and SEIR models for a metapopulation of multisubpopulation by integrating the R package and the C++ implementation. We can choose one of the two solutions to simulate when the number of subpopulations in a metapopulation increases. We use C++ to perform the algorithms, and R to create interfaces. Therefore, new implementation is much faster than any pure R implementation.
 
 \section*{Methods}
 
@@ -99,20 +97,21 @@ the SEIR model into the SIR model through the usage of the two algorithms.
 We hope that the models and the algorithms should be well understood
 before obtainning simulation results.
 
-
 \subsection*{Deterministic model:}
 
 To describe infectious diseases in a in a spatial context, we consider
 a metapopulation of n sub-populations. In subpopulation $i$ of size
 $N_{i}$, disease dynamics can be deterministically described by the
 following set of differential equations: 
+
 \begin{eqnarray}
 \frac{dS_{i}}{dt} & = & \mu N_{i}-\lambda_{i}S_{i}-\mu S_{i}\label{eq:dS-1}\\
 \frac{dE_{i}}{dt} & = & \lambda_{i}S_{i}-\mu E_{i}-\sigma E_{i}\\
 \frac{dI_{i}}{dt} & = & \sigma E_{i}-\mu I_{i}-\gamma I_{i}\label{eq:infectieux-1}\\
 \frac{dR_{i}}{dt} & = & \gamma I_{i}-\mu R_{i}\label{eq:dR-1}
 \end{eqnarray}
- where $S_{i}$, $E_{i}$, $I_{i}$ et $R_{i}$ are respectively the
+
+where $S_{i}$, $E_{i}$, $I_{i}$ et $R_{i}$ are respectively the
 numbers of susceptible, exposed, infectious and recovered in this
 sub-population $i$. Individuals are born susceptible and die at a
 rate $\mu$, become infected with the force of infection $\lambda_{i}$,
@@ -121,8 +120,7 @@ and recover at the rate $\gamma$. In case the infectious contact
 rate is constant, the equilibrium values of the variables $S$, $E$,
 $I$ and $R$ can be expressed analytically (see appendix). The force
 of infection depends not only on the total population size $N_{i}$
-and the number of infected $I_{i}$ in subpopulation $i$, but also
-in other sub-populations : 
+and the number of infected $I_{i}$ in subpopulation $i$, but also in other sub-populations : 
 
 \begin{equation}
 \lambda_{i}=\sum_{j}\rho_{ij}\kappa_{j}\log\left[1-\sum_{k=1}^{M}\left(\frac{\left|I_{k,t}\right|}{N_{k}}\times c_{ik}\times\xi_{jk}\right)\right]
@@ -131,35 +129,30 @@ in other sub-populations :
 where 
 $\rho_{i,j}$ the probability that an individual from subpopulation $i$ visits subpopulation $j$.
 $\kappa_{j}$ is the average number of contacts per unit of time a susceptible will have when visiting city.
-$c_{i,k}$ is the probability that a susceptible individual native from $i$ being in contact with another infected individual native from 
-$k$.
+$c_{i,k}$ is the probability that a susceptible individual native from $i$ being in contact with another infected individual native from $k$.
 $\xi_{jk}$ refers to the probability that an individual $y$ meeting $x$ in  $C_{j}$ comes from  $C_{k}$.
-
-
 See appendix for detail on the construction of this equation.
 We can verify that in the limit case on one single subpopulation in
 the metapopulation ($i=j$ et $n=1$) we have 
 
 \begin{equation}
-\lambda_{i}=\rho_{ii}*\kappa_{i}*\log\left[1-(\frac{\left|I_{i,t}\right|}{N_{i}}\times c_{ik}\times\xi_{jk}\right)\right]
+\lambda_{i}=\rho_{ii}*\kappa_{i}*\log\left[1-(\frac{\left|I_{i,t}\right|}{N_{i}}\times c_{ik}\times\xi_{jk}\right)]
 \end{equation}
- consider that the contact number $\rho_{ii}$ is seasonally forced
-\cite{Altizer2006}: 
+
+In the case, we consider that the contact number $K_{i}$ is seasonally forced [Altizer2006]: 
 \begin{equation}
-\beta_{i}(t)=b_{0}\left[1+b_{1}\cos\left(\frac{2\pi t}{T}+\varphi_{i}\right)\right]\label{eq:beta_i-1}
+K_{i}(t)=K_{i0}\left[1+K_{i1}\cos\left(\frac{2\pi t}{T}+\varphi_{i}\right)\right]\label{eq:beta_i-1}
 \end{equation}
- where $b_{0}$ and $b_{1}$ are the mean value and amplitude of the
-contact rate and $T$ and $\varphi_{i}$ are the period and the phase
-of the forcing.
-
-
-\subsection*{Stochastic model using Gillespie's exact algorithm:}
+ where $K_{i0}$ and $K_{i1}$ are the mean value and amplitude of the contact number and $T$ and $\varphi_{i}$ are the period and the phase of the forcing.
+ 
+ \subsection*{Stochastic model using Gillespie's exact algorithm:}
 
 Based on the differential equations above, we give a stochastic version
 of this model. We use for that a population-based time-to-next-event
-model based on Gillespie's algorithm \cite{Daniel.T.Gillespie1977}.
+model based on Gillespie's algorithm [Daniel.T.Gillespie1977].
 Table \ref{tab:stoch_ev} lists all the events of the model, occurring
 in subpopulation $i$. 
+
 \begin{table}[htpb]
 \begin{centering}
 \caption{\label{tab:stoch_ev}Events of the stochastic version of the model
@@ -183,12 +176,10 @@ $i$.}
 \end{tabular}
 \end{table}
 
-
-
-\subsection*{Stochastic model using ``adaptive tau-leaping algorithm'':}
+\subsection*{Stochastic model using “adaptive tau-leaping algorithm'':}
 
 In this step, we provide basic concepts for the adaptive tau-leaping
-algorithm by using the detailed description of Cao\cite{Cao2007}. 
+algorithm by using the detailed description of Cao [Cao2007]. 
 
 For the Markov process at time t, to describe a metapopulation of
 n subpopulations, we have:
@@ -211,7 +202,7 @@ $X(t)+\triangle_{j}$.
 
 \textbf{operation:} with the SEIR model, the package simulates a trajectory
 from time $0$ to a stopping time $tmax$. Based on the description
-of Cao and al.{[}2007{]}, a good time period of length $\tau$ is
+of Cao and al. in 2007, a good time period of length $\tau$ is
 during which all transition rates remain approximately constant and
 all $n$ state variables remain greater than zero with probability$\thicksim1$.
 Then, by using the Poisson-dustributed number of transitions, that
@@ -225,15 +216,13 @@ time periods to leap over.
 \subsection*{Transformation SEIR model into SIR model:}
 
 The SIR model used in this package is the SIR model with births and
-death\textbf{. }By observing this SEIR model, if we give a numerical
+death. By observing this SEIR model, if we give a numerical
 value for the parameter $\sigma$ then a SEIR model would have. On
 the other side, if we give $Inf$ (to infinity) the parameter $\sigma$
 then we have a SIR model with birth and death (because, basically,
 a SEIR model tends to a SIR model when $\sigma$ tends to infinity).
 
-
 \section*{Example 1}
-
 The deterministic SEIR model with one subpopulation by exploiting the 'seir' function in the package.
 
 <<fig=T,echo=T>>=
@@ -241,19 +230,17 @@ library(dizzysNewInfec)
 # We have the values of parameters and of variables. 
 # Here, we have S=E=I=R=NULL and N=1e7.
 # It means that we use N=1e7 to calculate the equilibrium values of variables.
-obj<- globSEIRNewInfec(typeSIMU="deterministic",duration=5*365,mu=1/(70*365),sigma=1/8,gamma=1/5,
-phiPHASE=0,nbVilles=1,S=NULL,E=NULL,I=NULL,R=NULL,N=1e7)
+obj<- globSEIRNewInfec(typeSIMU="deterministic",duration=10*365,mu=1/(70*365),sigma=1/8,gamma=1/5,
+phiPHASE=0,nbCONTACT0=100,nbCONTACT1=0.1,nbVilles=1,S=NULL,E=NULL,I=NULL,R=NULL,N=1e7)
 
 # Use the plot function of the seir class
 plot(obj,col="red",ylab="number of infectives", xlab="time (day)") 
 @
 
-Now, we want to continue or to redo this simulation with other values of parameter, we can do it by exploiting the 'simul' function in the package.
-
+Now, we want to continue or to redo this simulation with other values of parameter, we can do it by exploiting the 'globSEIRSimulNewInfec' function in the package.
 <<fig=T,echo=T>>=
-newobj<- globSEIRSimulNewInfec(obj,duration= 10*365,continue=T, append=T, nbCONTACT1=0.0, phiPHASE=pi/2)
-plot(newobj,col="red",ylab="number of infectives", xlab="time (day)") 
-
+newobj<- globSEIRSimulNewInfec(obj,duration= 20*365,continue=T, append=T,nbCONTACT0=100, nbCONTACT1=0.0, phiPHASE=pi/2)
+plot(newobj,col="blue",ylab="number of infectives", xlab="time (day)") 
 @
 
 \section*{Example 2}
@@ -264,81 +251,52 @@ The SEIR stochastic model using Gillespie's algorithm by using the 'seir' functi
 
 <<fig=T,echo=T>>=
 obj<- globSEIRNewInfec(typeSIMU="stochastic",method="direct",duration=5*365,mu=1/(70*365),sigma=1/8,gamma=1/5,phiPHASE=0,
-nbVilles=1,S=NULL,E=NULL,I=NULL,R=NULL,N=1e7)
-
+nbVilles=1,S=NULL,E=NULL,I=NULL,R=NULL,N=1e7,nbCONTACT0=100, nbCONTACT1=0.1)
 plot(obj,col="red",ylab="number of infectives", xlab="time (day)") 
 @
 
 2) with three subpopulations and the different number of populations.
-
 <<fig=T,echo=T>>=
-obj<- globSEIRNewInfec(typeSIMU="stochastic",duration=5*365,mu=1/(70*365),sigma=1/8,gamma=1/5,nbVilles=3,N=c(1e7,1e6))
-
+obj<- globSEIRNewInfec(typeSIMU="stochastic",duration=5*365,mu=1/(70*365),sigma=1/8,gamma=1/5,nbVilles=3,N=c(1e7,1e6),nbCONTACT0=100, nbCONTACT1=0.1)
 plot(obj,col=c("red","blue"),ylab="number of infectives", xlab="time (day)") 
 @
 
-3) continue or redo this siluation with other values of parameter, we can do it by exploiting the 'simul' function in the package.
+3) continue or redo this siluation with other values of parameter, we can do it by exploiting the 'globSEIRSimulNewInfec' function in the package.
 <<fig=T,echo=T>>=
-newobj<- globSEIRSimulNewInfec(obj,duration= 10*365,typeSIMU="stoch",continue=T,append=T,nbCONTACT1=0.0,phiPHASE=pi/2)
+newobj<- globSEIRSimulNewInfec(obj,duration= 10*365,typeSIMU="stoch",continue=T,append=T,nbCONTACT0=100,nbCONTACT1=0.0,phiPHASE=pi/2)
 plot(newobj,col=c("red","blue"),ylab="number of infectives",xlab="time (day)")
-
 @
 
 \section*{Example 3}
 
-The SEIR stochastic model using "adaptive tau-leaping algorithm" by exploiting the 'seir' function. To do this algorithm, we only make the parameter method="adaptivetau" as follows: 
-
+The SEIR stochastic model using "adaptive tau-leaping algorithm" by exploiting the 'globSEIRNewInfec' function. To do this algorithm, we only make the parameter method="adaptivetau" as follows: 
 <<fig=T,echo=T>>=
-obj<- globSEIRNewInfec(typeSIMU="stochastic",method="adaptivetau",duration=5*365,mu=1/(70*365),sigma=1/8,gamma=1/5,nbVilles=3,N=1e7)
+obj<-globSEIRNewInfec(typeSIMU="stochastic",method="adaptivetau",duration=5*365,nbCONTACT0=10000,probVISITER=0.1,probINFECTER=0.1,mu=1/(70*365),sigma=1/8,gamma=1/5,nbVilles=2,N=1e6)
 plot(obj,col=c("red","blue"),ylab="number of infectives", xlab="time (day)") 
 @
 
 We can compare the result of the Gillespie'algorithm with the result of the adaptivetau algorithm:
 <<fig=T,echo=T>>=
 #obj1 with method="direct"
-obj1<- globSEIRNewInfec(typeSIMU="stochastic",method="direct",duration=5*365,mu=1/(70*365),sigma=1/8,gamma=1/5,nbVilles=1,N=1e7)
+obj1<- globSEIRNewInfec(typeSIMU="stochastic",method="direct",
+                        duration=5*365,nbCONTACT0=10000,nbCONTACT1=0.1,
+                        mu=1/(70*365),sigma=1/8,gamma=1/5,nbVilles=1,N=1e6,probVISITER=0.01,probINFECTER=0.1)
 plot(obj1,col="red",ylab="number of infectives", xlab="time (day)") 
 
 #obj2 with method="adaptivetau"
-obj2<- globSEIRNewInfec(typeSIMU="stochastic",method="adaptivetau",duration=5*365,mu=1/(70*365),sigma=1/8,gamma=1/5,nbVilles=1,N=1e7)
+obj2<- globSEIRNewInfec(typeSIMU="stochastic",method="adaptivetau",duration=5*365,
+                        nbCONTACT0=10000,probVISITER=0.01,probINFECTER=0.1,mu=1/(70*365),
+                        sigma=1/8,gamma=1/5,nbVilles=1,N=1e6)
 plot(obj2,col="blue",add=T) 
 @
 
-\section*{Example 4}
 
-In this example, we talk about the SIR model by exploiting the 'seir' function. To do this model, we only make the parameter "sigma=Inf". We refer to the book of Black2010 \cite{Black2010}.	
 
-1) Comparing deterministic SIR model with stochastic SIR model.
 
-One subpopulation: 
-<<fig=T,echo=T>>=
-S=700000; E=0; I=100; R=9299900;
-plot(globSEIRNewInfec(duration=10*365,typeSIMU="stoch",S=S,E=E,I=I,R=R,nbCONTACT0=200,nbCONTACT1=0.0,
-sigma=Inf,gamma=0.077),col="red",ylab="number of infectives", xlab="time (day)")
-plot(globSEIRNewInfec(duration=10*365,typeSIMU="deter",S=S,E=E,I=I,R=R,nbCONTACT0=200,
-nbCONTACT1=0.00,sigma=Inf,gamma=0.077),col="blue",add=T,lwd=2)
-@
 
-Two subpopulations: 
-<<fig=T,echo=T>>=
-plot(globSEIRNewInfec(duration=10*365,typeSIMU="stoch",nbVilles=2,S=S,E=E,I=I,R=R,nbCONTACT0=200,
-nbCONTACT1=0.0,sigma=Inf,gamma=0.077),col="red",ylab="number of infectives", xlab="time (day)")
-plot(globSEIRNewInfec(duration=10*365,typeSIMU="deter",S=S,E=E,I=I,R=R,nbCONTACT0=1.175,
-nbCONTACT1=0.00,sigma=Inf,gamma=0.077),col="blue",add=T,lwd=2)
 
-@
 
-2) Comparing SIR model by using the direct and adaptivetau methods:
 
-<<fig=T,echo=T>>=
-
-plot(globSEIRNewInfec(duration=10*365,typeSIMU="stoch",method="direct",nbVilles=1,
-S=S,E=E,I=I,R=R,nbCONTACT0=200, nbCONTACT1=0.0,sigma=Inf,gamma=0.077),
-col="red",ylab="number of infectives", xlab="time (day)")
-plot(globSEIRNewInfec(duration=10*365,type="stoch",method="adaptivetau",nbVilles=1,
-S=S,E=E,I=I,R=R,nbCONTACT0=200,nbCONTACT1=0.0,sigma=Inf,gamma=0.077),add=T,col="blue",lwd=2)
-
-@
 
 \section*{Conclusion}
 
@@ -355,7 +313,5 @@ any pure R implementation as in the GillespieSSA package.
 This package is based upon work supported by the Institute for Research and Development at Paris in France and by Professor Jean-Daniel
 Zucker and Marc Choisy.
 
-\bibliographystyle{plain}
-\addcontentsline{toc}{section}{\refname}\bibliography{/home/tran/Documents/Giang_Document/These/These/file_Jabref/InfectiousDiseases}
 
 \end{document}

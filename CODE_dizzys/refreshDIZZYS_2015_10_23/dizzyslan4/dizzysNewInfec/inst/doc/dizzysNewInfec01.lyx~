@@ -1,0 +1,324 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass amsart
+\begin_preamble
+\usepackage{babel}
+\end_preamble
+\use_default_options false
+\begin_modules
+theorems-ams
+eqs-within-sections
+figs-within-sections
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding utf8x
+\fontencoding T1
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command bibtex
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 2
+\use_package amssymb 2
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 0
+\use_package mathtools 1
+\use_package mhchem 0
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 2cm
+\topmargin 2cm
+\rightmargin 2cm
+\bottommargin 2cm
+\headheight 2cm
+\headsep 2cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+dizzysNewInfec: efficient deterministic/stochastic simulations in R for
+ a metapopulation by using SIR/SEIR models
+\end_layout
+
+\begin_layout Author
+TRAN Thi Cam Giang
+\end_layout
+
+\begin_layout Abstract
+Predicting the potential spread of an infectious disease is still a difficult
+ problem for scientists.
+ It requires much more than simple connecting subpopulations in a metapopulation
+ and takes into account many factors about the pathogen and the affected
+ subpopulation.
+ Therefore, this 'dizzysNewInfec' package allows us to simulate dynamics
+ of an infectious disease through subpopulations by using the SIR/SEIR models
+ and by implementing the direct algorithm of Gillespie in 1977 and the adaptive
+ tau leaping to approximate the trajectory of a continuous-time stochastic
+ process.
+ Consequently, result returned is biological data in time horizon about
+ the disease dynamic, we can perform analysis on this biological data.
+ This vignette presents a few examples of SIR/SEIR applied to biological
+ problems.
+ 
+\end_layout
+
+\begin_layout Section
+Introduction
+\end_layout
+
+\begin_layout Standard
+Fundamentally, Kermack-McKendrick gave the first epidemic model to provide
+ a mathematical description of the kinetic transmission of an infectious
+ disease in an unstructured subpopulation.
+ According to this model, today we have known well the SIR/SEIR deterministic
+ epidemic models.
+ This is the two basic models very popularly used by scientists.
+ However, Keeling2008 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "KeelingRohani2008"
+
+\end_inset
+
+ show that all the deterministic models are essentially fixed "clockwork"
+ systems with the same starting conditions, exactly the same trajectory
+ is always observed.
+ It isn't right for dynamics of real pathogens in the real-world.
+ So stochastic models are created and concerned with approximating or mimicking
+ the random or probabilistic element from the deterministic models.
+ Moreover, when the quantities in a system are small enough and extinction
+ is probable to occur, then stochastic effects become critical to take into
+ account.
+ This is reason, in the 'dizzysNewInfec' package, it permits us to obtain
+ the dynamics of the deterministic and the approximate dynamics of the stochasti
+c epidemic models.
+\end_layout
+
+\begin_layout Standard
+Based on the stochastic models, their processes are in Markov process, it
+ means that the future state of the process, conditional on the present
+ state, is independent of the past.
+ In the case, our package focus on simulating dynamics from a continuous-time
+ Markov process for which the transition rates are constants, isn't a function
+ of time.
+ We use the exact algorithm of Gillespie in 1977 and the approximate algorithm
+ described as the "adaptive tau-leaping algorithm".
+ With these two algorithms, each has its private advantages and its private
+ disadvantages.
+ For the exact algorithm, it give us a really exact approach of simulating
+ population-based time-to-event through two step with many iterations of
+ 1) searching the time of next event by an exponentially distributed function
+ and 2) searching the nature of next event.
+ This Gillespie's solution becomes too slow and impractical as any one transitio
+n rate grows large.
+ Hence, approximate models are born instead of the Gillespie's solution,
+ they are concerned with larger transition rates and with increasing simulation
+ speed while still maintaining reasonable accuracy.
+ The "adaptive tau-leaping algorithm" known as an approximate method reduces
+ the number of iterations by treating transition rates as constant over
+ time periods for which this approximation leads to little error 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "cao2007adaptive"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+The 
+\series bold
+dizzysNewYann
+\series default
+ package in R implements both the exact solution and the approximate solution
+ for the SIR and SEIR models by integrating the R package and the C++ implementa
+tion.
+ We can choose one of the two solutions to simulate when the number of subpopula
+tions in a metapopulation increases.
+ We use C++ to perform the algorithms, and R to create interfaces.
+ Therefore, new implementation is much faster than any pure R implementation.
+ Moreover, we introduce a new interpretation of the probabilistic derivation
+ of multi-population epidemic model.
+\end_layout
+
+\begin_layout Section
+Methods
+\end_layout
+
+\begin_layout Standard
+In this section, first we will talk about the deterministic model, the stochasti
+c model of the SEIR model.
+ Then, we will have transformation the SEIR model into the SIR model through
+ the usage of the two algorithms.
+ We hope that the models and the algorithms should be well understood before
+ obtainning simulation results.
+\end_layout
+
+\begin_layout Subsection
+Deterministic model:
+\end_layout
+
+\begin_layout Standard
+To describe infectious diseases in a in a spatial context, we consider a
+ metapopulation of n sub-populations.
+ In subpopulation 
+\begin_inset Formula $i$
+\end_inset
+
+ of size 
+\begin_inset Formula $N_{i}$
+\end_inset
+
+, disease dynamics can be deterministically described by the following set
+ of differential equations: 
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+begin
+\backslash
+{eqnarray
+\backslash
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+frac
+\backslash
+{dS
+\backslash
+_
+\backslash
+{i
+\backslash
+}
+\backslash
+}
+\backslash
+{dt
+\backslash
+}
+\backslash
+&=
+\backslash
+&
+\backslash
+backslash muN
+\backslash
+_
+\backslash
+{i
+\backslash
+}-
+\backslash
+backslash lambda
+\backslash
+_
+\backslash
+{i
+\backslash
+}S
+\backslash
+_
+\backslash
+{i
+\backslash
+}-
+\backslash
+backslash muS
+\backslash
+_
+\backslash
+{i
+\backslash
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+end
+\backslash
+{eqnarray
+\backslash
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $ $
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+bibfiles "bibManuscrit"
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

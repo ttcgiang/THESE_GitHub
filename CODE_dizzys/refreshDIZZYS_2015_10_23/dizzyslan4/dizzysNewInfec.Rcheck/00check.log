@@ -124,8 +124,6 @@ See section ‘Good practice’ in '?.onAttach'.
 globSEIRSimulNewInfec: no visible binding for global variable ‘phiPHAS’
 pers.rate.objNewInfec: no visible global function definition for
   ‘persistence’
-sses.adaptivetau: no visible global function definition for
-  ‘initVarSEIRN’
 str.seirNewInfec: no visible binding for global variable ‘beta1’
 |.seirNewInfec: no visible binding for global variable ‘object’
 plot.surv.probNewInfec,seirNewInfec: no visible global function
@@ -223,7 +221,7 @@ stoSEIRNewInfec
                  as.numeric(Sys.time()), S = NULL, E = NULL, I = NULL,
                  R = NULL, N = 1e+05, nbCONTACT0 = 300, nbCONTACT1 =
                  0.1, phiPHASE = c(0), probVISITER = 0.01, probINFECTER
-                 = 0.01, duration = 1000, nbVilles = 2, unitTIME = 1,
+                 = 0.1, duration = 1000, nbVilles = 2, unitTIME = 1,
                  periDISE = 365, typeRNG = "good", typeSIMU = "stoch",
                  method = "direct", statSTATE = FALSE, ...)
   Docs: function(sigma = 1/8, gamma = 1/5, mu = 1/(70 * 365), seed =
@@ -235,6 +233,8 @@ stoSEIRNewInfec
                  method = "direct", statSTATE = FALSE)
   Argument names in code not in docs:
     ...
+  Mismatches in argument default values:
+    Name: 'probINFECTER' Code: 0.1 Docs: 0.01
 
 * checking Rd \usage sections ... WARNING
 Duplicated \argument entries in documentation object 'globSEIRSimulNewInfec':
@@ -273,9 +273,10 @@ Compiled code should not call entry points which might terminate R nor
 write to stdout/stderr instead of to the console, nor the system RNG.
 
 See ‘Writing portable packages’ in the ‘Writing R Extensions’ manual.
+* checking sizes of PDF files under ‘inst/doc’ ... OK
 * checking installed files from ‘inst/doc’ ... NOTE
 The following files should probably not be installed:
-  ‘dizzys.Rnw~’, ‘dizzysNewInfec.Rnw~’
+  ‘dizzys.Rnw~’, ‘dizzysNewInfec.Rnw~’, ‘dizzysNewInfec.tex’
 
 Consider the use of a .Rinstignore file: see ‘Writing R Extensions’,
 or move the vignette sources from ‘inst/doc’ to ‘vignettes’.

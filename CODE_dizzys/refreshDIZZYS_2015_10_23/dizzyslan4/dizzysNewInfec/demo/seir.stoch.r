@@ -16,15 +16,15 @@ demo.globSEIRNewInfec<-function(){
 	plot(directObj)
 	pause()
 		#equi parameter is "FALSE"
-	directObj <- globSEIRNewInfec(N=1e7,typeSIMU="stoch",equi=FALSE,rng="good")
+	directObj <- globSEIRNewInfec(N=1e7,typeSIMU="stoch",equi=FALSE,typeRNG="good")
 	plot(directObj)
 	pause()
-		#rng parameter is "good" with equi=TRUE
-	directObj <- globSEIRNewInfec(N=1e7,typeSIMU="stoch",nbVilles=3, rng="good")
+		#typeRNG parameter is "good" with equi=TRUE
+	directObj <- globSEIRNewInfec(N=1e7,typeSIMU="stoch",nbVilles=3, typeRNG="good")
 	plot(directObj)
 	pause()
-		#rng parameter is "fast" with equi=TRUE
-	directObj <- globSEIRNewInfec(N=1e7,typeSIMU="stoch",nbVilles=3, rng="fast")
+		#typeRNG parameter is "fast" with equi=TRUE
+	directObj <- globSEIRNewInfec(N=1e7,typeSIMU="stoch",nbVilles=3, typeRNG="fast")
 	plot(directObj)
 	pause()
 	
@@ -46,10 +46,10 @@ demo.globSEIRNewInfec()
 
 
 #comparing the rand() function of C++ and the ran1() function of Pr.Yann Paris 13 
-comp.rngGood.rngFast<-function(){
+comp.typeRNGGood.typeRNGFast<-function(){
 	nbRep = 10	
-	good <- replicate(nbRep,system.time(globSEIRNewInfec(N=1e7,typeSIMU="stoch",duration=20*365,rng="good"))[3])	
- 	fast <- replicate(nbRep,system.time(globSEIRNewInfec(N=1e7,typeSIMU="stoch",duration=20*365,rng="fast"))[3])
+	good <- replicate(nbRep,system.time(globSEIRNewInfec(N=1e7,typeSIMU="stoch",duration=20*365,typeRNG="good"))[3])	
+ 	fast <- replicate(nbRep,system.time(globSEIRNewInfec(N=1e7,typeSIMU="stoch",duration=20*365,typeRNG="fast"))[3])
 	plot(c(1:nbRep),good,ylim=range(0,good,fast),lwd=5,col="blue", ylab="time of simulation", xlab="number of repeations")
 	points(c(1:nbRep),fast,lwd=5,col="black")
 	title(main="the run-time of the good/fast random function",cex=0.6)
@@ -58,7 +58,7 @@ comp.rngGood.rngFast<-function(){
 	
 	
 }
-comp.rngGood.rngFast()
+comp.typeRNGGood.typeRNGFast()
 
 
 

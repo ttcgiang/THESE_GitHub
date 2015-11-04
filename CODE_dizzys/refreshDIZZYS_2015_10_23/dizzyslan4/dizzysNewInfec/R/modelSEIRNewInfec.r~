@@ -52,6 +52,8 @@ timeseqNewInfec <- function(duration=10*365, unitTIME=1){
 	return(seq(0,duration,le=duration/unitTIME))
 }
 #####
+##pause()
+pause <- function() readline("press Enter to continue!")
 #####
 # function 'pause'
 #
@@ -322,7 +324,7 @@ statDIS<-function(transMATRIX=matrix()){
 # sigma may be 'infinity' if we want SIR simulation
 stoSEIRNewInfec<-function(sigma=1/8,gamma=1/5,mu=1/(70*365),seed=as.numeric(Sys.time()),S=NULL,E=NULL,I=NULL,R=NULL,N=1e5,
 		nbCONTACT0=300, nbCONTACT1=0.1,phiPHASE=c(0),
-		probVISITER=0.01, probINFECTER=0.01, duration=1000, nbVilles=2, unitTIME=1,periDISE=365,
+		probVISITER=0.01, probINFECTER=0.1, duration=1000, nbVilles=2, unitTIME=1,periDISE=365,
 		typeRNG="good",typeSIMU="stoch",method="direct",statSTATE=FALSE,...){
 	#finding the stationary distribution
 	initS<-c(); initE<-c(); initI<-c(); initR<-c(); initN<-c()	
@@ -353,6 +355,10 @@ stoSEIRNewInfec<-function(sigma=1/8,gamma=1/5,mu=1/(70*365),seed=as.numeric(Sys.
 	# stochastic simulation of n populations
 	# for the DIRECT algorithm
 	if(!is.integer0(grep(method,"direct"))){
+		#
+		listDisRecolPOP <- vector("list",nbVilles)
+		listLocalEXTPOP <- vector("list",nbVilles)
+		#
 		if(!is.integer0(grep(typeRNG,"good"))) rtypeRNG=0
 		else
 		  if(!is.integer0(grep(typeRNG,"fast"))) rtypeRNG=1
@@ -382,8 +388,10 @@ stoSEIRNewInfec<-function(sigma=1/8,gamma=1/5,mu=1/(70*365),seed=as.numeric(Sys.
 			}
 		}
 		#calculating the difference between the moment of the beginning of the local extinction and of the end of the local extinction$
+		#
 		listDisRecolPOP <- vector("list",nbVilles)
 		listLocalEXTPOP <- vector("list",nbVilles)
+		#
 		for( ivil in 1:nbVilles){
 			nbLocalExt<-length(resRecol[[ivil]])
 			if(nbLocalExt==0){
@@ -401,13 +409,22 @@ stoSEIRNewInfec<-function(sigma=1/8,gamma=1/5,mu=1/(70*365),seed=as.numeric(Sys.
 	}
 	else
 	# for the ADAPTIVETAU algorithm
-	if(!is.integer0(grep(method,"adaptivetau"))){	
+	if(!is.integer0(grep(method,"adaptivetau"))){
+			
 		# stochastic simulation for SEIR model
 		#calling the function 'sses.AdaptiveTau' from C++
 		populations <- sses.adaptivetau(sigma=sigma,gamma=gamma,mu=mu,S=S,E=E,I=I,R=R,N=N,
 		nbCONTACT0=nbCONTACT0, nbCONTACT1=nbCONTACT1,phiPHASE=phiPHASE,
-		probVISITER=probVISITER, probINFECTER=probINFECTER, duration=duration, nbVilles=nbVilles,periDISE=periDISE,
+		probVISITER=probVISITER, probINFECTER=probINFECTER, duration=duration, 			nbVilles=nbVilles,periDISE=periDISE,
 		typeSIMU=typeSIMU,method=method,statSTATE=statSTATE)
+		#
+		listDisRecolPOP <- vector("list",nbVilles)
+		listLocalEXTPOP <- vector("list",nbVilles)
+		#
+		for( ivil in 1:nbVilles){
+			listLocalEXTPOP[[ivil]]<-NULL
+			listDisRecolPOP[[ivil]]<-NULL
+		}
 
 	}
 	else
@@ -415,9 +432,14 @@ stoSEIRNewInfec<-function(sigma=1/8,gamma=1/5,mu=1/(70*365),seed=as.numeric(Sys.
 	
 	
 	#return an object_stoch
-	return(new("seirNewInfec",sigma=sigma,gamma=gamma,mu=mu,seed=seed,S=initS,E=initE,I=initI,R=initR,N=initN,
-		nbCONTACT0=nbCONTACT0, nbCONTACT1=nbCONTACT1, phiPHASE=phiPHASE,
-		probVISITER=probVISITER, probINFECTER=probINFECTER, duration=duration, nbVilles=nbVilles, unitTIME=unitTIME,periDISE=periDISE,		typeRNG=typeRNG,typeSIMU="stochastic",method=method,statSTATE=statSTATE,localExtPOP=listLocalEXTPOP,disRecolPOP=listDisRecolPOP,
+	return(new("seirNewInfec",sigma=resizeVectorNewInfec(sigma,nbVilles),
+		gamma=resizeVectorNewInfec(gamma,nbVilles),mu=resizeVectorNewInfec(mu,nbVilles),
+		seed=seed,S=initS,E=initE,I=initI,R=initR,N=initN,
+		nbCONTACT0=resizeVectorNewInfec(nbCONTACT0,nbVilles), nbCONTACT1=resizeVectorNewInfec(nbCONTACT1,nbVilles),
+		phiPHASE=phiPHASE,
+		probVISITER=resizeVectorNewInfec(probVISITER,nbVilles), 
+		probINFECTER=resizeVectorNewInfec(probINFECTER,nbVilles),
+		duration=duration, nbVilles=nbVilles, unitTIME=unitTIME,periDISE=periDISE,		typeRNG=typeRNG,typeSIMU="stochastic",method=method,statSTATE=statSTATE,localExtPOP=listLocalEXTPOP,disRecolPOP=listDisRecolPOP,
 		pop=populations))
 #the end
 }

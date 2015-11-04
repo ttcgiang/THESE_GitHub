@@ -20,6 +20,7 @@
 
 \usepackage{babel}
 \begin{document}
+\SweaveOpts{concordance=TRUE}
 
 \title{$\mathbf{dizzys}$: efficient deterministic/stochastic simulations
 in R for a metapopulation by using SIR/SEIR models}
@@ -295,11 +296,11 @@ plot(obj,col=c("red","blue"),ylab="number of infectives", xlab="time (day)")
 We can compare the result of the Gillespie'algorithm with the result of the adaptivetau algorithm:
 <<fig=T,echo=T>>=
 #obj1 with method="direct"
-obj1<- globSEIRNewInfec(typeSIMU="stochastic",method="direct",duration=5*365,mu=1/(70*365),sigma=1/8,gamma=1/5,nbVilles=1,N=1e7)
+obj1<- globSEIRNewInfec(typeSIMU="stochastic",method="direct",duration=5*365,nbCONTACT0=10000,nbCONTACT1=3.0,mu=1/(70*365),sigma=1/8,gamma=1/5,nbVilles=1,N=1e6)
 plot(obj1,col="red",ylab="number of infectives", xlab="time (day)") 
 
 #obj2 with method="adaptivetau"
-obj2<- globSEIRNewInfec(typeSIMU="stochastic",method="adaptivetau",duration=5*365,mu=1/(70*365),sigma=1/8,gamma=1/5,nbVilles=1,N=1e7)
+obj2<- globSEIRNewInfec(typeSIMU="stochastic",method="adaptivetau",duration=5*365,nbCONTACT0=10000,mu=1/(70*365),sigma=1/8,gamma=1/5,nbVilles=1,N=1e6)
 plot(obj2,col="blue",add=T) 
 @
 

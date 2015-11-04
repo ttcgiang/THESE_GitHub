@@ -54,7 +54,7 @@ Loading required package: KMsurv
   nbCONTACT1  probVISITER probINFECTER        sigma        gamma     phiPHASE 
 1.000000e-01 1.000000e-01 1.000000e-02 1.250000e-01 2.000000e-01 0.000000e+00 
         seed 
-1.446462e+09 
+1.446519e+09 
 > 
 > 	seirobj2<-globSEIRSimulNewInfec(nbVilles=3, N=c(1e7,1e6))
 > 	coef(seirobj2)
@@ -70,7 +70,7 @@ Loading required package: KMsurv
   nbCONTACT1  probVISITER probINFECTER        sigma        gamma     phiPHASE 
 1.000000e-01 1.000000e-01 1.000000e-02 1.250000e-01 2.000000e-01 0.000000e+00 
         seed 
-1.446462e+09 
+1.446519e+09 
 > 
 > 
 > 
@@ -204,11 +204,11 @@ Warning in par3d(userMatrix = c(1, 0, 0, 0, 0, 0.342020143325668, -0.93969262078
 > 	objper<-persNewInfec(obj1)
 > 	objper@persistence
       time resVil ndie ville
-pop 4 6125      5    1     4
-pop 1 6134      4    1     1
-pop 3 6137      3    1     3
-pop 2 6138      2    1     2
-pop 5 6143      1    1     5
+pop 1 2691      5    1     1
+pop 5 2698      4    1     5
+pop 2 2717      3    1     2
+pop 3 2717      2    1     3
+pop 4 2731      1    1     4
 > 
 > 
 > 
@@ -306,7 +306,7 @@ press Enter to continue!
 > ###
 > options(digits = 7L)
 > base::cat("Time elapsed: ", proc.time() - base::get("ptime", pos = 'CheckExEnv'),"\n")
-Time elapsed:  229.592 0.3 230.133 0 0.007 
+Time elapsed:  230.593 0.189 231.034 0.004 0.002 
 > grDevices::dev.off()
 pdf 
   2 

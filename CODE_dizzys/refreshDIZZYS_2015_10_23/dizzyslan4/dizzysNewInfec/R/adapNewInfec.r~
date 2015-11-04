@@ -4,13 +4,13 @@
 # Here, we call the function 'ssesAdaptiveTau' written from the C++ program.
 # seir/sir sses.adaptivetau
 sses.adaptivetau <- function(sigma=1/8,gamma=1/5,mu=1/(70*365),S=NULL,E=NULL,I=NULL,R=NULL,N=1e5,
-		nbCONTACT0=300, nbCONTACT1=0.1, nbMulCONTACT=1, phiPHASE=c(0),
+		nbCONTACT0=300, nbCONTACT1=0.1, phiPHASE=c(0),
 		probVISITER=0.01, probINFECTER=0.1, duration=1000, nbVilles=2,periDISE=365,
 		typeSIMU="stoch",method="direct",statSTATE=FALSE,...) {
 
 	# initial values of variables
 	# initial value of variables for all populations	
-	initVar<-initVarSEIRN(nbVilles=nbVilles,S=S,E=E,I=I,R=R,N=N,mu=mu,nbCONTACT0=nbCONTACT0,nbCONTACT1=nbCONTACT1,sigma=sigma,gamma=gamma,periDISE=periDISE,phiPHASE=phiPHASE)
+	initVar<-initVarSEIRNNewInfec(nbVilles=nbVilles,S=S,E=E,I=I,R=R,N=N,mu=mu,nbCONTACT0=nbCONTACT0,nbCONTACT1=nbCONTACT1,sigma=sigma,gamma=gamma,periDISE=periDISE,phiPHASE=phiPHASE)
 	initS <- initVar$S; names(initS)<-rep("S",length(initS));
 	initE <- initVar$E; names(initE)<-rep("E",length(initE));
 	initI <- initVar$I; names(initI)<-rep("I",length(initI));
