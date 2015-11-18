@@ -331,7 +331,7 @@ stoSEIRNewInfec<-function(sigma=1/8,gamma=1/5,mu=1/(70*365),seed=as.numeric(Sys.
 	if(statSTATE){
 		#statinary matrix
 		matrix01<-transMATRIX(nbVilles,0,1)
-		statMatriw<-statSTATE(matrix01)
+		statMatriw<-statDIS(matrix01)
 		statline<-statMatriw[1,]
 		# find the initial values of variables for a single city
 		# initial value of variables for all populations	
@@ -438,7 +438,7 @@ stoSEIRNewInfec<-function(sigma=1/8,gamma=1/5,mu=1/(70*365),seed=as.numeric(Sys.
 		phiPHASE=phiPHASE,
 		probVISITER=probVISITER, 
 		probINFECTER=probINFECTER,
-		duration=duration, nbVilles=nbVilles, unitTIME=unitTIME,periDISE=periDISE,		typeRNG=typeRNG,typeSIMU="stochastic",method=method,statSTATE=statSTATE,localExtPOP=listLocalEXTPOP,disRecolPOP=listDisRecolPOP,
+		duration=duration, nbVilles=nbVilles, 			    unitTIME=unitTIME,periDISE=periDISE,		typeRNG=typeRNG,typeSIMU="stochastic",method=method,statSTATE=statSTATE,localExtPOP=listLocalEXTPOP,disRecolPOP=listDisRecolPOP,
 		pop=populations))
 #the end
 }

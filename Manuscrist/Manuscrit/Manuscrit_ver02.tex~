@@ -1149,10 +1149,7 @@ slow-scale stochastic simulation algorithm \cite{cao2005slow} and
 use of the quasi-steady state assumption \cite{rao2003stochastic}.
 Besides, there are many varieties of others, for exemple : Haseltine
 and Rawlings  \cite{haseltine2002approximate} associate deterministic or Langevin equations for fast
-reactions with SSA for slow channels. Saliz and Kazessis \cite{salis2005accurate} introduced a hybrid stochastic method that divides 
-the reaction set of the system into fast and slow reaction subsets, applies a chemical Langevin equation for approximating
-the fast reactions as a continuous Markov process, and has been used successful to the simulation of the dynamics of a system
-based on stochastic differential, ordinary differential, and Master equations.
+reactions with SSA for slow channels. Saliz and Kazessis \cite{salis2005accurate} introduced a hybrid stochastic method that divides the reaction set of the system into fast and slow reaction subsets, applies a chemical Langevin equation for approximating the fast reactions as a continuous Markov process, and has been used successful to the simulation of the dynamics of a system based on stochastic differential, ordinary differential, and master equations.
 
 These method
 
@@ -1194,7 +1191,7 @@ sur le sujet). Les nouveau login et mot de passe de Bibliovie (http://bibliovie.
 sont 15SCBUMR5290 et 4NX9E5. Ou, on peux utiliser l'account de Giang
 à UPMC selon les conseil de la site : http://www.jubil.upmc.fr/fr/ressources\_en\_ligne2/mode\_acces\_ressources.html.
 
-
+\bibliographystyle{plain}
 \bibliography{bibManuscrit}
 
 \end{document}

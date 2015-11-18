@@ -30,17 +30,17 @@ demo.globSEIRNewInfec<-function(){
 	
 	#globSEIRNewInfec.adaptivetau object pour n population of a metapopulation. 
 		#1ville	
-	adaptObj <- globSEIRNewInfec(method="adaptivetau")
-	plot(adaptObj)
-	pause()	
+	#adaptObj <- globSEIRNewInfec(method="adaptivetau")
+	#plot(adaptObj)
+	#pause()	
 		#changing the values of parameters or variables
 		#3villes
-	adaptObj <- globSEIRNewInfec(N=1e7,typeSIMU="stoch",method="adaptivetau",duration=10*365,nbVilles=3,equi=TRUE)
-	plot(adaptObj)
-	pause()
-	adaptObj <- globSEIRNewInfec(N=1e7,typeSIMU="stoch",method="adaptivetau",duration=10*365,nbVilles=3,equi=FALSE)
-	plot(adaptObj)
-	pause()
+	#adaptObj <- globSEIRNewInfec(N=1e7,typeSIMU="stoch",method="adaptivetau",duration=10*365,nbVilles=3,equi=TRUE)
+	#plot(adaptObj)
+	#pause()
+	#adaptObj <- globSEIRNewInfec(N=1e7,typeSIMU="stoch",method="adaptivetau",duration=10*365,nbVilles=3,equi=FALSE)
+	#plot(adaptObj)
+	#pause()
 }
 demo.globSEIRNewInfec()
 

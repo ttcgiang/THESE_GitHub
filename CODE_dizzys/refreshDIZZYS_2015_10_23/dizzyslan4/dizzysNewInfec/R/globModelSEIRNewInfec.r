@@ -304,7 +304,7 @@ globSEIRSimulNewInfec<-function(object,typeSIMU="stoch",continue=F,
 			newObj <- globSEIRNewInfec(typeSIMU=typeSIMU,duration=duration,unitTIME=unitTIME,S=S,E=E,I=I,R=R,N=N,
 				mu=mu,nbCONTACT0=nbCONTACT0,nbCONTACT1=nbCONTACT1,
 				probINFECTER=probINFECTER,probVISITER=probVISITER,
-				sigma=sigma,gamma=gamma,periDISE=periDISE,phiPHASE=phiPHAS,
+				sigma=sigma,gamma=gamma,periDISE=periDISE,phiPHASE=phiPHASE,
 				nbVilles=nbVilles,seed=seed,typeRNG=typeRNG)
 			newPops <- newObj@pop	
 			for(i in 1:nbVilles){	

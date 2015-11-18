@@ -121,7 +121,6 @@ globSEIRSimulNewInfec<-function(object,typeSIMU="stoch",continue=F,
 			objtmp@probINFECTER<-c(newprobINFECTER,resizeVectorNewInfec(probINFECTER,nbVilles))
 		}
 		##
-		print("ndjdjdjdjdjdjdj")
 		#probVISITER[i,j] : the probability that an individual from subpopulation i visits subpopulation j
 		if(missing(probVISITER)){
 			#if(oldrep==1) probVISITER<-object@probVISITER
@@ -136,12 +135,9 @@ globSEIRSimulNewInfec<-function(object,typeSIMU="stoch",continue=F,
 				#if((i==1)||(nbVilObj==1)) oldprobVISITER<-object@probVISITER[i:(i*nbVilObj)]
 				#else oldprobVISITER<-object@probVISITER[(i+1):(i*nbVilObj)]
 				oldprobVISITER<-object@probVISITER
-				print(paste("GGGGGGG",oldprobVISITER))
 				newprobVISITER<-c(newprobVISITER,resizeVectorNewInfec(oldprobVISITER,nbVilles))
-				print(paste("KKKKGGG",newprobVISITER))
 			}
 			objtmp@probVISITER<-c(newprobVISITER,resizeVectorNewInfec(probVISITER,nbVilles))
-			print(paste("MMMMMM=",objtmp@probVISITER))
 		}
 		#sigma : average latent period
 		if(missing(sigma)){

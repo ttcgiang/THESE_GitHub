@@ -1,0 +1,324 @@
+%% LyX 2.1.3 created this file.  For more info, see http://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[english]{amsart}
+\usepackage[T1]{fontenc}
+\usepackage[utf8x]{inputenc}
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\makeatletter
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Textclass specific LaTeX commands.
+\numberwithin{equation}{section}
+\numberwithin{figure}{section}
+\theoremstyle{plain}
+\newtheorem{thm}{\protect\theoremname}
+  \theoremstyle{definition}
+  \newtheorem{defn}[thm]{\protect\definitionname}
+  \theoremstyle{plain}
+  \newtheorem{prop}[thm]{\protect\propositionname}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+\usepackage{babel}
+
+\makeatother
+
+\usepackage{babel}
+  \providecommand{\definitionname}{Definition}
+  \providecommand{\propositionname}{Proposition}
+\providecommand{\theoremname}{Theorem}
+
+\begin{document}
+
+\title{Probabilistic derivation of multi-population epidemic model\\
+ with $\beta_{ijk}=-\kappa_{j}\log(1-c_{ik})$}
+
+
+\author{Giang, Yann, Marc et JD}
+\maketitle
+\begin{defn}
+Durant le petit intervalle de temps $\delta t$, chaque individu natif
+de la ville $i$ visite \textbf{une seule} ville $j$ (avec probabilité
+$\rho_{ij}$) et rencontrera \textbf{en moyenne }$\kappa_{j}$ individus.
+Ces individus proviennent de toutes les villes.
+\end{defn}
+
+\section{Notation}
+
+
+\subsubsection*{Notation :}
+
+Here, we present list of sets and events describing the state of the
+system at time $t$ : 
+\begin{itemize}
+\item $C_{i}$ is the set of all individuals born in subpopulation $i$. 
+\item $V_{i,t}$ is the set of all individuals physically located in subpopulation
+$i$ from time $t$ to time $t+\delta t$. This includes foreigners
+traveling in subpopulation $i$ at time $t$, and all natives from
+subpopulation $i$ which are not traveling abroad at time $t$. 
+\item $S_{t},E_{t},I_{t},R_{t}$ are the sets of all individuals respectively
+susceptible, exposed, infected and recovered at time $t$. Note that
+these set include individuals from all subpopulations. 
+\item $S_{i,t},E_{i,t},I_{i,t},R_{i,t}$ are the same sets, restricted to
+natives of subpopulation $i$. So formally, $S_{i,t}=S_{t}\cap C_{i}$,
+$E_{i,t}=E_{t}\cap C_{i}$, $I_{i,t}=I_{t}\cap C_{i}$, and $R_{i,t}=R_{t}\cap C_{i}$. 
+\item $Transmit(y,x)$ is an event indicating that individual $x$ gets
+infected by individual $y$ which was already infected 
+\item $c_{i,k}$ is the probability that a susceptible individual native
+from $i$ being in contact with another infected individual native
+from $k$ gets infected. 
+\item $\kappa_{j}$ is the average number of contacts per unit of time a
+susceptible will have when visiting city $j$. 
+\item $\xi_{jk}$ refers to the probability that an individual $y$ meeting
+$x$ in $C_{j}$ comes from $C_{k}$.
+\item $\rho_{i,j}$, the probability that an individual from subpopulation
+$i$ visits subpopulation $j$. Of course, $\sum_{j=1}^{M}\rho_{ij}=1$.\end{itemize}
+\begin{prop}
+The coefficient $\kappa$ should also depend on $i$, because an individual
+native from city $i$ meets more people in his own city than abroad
+($\kappa_{i,i}>\kappa_{i,j}$). 
+\end{prop}
+
+\section{The basics (nearly same as in earlier versions)}
+
+\textbf{Let us write a probabilistic formulation of $\frac{dE_{i}}{dt}$
+:}
+
+One general question is always posed ``how does the population of
+exposed individuals of subpopulation $i$ evolve ?''. For the sake
+of simplicity, in the process of transmission of the SEIR model, we
+focus on the incidence and we assume for now that the latent period
+and the recovery rate, repectively $\mu=\sigma=0$. Thus, we write
+a probabilistic formulation of $\frac{dE_{i}}{dt}$. Assuming the
+time is discrete, we have $\frac{dE_{i}}{dt}\approx\mathbb{E}\left[E_{i,t+1}\setminus E_{i,t}\right]$.
+Then,
+
+\begin{eqnarray*}
+\mathbb{E}\left[E_{i,t+1}\setminus E_{i,t}\right] & = & \mathbb{E}\left[E_{i,t+1}\cap S_{i,t}\right]\\
+ & = & \sum_{x\in C_{i}}Pr\left[x\in E_{t+1}\wedge x\in S_{t}\right]\\
+ & = & \sum_{x\in C_{i}}Pr\left[x\in S_{t}\right]*Pr\left[x\in E_{t+1}\mid x\in S_{t}\right]\\
+ & = & Pr_{x\sim\mathcal{X}_{i}}\left[x\in E_{t+1}\mid x\in S_{t}\right]*\sum_{x\in C_{i}}Pr\left[x\in S_{t}\right]\\
+ & = & |S_{i,t}|\times Pr_{x\sim\mathcal{X}_{i}}\left[x\in E_{t+1}\mid x\in S_{t}\right]
+\end{eqnarray*}
+
+
+Assume there are $M$ cities. An individual $x$ of the subpopulation
+$i$ may be visiting another subpopulation, or staying in its own
+subpopulation. Applying the law of total probabilities, we get:
+
+\begin{eqnarray*}
+Pr_{x\sim\mathcal{X}_{i}}\left[x\in E_{t+dt}\mid x\in S_{t}\right] & = & \sum_{j=1}^{M}Pr_{x\sim\mathcal{X}_{i}}\left[x\in E_{t+dt}\wedge x\in V_{j,t}\mid x\in S_{t}\right]\\
+ & = & \sum_{j=1}^{M}Pr_{x\sim\mathcal{X}_{i}}\left[x\in E_{t+dt}\mid x\in S_{t}\wedge x\in V_{j,t}\right].Pr_{x\sim\mathcal{X}_{i}}\left[x\in V_{j,t}\right]\\
+ &  & \sum_{j=1}^{M}Pr_{x\sim\mathcal{X}_{i}}\left[x\in E_{t+dt}\mid x\in S_{t}\wedge x\in V_{j,t}\right]\times\rho_{ij}
+\end{eqnarray*}
+
+
+Where $\rho_{i,j}=Pr_{x\sim\mathcal{X}_{i}}\left[x\in V_{j,t}\right]$,
+the probability that an individual from subpopulation $i$ visits
+subpopulation $j$. Of course, $\sum_{j=1}^{M}\rho_{ij}=1$.
+
+
+\section{Study of case where agent $x$ native from city $i$ visits city
+$j$}
+
+Here, we look at the probability that a susceptible $x\sim\mathcal{X}_{i}$
+visiting $j$ gets infected or not after $\delta t$ time steps. Let
+$\mathcal{Y}$ be the uniform distribution over $V_{j,t}$. (\textbf{IMPORTANT})
+The correct mathematical approach for this would be to assume that
+for each city $k$, the number of people native from $k$ that we
+meet during $\delta t$ follows a Poisson process. So both the number
+of people we meet and the number of infected people we meet during
+$\delta t$ should be random variables.
+
+In the approach described in \cite{keeling2011}, the authors did
+not do this. They assumed that both the number of people we meet and
+the number of infected people we meet \emph{are fixed} (otherwise
+the maths they write would have been different). We will call this
+the ``Keeling \& Rohani'' interpretation
+
+We introduce an alternative approximation, where we assume that the
+number $\kappa$ of people we meet during $\delta t$ is \emph{fixed},
+but each of these people has \emph{some probability} to be infected.
+This is an \emph{in-between interpretation}, easier than the Poisson
+process maths, but better than Keeling\&Rohani's one. We will call
+this the ``Yann-Giang'' interpretation.
+
+
+\subsection{The ``Yann-Giang'' interpretation}
+\begin{prop}
+Agent $x$ meets \emph{exactly} $\kappa_{j}$ other individuals, and
+each of these individuals has a probability $\frac{\left|I_{k,t}\right|}{N_{k}}$
+of being infected, where $k$ is its native city. Let $y_{1}\ldots y_{\kappa_{j}}$
+be the individuals that $x$ meets. We get:
+\end{prop}
+\begin{eqnarray*}
+ &  & Pr_{x\sim\mathcal{X}_{i}}\left[x\in S_{t+\delta t}\mid x\in S_{t}\wedge x\in V_{j,t}\right]\\
+ & = & Pr_{x\sim\mathcal{X}_{i},y_{1}\ldots,y_{\kappa_{j}}\sim\mathcal{Y}}\left[\bigwedge_{p=1}^{\kappa_{j}}\neg\left(y_{p}\in I_{t}\wedge Transmit(y_{p},x)\right)\mid x\in S_{t}\wedge x\in V_{j,t}\right]
+\end{eqnarray*}
+
+
+So we have:
+
+\begin{eqnarray*}
+ &  & Pr_{x\sim\mathcal{X}_{i}}\left[x\in S_{t+\delta t}\mid x\in S_{t}\wedge x\in V_{j,t}\right]\\
+ & = & Pr_{x\sim\mathcal{X}_{i},y\sim\mathcal{Y}}\left[\neg\left(y\in I_{t}\wedge Transmit(y,x)\right)\mid x\in S_{t}\wedge x\in V_{j,t}\right]^{\kappa_{j}\delta t}
+\end{eqnarray*}
+
+
+As in the earlier versions of the document, we have:
+\begin{itemize}
+\item The probability so that a susceptible individual $x$ is infected
+by an infected individual $y$ :
+\end{itemize}
+\begin{eqnarray*}
+ &  & Pr_{x\sim\mathcal{X}_{i},y\sim\mathcal{Y}}\left[y\in I_{t}\wedge Transmit(y,x)\mid x\in S_{t}\wedge x\in V_{j,t}\right]\\
+ & = & \sum_{k=1}^{M}Pr_{x\sim\mathcal{X}_{i},y\sim\mathcal{Y}}\left[y\in I_{t}\wedge Transmit(y,x)\mid x\in S_{t}\wedge x\in V_{j,t}\wedge y\in C_{k}\right].Pr_{y\sim\mathcal{Y}}\left(y\in C_{k}\right)\\
+ & = & \sum_{k=1}^{M}\left\{ Pr_{x\sim\mathcal{X}_{i},y\sim\mathcal{X}_{k}}\left[y\in I_{t}\mid x\in S_{t}\wedge x\in V_{j,t}\right]\right.\\
+ &  & \,\,\,\,\,\left.\times Pr_{x\sim\mathcal{X}_{i},y\sim\mathcal{X}_{k}}\left[Transmit(y,x)\mid y\in I_{t}\wedge x\in S_{t}\wedge x\in V_{j,t}\wedge y\in C_{k}\right]\times Pr_{y\sim\mathcal{Y}}\left(y\in C_{k}\right)\right\} \\
+ & = & \sum_{k=1}^{M}\left(\frac{\left|I_{k,t}\right|}{N_{k}}\times c_{ik}\times\xi_{jk}\right)
+\end{eqnarray*}
+
+
+$\xi_{jk}=\frac{N_{k}\rho_{kj}}{\sum_{v=1}^{M}N_{v}\rho_{vj}}$ refers
+to the probability that an individual $y$ meeting $x$ in $C_{j}$
+comes from $C_{k}$.
+\begin{itemize}
+\item Therefore, the probability so that a susceptible individual $x$ is
+not infected by an infected individual $y$ :
+\end{itemize}
+\[
+1-\sum_{k=1}^{M}\left(\frac{\left|I_{k,t}\right|}{N_{k}}\times c_{ik}\times\xi_{jk}\right)
+\]
+
+\begin{itemize}
+\item The probability so that a susceptible individual $x$ is not infected
+after $\kappa_{j}$ contacts per unit time $\delta t$.
+\end{itemize}
+\[
+\left[1-\sum_{k=1}^{M}\left(\frac{\left|I_{k,t}\right|}{N_{k}}\times c_{ik}\times\xi_{jk}\right)\right]^{\kappa_{j}\delta t}
+\]
+
+\begin{itemize}
+\item Thus, the probability so that a susceptible individual $x$ becomes
+infected after $\kappa_{j}$ contacts per unit time $\delta t$.
+\end{itemize}
+\begin{eqnarray*}
+Pr_{x\sim\mathcal{X}_{i}}\left[x\in E_{t+\delta t}\mid x\in S_{t}\wedge x\in V_{j,t}\right] & = & \left[1-\sum_{k=1}^{M}\left(\frac{\left|I_{k,t}\right|}{N_{k}}\times c_{ik}\times\xi_{jk}\right)\right]^{\kappa_{j}\delta t}
+\end{eqnarray*}
+
+
+We now apply the \emph{log} approximation which consists in approximating
+$1-(1-u)^{v}$ by $v\log(1-u)$:
+
+\begin{eqnarray*}
+Pr_{x\sim\mathcal{X}_{i}}\left[x\in E_{t+\delta t}\mid x\in S_{t}\wedge x\in V_{j,t}\right] & = & -\kappa_{j}\delta t\log\left[1-\sum_{k=1}^{M}\left(\frac{\left|I_{k,t}\right|}{N_{k}}\times c_{ik}\times\xi_{jk}\right)\right]
+\end{eqnarray*}
+
+
+So...
+
+\[
+\frac{dPr_{x\sim\mathcal{X}_{i}}\left[x\in E_{t+dt}\mid x\in S_{t}\wedge x\in V_{j,t}\right]}{dt}\simeq-\kappa_{j}\log\left[1-\sum_{k=1}^{M}\left(\frac{\left|I_{k,t}\right|}{N_{k}}\times c_{ik}\times\xi_{jk}\right)\right]
+\]
+
+
+Overall, we have the formule of the infection force as follows:
+
+\[
+\lambda_{i}=\sum_{j}\rho_{ij}\kappa_{j}\log\left[1-\sum_{k=1}^{M}\left(\frac{\left|I_{k,t}\right|}{N_{k}}\times c_{ik}\times\xi_{jk}\right)\right]
+\]
+
+
+Thus, in the forcing case, the contact rate is in the sinusoidal form
+as follows :
+
+\[
+\kappa_{i}=\kappa_{i0}(1+\kappa_{i1}cos(\frac{2\pi t}{T}+\phi_{i})
+\]
+
+
+
+\subsection{``Keeling \& Rohani'' Interpretation}
+\begin{prop}
+Agent $x$ meets \emph{exactly} $\kappa_{j}\delta t\xi_{jk}\frac{\left|I_{k,t}\right|}{N_{k}}$
+other infected individuals native from city $k$. (UGLY!!!)
+\end{prop}
+Let $l_{k}=\kappa_{j}\delta t\xi_{jk}\frac{\left|I_{k,t}\right|}{N_{k}}$.
+Let $y_{1}^{k}\ldots y_{l_{k}}^{k}$ be the infected individuals native
+from $k$ that our individual $x$ meets between $t$ and $t+\delta t$.
+\begin{eqnarray*}
+ &  & Pr_{x\sim\mathcal{X}_{i}}\left[x\in S_{t+\delta t}\mid x\in S_{t}\wedge x\in V_{j,t}\right]\\
+ & = & Pr_{x\sim\mathcal{X}_{i}}\left[\bigwedge_{\begin{array}{c}
+k=1\ldots M\\
+p=1\ldots l_{k}
+\end{array}}\neg\left(Transmit(y_{p}^{k},x)\right)\mid x\in S_{t}\wedge x\in V_{j,t}\right]\\
+ & = & \prod_{k=1}^{M}Pr_{x\sim\mathcal{X}_{i}}\left[\bigwedge_{p=1\ldots l_{k}}\neg\left(Transmit(y_{p}^{k},x)\right)\mid x\in S_{t}\wedge x\in V_{j,t}\right]\\
+ & = & \prod_{k=1}^{M}\left(1-c_{ik}\right)^{\kappa_{j}\delta t\xi_{jk}\frac{\left|I_{k,t}\right|}{N_{k}}}
+\end{eqnarray*}
+
+
+We plug this back into the previous formula, and we get:
+
+\begin{eqnarray*}
+Pr_{x\sim\mathcal{X}_{i}}\left[x\in E_{t+\delta t}\mid x\in S_{t}\wedge x\in V_{j,t}\right] & = & 1-\prod_{k=1}^{M}\left(1-c_{ik}\right)^{\kappa_{j}\xi_{jk}\frac{\left|I_{k,t}\right|}{N_{k}}\delta t}
+\end{eqnarray*}
+
+
+The first order approximation of $1-\prod_{k=1}^{M}(1-c_{ik})^{v_{k}}$
+is $\sum_{k=1}^{M}-v_{k}\log(1-c_{ik})$. Applying this approximation
+here, we get:
+
+\begin{eqnarray*}
+Pr_{x\sim\mathcal{X}_{i}}\left[x\in E_{t+\delta t}\mid x\in S_{t}\wedge x\in V_{j,t}\right] & \simeq & \delta t\sum_{k=1}^{M}\left(-\kappa_{j}\xi_{jk}\frac{\left|I_{k,t}\right|}{N_{k}}\log\left(1-c_{ik}\right)\right)
+\end{eqnarray*}
+
+
+Define $\beta_{ijk}=-\kappa_{j}\log\left(1-c_{ik}\right)$, let $\delta t$
+converge to zero, and we get:
+
+\[
+\frac{dPr_{x\sim\mathcal{X}_{i}}\left[x\in E_{t+dt}\mid x\in S_{t}\wedge x\in V_{j,t}\right]}{dt}\simeq\sum_{k=1}^{M}\left(\xi_{jk}\frac{\left|I_{k,t}\right|}{N_{k}}\beta_{ijk}\right)
+\]
+
+
+If there is only one city $i$, then we fall back to the formula of
+\cite{keeling2011} 
+
+We have : 
+
+\[
+\beta_{i}=-\kappa_{i}\log\left(1-c_{i}\right)
+\]
+
+
+\[
+\frac{d}{dt}\mathbb{E}\left[\left|E_{i,t+dt}-E_{i,t}\right|\right]\simeq-\left|S_{i,t}\right|\left(\frac{\left|I_{i}\right|}{N_{i}}\beta_{i}\right)
+\]
+
+
+
+\section{Final Formula}
+
+We simply have to plug in the probability $\rho_{ij}$ that $i$ visits
+$j$.
+
+We get, for the ``Yann-Giang'' interpretation :
+
+\[
+\frac{d}{dt}\mathbb{E}\left[\left|E_{i,t+dt}-E_{i,t}\right|\right]\simeq-\left|S_{i,t}\right|\sum_{j}\rho_{ij}\kappa_{j}\log\left[1-\sum_{k=1}^{M}\left(\frac{\left|I_{k,t}\right|}{N_{k}}\times c_{ik}\times\xi_{jk}\right)\right]
+\]
+
+
+And for the ``Keeling \& Rohani'' Interpretation :
+
+\[
+\frac{d}{dt}\mathbb{E}\left[\left|E_{i,t+dt}-E_{i,t}\right|\right]\simeq-\left|S_{i,t}\right|\sum_{j}\rho_{ij}\sum_{k=1}^{M}\left(\xi_{jk}\frac{\left|I_{k,t}\right|}{N_{k}}\beta_{ijk}\right)
+\]
+
+\begin{thebibliography}{keeling2011}
+\bibitem[keeling2011]{keeling2011}Matt J. Keeling,Pejman Rohani (2011)
+Modeling Infectious Diseases in Humans and Animals\end{thebibliography}
+
+\end{document}

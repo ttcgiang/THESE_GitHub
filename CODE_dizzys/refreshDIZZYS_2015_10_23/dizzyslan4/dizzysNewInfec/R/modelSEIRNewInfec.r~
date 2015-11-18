@@ -331,7 +331,7 @@ stoSEIRNewInfec<-function(sigma=1/8,gamma=1/5,mu=1/(70*365),seed=as.numeric(Sys.
 	if(statSTATE){
 		#statinary matrix
 		matrix01<-transMATRIX(nbVilles,0,1)
-		statMatriw<-statSTATE(matrix01)
+		statMatriw<-statDIS(matrix01)
 		statline<-statMatriw[1,]
 		# find the initial values of variables for a single city
 		# initial value of variables for all populations	
@@ -432,13 +432,12 @@ stoSEIRNewInfec<-function(sigma=1/8,gamma=1/5,mu=1/(70*365),seed=as.numeric(Sys.
 	
 	
 	#return an object_stoch
-	return(new("seirNewInfec",sigma=resizeVectorNewInfec(sigma,nbVilles),
-		gamma=resizeVectorNewInfec(gamma,nbVilles),mu=resizeVectorNewInfec(mu,nbVilles),
+	return(new("seirNewInfec",sigma=sigma,gamma=gamma,mu=mu,
 		seed=seed,S=initS,E=initE,I=initI,R=initR,N=initN,
-		nbCONTACT0=resizeVectorNewInfec(nbCONTACT0,nbVilles), nbCONTACT1=resizeVectorNewInfec(nbCONTACT1,nbVilles),
+		nbCONTACT0=nbCONTACT0, nbCONTACT1=nbCONTACT1,
 		phiPHASE=phiPHASE,
-		probVISITER=resizeVectorNewInfec(probVISITER,nbVilles), 
-		probINFECTER=resizeVectorNewInfec(probINFECTER,nbVilles),
+		probVISITER=probVISITER, 
+		probINFECTER=probINFECTER,
 		duration=duration, nbVilles=nbVilles, unitTIME=unitTIME,periDISE=periDISE,		typeRNG=typeRNG,typeSIMU="stochastic",method=method,statSTATE=statSTATE,localExtPOP=listLocalEXTPOP,disRecolPOP=listDisRecolPOP,
 		pop=populations))
 #the end
