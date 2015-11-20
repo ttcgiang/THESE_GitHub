@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.4.14)  20 NOV 2015 19:31
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.4.14)  20 NOV 2015 21:50
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -244,40 +244,8 @@ Package textcomp Info: Setting ptmx sub-encoding to TS1/4 on input line 339.
 Package textcomp Info: Setting ptmj sub-encoding to TS1/4 on input line 340.
 ))
 \c@thm=\count104
-
-! Undefined control sequence.
-<recently read> \theoremstyle 
-                              
-l.22 \theoremstyle
-                  {definition}
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-
-! LaTeX Error: Missing \begin{document}.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.22 \theoremstyle{d
-                    efinition}
-You're in trouble here.  Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-! Undefined control sequence.
-l.24 \theoremstyle
-                  {plain}
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
 \c@definition=\count105
+
 
 ! LaTeX Error: No counter 'chapter' defined.
 
@@ -387,9 +355,7 @@ G,.JBIG2,.JB2,.eps]
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-(./dizzysNewInfec-concordance.tex) (./dizzysNewInfec-concordance.tex) [1
-
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
+(./dizzysNewInfec-concordance.tex) (./dizzysNewInfec-concordance.tex)
 LaTeX Font Info:    Try loading font information for U+msa on input line 38.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
@@ -399,72 +365,74 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 38.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-) [2] [3] [4] [5]
-[6] [7] [8]
+) [1
+
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2] [3] [4] [5] [6] [7]
 LaTeX Font Info:    Try loading font information for T1+cmtt on input line 176.
 
- (/usr/share/texlive/texmf-dist/tex/latex/base/t1cmtt.fd
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 1999/05/25 v2.5h Standard LaTeX font definitions
-) [9]
-<dizzysNewInfec-001.pdf, id=50, 433.62pt x 433.62pt>
+) [8]
+<dizzysNewInfec-001.pdf, id=47, 433.62pt x 433.62pt>
 File: dizzysNewInfec-001.pdf Graphic file (type pdf)
 
 <use dizzysNewInfec-001.pdf>
 Package pdftex.def Info: dizzysNewInfec-001.pdf used on input line 187.
 (pdftex.def)             Requested size: 276.00105pt x 276.0139pt.
 
-<dizzysNewInfec-002.pdf, id=51, 433.62pt x 433.62pt>
+<dizzysNewInfec-002.pdf, id=48, 433.62pt x 433.62pt>
 File: dizzysNewInfec-002.pdf Graphic file (type pdf)
 
 <use dizzysNewInfec-002.pdf>
 Package pdftex.def Info: dizzysNewInfec-002.pdf used on input line 196.
 (pdftex.def)             Requested size: 276.00105pt x 276.0139pt.
- [10 <./dizzysNewInfec-001.pdf>]
-<dizzysNewInfec-003.pdf, id=61, 433.62pt x 433.62pt>
+ [9 <./dizzysNewInfec-001.pdf>]
+<dizzysNewInfec-003.pdf, id=58, 433.62pt x 433.62pt>
 File: dizzysNewInfec-003.pdf Graphic file (type pdf)
 
 <use dizzysNewInfec-003.pdf>
 Package pdftex.def Info: dizzysNewInfec-003.pdf used on input line 211.
 (pdftex.def)             Requested size: 276.00105pt x 276.0139pt.
- [11 <./dizzysNewInfec-002.pdf>]
-<dizzysNewInfec-004.pdf, id=70, 433.62pt x 433.62pt>
+ [10 <./dizzysNewInfec-002.pdf>]
+<dizzysNewInfec-004.pdf, id=67, 433.62pt x 433.62pt>
 File: dizzysNewInfec-004.pdf Graphic file (type pdf)
 
 <use dizzysNewInfec-004.pdf>
 Package pdftex.def Info: dizzysNewInfec-004.pdf used on input line 220.
 (pdftex.def)             Requested size: 276.00105pt x 276.0139pt.
- [12 <./dizzysNewInfec-003.pdf>]
-<dizzysNewInfec-005.pdf, id=79, 433.62pt x 433.62pt>
+ [11 <./dizzysNewInfec-003.pdf>]
+<dizzysNewInfec-005.pdf, id=76, 433.62pt x 433.62pt>
 File: dizzysNewInfec-005.pdf Graphic file (type pdf)
 
 <use dizzysNewInfec-005.pdf>
 Package pdftex.def Info: dizzysNewInfec-005.pdf used on input line 229.
 (pdftex.def)             Requested size: 276.00105pt x 276.0139pt.
- [13 <./dizzysNewInfec-004.pdf>]
-<dizzysNewInfec-006.pdf, id=89, 433.62pt x 433.62pt>
+ [12 <./dizzysNewInfec-004.pdf>]
+<dizzysNewInfec-006.pdf, id=85, 433.62pt x 433.62pt>
 File: dizzysNewInfec-006.pdf Graphic file (type pdf)
 
 <use dizzysNewInfec-006.pdf>
 Package pdftex.def Info: dizzysNewInfec-006.pdf used on input line 240.
 (pdftex.def)             Requested size: 276.00105pt x 276.0139pt.
- [14 <./dizzysNewInfec-005.pdf>]
-<dizzysNewInfec-007.pdf, id=98, 433.62pt x 433.62pt>
+ [13 <./dizzysNewInfec-005.pdf>]
+<dizzysNewInfec-007.pdf, id=95, 433.62pt x 433.62pt>
 File: dizzysNewInfec-007.pdf Graphic file (type pdf)
 
 <use dizzysNewInfec-007.pdf>
 Package pdftex.def Info: dizzysNewInfec-007.pdf used on input line 256.
 (pdftex.def)             Requested size: 276.00105pt x 276.0139pt.
- [15 <./dizzysNewInfec-006.pdf>] [16 <./dizzysNewInfec-007.pdf>] [17]
+ [14 <./dizzysNewInfec-006.pdf>] [15 <./dizzysNewInfec-007.pdf>] [16]
 Overfull \hbox (57.36456pt too wide) in alignment at lines 313--317
  [][][] []
  []
 
-[18]
+[17]
 Overfull \hbox (74.24036pt too wide) in alignment at lines 355--361
  [][][] []
  []
 
-[19]
+[18]
 Overfull \hbox (18.83496pt too wide) in alignment at lines 390--392
  [][][] []
  []
@@ -474,12 +442,12 @@ Overfull \hbox (3.83554pt too wide) detected at line 397
 [] \OMS/cmsy/m/n/10 ' ^^@\OML/cmm/m/it/10 ^^T[] [] []
  []
 
-[20] [21] [22] (./dizzysNewInfec.aux) ) 
+[19] [20] [21] (./dizzysNewInfec.aux) ) 
 Here is how much of TeX's memory you used:
- 4014 strings out of 493304
- 54146 string characters out of 6139871
- 125212 words of memory out of 5000000
- 7375 multiletter control sequences out of 15000+600000
+ 4013 strings out of 493304
+ 54134 string characters out of 6139871
+ 125197 words of memory out of 5000000
+ 7374 multiletter control sequences out of 15000+600000
  22973 words of font info for 67 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
  37i,13n,26p,5025b,286s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -505,10 +473,10 @@ lic/cm-super/sfrm1000.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm120
 0.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1728.pfb></usr/share/te
 xmf/fonts/type1/public/cm-super/sfst1000.pfb></usr/share/texmf/fonts/type1/publ
 ic/cm-super/sfti1000.pfb>
-Output written on dizzysNewInfec.pdf (22 pages, 1239562 bytes).
+Output written on dizzysNewInfec.pdf (21 pages, 1236225 bytes).
 PDF statistics:
- 216 PDF objects out of 1000 (max. 8388607)
- 151 compressed objects within 2 object streams
+ 213 PDF objects out of 1000 (max. 8388607)
+ 149 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  44 words of extra memory for PDF output out of 10000 (max. 10000000)
 
