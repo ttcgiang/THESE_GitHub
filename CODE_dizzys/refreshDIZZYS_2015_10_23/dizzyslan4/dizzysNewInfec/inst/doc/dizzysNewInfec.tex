@@ -214,3 +214,258 @@ The SEIR stochastic model using Gillespie's algorithm by using the 'seir' functi
 \begin{Schunk}
 \begin{Sinput}
 > obj<- globSEIRNewInfec(typeSIMU="stochastic",duration=5*365,mu=1/(70*365),sigma=1/8,gamma=1/5,nbVilles=3,N=c(1e7,1e6),nbCONTACT0=100, nbCONTACT1=0.1)
+> plot(obj,col=c("red","blue"),ylab="number of infectives", xlab="time (day)") 
+\end{Sinput}
+\end{Schunk}
+\includegraphics{dizzysNewInfec-004}
+
+3) continue or redo this siluation with other values of parameter, we can do it by exploiting the 'globSEIRSimulNewInfec' function in the package.
+\begin{Schunk}
+\begin{Sinput}
+> newobj<- globSEIRSimulNewInfec(obj,duration= 10*365,typeSIMU="stoch",continue=T,append=T,nbCONTACT0=100,nbCONTACT1=0.0,phiPHASE=pi/2)
+> plot(newobj,col=c("red","blue"),ylab="number of infectives",xlab="time (day)")
+\end{Sinput}
+\end{Schunk}
+\includegraphics{dizzysNewInfec-005}
+
+\section*{Example 3}
+
+The SEIR stochastic model using "adaptive tau-leaping algorithm" by exploiting the 'globSEIRNewInfec' function. To do this algorithm, we only make the parameter method="adaptivetau" as follows: 
+\begin{Schunk}
+\begin{Sinput}
+> obj<-globSEIRNewInfec(typeSIMU="stochastic",method="adaptivetau",duration=5*365,nbCONTACT0=10000,probVISITER=0.1,probINFECTER=0.1,mu=1/(70*365),sigma=1/8,gamma=1/5,nbVilles=2,N=1e6)
+> plot(obj,col=c("red","blue"),ylab="number of infectives", xlab="time (day)") 
+\end{Sinput}
+\end{Schunk}
+\includegraphics{dizzysNewInfec-006}
+
+We can compare the result of the Gillespie'algorithm with the result of the adaptivetau algorithm:
+\begin{Schunk}
+\begin{Sinput}
+> #obj1 with method="direct"
+> obj1<- globSEIRNewInfec(typeSIMU="stochastic",method="direct",
++                         duration=5*365,nbCONTACT0=10000,nbCONTACT1=0.01,
++                         mu=1/(70*365),sigma=1/8,gamma=1/5,nbVilles=1,N=1e6,probVISITER=0.01,probINFECTER=0.1)
+> plot(obj1,col="red",ylab="number of infectives", xlab="time (day)") 
+> #obj2 with method="adaptivetau"
+> obj2<- globSEIRNewInfec(typeSIMU="stochastic",method="adaptivetau",duration=5*365,nbCONTACT0=10000,nbCONTACT1=0.01,
++                         mu=1/(70*365),sigma=1/8,gamma=1/5,nbVilles=1,N=1e6,probVISITER=0.01,probINFECTER=0.1)
+> plot(obj2,col="blue",add=T) 
+\end{Sinput}
+\end{Schunk}
+\includegraphics{dizzysNewInfec-007}
+
+
+
+\section*{Conclusion} 
+
+Through the above simple examples, the dizzysNewInfec package speeds up simulations and gives exact results on the SIR and SEIR models with the different 
+number of subpopulations and the different simulation time. The package successfully implements both an exact solution and an approximate solution. 
+Moreover, this hybrid R and C++ implementation pointed out that simulations in this package are faster than any pure R implementation as in the GillespieSSA package. 
+
+
+\section*{Acknowledgment } 
+
+This package is based on work supported by the Institute for Research and Development at Paris in France and by Professor Jean-Daniel 
+Zucker and Marc Choisy. 
+
+
+\newpage{}
+\section*{Appendix} 
+\textbf{Goal :} \\
+\textbf{Probabilistic derivation of multi-population epidemic model\\
+ with $\beta_{ijk}=-\kappa_{j}\log(1-c_{ik})$}
+ 
+\begin{definition}
+During the small time interval $\delta t$, each native individual of the city $i$ visits \textbf{a single} city $j$ (with probability $\rho_{ij}$) and will meet \textbf{in average} $\kappa_{j}$ individuals that come from all cities.
+\end{definition}
+
+\subsection*{Notation}
+\textbf{Notation :}
+Here, we present list of sets and events describing the state of the system at time $t$ : 
+\begin{itemize}
+\item $C_{i}$ is the set of all individuals born in subpopulation $i$. 
+\item $V_{i,t}$ is the set of all individuals physically located in subpopulation $i$ from time $t$ to time $t+\delta t$. This includes foreigners traveling in subpopulation $i$ at time $t$, and all natives from subpopulation $i$ which are not traveling abroad at time $t$. 
+\item $S_{t},E_{t},I_{t},R_{t}$ are the sets of all individuals respectively susceptible, exposed, infected and recovered at time $t$. Note that these set include individuals from all subpopulations. \item $S_{i,t},E_{i,t},I_{i,t},R_{i,t}$ are the same sets, restricted to natives of subpopulation $i$. So formally, $S_{i,t}=S_{t}\cap C_{i}$, $E_{i,t}=E_{t}\cap C_{i}$, $I_{i,t}=I_{t}\cap C_{i}$, and $R_{i,t}=R_{t}\cap C_{i}$. 
+\item $Transmit(y,x)$ is an event indicating that individual $x$ gets
+infected by individual $y$ which was already infected \item $c_{i,k}$ is the probability that a susceptible individual native from $i$ being in contact with another infected individual native from $k$ gets infected. 
+\item $\kappa_{j}$ is the average number of contacts per unit of time a susceptible will have when visiting city $j$. 
+\item $\xi_{jk}$ refers to the probability that an individual $y$ meeting $x$ in $C_{j}$ comes from $C_{k}$.
+\item $\rho_{i,j}$, the probability that an individual from subpopulation $i$ visits subpopulation $j$. Of course, $\sum_{j=1}^{M}\rho_{ij}=1$.\end{itemize}
+
+Note that :
+The coefficient $\kappa$ should also depend on $i$, because an individual native from city $i$ meets more people in his own city than abroad ($\kappa_{i,i}>\kappa_{i,j}$). 
+
+\subsection*{The background}
+\textbf{Let us write a probabilistic formulation of $\frac{dE_{i}}{dt}$:}
+One general question is always posed "how does the population of exposed individuals of subpopulation $i$ evolve?". For the sake of simplicity, in the process of transmission of the SEIR model, we focus on the incidence and we assume for now that the latent period and the recovery rate, respectively $\mu=\sigma=0$. Thus, we write a probabilistic formulation of $\frac{dE_{i}}{dt}$. Assuming the time is discrete, we have $\frac{dE_{i}}{dt}\approx\mathbb{E}\left[E_{i,t+1}\setminus E_{i,t}\right]$.
+Then,
+\begin{eqnarray*}
+\mathbb{E}\left[E_{i,t+1}\setminus E_{i,t}\right] & = & \mathbb{E}\left[E_{i,t+1}\cap S_{i,t}\right]\\
+ & = & \sum_{x\in C_{i}}Pr\left[x\in E_{t+1}\wedge x\in S_{t}\right]\\
+ & = & \sum_{x\in C_{i}}Pr\left[x\in S_{t}\right]*Pr\left[x\in E_{t+1}\mid x\in S_{t}\right]\\
+ & = & Pr_{x\sim\mathcal{X}_{i}}\left[x\in E_{t+1}\mid x\in S_{t}\right]*\sum_{x\in C_{i}}Pr\left[x\in S_{t}\right]\\
+ & = & |S_{i,t}|\times Pr_{x\sim\mathcal{X}_{i}}\left[x\in E_{t+1}\mid x\in S_{t}\right]
+\end{eqnarray*}
+
+Assume there are $M$ cities. An individual $x$ of the subpopulation $i$ may be visiting another subpopulation, or staying in its own
+subpopulation. Applying the law of total probabilities, we get: 
+\begin{eqnarray*}
+Pr_{x\sim\mathcal{X}_{i}}\left[x\in E_{t+dt}\mid x\in S_{t}\right] & = & \sum_{j=1}^{M}Pr_{x\sim\mathcal{X}_{i}}\left[x\in E_{t+dt}\wedge x\in V_{j,t}\mid x\in S_{t}\right]\\
+ & = & \sum_{j=1}^{M}Pr_{x\sim\mathcal{X}_{i}}\left[x\in E_{t+dt}\mid x\in S_{t}\wedge x\in V_{j,t}\right].Pr_{x\sim\mathcal{X}_{i}}\left[x\in V_{j,t}\right]\\
+ &  & \sum_{j=1}^{M}Pr_{x\sim\mathcal{X}_{i}}\left[x\in E_{t+dt}\mid x\in S_{t}\wedge x\in V_{j,t}\right]\times\rho_{ij}
+\end{eqnarray*}
+
+Where $\rho_{i,j}=Pr_{x\sim\mathcal{X}_{i}}\left[x\in V_{j,t}\right]$, the probability that an individual from subpopulation $i$ visits
+subpopulation $j$. Of course, $\sum_{j=1}^{M}\rho_{ij}=1$.
+
+\subsubsection*{Study of case where agent $x$ native from subpopulation $i$ visits subpopulation $j$}
+Here, we look at the probability that a susceptible $x\sim\mathcal{X}_{i}$ visiting $j$ gets infected or not after $\delta t$ time steps. Let $\mathcal{Y}$ be the uniform distribution over $V_{j,t}$. The correct mathematical approach for this would be to assume that for each subpopulation $k$, the number of people native from $k$ that we meet during $\delta t$
+follows a Poisson process. So both the number of people we meet and the number of infected people we meet during $\delta t$ should be random variables.
+
+In the approach described in [KeelingRohani2008], the authors did not do this. They assumed that both the number of people we meet and the number of infected people we meet \emph{are fixed} (otherwise the maths they write would have been different). We will call this the old interpretation of the infection force proposed by "Keeling \& Rohani" (for short, OIIF) that we will present it in the following parts. 
+ 
+We introduce an alternative approximation, where we assume that the number $\kappa$ of people we meet during $\delta t$ is \emph{fixed}, but each of these people has \emph{some probability} to be infected. This is an \emph{in-between interpretation}, easier than the Poisson process maths, but better than the OIIF. We will call this the new interpretation of the infection force (for short, NIIF).
+
+\subsubsection*{The new interpretation: NIIF}
+\begin{proposition}
+Agent $x$ meets \emph{exactly} $\kappa_{j}$ other individuals, and
+each of these individuals has a probability $\frac{\left|I_{k,t}\right|}{N_{k}}$
+of being infected, where $k$ is its native subpopulation. Let $y_{1}\ldots y_{\kappa_{j}}$ be the individuals that $x$ meets. We get:
+\end{proposition}
+
+
+\begin{eqnarray*}
+ &  & Pr_{x\sim\mathcal{X}_{i}}\left[x\in S_{t+\delta t}\mid x\in S_{t}\wedge x\in V_{j,t}\right]\\
+ & = & Pr_{x\sim\mathcal{X}_{i},y_{1}\ldots,y_{\kappa_{j}}\sim\mathcal{Y}}\left[\bigwedge_{p=1}^{\kappa_{j}}\neg\left(y_{p}\in I_{t}\wedge Transmit(y_{p},x)\right)\mid x\in S_{t}\wedge x\in V_{j,t}\right]
+\end{eqnarray*}
+
+
+So we have:
+\begin{eqnarray*}
+ &  & Pr_{x\sim\mathcal{X}_{i}}\left[x\in S_{t+\delta t}\mid x\in S_{t}\wedge x\in V_{j,t}\right]\\
+ & = & Pr_{x\sim\mathcal{X}_{i},y\sim\mathcal{Y}}\left[\neg\left(y\in I_{t}\wedge Transmit(y,x)\right)\mid x\in S_{t}\wedge x\in V_{j,t}\right]^{\kappa_{j}\delta t}
+\end{eqnarray*}
+
+Moreover, we have:
+\begin{itemize}
+\item the probability so that a susceptible individual $x$ is infected
+by an infected individual $y$ :
+\end{itemize}
+\begin{eqnarray*}
+ &  & Pr_{x\sim\mathcal{X}_{i},y\sim\mathcal{Y}}\left[y\in I_{t}\wedge Transmit(y,x)\mid x\in S_{t}\wedge x\in V_{j,t}\right]\\
+ & = & \sum_{k=1}^{M}Pr_{x\sim\mathcal{X}_{i},y\sim\mathcal{Y}}\left[y\in I_{t}\wedge Transmit(y,x)\mid x\in S_{t}\wedge x\in V_{j,t}\wedge y\in C_{k}\right].Pr_{y\sim\mathcal{Y}}\left(y\in C_{k}\right)\\
+ & = & \sum_{k=1}^{M}\left\{ Pr_{x\sim\mathcal{X}_{i},y\sim\mathcal{X}_{k}}\left[y\in I_{t}\mid x\in S_{t}\wedge x\in V_{j,t}\right]\right.\\
+ &  & \,\,\,\,\,\left.\times Pr_{x\sim\mathcal{X}_{i},y\sim\mathcal{X}_{k}}\left[Transmit(y,x)\mid y\in I_{t}\wedge x\in S_{t}\wedge x\in V_{j,t}\wedge y\in C_{k}\right]\times Pr_{y\sim\mathcal{Y}}\left(y\in C_{k}\right)\right\} \\
+ & = & \sum_{k=1}^{M}\left(\frac{\left|I_{k,t}\right|}{N_{k}}\times c_{ik}\times\xi_{jk}\right)
+\end{eqnarray*}
+
+
+$\xi_{jk}=\frac{N_{k}\rho_{kj}}{\sum_{v=1}^{M}N_{v}\rho_{vj}}$ refers to the probability that an individual $y$ meeting $x$ in $C_{j}$ comes from $C_{k}$.
+\begin{itemize}
+\item hence, the probability so that a susceptible individual $x$ is not
+infected by an infected individual $y$ :
+\end{itemize}
+\[
+1-\sum_{k=1}^{M}\left(\frac{\left|I_{k,t}\right|}{N_{k}}\times c_{ik}\times\xi_{jk}\right)
+\]
+
+\begin{itemize}
+\item thereby, the probability so that a susceptible individual $x$ is not infected after $\kappa_{j}$ contacts per unit time $\delta t$.
+\end{itemize}
+\[
+\left[1-\sum_{k=1}^{M}\left(\frac{\left|I_{k,t}\right|}{N_{k}}\times c_{ik}\times\xi_{jk}\right)\right]^{\kappa_{j}\delta t}
+\]
+
+\begin{itemize}
+\item thus, the probability so that a susceptible individual $x$ becomes infected after $\kappa_{j}$ contacts per unit time $\delta t$.
+\end{itemize}
+
+\begin{eqnarray*}
+Pr_{x\sim\mathcal{X}_{i}}\left[x\in E_{t+\delta t}\mid x\in S_{t}\wedge x\in V_{j,t}\right] & = & \left[1-\sum_{k=1}^{M}\left(\frac{\left|I_{k,t}\right|}{N_{k}}\times c_{ik}\times\xi_{jk}\right)\right]^{\kappa_{j}\delta t}
+\end{eqnarray*}
+We now apply the \emph{log} approximation which consists in approximating
+$1-(1-u)^{v}$ by $v\log(1-u)$:
+
+\begin{eqnarray*}
+Pr_{x\sim\mathcal{X}_{i}}\left[x\in E_{t+\delta t}\mid x\in S_{t}\wedge x\in V_{j,t}\right] & = & -\kappa_{j}\delta t\log\left[1-\sum_{k=1}^{M}\left(\frac{\left|I_{k,t}\right|}{N_{k}}\times c_{ik}\times\xi_{jk}\right)\right]
+\end{eqnarray*}
+
+So, the transmission rate per susceptible individual is as follows:
+\[
+\frac{dPr_{x\sim\mathcal{X}_{i}}\left[x\in E_{t+dt}\mid x\in S_{t}\wedge x\in V_{j,t}\right]}{dt}\simeq-\kappa_{j}\log\left[1-\sum_{k=1}^{M}\left(\frac{\left|I_{k,t}\right|}{N_{k}}\times c_{ik}\times\xi_{jk}\right)\right]
+\]
+
+In fact, we use the parameter $\lambda$ to present this quantity, and it is denoted as the "force of infection" :
+x
+
+
+If there is only one subpopulation $i$, then
+\[
+\lambda_{i}=\kappa_{j}log(1-\frac{\left|I_{i}\right|}{N_{i}}\times c_{ii})
+\]
+
+
+\subsubsection*{The old Interpretation : OIIF [KeelingRohani2008]}
+
+\begin{proposition}
+Agent $x$ meets \emph{exactly} $\kappa_{j}\delta t\xi_{jk}\frac{\left|I_{k,t}\right|}{N_{k}}$
+other infected individuals native from subpopulation $k$.
+Let $l_{k}=\kappa_{j}\delta t\xi_{jk}\frac{\left|I_{k,t}\right|}{N_{k}}$. 
+Let $y_{1}^{k}\ldots y_{l_{k}}^{k}$ be the infected individuals native
+from $k$ that our individual $x$ meets between $t$ and $t+\delta t$.
+\end{proposition}
+
+We have the probability so that a susceptible individual $x$ is not infected after having seen $l_{k}$ individuals between $t$ and $t+\delta t$:
+\begin{eqnarray*}
+ &  & Pr_{x\sim\mathcal{X}_{i}}\left[x\in S_{t+\delta t}\mid x\in S_{t}\wedge x\in V_{j,t}\right]\\
+ & = & Pr_{x\sim\mathcal{X}_{i}}\left[\bigwedge_{\begin{array}{c}
+k=1\ldots M\\
+p=1\ldots l_{k}
+\end{array}}\neg\left(Transmit(y_{p}^{k},x)\right)\mid x\in S_{t}\wedge x\in V_{j,t}\right]\\
+ & = & \prod_{k=1}^{M}Pr_{x\sim\mathcal{X}_{i}}\left[\bigwedge_{p=1\ldots l_{k}}\neg\left(Transmit(y_{p}^{k},x)\right)\mid x\in S_{t}\wedge x\in V_{j,t}\right]\\
+ & = & \prod_{k=1}^{M}\left(1-c_{ik}\right)^{\kappa_{j}\delta t\xi_{jk}\frac{\left|I_{k,t}\right|}{N_{k}}}
+\end{eqnarray*}
+
+
+Then, we plug this back into the previous formula, and we get:
+\begin{eqnarray*}
+Pr_{x\sim\mathcal{X}_{i}}\left[x\in E_{t+\delta t}\mid x\in S_{t}\wedge x\in V_{j,t}\right] & = & 1-\prod_{k=1}^{M}\left(1-c_{ik}\right)^{\kappa_{j}\xi_{jk}\frac{\left|I_{k,t}\right|}{N_{k}}\delta t}
+\end{eqnarray*}
+
+The first order approximation of $1-\prod_{k=1}^{M}(1-c_{ik})^{v_{k}}$
+is $\sum_{k=1}^{M}-v_{k}\log(1-c_{ik})$. Applying this approximation here, we get:
+
+\begin{eqnarray*}
+Pr_{x\sim\mathcal{X}_{i}}\left[x\in E_{t+\delta t}\mid x\in S_{t}\wedge x\in V_{j,t}\right] & \simeq & \delta t\sum_{k=1}^{M}\left(-\kappa_{j}\xi_{jk}\frac{\left|I_{k,t}\right|}{N_{k}}\log\left(1-c_{ik}\right)\right)
+\end{eqnarray*}
+
+Define $\beta_{ijk}=-\kappa_{j}\log\left(1-c_{ik}\right)$, let $\delta t$
+converge to zero, and we get:
+\[
+\frac{dPr_{x\sim\mathcal{X}_{i}}\left[x\in E_{t+dt}\mid x\in S_{t}\wedge x\in V_{j,t}\right]}{dt}\simeq\sum_{k=1}^{M}\left(\xi_{jk}\frac{\left|I_{k,t}\right|}{N_{k}}\beta_{ijk}\right)
+\]
+
+If there is only one subpopulation $i$, then we fall back to the formula of [KeelingRohani2008]. We have : 
+\[ \beta_{i}=-\kappa_{i}\log\left(1-c_{i}\right) \]
+\[\frac{d}{dt}\mathbb{E}\left[\left|E_{i,t+dt}-E_{i,t}\right|\right]\simeq-\left|S_{i,t}\right|\left(\frac{\left|I_{i}\right|}{N_{i}}\beta_{i}\right)\]
+and the force of infection as follows :
+\[ \lambda_{i}=\beta_{i}\frac{\left|I_{i}\right|}{N_{i}}\]
+
+
+\subsubsection*{Final Formula}
+We simply have to plug in the probability $\rho_{ij}$ that $i$ visits $j$. We get, for the new interpretation NIIF:
+
+\[
+\frac{d}{dt}\mathbb{E}\left[\left|E_{i,t+dt}-E_{i,t}\right|\right]\simeq-\left|S_{i,t}\right|\sum_{j}\rho_{ij}\kappa_{j}\log\left[1-\sum_{k=1}^{M}\left(\frac{\left|I_{k,t}\right|}{N_{k}}\times c_{ik}\times\xi_{jk}\right)\right]
+\]
+
+And for the old interpretation  OIIF [KeelingRohani2008]:
+
+\[\frac{d}{dt}\mathbb{E}\left[\left|E_{i,t+dt}-E_{i,t}\right|\right]\simeq-\left|S_{i,t}\right|\sum_{j}\rho_{ij}\sum_{k=1}^{M}\left(\xi_{jk}\frac{\left|I_{k,t}\right|}{N_{k}}\beta_{ijk}\right)\]
+
+In conclusion, in this package, we use the interpretation NIIF to present the infection force in meta-population. This interpretation shows enough interactions between individuals in the same city, individuals in different cities, and between cities in meta-population. 
+
+
+
+\end{document}
