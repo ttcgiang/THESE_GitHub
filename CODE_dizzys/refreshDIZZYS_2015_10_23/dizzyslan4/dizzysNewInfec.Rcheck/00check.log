@@ -19,6 +19,8 @@ Object files/libraries should not be included in a source package.
 Found the following hidden files and directories:
   R/.RData
   R/.Rhistory
+  demo/.RData
+  demo/.Rhistory
   inst/doc/.Rhistory
   src/.RData
 These were most likely included in error. See section ‘Package
@@ -121,10 +123,8 @@ See section ‘Good practice’ in '?.onAttach'.
 >.seirNewInfec: no visible binding for global variable ‘object’
 >=.seirNewInfec: no visible binding for global variable ‘object’
 ^.seirNewInfec: no visible binding for global variable ‘object’
-globSEIRSimulNewInfec: no visible binding for global variable ‘phiPHAS’
 pers.rate.objNewInfec: no visible global function definition for
   ‘persistence’
-str.seirNewInfec: no visible binding for global variable ‘beta1’
 |.seirNewInfec: no visible binding for global variable ‘object’
 plot.surv.probNewInfec,seirNewInfec: no visible global function
   definition for ‘surv.prob’
@@ -275,8 +275,13 @@ write to stdout/stderr instead of to the console, nor the system RNG.
 See ‘Writing portable packages’ in the ‘Writing R Extensions’ manual.
 * checking sizes of PDF files under ‘inst/doc’ ... OK
 * checking installed files from ‘inst/doc’ ... NOTE
+The following files look like leftovers/mistakes:
+  ‘dizzysNewInfec.log’
+Please remove them from your package.
 The following files should probably not be installed:
-  ‘dizzys.Rnw~’, ‘dizzysNewInfec.Rnw~’, ‘dizzysNewInfec.tex’
+  ‘dizzys.Rnw~’, ‘dizzysNewInfec-concordance.tex’,
+  ‘dizzysNewInfec.Rnw~’, ‘dizzysNewInfec.tex’, ‘dizzysNewInfec.tex~’,
+  ‘dizzysNewInfec01.lyx’, ‘dizzysNewInfec01.lyx~’
 
 Consider the use of a .Rinstignore file: see ‘Writing R Extensions’,
 or move the vignette sources from ‘inst/doc’ to ‘vignettes’.

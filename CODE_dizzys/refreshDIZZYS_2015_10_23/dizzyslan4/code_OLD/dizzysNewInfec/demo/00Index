@@ -1,0 +1,6 @@
+dizzysNewInfec		dizzysNewInfec Demonstration
+globaldizzysNewInfec		generic method in dizzys
+plot.simul.cont		Plotting the "redo" function
+sirModel		modeling SIR model (deterministic and stochastic)
+seir.stoch		base functions in "dizzys" package
+

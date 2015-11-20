@@ -1,0 +1,66 @@
+This is BibTeX, Version 0.99d (TeX Live 2013/Debian)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: model_ver06_ver02.aux
+The style file: plain.bst
+Database file #1: bibManuscrit.bib
+Repeated entry---line 164 of file bibManuscrit.bib
+ : @book{Anderson&May1992
+ :                       ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 692 of file bibManuscrit.bib
+ : @book{Hanski2004
+ :                 ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 1318 of file bibManuscrit.bib
+ : @book{Kleinbaum2005
+ :                    ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 1650 of file bibManuscrit.bib
+ : @article{Rozhnova12013
+ :                       ,
+I'm skipping whatever remains of this entry
+Warning--empty publisher in Hanski2004
+Warning--empty publisher in Kleinbaum2005
+Warning--empty journal in Rozhnova12013
+You've used 45 entries,
+            2118 wiz_defined-function locations,
+            837 strings with 13293 characters,
+and the built_in function-call counts, 15200 in all, are:
+= -- 1501
+> -- 725
+< -- 2
++ -- 289
+- -- 240
+* -- 1213
+:= -- 2570
+add.period$ -- 135
+call.type$ -- 45
+change.case$ -- 249
+chr.to.int$ -- 0
+cite$ -- 48
+duplicate$ -- 505
+empty$ -- 1157
+format.name$ -- 240
+if$ -- 3068
+int.to.chr$ -- 0
+int.to.str$ -- 45
+missing$ -- 49
+newline$ -- 228
+num.names$ -- 90
+pop$ -- 206
+preamble$ -- 1
+purify$ -- 210
+quote$ -- 0
+skip$ -- 342
+stack$ -- 0
+substring$ -- 1123
+swap$ -- 57
+text.length$ -- 2
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 170
+warning$ -- 3
+while$ -- 153
+width$ -- 47
+write$ -- 487
+(There were 4 error messages)
