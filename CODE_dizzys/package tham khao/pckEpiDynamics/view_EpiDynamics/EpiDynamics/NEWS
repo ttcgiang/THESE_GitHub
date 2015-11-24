@@ -1,0 +1,67 @@
+EpiDynamics 0.2
+===============
+
+* SIRAdditiveNoise:
+
+* SIRDemogStoch: updated name for SIRDemoStochastic function.
+
+* SIRTauLeap:
+
+* SISDemogStoch:
+
+* Plots of results added to the exmaples section in functions' documentation.
+
+
+EpiDynamics 0.1.2
+=================
+
+* DESCRIPTION: imports update.
+
+* SIRScaledAdditiveNoise: Solves a SIR model with scaled additive noise.
+
+* SIRDemoStochastic: Solves a SIR model with demographic stochasticity.
+
+* SIR2TypesImports: Solves a model with two types of stochastic imports.
+
+* SIR2Stages: it is now called SIR2AgeClasses. 
+
+
+EpiDynamics 0.1.1
+=================
+
+* DESCRIPTION: imports update.
+
+* PlotModels: renamed as PlotMods to avoid conflicts with PlotModels function
+              from the capm package. In addition, bug fixed to use correctly
+              the 'variables' argument in the intended way.
+
+
+EpiDynamics 0.1
+=================
+
+* DESCRIPTION: imports update.
+
+
+EpiDynamics 0.0.3
+=================
+
+* SIR2AgeClasses: Previuosly named SIR2Stages.
+
+* PlotModels: Bug fix for grid argument.
+
+
+EpiDynamics 0.0.2
+=================
+
+* PlotModels: It plots model's results.
+
+* SIRSinusoidalForcing: Now it solves bifurcation.
+
+* SIRSinusoidalBitrh: Bug fix to solve bifurcations.
+
+
+EpiDynamics 0.0.1
+=================
+
+* Dynamic Models in Epidemiology
+

@@ -1,0 +1,3 @@
+ssa.adaptivetau         Approximate stochastic simulation algorithm
+ssa.exact               Exact stochastic simulation algorithm
+ssa.maketrans           Make transition matrix

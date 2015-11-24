@@ -1,0 +1,163 @@
+
+R version 3.2.0 (2015-04-16) -- "Full of Ingredients"
+Copyright (C) 2015 The R Foundation for Statistical Computing
+Platform: x86_64-pc-linux-gnu (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> pkgname <- "adaptivetau"
+> source(file.path(R.home("share"), "R", "examples-header.R"))
+> options(warn = 1)
+> library('adaptivetau')
+> 
+> base::assign(".oldSearch", base::search(), pos = 'CheckExEnv')
+> cleanEx()
+> nameEx("ssa.adaptivetau")
+> ### * ssa.adaptivetau
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: ssa.adaptivetau
+> ### Title: Approximate stochastic simulation algorithm
+> ### Aliases: ssa.adaptivetau adaptivetau
+> ### Keywords: datagen ts
+> 
+> ### ** Examples
+> 
+> 
+> ## Simple Lotka-Volterra example
+> 
+> # We have three potential transitions:
+> transitions = list(c(prey = +1), # prey grow
++                    c(prey = -2, pred = +1), # predation
++                    c(pred = -1)) # predator dies
+> 
+> # Function to calculate transition rates, given variables and parameters
+> lvrates <- function(x, params, t) {
++   return(c(params$preygrowth*x["prey"],     # rate of prey growing
++            x["prey"]*x["pred"]*params$eat,  # rate of predation
++            x["pred"]*params$preddeath))     # rate of predators dying
++ }
+> 
+> # Set the Lotka-Volterra parameters
+> params = list(preygrowth=10, eat=0.01, preddeath=10);
+> 
+> # Set the random seed (only necessary if you want to reproduce results)
+> set.seed(4)
+> 
+> # Perform the stochastic simulation!
+> r=ssa.adaptivetau(c(prey = 1000, pred = 500),
++                   transitions, lvrates, params, tf=12)
+> 
+> # Plot the results
+> matplot(r[,"time"], r[,c("prey","pred")], type='l', xlab='Time',
++         ylab='Counts (log scale)', log='y')
+Warning in xy.coords(x, y, xlabel, ylabel, log = log) :
+  213 y values <= 0 omitted from logarithmic plot
+Warning in xy.coords(x, y, xlabel, ylabel, log) :
+  211 y values <= 0 omitted from logarithmic plot
+> legend("bottomleft", legend=c("prey", "predator"), lty=1:2, col=1:2)
+> 
+> 
+> # However, if you are interested in very fine-scale variance, perhaps the
+> # default parameters smooth too much.  Try reducing the tl.param epsilon
+> # to see a better approximation:
+> s=ssa.adaptivetau(c(prey = 1000, pred = 500),
++                   transitions, lvrates, params, tf=12,
++                   tl.params = list(epsilon=0.01)) # reduce "epsilon"
+> par(mfrow=c(2,1));
+> matplot(r[r[,"time"]<2,"time"], r[r[,"time"]<2,c("prey","pred")],
++         type='l', xlab='Time', ylab='Counts', main="Original (epsilon=default)")
+> matplot(s[s[,"time"]<2,"time"], s[s[,"time"]<2,c("prey","pred")],
++         type='l', xlab='Time', ylab='Counts', main="Fine-scale (epsilon=0.01)")
+> 
+> 
+> 
+> graphics::par(get("par.postscript", pos = 'CheckExEnv'))
+> cleanEx()
+> nameEx("ssa.exact")
+> ### * ssa.exact
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: ssa.exact
+> ### Title: Exact stochastic simulation algorithm
+> ### Aliases: ssa.exact
+> ### Keywords: datagen
+> 
+> ### ** Examples
+> 
+> ## Lotka-Volterra example
+> lvrates <- function(x, params, t) {
++   with(params, {
++     return(c(preygrowth*x["prey"],      ## prey growth rate
++              x["prey"]*x["pred"]*eat,   ## prey death / predator growth rate
++              x["pred"]*preddeath))      ## predator death rate
++   })
++ }
+> params=list(preygrowth=10, eat=0.01, preddeath=10);
+> r=ssa.exact(c(prey = 1000, pred = 500),
++             matrix(c(1,0, -2,1, 0,-1), nrow=2), lvrates, params, tf=2)
+> matplot(r[,"time"], r[,c("prey","pred")], type='l', xlab='Time', ylab='Counts')
+> legend("topleft", legend=c("prey", "predator"), lty=1:2, col=1:2)
+> 
+> 
+> 
+> cleanEx()
+> nameEx("ssa.maketrans")
+> ### * ssa.maketrans
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: ssa.maketrans
+> ### Title: Make transition matrix
+> ### Aliases: ssa.maketrans
+> ### Keywords: datagen
+> 
+> ### ** Examples
+> 
+> 
+> ## trivial Lotka-Volterra example from ssa.adaptivetau
+> nu = ssa.maketrans(2, #number of variables
++                    rbind(1, +1),
++                    rbind(1, -1, 2, +1),
++                    rbind(2, -1))
+> 
+> ## slightly more complicated SIR epidemiological model with two distinct
+> ## susceptible and infected variables (think male and female), birth
+> ## (into S) and death (exclusively from I and R)
+> nu = ssa.maketrans(c("Sm", "Sf", "Im", "If", "R"), #list of variable names
++                    rbind(c("Sm","Sf"), +1),
++                    rbind(c("Sm","Sf"), -1, c("Im","If"), +1),
++                    rbind(c("Im","If"), -1),
++                    rbind(c("Im","If"), -1, "R", +1),
++                    rbind("R", -1))
+> 
+> 
+> 
+> ### * <FOOTER>
+> ###
+> options(digits = 7L)
+> base::cat("Time elapsed: ", proc.time() - base::get("ptime", pos = 'CheckExEnv'),"\n")
+Time elapsed:  4.803 0.045 4.927 0 0 
+> grDevices::dev.off()
+null device 
+          1 
+> ###
+> ### Local variables: ***
+> ### mode: outline-minor ***
+> ### outline-regexp: "\\(> \\)?### [*]+" ***
+> ### End: ***
+> quit('no')
