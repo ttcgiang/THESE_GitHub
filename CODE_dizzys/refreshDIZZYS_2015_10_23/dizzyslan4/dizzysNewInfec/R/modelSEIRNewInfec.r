@@ -389,19 +389,33 @@ stoSEIRNewInfec<-function(sigma=1/8,gamma=1/5,mu=1/(70*365),seed=as.numeric(Sys.
 		}
 		#calculating the difference between the moment of the beginning of the local extinction and of the end of the local extinction$
 		#
-		listDisRecolPOP <- vector("list",nbVilles)
-		listLocalEXTPOP <- vector("list",nbVilles)
+		listEveLocalExtPOP <- vector("list",nbVilles)
+		listEveRecolPOP <- vector("list",nbVilles)
 		#
 		for( ivil in 1:nbVilles){
-			nbLocalExt<-length(resRecol[[ivil]])
-			if(nbLocalExt==0){
-				listLocalEXTPOP[[ivil]]<-NULL
-				listDisRecolPOP[[ivil]]<-NULL
+		#print(paste("vil==",ivil))
+		#print(resLocalExt[[ivil]])
+		#print(resRecol[[ivil]])
+			nbLocalExt<-length(resLocalExt[[ivil]])
+			nbRecol<-length(resRecol[[ivil]])
+			if(nbLocalExt==1){# in the case: there is one single extinction event 
+				listEveLocalExtPOP[[ivil]]<-resLocalExt[[ivil]][1]-resRecol[[ivil]][1]
+				listEveRecolPOP[[ivil]]<-NULL
 			}
-			else{
-				newLocalExtPOP<-resLocalExt[[ivil]][1:nbLocalExt]
-				listLocalEXTPOP[[ivil]]<-newLocalExtPOP
-				listDisRecolPOP[[ivil]]<-unlist(resRecol[[ivil]]-newLocalExtPOP)
+			else if((nbLocalExt==nbRecol) & (nbLocalExt>1)){
+		#there are many local extinction event and one global extinction
+		listEveLocalExtPOP[[ivil]]<-unlist(resLocalExt[[ivil]]-resRecol[[ivil]])
+		listEveRecolPOP[[ivil]]<-unlist(resRecol[[ivil]][2:nbLocalExt]-resLocalExt[[ivil]][1:(nbLocalExt-1)])
+			}
+			else if((nbLocalExt < nbRecol) & (nbLocalExt>1)){
+			#there are many local extinction event, but no global extinction
+		listEveLocalExtPOP[[ivil]]<-unlist(resLocalExt[[ivil]][1:nbLocalExt]-resRecol[[ivil]][1:nbLocalExt])
+		listEveRecolPOP[[ivil]]<-unlist(resRecol[[ivil]][2:nbRecol]-resLocalExt[[ivil]][1:nbLocalExt])
+			}
+			else {
+			# there are no local extinction and no global extinction
+		listEveLocalExtPOP[[ivil]]<-NULL
+		listEveRecolPOP[[ivil]]<-NULL
 			}
 		
 		
@@ -438,7 +452,7 @@ stoSEIRNewInfec<-function(sigma=1/8,gamma=1/5,mu=1/(70*365),seed=as.numeric(Sys.
 		phiPHASE=phiPHASE,
 		probVISITER=probVISITER, 
 		probINFECTER=probINFECTER,
-		duration=duration, nbVilles=nbVilles, 			    unitTIME=unitTIME,periDISE=periDISE,		typeRNG=typeRNG,typeSIMU="stochastic",method=method,statSTATE=statSTATE,localExtPOP=listLocalEXTPOP,disRecolPOP=listDisRecolPOP,
+		duration=duration, nbVilles=nbVilles, 			    unitTIME=unitTIME,periDISE=periDISE,		typeRNG=typeRNG,typeSIMU="stochastic",method=method,statSTATE=statSTATE,localExtPOP=listEveLocalExtPOP,disRecolPOP=listEveRecolPOP,
 		pop=populations))
 #the end
 }

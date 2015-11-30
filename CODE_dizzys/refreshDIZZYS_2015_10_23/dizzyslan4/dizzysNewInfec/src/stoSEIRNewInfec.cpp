@@ -226,7 +226,7 @@ Entrée:
 	 cout<<"GGLDLDLKDKJDDJDJKJDKDJKJKDJKJK"<<endl;
 
        for(int i=0; i<nbVilles; i++){
-             cout<<"    "<<phi[i]<<endl;
+             cout<<"phi=    "<<phi[i]<<endl;
          }
 
 
@@ -289,7 +289,7 @@ Entrée:
 
        vector<vector<double > > tableExtLocal(nbVilles); //vector total for the data seir of each city
        vector<vector<double > > tableRecolLocal(nbVilles); //vector total for the data seir of each city
-       vector<bool> vecFlagExtLocal (nbVilles,false);
+       vector<bool> vecFlagExtLocal (nbVilles,true);
 
        double xpro = 0.0, fville = 0.0, fprop =0.0;
        //PROGRAM starts.......................................................
@@ -304,32 +304,12 @@ Entrée:
        srand(seed);
        //simulation
        while(t<=tmax){
-
-           /*
-           //Calculating Value of \beta at time t
-           beta_sinusoidal=calculerBeta(nbVilles,beta0,beta1,iPeriDISE,t,phi);
-           cout<<"beta_sinusoidal"<<endl;
-           for(int i=0; i<nbVilles; i++){
-                 cout<<"    "<<beta_sinusoidal[i]<<endl;
-           }
-           cout<<"RHOOOOOOO"<<endl;
-           for(int i=0; i<nbVilles; i++){
-               for (int j=0; j<nbVilles; j++)
-                   cout<<"    " << arr_rho[i][j];
-               cout<<endl;
-           }
-
-           //calculating Value of Prob "see"
-            calculerProbVoir(nbVilles, y, arr_rho,arr_xi);
-            */
              // recalculating the matrix "COME from the city k"
 
             calculerProbVENIRk(nbVilles,y,arr_probVISITER,arr_probVENIRk);
 
             //recalculing the nbCONATCT forcing
             calculateNbCONTACTForcing(nbVilles,arr_nbCONTACT0,arr_nbCONTACT1,periDISE,t,phi,arr_nbCONTACTFORCING);
-
-
 
 /*
            char line[255];
@@ -404,20 +384,19 @@ Entrée:
                fairEvenementM(event,sigma,nextville,y,matrCumulI);
                // Check the local extinction and the stop of the local extinction
 		//
-		/*for(int vil=0; vil<nbVilles; vil++){
-			
-			cout<<"vil=="<<vil<<" S= "<<y[vil][iS]<<"  E="<<y[vil][iE]<<"  I="<<y[vil][iI] <<"    R="<<y[vil][iR] <<"   N="<<y[vil][iN]<<endl;
-		}*/
+	//for(int vil=0; vil<nbVilles; vil++){
+	//cout<<"vil=="<<vil<<" S= "<<y[vil][iS]<<"  E="<<y[vil][iE]<<"  I="<<y[vil][iI] <<"    R="<<y[vil][iR] <<"   N="<<y[vil][iN]<<endl;}
+
                 for(int i= 0; i< nbVilles; i++){
                     if((y[i][iE]==0) && (y[i][iI]==0) && (vecFlagExtLocal[i]==false)){
-			//cout<<"khi co extinciton : <<"<<endl;
-			//cout<<" S= "<<y[i][iS]<<"  E="<<y[i][iE]<<"  I="<<y[i][iI] <<"    R="<<y[i][iR] <<"   N="<<y[i][iN]<<endl;
+	//cout<<"khi co extinciton : <<"<<endl;
+	//cout<<" S= "<<y[i][iS]<<"  E="<<y[i][iE]<<"  I="<<y[i][iI] <<"    R="<<y[i][iR] <<"   N="<<y[i][iN]<<endl;
                         tableExtLocal[i].push_back(t);
                         vecFlagExtLocal[i]=true;
                     }
                     if(((y[i][iE]!=0) || (y[i][iI]!=0)) && (vecFlagExtLocal[i]==true)){
-			//cout<<"khi co STOP extinciton : <<"<<endl;
-			//cout<<" S= "<<y[i][iS]<<"  E="<<y[i][iE]<<"  I="<<y[i][iI] <<"    R="<<y[i][iR] <<"   N="<<y[i][iN]<<endl;
+	//cout<<"khi co STOP extinciton : <<"<<endl;
+	//cout<<" S= "<<y[i][iS]<<"  E="<<y[i][iE]<<"  I="<<y[i][iI] <<"    R="<<y[i][iR] <<"   N="<<y[i][iN]<<endl;
                         tableRecolLocal[i].push_back(t);
                         vecFlagExtLocal[i]=false;
                     }
