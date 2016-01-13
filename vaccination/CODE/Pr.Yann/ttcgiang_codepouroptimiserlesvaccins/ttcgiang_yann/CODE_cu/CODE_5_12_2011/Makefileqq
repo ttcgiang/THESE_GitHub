@@ -1,0 +1,31 @@
+all: VaccinationSEIR_EvoStrat_version1
+################################################
+## This Makefile allows to create the Targets  #
+## EvolVacc and InterVacc. EvolVacc supports   #
+## finding automatically the optimum parms     #
+## InterVacc allows to create the rpogram      #
+## that interacts with the user.               #
+##                                             #
+## Version 1.0 of 5/12/2011 by Giang           #
+################################################
+	
+EvolVacc:VaccinationSEIR_EvoStrat_version1.o
+	g++ $(INCLUDE) $(LIB) -o $@ $<
+
+VaccinationSEIR_EvoStrat_version1.o:VaccinationSEIR_EvoStrat_version1.cpp
+	g++ -c $(INCLUDE) -o $@ VaccinationSEIR_EvoStrat_version1.cpp
+
+
+#InterVacc:
+# more general option
+.cpp:
+	g++ $(INCLUDE) $(LIB) -o $@ $<
+	g++ -lgraph
+
+clean:
+	rm -f *.o *~ core*
+	ls -l
+
+touch:
+	touch  VaccinationSEIR_EvoStrat_version1.cpp  
+

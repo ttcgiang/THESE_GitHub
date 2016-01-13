@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Simulation id="2" >
+	<Step id='0' >
+		<Variable name='percent-similar' value='59.20104780615586'>
+		<Variable name='number' value='2000.0'>
+		<Variable name='display' value='/tmp//display2-0.png'>
+	</Step>
+	<Step id='1' >
+		<Variable name='percent-similar' value='63.089005235602095'>
+		<Variable name='number' value='2000.0'>
+		<Variable name='display' value='/tmp//display2-0.png'>
+	</Step>
+	<Step id='2' >
+		<Variable name='percent-similar' value='66.49787651094414'>
+		<Variable name='number' value='2000.0'>
+		<Variable name='display' value='/tmp//display2-0.png'>
+	</Step>
+	<Step id='3' >
+		<Variable name='percent-similar' value='67.98889977146588'>
+		<Variable name='number' value='2000.0'>
+		<Variable name='display' value='/tmp//display2-0.png'>
+	</Step>
+	<Step id='4' >
+		<Variable name='percent-similar' value='69.05617243631613'>
+		<Variable name='number' value='2000.0'>
+		<Variable name='display' value='/tmp//display2-0.png'>
+	</Step>
+	<Step id='5' >
+		<Variable name='percent-similar' value='69.81409001956948'>
+		<Variable name='number' value='2000.0'>
+		<Variable name='display' value='/tmp//display2-0.png'>
+	</Step>
+	<Step id='6' >
+		<Variable name='percent-similar' value='70.57767624020887'>
+		<Variable name='number' value='2000.0'>
+		<Variable name='display' value='/tmp//display2-0.png'>
+	</Step>
+	<Step id='7' >
+		<Variable name='percent-similar' value='70.8945478289259'>
+		<Variable name='number' value='2000.0'>
+		<Variable name='display' value='/tmp//display2-0.png'>
+	</Step>
+	<Step id='8' >
+		<Variable name='percent-similar' value='71.06723237597912'>
+		<Variable name='number' value='2000.0'>
+		<Variable name='display' value='/tmp//display2-0.png'>
+	</Step>
+	<Step id='9' >
+		<Variable name='percent-similar' value='71.13250652741515'>
+		<Variable name='number' value='2000.0'>
+		<Variable name='display' value='/tmp//display2-0.png'>
+	</Step>
+	<Step id='10' >
+		<Variable name='percent-similar' value='71.2118740825314'>
+		<Variable name='number' value='2000.0'>
+		<Variable name='display' value='/tmp//display2-10.png'>
+	</Step>
+	<Step id='11' >
+		<Variable name='percent-similar' value='71.19556352960366'>
+		<Variable name='number' value='2000.0'>
+		<Variable name='display' value='/tmp//display2-10.png'>
+	</Step>
+	<Step id='12' >
+		<Variable name='percent-similar' value='71.17925297667591'>
+		<Variable name='number' value='2000.0'>
+		<Variable name='display' value='/tmp//display2-10.png'>
+	</Step>
+	<Step id='13' >
+		<Variable name='percent-similar' value='71.26080574131463'>
+		<Variable name='number' value='2000.0'>
+		<Variable name='display' value='/tmp//display2-10.png'>
+	</Step>
+	<Step id='14' >
+		<Variable name='percent-similar' value='71.26080574131463'>
+		<Variable name='number' value='2000.0'>
+		<Variable name='display' value='/tmp//display2-10.png'>
+	</Step>
+	<Step id='15' >
+		<Variable name='percent-similar' value='71.26080574131463'>
+		<Variable name='number' value='2000.0'>
+		<Variable name='display' value='/tmp//display2-10.png'>
+	</Step>
+	<Step id='16' >
+		<Variable name='percent-similar' value='71.26080574131463'>
+		<Variable name='number' value='2000.0'>
+		<Variable name='display' value='/tmp//display2-10.png'>
+	</Step>
+	<Step id='17' >
+		<Variable name='percent-similar' value='71.26080574131463'>
+		<Variable name='number' value='2000.0'>
+		<Variable name='display' value='/tmp//display2-10.png'>
+	</Step>
+	<Step id='18' >
+		<Variable name='percent-similar' value='71.26080574131463'>
+		<Variable name='number' value='2000.0'>
+		<Variable name='display' value='/tmp//display2-10.png'>
+	</Step>
+	<Step id='19' >
+		<Variable name='percent-similar' value='71.26080574131463'>
+		<Variable name='number' value='2000.0'>
+		<Variable name='display' value='/tmp//display2-10.png'>
+	</Step>
+	<Step id='20' >
+		<Variable name='percent-similar' value='71.26080574131463'>
+		<Variable name='number' value='2000.0'>
+		<Variable name='display' value='/tmp//display2-20.png'>
+	</Step>
+	<Step id='21' >
+		<Variable name='percent-similar' value='71.26080574131463'>
+		<Variable name='number' value='2000.0'>
+		<Variable name='display' value='/tmp//display2-20.png'>
+	</Step>
+	<Step id='22' >
+		<Variable name='percent-similar' value='71.26080574131463'>
+		<Variable name='number' value='2000.0'>
+		<Variable name='display' value='/tmp//display2-20.png'>
+	</Step>
+	<Step id='23' >
+		<Variable name='percent-similar' value='71.26080574131463'>
+		<Variable name='number' value='2000.0'>
+		<Variable name='display' value='/tmp//display2-20.png'>
+	</Step>
+	<Step id='24' >
+		<Variable name='percent-similar' value='71.26080574131463'>
+		<Variable name='number' value='2000.0'>
+		<Variable name='display' value='/tmp//display2-20.png'>
+	</Step>
+	<Step id='25' >
+		<Variable name='percent-similar' value='71.26080574131463'>
+		<Variable name='number' value='2000.0'>
+		<Variable name='display' value='/tmp//display2-20.png'>
+	</Step>
+	<Step id='26' >
+		<Variable name='percent-similar' value='71.26080574131463'>
+		<Variable name='number' value='2000.0'>
+		<Variable name='display' value='/tmp//display2-20.png'>
+	</Step>
+	<Step id='27' >
+		<Variable name='percent-similar' value='71.26080574131463'>
+		<Variable name='number' value='2000.0'>
+		<Variable name='display' value='/tmp//display2-20.png'>
+	</Step>
+	<Step id='28' >
+		<Variable name='percent-similar' value='71.26080574131463'>
+		<Variable name='number' value='2000.0'>
+		<Variable name='display' value='/tmp//display2-20.png'>
+	</Step>
+	<Step id='29' >
+		<Variable name='percent-similar' value='71.26080574131463'>
+		<Variable name='number' value='2000.0'>
+		<Variable name='display' value='/tmp//display2-20.png'>
+	</Step>
+	<Step id='30' >
+		<Variable name='percent-similar' value='71.26080574131463'>
+		<Variable name='number' value='2000.0'>
+		<Variable name='display' value='/tmp//display2-30.png'>
+	</Step>
+	<Step id='31' >
+		<Variable name='percent-similar' value='71.26080574131463'>
+		<Variable name='number' value='2000.0'>
+		<Variable name='display' value='/tmp//display2-30.png'>
+	</Step>
+	<Step id='32' >
+		<Variable name='percent-similar' value='71.26080574131463'>
+		<Variable name='number' value='2000.0'>
+		<Variable name='display' value='/tmp//display2-30.png'>
+	</Step>
+	<Step id='33' >
+		<Variable name='percent-similar' value='71.26080574131463'>
+		<Variable name='number' value='2000.0'>
+		<Variable name='display' value='/tmp//display2-30.png'>
+	</Step>
+	<Step id='34' >
+		<Variable name='percent-similar' value='71.26080574131463'>
+		<Variable name='number' value='2000.0'>
+		<Variable name='display' value='/tmp//display2-30.png'>
+	</Step>
+	<Step id='35' >
+		<Variable name='percent-similar' value='71.26080574131463'>
+		<Variable name='number' value='2000.0'>
+		<Variable name='display' value='/tmp//display2-30.png'>
+	</Step>
+	<Step id='36' >
+		<Variable name='percent-similar' value='71.26080574131463'>
+		<Variable name='number' value='2000.0'>
+		<Variable name='display' value='/tmp//display2-30.png'>
+	</Step>
+	<Step id='37' >
+		<Variable name='percent-similar' value='71.26080574131463'>
+		<Variable name='number' value='2000.0'>
+		<Variable name='display' value='/tmp//display2-30.png'>
+	</Step>
+	<Step id='38' >
+		<Variable name='percent-similar' value='71.26080574131463'>
+		<Variable name='number' value='2000.0'>
+		<Variable name='display' value='/tmp//display2-30.png'>
+	</Step>
+	<Step id='39' >
+		<Variable name='percent-similar' value='71.26080574131463'>
+		<Variable name='number' value='2000.0'>
+		<Variable name='display' value='/tmp//display2-30.png'>
+	</Step>
+	<Step id='40' >
+		<Variable name='percent-similar' value='71.26080574131463'>
+		<Variable name='number' value='2000.0'>
+		<Variable name='display' value='/tmp//display2-40.png'>
+	</Step>
+	<Step id='41' >
+		<Variable name='percent-similar' value='71.26080574131463'>
+		<Variable name='number' value='2000.0'>
+		<Variable name='display' value='/tmp//display2-40.png'>
+	</Step>
+	<Step id='42' >
+		<Variable name='percent-similar' value='71.26080574131463'>
+		<Variable name='number' value='2000.0'>
+		<Variable name='display' value='/tmp//display2-40.png'>
+	</Step>
+	<Step id='43' >
+		<Variable name='percent-similar' value='71.26080574131463'>
+		<Variable name='number' value='2000.0'>
+		<Variable name='display' value='/tmp//display2-40.png'>
+	</Step>
+	<Step id='44' >
+		<Variable name='percent-similar' value='71.26080574131463'>
+		<Variable name='number' value='2000.0'>
+		<Variable name='display' value='/tmp//display2-40.png'>
+	</Step>
+	<Step id='45' >
+		<Variable name='percent-similar' value='71.26080574131463'>
+		<Variable name='number' value='2000.0'>
+		<Variable name='display' value='/tmp//display2-40.png'>
+	</Step>
+	<Step id='46' >
+		<Variable name='percent-similar' value='71.26080574131463'>
+		<Variable name='number' value='2000.0'>
+		<Variable name='display' value='/tmp//display2-40.png'>
+	</Step>
+	<Step id='47' >
+		<Variable name='percent-similar' value='71.26080574131463'>
+		<Variable name='number' value='2000.0'>
+		<Variable name='display' value='/tmp//display2-40.png'>
+	</Step>
+	<Step id='48' >
+		<Variable name='percent-similar' value='71.26080574131463'>
+		<Variable name='number' value='2000.0'>
+		<Variable name='display' value='/tmp//display2-40.png'>
+	</Step>
+	<Step id='49' >
+		<Variable name='percent-similar' value='71.26080574131463'>
+		<Variable name='number' value='2000.0'>
+		<Variable name='display' value='/tmp//display2-40.png'>
+	</Step>
+</Simulation>

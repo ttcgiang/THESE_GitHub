@@ -1,0 +1,812 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass amsart
+\begin_preamble
+\usepackage{babel}
+\end_preamble
+\use_default_options false
+\begin_modules
+theorems-ams
+eqs-within-sections
+figs-within-sections
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding utf8x
+\fontencoding T1
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command bibtex
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 2
+\use_package amssymb 2
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 0
+\use_package mathtools 1
+\use_package mhchem 0
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine natbib
+\cite_engine_type numerical
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 2cm
+\topmargin 2cm
+\rightmargin 2cm
+\bottommargin 2cm
+\headheight 2cm
+\headsep 2cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Section
+Effect of Vaccines (GOOD) :
+\end_layout
+
+\begin_layout Itemize
+Most of research have pointed out: due to the introduction of vaccination
+ programs, the morbidity and mortality associated with the infectious diseases
+ decreased substantially such as whooping cough
+\begin_inset CommandInset citation
+LatexCommand cite
+key "pesco2014modelling"
+
+\end_inset
+
+, measles (the incidence of measles decreased by over 98% and the 2–3-year
+ epidemic cycles no longer occurred) 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "pang2015transmission"
+
+\end_inset
+
+, influenza 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "gross1995efficacy"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Measles was eliminated from U.S.
+ since 2002.
+ In other countries, especially in developing countries, measles vaccination
+ has not extensively popularized.
+ Consequently, it is still very important to model the transmission dynamics
+ of measles and investigate the effect of vaccination on the spread of measles
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "pang2015transmission"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Vaccination, is one of the most effective strategies in preventing morbidity
+ and mortality associated with various infectious diseases, has also been
+ included in modeling.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+The impacts of vaccination policy on the level of vaccination coverage and
+ found that voluntary vaccination was unlikely to reach the group-optimal
+ level.
+\end_layout
+
+\begin_layout Itemize
+Complex dynamics such as oscillations and chaos in measles epidemic models
+ and the persistence of disease ars affected by : the population size of
+ the community, the spatial structure and connectedness of the regional
+ population, and the seasonal forcing.
+\end_layout
+
+\end_deeper
+\begin_layout Section
+Effect of Vaccines (BAD) :
+\end_layout
+
+\begin_layout Subsection*
+Bad effects:
+\end_layout
+
+\begin_layout Itemize
+Hospital admissions and fatalities related infectious diseases are still
+ evident for all people (children/adolescents/adults) 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "de2006incidence,pesco2014modelling,pang2015transmission"
+
+\end_inset
+
+, but particularly in young infants.
+\end_layout
+
+\begin_layout Itemize
+There is a dramatic increase in cases occurred 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "pang2015transmission"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+The yearly U.S.
+ mass influenza vaccination campaign has been ineffective in preventing
+ influenza in vaccine recipients.
+ That points out a potential for an influenza pandemic in the future 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "geier2006influenza"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection*
+Reasons: (the possible causes for the disease outbreaks and resurgence are
+ still under debate)
+\end_layout
+
+\begin_layout Itemize
+unvaccinated or incompletely vaccinated infants who are younger than 12
+ months 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "pesco2014modelling"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+A decrease in vaccine effectiveness over time (warning immunity) and pathogen
+ adaptation (Mooi, 2010; Klein et al., 2012; Misegades et al., 2012; Sheridan
+ et al., 2012).
+\end_layout
+
+\begin_layout Itemize
+The recent epidemiological features could be the consequence of failures
+ in current vaccine effectiveness.
+\end_layout
+
+\begin_layout Itemize
+Low vaccination coverage 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "pang2015transmission"
+
+\end_inset
+
+.
+ In general, vaccination protects not only those who are vaccinated but
+ also their neighbors.
+ As a result, many others in the community can also be benefited.
+ However, whether or not to vaccinate largely depends on the perceived risk
+ of infection and the vaccination behavior of neighboring individuals
+\end_layout
+
+\begin_layout Section
+Method of vaccination (vaccination policies)
+\end_layout
+
+\begin_layout Subsection
+Khai thac cac THAM SO :
+\end_layout
+
+\begin_layout Itemize
+Pang2015 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "pang2015transmission"
+
+\end_inset
+
+ gave two critical threshold values, 
+\begin_inset Formula $\mu_{c1}$
+\end_inset
+
+ and 
+\begin_inset Formula $\mu_{c2}$
+\end_inset
+
+, of the vaccine coverage ratio.
+ Measles will be extinct when the vaccination ratio 
+\begin_inset Formula $\mu>\mu_{c1}$
+\end_inset
+
+, endemic when 
+\begin_inset Formula $\mu_{c2}<\mu<\mu_{c2}$
+\end_inset
+
+ , and outbreak periodically when 
+\begin_inset Formula $\mu<\mu_{c2}$
+\end_inset
+
+.
+ In addition, the authors applied the optimal control theory to obtain an
+ optimal vaccination strategy 
+\begin_inset Formula $\mu*(t)$
+\end_inset
+
+ and gave some numerical simulations for those theoretical findings.
+ Finally, they used the model SEIR to simulate the data of measles cases
+ in the U.S.
+ from 1951 to 1962 and design a control strategy.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Valuable information on how to more effectively prevent the outbreaks of
+ measles and accordingly adopt appropriate vaccination policies are very
+ important.
+ They study the effect of vaccination by mathematical modeling and analysis
+ and determine the level of vaccination coverage that can the most effectively
+ prevent the spread of measles.
+\end_layout
+
+\begin_layout Itemize
+We will study the nonlinear dynamics of the SEIR measles epidemic model
+ (1.1) and investigate the effect of vaccination in controlling the spread
+ of measles.
+\end_layout
+
+\begin_layout Itemize
+Two goals: (1) To make the number of infectious individuals z(t) as small
+ as possible during a certain vaccination period.
+ (2) To keep the vaccination ratio of measles as low as possible during
+ a certain vaccination period.
+\end_layout
+
+\begin_layout Itemize
+Focusing on exploiting the Basic reproduction number 
+\begin_inset Formula $R_{0}$
+\end_inset
+
+ following 
+\begin_inset Formula $\mu$
+\end_inset
+
+ 
+\begin_inset Formula $(\mu<r)$
+\end_inset
+
+ the effective vaccination coverage ratio of the susceptible.
+\end_layout
+
+\begin_layout Itemize
+Results :
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Results are right for a single population in the deterministic model.
+ 
+\end_layout
+
+\begin_layout Itemize
+We need to verify a signle population or multipopulation in the stochastic
+ model.
+\end_layout
+
+\begin_layout Itemize
+I don't understant the vaccination policy here, they made the vaccination
+ one time or many times with the 
+\begin_inset Formula $\mu$
+\end_inset
+
+.
+ It is different from our vaccinationpolicy (pulsation policies).
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+
+\series bold
+Optimal control theory has been used to explore optimal control strategies
+ for various infectious diseases, see, for example, Kirschner et al.
+ [25], Culshaw et al.
+ [13], Karrakchou et al.
+ [22], Kar and Batabyal [21], Lenhart and Workman [26], and the references
+ cited therein.
+\end_layout
+
+\begin_layout Subsection
+Khai thac cac Mo Hinh (build models as transportation network models therein
+ we have vaccine allocations, frameworks for determining optimal vaccine
+ allocation)
+\end_layout
+
+\begin_layout Itemize
+Louis Boguchwal 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "boguchwalsocially"
+
+\end_inset
+
+ provided a novel framework that models infectious disease propagation throught
+ a population, and determines socially optimal vaccine allocation with a
+ stock of vaccines fixed.
+ They proved that both the network attributes and the demographic characteristic
+s are critical in determining whether one region is more important than
+ another in term of vaccination.
+\end_layout
+
+\begin_deeper
+\begin_layout Subsection*
+Transportation network models
+\end_layout
+
+\begin_layout Itemize
+Model based on the air transportation network 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "guimera2005worldwide,shaw2010effective"
+
+\end_inset
+
+: Shaw et.
+ al.
+ (2010) 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "shaw2010effective"
+
+\end_inset
+
+ modeled influenza spread using a rudimentary 
+\series bold
+air transportation network
+\series default
+ in the United States (NODES by airport).
+ (1) the speed of disease propagation is quicker in small cities than in
+ big cities.
+ Disease is easier to engulf a small city in comparison to a big city.
+ The likelihood of an infected individual comming out of a small city is
+ greater than that of a large city.
+ 
+\end_layout
+
+\begin_layout Itemize
+Wu et.
+ al.
+ (2007) 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "wu2007spatial"
+
+\end_inset
+
+ partitioned the network into ten nodes by regions (following the documents
+ about the United States Office).
+\end_layout
+
+\begin_layout Itemize
+We consider gravity transportation theoretic models.
+ Balcana et.
+ al.
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "balcan2009multiscale"
+
+\end_inset
+
+used global commuting patterns as well as global air traffic flows to model
+ short and long distance travels.
+ They pointed out that the most important network when considering infectious
+ disease propagation is the long distance air transportation network.
+\end_layout
+
+\begin_layout Subsection*
+Vaccine allocations about the georaphic:
+\end_layout
+
+\begin_layout Itemize
+In order to enact socially optimal vaccination policies, policy-makers not
+ only need to be well-informed with regard to infectious disease dynamics,
+ but also with regard to vaccination policy analysis.
+\end_layout
+
+\begin_layout Itemize
+The network structure (The allocation of populations, vaccines) plays an
+ important role for the effectiveness of a vaccination policy.
+\end_layout
+
+\begin_layout Itemize
+Wu et.
+ al.
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "wu2007spatial"
+
+\end_inset
+
+ viewed vaccine allocation as a nonlinear optimization problem in which
+ the objective was to minimize the total number of infections across a populatio
+n.
+ The authors proposed two vaccination policies : a portion of the total
+ vaccine supply was designated to be distributed pro-rata, which is equitable
+ distribution by population, and the other portion of the vaccine supply
+ was to be discretionarily distributed.
+ The result : the purely equitable distribution was the least efficient
+ allocation in terms of minimizing the total number of infections in the
+ population.
+ The purely discretionary policy is efficient, but highly inequitable.
+\end_layout
+
+\begin_layout Subsection*
+Vaccine allocations about the time side: 
+\end_layout
+
+\begin_layout Itemize
+Matrajt2010
+\begin_inset CommandInset citation
+LatexCommand cite
+key "matrajt2010optimizing"
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+they used a mathematical model to find the optimal vaccine allocation at
+ different time points of an epidemic.
+ For both developed and less developed countries, when faced with low supplies
+ of vaccines, it is always optimal to concentrate vaccine in high-risk children
+ to provide them with direct protection, as they are part of the high-transmissi
+on chain and they are among the most vulnerable.
+\end_layout
+
+\begin_layout Itemize
+pointed out that : Choosing the optimal strategy before or early in the
+ epidemic makes an important difference in minimizing the number of influenza
+ infections, and consequently the number of influenza deaths or hospitalizations
+, but the optimal strategy makes little difference after the peak.
+ When averting deaths, it is better to allocate vaccine in the high-risk
+ groups first and then cover high- transmission groups.
+ Once vaccine supplies reach a certain coverage level, then it becomes important
+ to vaccinate the high- transmission groups in the earlier stages of the
+ epidemic, but this policy becomes suboptimal once the peak of the epidemic
+ has passed.
+ This is because by allocating this much vaccine in children earlier on
+ in the epidemic, we would be able to block transmission and mitigate the
+ disease, but if vaccination took place later on in the epidemic, there
+ are too many people already infected and this strategy is no longer optimal.
+\end_layout
+
+\end_deeper
+\begin_layout Subsection*
+Limitation :
+\end_layout
+
+\begin_layout Itemize
+A limitation of the network models presented above is that they are all
+ specific to disease propagation.
+ However, network models applied to more general contexts also provide insight
+ into the vaccine allocation problem.
+\end_layout
+
+\begin_layout Itemize
+The limitation of these framework is that many attributes described in the
+ research depend upon a well- defined notion of community structure.
+ However, it is exceedingly difficult to detect and distinguish communities
+ within a larger network.
+\end_layout
+
+\begin_layout Itemize
+In fact, the big differences between perceived risk of infectious disease
+ and actual risk of infectious disease.
+ Therefore, individuals likely make great errors when making their choices
+ for vaccination.
+ Thus, these errors must be taken into account when considering policy actions
+ to be taken to move toward a socially optimal allocation 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "galvani2007long"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+The triple of network structure, disease propagation, and vaccination policy
+ are three very important factors to build the network attributes.
+ The degree centrality, closeness centrality, betweenness centrality, and
+ node significance are important network attributes to consider in context
+ of disease spread.
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+Using the optimal algorithms
+\end_layout
+
+\begin_layout Subsubsection
+Evolutionary Algorithms (EA) policies
+\end_layout
+
+\begin_layout Itemize
+Shaw2010 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "shaw2010effective"
+
+\end_inset
+
+ extended the model to include a supply of vaccine, which is to be distributed
+ in an optimal fashion.
+ By mathematical analysis of this model, they determined the feasibility
+ of a vaccination policy by using the Evolutionary Algorithms (EA), they
+ searched for vaccination policies that minimize the number of infected
+ people.
+ They compared these policies to plausible benchmark policies to verify
+ that the EA policies are more effective.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Analysis of the EA policies indicates that the vaccine is generally distributed
+ to (1) the city of origin for the virus, (2) cities that are traveled to
+ most often, and (3) smaller cities.
+\end_layout
+
+\end_deeper
+\begin_layout Subsubsection
+Convergence in Evolutionary Programs with Self-Adaptation [Greenwood 2001]-
+ proposed by YANN
+\end_layout
+
+\begin_layout Itemize
+Reason: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Evolutionary programs are capable of finding good solutions to difficult
+ optimization problems.
+ 
+\end_layout
+
+\begin_layout Itemize
+Previous analysis of their convergence properties has normally assumed the
+ strategy parameters are kept constant, although in practice these parameters
+ are dynamically altered.
+ - In this paper, we propose a modified version of the 1/5-success rule
+ for self-adaptation in evolution strategies (ES).
+ Evolutionary programs are probabilistic algorithms that use the principles
+ of population genetics to search for problem solutions.
+ They are capable of finding good solutions to a wide variety of optimization
+ problems, including NP-hard combinatorial optimization problems (Back,
+ 1996).
+ 
+\end_layout
+
+\begin_layout Itemize
+Problem 
+\begin_inset Formula $(\mu+\lambda)-ES$
+\end_inset
+
+ : These 
+\begin_inset Formula $\mu$
+\end_inset
+
+ parents (candidate solutions) produce 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ offspring (new solutions) by mutating one or more problem parameters.
+ Parents and offspring compete equally for survival; only the 
+\begin_inset Formula $\mu$
+\end_inset
+
+ best (i.e., those with the highest fitness) will survive to reproduce in
+ the next generation.
+ Done properly, the population will evolve towards increasingly better regions
+ of the search space by means of reproduction and survival of the ttest.
+ 
+\end_layout
+
+\begin_layout Itemize
+Problem 
+\begin_inset Formula $(\mu,\lambda)-ES$
+\end_inset
+
+ 
+\begin_inset Formula $\mu$
+\end_inset
+
+ parents produce 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ offspring, but only the best 
+\begin_inset Formula $\mu$
+\end_inset
+
+ offspring survive.
+ Thus individuals live for only a single generation regardless of their
+ tness level.
+ This approach may result in short periods of recession, but it does avoid
+ long periods of stagnation.
+ [Back 1996]
+\end_layout
+
+\end_deeper
+\begin_layout Subsubsection
+Reinforcement learning in vacination policies - proposed by JEAN Daniel
+ Zucker (very complex)
+\end_layout
+
+\begin_layout Standard
+Reinforcement learning, a subfield of artificial intelligence, is the study
+ of algorithms that learn how to choose the best actions depending on the
+ situation.
+ In a reinforcement learning problem the algorithm is not told which actions
+ give the best results, but instead it has to interact with the environment
+ to learn when and where to take a certain action.
+ When the agent has learned about each situation or state of the environment,
+ it will arrive at an optimal sequence of actions (Barto and Sutton 1998).
+ Instead of finding the best results, we find an optimal result for the
+ state of the evironnement at time t.
+\end_layout
+
+\begin_layout Itemize
+The optimization of vaccination policies by using the reinforcemnt learning:
+ for a given population structure, where and when to vaccinate to minimize
+ the number of infected or maximize the probability of global eradication.
+\end_layout
+
+\begin_layout Itemize
+SARSA : State-Action-Reward-State-Action
+\end_layout
+
+\begin_layout Itemize
+One state at time t : (
+\begin_inset Formula $\in N^{4}$
+\end_inset
+
+)
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula 
+\[
+S=((s_{1},e_{1},i_{1},r_{1}),(s_{2},e_{2},i_{2},r_{2}),....,(s_{n},e_{n},i_{n},r_{n})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Set of states : 
+\begin_inset Formula $N^{4*nbCities}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Action at time 
+\begin_inset Formula $t$
+\end_inset
+
+, vaccinated or not vaccinated.
+\end_layout
+
+\begin_layout Itemize
+Sum of rewards of a policy:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\sum_{t=0}^{\infty}\gamma^{t}r_{t}=r_{0}+\gamma r_{1}+\gamma^{2}r_{2}+\gamma^{3}r_{3}+....
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This problem is a Markov Decision Process.
+ However, the number of states at time 
+\begin_inset Formula $t$
+\end_inset
+
+ is very big.
+ It is the reason for that it is an expensive simulator.
+ In this case, we desire an MDP planning algorithm that minimizes the number
+ of calls to the simulator, runs in time polynomial in the relevant problem
+ parameters, and outputs a policy that is approximately optimal with high
+ probability 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "dietterich2013pac"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+btprint "btPrintCited"
+bibfiles "bikvaccination"
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

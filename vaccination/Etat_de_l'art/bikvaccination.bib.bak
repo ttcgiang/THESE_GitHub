@@ -1,0 +1,177 @@
+% This file was created with JabRef 2.10b2.
+% Encoding: UTF-8
+
+
+@Article{balcan2009multiscale,
+  Title                    = {Multiscale mobility networks and the spatial spreading of infectious diseases},
+  Author                   = {Balcan, Duygu and Colizza, Vittoria and Gon{\c{c}}alves, Bruno and Hu, Hao and Ramasco, Jos{\'e} J and Vespignani, Alessandro},
+  Journal                  = {Proceedings of the National Academy of Sciences},
+  Year                     = {2009},
+  Number                   = {51},
+  Pages                    = {21484--21489},
+  Volume                   = {106},
+
+  Publisher                = {National Acad Sciences}
+}
+
+@Article{boguchwalsocially,
+  Title                    = {Socially Optimal Vaccination Policies},
+  Author                   = {Boguchwal, Louis}
+}
+
+@InProceedings{dietterich2013pac,
+  Title                    = {PAC Optimal Planning for Invasive Species Management: Improved Exploration for Reinforcement Learning from Simulator-Defined MDPs.},
+  Author                   = {Dietterich, Thomas G and Taleghan, Majid Alkaee and Crowley, Mark},
+  Booktitle                = {AAAI},
+  Year                     = {2013},
+  Organization             = {Citeseer}
+}
+
+@Article{galvani2007long,
+  Title                    = {Long-standing influenza vaccination policy is in accord with individual self-interest but not with the utilitarian optimum},
+  Author                   = {Galvani, Alison P and Reluga, Timothy C and Chapman, Gretchen B},
+  Journal                  = {Proceedings of the National Academy of Sciences},
+  Year                     = {2007},
+  Number                   = {13},
+  Pages                    = {5692--5697},
+  Volume                   = {104},
+
+  Publisher                = {National Acad Sciences}
+}
+
+@Article{geier2006influenza,
+  Title                    = {Influenza Vaccine: Review of effectiveness of the US immunization program, and policy considerations},
+  Author                   = {Geier, David A and King, Paul G and Geier, Mark R},
+  Journal                  = {Journal of American Physicians and Surgeons},
+  Year                     = {2006},
+  Number                   = {3},
+  Pages                    = {69},
+  Volume                   = {11},
+
+  Publisher                = {ASSOCIATION OF AMERICAN PHYSICIANS AND SURGEONS}
+}
+
+@Article{grassly2006seasonal,
+  Title                    = {Seasonal infectious disease epidemiology},
+  Author                   = {Grassly, Nicholas C and Fraser, Christophe},
+  Journal                  = {Proceedings of the Royal Society B: Biological Sciences},
+  Year                     = {2006},
+  Number                   = {1600},
+  Pages                    = {2541--2550},
+  Volume                   = {273},
+
+  Publisher                = {The Royal Society}
+}
+
+@Article{grenfell1998cities,
+  Title                    = {Cities and villages: infection hierarchies in a measles metapopulation},
+  Author                   = {Grenfell, BT},
+  Journal                  = {Ecology letters},
+  Year                     = {1998},
+  Pages                    = {68--70},
+  Volume                   = {1}
+}
+
+@Article{gross1995efficacy,
+  Title                    = {The efficacy of influenza vaccine in elderly persons: a meta-analysis and review of the literature},
+  Author                   = {Gross, Peter A and Hermogenes, Alicia W and Sacks, Henry S and Lau, Joseph and Levandowski, Roland A},
+  Journal                  = {Annals of Internal medicine},
+  Year                     = {1995},
+  Number                   = {7},
+  Pages                    = {518--527},
+  Volume                   = {123},
+
+  Publisher                = {Am Coll Physicians}
+}
+
+@Article{guimera2005worldwide,
+  Title                    = {The worldwide air transportation network: Anomalous centrality, community structure, and cities' global roles},
+  Author                   = {Guimera, Roger and Mossa, Stefano and Turtschi, Adrian and Amaral, LA Nunes},
+  Journal                  = {Proceedings of the National Academy of Sciences},
+  Year                     = {2005},
+  Number                   = {22},
+  Pages                    = {7794--7799},
+  Volume                   = {102},
+
+  Publisher                = {National Acad Sciences}
+}
+
+@Article{matrajt2010optimizing,
+  Title                    = {Optimizing vaccine allocation at different points in time during an epidemic},
+  Author                   = {Matrajt, Laura and Longini Jr, Ira M},
+  Journal                  = {PloS one},
+  Year                     = {2010},
+  Number                   = {11},
+  Pages                    = {e13767},
+  Volume                   = {5},
+
+  Publisher                = {Public Library of Science}
+}
+
+@Article{de2006incidence,
+  Title                    = {The incidence of Bordetella pertussis infections estimated in the population from a combination of serological surveys},
+  Author                   = {de Melker, Hester E and Versteegh, Florens GA and Schellekens, Joop FP and Teunis, Peter FM and Kretzschmar, Mirjam},
+  Journal                  = {Journal of Infection},
+  Year                     = {2006},
+  Number                   = {2},
+  Pages                    = {106--113},
+  Volume                   = {53},
+
+  Publisher                = {Elsevier}
+}
+
+@Article{pang2015transmission,
+  Title                    = {Transmission dynamics and optimal control of measles epidemics},
+  Author                   = {Pang, Liuyong and Ruan, Shigui and Liu, Sanhong and Zhao, Zhong and Zhang, Xinan},
+  Journal                  = {Applied Mathematics and Computation},
+  Year                     = {2015},
+  Pages                    = {131--147},
+  Volume                   = {256},
+
+  File                     = {:2015 Pang et al 2015.pdf:PDF},
+  Publisher                = {Elsevier}
+}
+
+@Article{pesco2014modelling,
+  Title                    = {Modelling the effect of changes in vaccine effectiveness and transmission contact rates on pertussis epidemiology},
+  Author                   = {Pesco, P and Bergero, P and Fabricius, G and Hozbor, D},
+  Journal                  = {Epidemics},
+  Year                     = {2014},
+  Pages                    = {13--21},
+  Volume                   = {7},
+
+  Publisher                = {Elsevier}
+}
+
+@Article{shaw2010effective,
+  Title                    = {Effective vaccination policies},
+  Author                   = {Shaw, L and Spears, W and Billings, L and Maxim, P},
+  Journal                  = {Information sciences},
+  Year                     = {2010},
+  Number                   = {19},
+  Pages                    = {3728--3744},
+  Volume                   = {180},
+
+  Publisher                = {Elsevier}
+}
+
+@Article{wu2007spatial,
+  Title                    = {Spatial considerations for the allocation of pre-pandemic influenza vaccination in the United States},
+  Author                   = {Wu, Joseph T and Riley, Steven and Leung, Gabriel M},
+  Journal                  = {Proceedings of the Royal Society B: Biological Sciences},
+  Year                     = {2007},
+  Number                   = {1627},
+  Pages                    = {2811--2817},
+  Volume                   = {274},
+
+  Publisher                = {The Royal Society}
+}
+
+@comment{jabref-meta: selector_publisher:}
+
+@comment{jabref-meta: selector_author:}
+
+@comment{jabref-meta: selector_journal:}
+
+@comment{jabref-meta: selector_keywords:}
+

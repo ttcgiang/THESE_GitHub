@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Simulation id="2" driver="ummisco.pams3.driver.netlogo.Netlogo" sourcePath="./test.nlogo" finalstep="50">
+  <Parameters>
+    <Parameter name="number" type="INT" value="2000" />
+  </Parameters>
+  <Outputs>
+    <Output id="1" name="percent-similar" framerate="1" />
+    <Output id="2" name="number" framerate="1"/>
+    <Output id="3" name="display" framerate="10"/>
+  </Outputs>
+</Simulation>
