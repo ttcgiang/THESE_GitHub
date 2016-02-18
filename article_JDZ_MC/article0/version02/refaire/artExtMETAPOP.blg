@@ -1,0 +1,58 @@
+This is BibTeX, Version 0.99d (TeX Live 2013/Debian)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: artExtMETAPOP.aux
+The style file: plain.bst
+Database file #1: bibManuscrit.bib
+Repeated entry---line 1304 of file bibManuscrit.bib
+ : @book{Kleinbaum2005
+ :                    ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 1636 of file bibManuscrit.bib
+ : @article{Rozhnova12013
+ :                       ,
+I'm skipping whatever remains of this entry
+Warning--empty publisher in Hanski2004
+Warning--empty publisher in Kleinbaum2005
+Warning--empty journal in Rozhnova12013
+You've used 46 entries,
+            2118 wiz_defined-function locations,
+            840 strings with 13319 characters,
+and the built_in function-call counts, 15451 in all, are:
+= -- 1523
+> -- 738
+< -- 2
++ -- 294
+- -- 244
+* -- 1225
+:= -- 2614
+add.period$ -- 138
+call.type$ -- 46
+change.case$ -- 253
+chr.to.int$ -- 0
+cite$ -- 49
+duplicate$ -- 517
+empty$ -- 1179
+format.name$ -- 244
+if$ -- 3121
+int.to.chr$ -- 0
+int.to.str$ -- 46
+missing$ -- 51
+newline$ -- 233
+num.names$ -- 92
+pop$ -- 215
+preamble$ -- 1
+purify$ -- 214
+quote$ -- 0
+skip$ -- 349
+stack$ -- 0
+substring$ -- 1128
+swap$ -- 58
+text.length$ -- 2
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 172
+warning$ -- 3
+while$ -- 155
+width$ -- 48
+write$ -- 497
+(There were 2 error messages)

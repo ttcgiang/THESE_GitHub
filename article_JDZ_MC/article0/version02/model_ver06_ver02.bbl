@@ -1,0 +1,254 @@
+\begin{thebibliography}{10}
+
+\bibitem{Altizer2006}
+S.~Altizer, A.~Dobson, P.~Hosseini, P.~Hudson, M.~Pascual, and P.~Rohani.
+\newblock Seasonality and the dynamics of infectious diseases.
+\newblock {\em Ecol Lett}, 9(4):467--484, Apr 2006.
+
+\bibitem{Anderson&May1992}
+R.~M. Anderson and R.~M. May.
+\newblock {\em Infectious Diseases of Humans: Dynamics and Control}.
+\newblock Oxford University Press, 1992.
+
+\bibitem{binder1999emerging}
+Sue Binder, Alexandra~M Levitt, Jeffrey~J Sacks, and James~M Hughes.
+\newblock Emerging infectious diseases: public health issues for the 21st
+  century.
+\newblock {\em Science}, 284(5418):1311--1313, 1999.
+
+\bibitem{Bolker1995}
+B.~Bolker and B.~Grenfell.
+\newblock Space, persistence and dynamics of measles epidemics.
+\newblock {\em The Royal Society}, 348:309--320, 1995.
+
+\bibitem{Bolker1993}
+B.~M. Bolker and B.~T. Grenfell.
+\newblock Chaos and biological complexity in measles dynamics.
+\newblock {\em Proc Biol Sci}, 251(1330):75--81, Jan 1993.
+
+\bibitem{Bolker1996}
+B.~M. Bolker and B.~T. Grenfell.
+\newblock Impact of vaccination on the spatial correlation and persistence of
+  measles dynamics.
+\newblock {\em Proc Natl Acad Sci U S A}, 93(22):12648--12653, Oct 1996.
+
+\bibitem{Choisy2012}
+M.~Choisy and P.~Rohani.
+\newblock Changing spatial epidemiology of pertussis in continental usa.
+\newblock {\em Proc Biol Sci}, 279(1747):4574--4581, Nov 2012.
+
+\bibitem{Conlan2007}
+A.~J.~K. Conlan and B.~T. Grenfell.
+\newblock Seasonality and the persistence and invasion of measles.
+\newblock {\em Proc Biol Sci}, 274(1614):1133--1141, May 2007.
+
+\bibitem{Conlan2010}
+A.~J.~K. Conlan, P.~Rohani, A.~L. Lloyd, M.~Keeling, and B.~T. Grenfell.
+\newblock Resolving the impact of waiting time distributions on the persistence
+  of measles.
+\newblock {\em J R Soc Interface}, 7(45):623--640, Apr 2010.
+
+\bibitem{Cumming2004}
+G.~S. Cumming.
+\newblock The impacts of low-head dams on fish species richness in wisconsin,
+  usa.
+\newblock {\em Ecological Applications}, 14:1495–1506., 2004.
+
+\bibitem{Dey2006}
+S.~Dey and A.~Joshi.
+\newblock Stability via asynchrony in drosophila metapopulations with low
+  migration rates.
+\newblock {\em Science}, 312(5772):434--436, Apr 2006.
+
+\bibitem{Earn1998}
+D.~J. Earn, P.~Rohani, and B.~T. Grenfell.
+\newblock Persistence, chaos and synchrony in ecology and epidemiology.
+\newblock {\em Proc Biol Sci}, 265(1390):7--10, Jan 1998.
+
+\bibitem{Ferrari2010}
+M.~J. Ferrari, A.~Djibo, R.~F. Grais, N.~Bharti, B.~T. Grenfell, and O.~N.
+  Bjornstad.
+\newblock Rural-urban gradient in seasonal forcing of measles transmission in
+  niger.
+\newblock {\em Proc Biol Sci}, 277(1695):2775--2782, Sep 2010.
+
+\bibitem{Hanski2004}
+Ilkka Hanski; Oscar~E Gaggiotti.
+\newblock {\em Ecology, Genetics and evolution of metapopulations}.
+\newblock 2004.
+
+\bibitem{gillespie1977exact}
+Daniel~T Gillespie.
+\newblock Exact stochastic simulation of coupled chemical reactions.
+\newblock {\em The journal of physical chemistry}, 81(25):2340--2361, 1977.
+
+\bibitem{Grenfell2001}
+B.~T. Grenfell, O.~N. Bjørnstad, and J.~Kappey.
+\newblock Travelling waves and spatial hierarchies in measles epidemics.
+\newblock {\em Nature}, 414(6865):716--723, Dec 2001.
+
+\bibitem{Grenfell1995}
+B.T. Grenfell, B.~M. Bolker, and A.~Klegzkowski.
+\newblock Seasonality and extinction in chaotic metapopulation.
+\newblock {\em The royal society}, 259:97--103, 1995.
+
+\bibitem{Griffen2009}
+B.~D. Griffen and J.~M. Drake.
+\newblock Environment, but not migration rate, influences extinction risk in
+  experimental metapopulations.
+\newblock {\em Proc Biol Sci}, 276(1677):4363--4371, Dec 2009.
+
+\bibitem{Gunning2013}
+C.~E. Gunning and H.~J. Wearing.
+\newblock Probabilistic measures of persistence and extinction in measles
+  (meta)populations.
+\newblock {\em Ecol Lett}, 16(8):985--994, Aug 2013.
+
+\bibitem{Hagenaars2004}
+T.~J. Hagenaars, C.~A. Donnelly, and N.~M. Ferguson.
+\newblock Spatial heterogeneity and the persistence of infectious diseases.
+\newblock {\em J Theor Biol}, 229(3):349--359, Aug 2004.
+
+\bibitem{Hanski1998}
+I.~Hanski.
+\newblock Metapopulation dynamics.
+\newblock {\em Nature}, 396, 1998.
+
+\bibitem{He2003}
+D.~He and L.~Stone.
+\newblock Spatio-temporal synchronization of recurrent epidemics.
+\newblock {\em Proc Biol Sci}, 270(1523):1519--1526, Jul 2003.
+
+\bibitem{Heino1997}
+M.~Heino, V.~Kaitala, E.~Ranta, and J.~Lindstrom.
+\newblock Synchronous dynamics and rates of extinction in spatially structured
+  populations.
+\newblock {\em The Royal Society}, 264:481--486, 1997.
+
+\bibitem{holyoak1996persistence}
+M.~Holyoak and S.~P. Lawler.
+\newblock Persistence of an extinction-prone predator-prey interaction through
+  metapopulation dynamics.
+\newblock {\em Ecology}, pages 1867--1879, 1996.
+
+\bibitem{Hosseini2004}
+P.~R. Hosseini, A.~A. Dhondt, and A.~Dobson.
+\newblock Seasonality and wildlife disease: how seasonal birth, aggregation and
+  variation in immunity affect the dynamics of mycoplasma gallisepticum in
+  house finches.
+\newblock {\em Proc Biol Sci}, 271(1557):2569--2577, Dec 2004.
+
+\bibitem{huffaker1958experimental}
+C.~B. Huffaker.
+\newblock Experimental studies on predation: dispersion factors and
+  predator-prey oscillations.
+\newblock {\em Hilgardia}, 27:343--383, 1958.
+
+\bibitem{jones2008global}
+Kate~E Jones, Nikkita~G Patel, Marc~A Levy, Adam Storeygard, Deborah Balk,
+  John~L Gittleman, and Peter Daszak.
+\newblock Global trends in emerging infectious diseases.
+\newblock {\em Nature}, 451(7181):990--993, 2008.
+
+\bibitem{Keeling1997}
+M.~J. Keeling and B.~T. Grenfell.
+\newblock Disease extinction and community size: modeling the persistence of
+  measles.
+\newblock {\em Science}, 275(5296):65--67, Jan 1997.
+
+\bibitem{Keeling2002}
+M.~J. Keeling and B.~T. Grenfell.
+\newblock Understanding the persistence of measles: reconciling theory,
+  simulation and observation.
+\newblock {\em Proc Biol Sci}, 269(1489):335--343, Feb 2002.
+
+\bibitem{KeelingRohani2008}
+M.~J. Keeling and P.~Rohani.
+\newblock {\em Modeling Infectious Diseases in humans and animals}.
+\newblock Princeton University Press, 2008.
+
+\bibitem{Kleinbaum2005}
+David~G. Kleinbaum.
+\newblock {\em Survival analysis}.
+\newblock 2005.
+
+\bibitem{Levins1969}
+R.~Levins.
+\newblock Some demographic and genetic consequences of environmental
+  heterogeneity for biological control.
+\newblock {\em Bulletin of the Entomological Society of America}, 15:237–240,
+  1969.
+
+\bibitem{Lloyd2001}
+A.~L. Lloyd.
+\newblock Realistic distributions of infectious periods in epidemic models:
+  changing patterns of persistence and dynamics.
+\newblock {\em Theor Popul Biol}, 60(1):59--71, Aug 2001.
+
+\bibitem{morens2004challenge}
+David~M Morens, Gregory~K Folkers, and Anthony~S Fauci.
+\newblock The challenge of emerging and re-emerging infectious diseases.
+\newblock {\em Nature}, 430(6996):242--249, 2004.
+
+\bibitem{patz1996global}
+Jonathan~A Patz, Paul~R Epstein, Thomas~A Burke, and John~M Balbus.
+\newblock Global climate change and emerging infectious diseases.
+\newblock {\em Jama}, 275(3):217--223, 1996.
+
+\bibitem{renshaw1993modelling}
+E.~Renshaw.
+\newblock {\em Modelling biological populations in space and time}, volume~11.
+\newblock Cambridge University Press, 1993.
+
+\bibitem{Rohani1999}
+P.~Rohani, D.~J. Earn, and B.~T. Grenfell.
+\newblock Opposite patterns of synchrony in sympatric disease metapopulations.
+\newblock {\em Science}, 286(5441):968--971, Oct 1999.
+
+\bibitem{Rozhnova2012}
+G.~Rozhnova, A.~Nunes, and A.~J. McKane.
+\newblock Phase lag in epidemics on a network of cities.
+\newblock {\em Phys Rev E Stat Nonlin Soft Matter Phys}, 85(5 Pt 1):051912, May
+  2012.
+
+\bibitem{Rozhnova12013}
+G.~Rozhnova1, A.~Nunes, and A.~J. McKane.
+\newblock Impact of commuting on disease persistence in heterogeneous
+  metapopulations.
+\newblock 2013.
+
+\bibitem{Smith2004}
+D.~J. Smith, A.~S. Lapedes, and J.~C. de~Jong.
+\newblock Mapping the antigenic and genetic evolution of influenza virus.
+\newblock {\em Science 305, 371 (2004);}, 2004.
+
+\bibitem{tenover1996challenges}
+Fred~C Tenover and James~M Hughes.
+\newblock The challenges of emerging infectious diseases: development and
+  spread of multiply-resistant bacterial pathogens.
+\newblock {\em Jama}, 275(4):300--304, 1996.
+
+\bibitem{survival-package}
+T.~M. Therneau.
+\newblock {\em A Package for Survival Analysis in S}, 2014.
+\newblock R package version 2.37-7.
+
+\bibitem{viboud2006synchrony}
+C.~Viboud, O.~N. Bj{\o}rnstad, D.~L. Smith, L.~Simonsen, M.~A. Miller, and
+  B.~T. Grenfell.
+\newblock Synchrony, waves, and spatial hierarchies in the spread of influenza.
+\newblock {\em science}, 312(5772):447--451, 2006.
+
+\bibitem{Yaari2012}
+G.~Yaari, Y.~Ben-Zion, N.~M. Shnerb, and D.~A. Vasseur.
+\newblock Consistent scaling of persistence time in metapopulations.
+\newblock {\em Ecology}, 93(5):1214--1227, May 2012.
+
+\bibitem{Yan2007}
+G.~Yan, Z.~Q. Fu, J.~Ren, and W.~X. Wang.
+\newblock Collective synchronization induced by epidemic dynamics on complex
+  networks with communities.
+\newblock {\em Phys Rev E Stat Nonlin Soft Matter Phys}, 75(1 Pt 2):016108, Jan
+  2007.
+
+\end{thebibliography}
