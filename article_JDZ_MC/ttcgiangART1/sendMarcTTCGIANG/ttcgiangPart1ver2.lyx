@@ -1,0 +1,5103 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass article
+\begin_preamble
+\usepackage{babel}
+\usepackage{algorithmic}
+\end_preamble
+\use_default_options false
+\begin_modules
+theorems-ams
+eqs-within-sections
+figs-within-sections
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding utf8x
+\fontencoding T1
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command bibtex
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 2
+\use_package amssymb 2
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 0
+\use_package mathtools 1
+\use_package mhchem 0
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 2cm
+\topmargin 2cm
+\rightmargin 2cm
+\bottommargin 2cm
+\headheight 2cm
+\headsep 2cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+
+\series bold
+Quantifying the effect of synchrony on the persistence of infectious diseases
+ in a metapopulation
+\end_layout
+
+\begin_layout Author
+
+\series bold
+Tran Thi Cam Giang, Marc Choisy, Jean-Daniel Zucker, Yann Chevaleyre
+\end_layout
+
+\begin_layout Date
+
+\series bold
+25/2/2016
+\end_layout
+
+\begin_layout Abstract
+Global persistence of infectious diseases is a big problem for epidemiologists.
+ Studies have showed that there are a lot of reasons to answer why many
+ communicable diseases still exist and have been developed in more dangerous
+ form.
+ The asynchrony and the recolonization among subpopulations are two key
+ reasons pointed out.
+ However, why these are the asynchrony and the recolonozations in a metapopulati
+on is still an open question.
+ Here we study the combined effects of forcing phase heterogeneity in the
+ seasonally forced contact rate on global persistence of disease.
+ We carry out an exploitation of stochastic dynamics in a susceptible-exposed-in
+fectious-recovered (SEIR) model of the spread of infectious diseases in
+ a metapopulation of 
+\begin_inset Formula $n$
+\end_inset
+
+ subpopulations.
+ Starting with continuous-time Markov description of the model of deterministic
+ equation, the direct method of Gillespie(1977) 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "gillespie1977exact"
+
+\end_inset
+
+ in the class of Monte-Carlo simulation methods allows us to simulate exactly
+ the spread of disease with the SEIR model.
+ Our finding of the exploitation of stochastic dynamics points out that
+ the persistence of the disease in the metapopulation is characterized as
+ an exponential survival model on data simulated by the stochastic model.
+ Using a parametric survival model for an exponential distribution (R package
+ 'survival' 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "survival-package"
+
+\end_inset
+
+), we estimate the global extinction rate which represents the global persistenc
+e of disease in the meta-population.
+ Besides, we estimate the locale extinction rate and the recolonization
+ rate in metapopulation by using the Poisson process.
+ We find how bigger the forcing phase heterogeneity becomes, and how smaller
+ the local extinction rate gets.
+\end_layout
+
+\begin_layout Section
+INTRODUCTION
+\end_layout
+
+\begin_layout Standard
+News about infectious diseases has always been a subject of worry to parents
+ as well as all.
+ It has brought many problems to humain society.
+ Recent works have shown that infectious diseases do spread in space 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Cumming2004,Grenfell2001,Smith2004,viboud2006synchrony"
+
+\end_inset
+
+.
+ The exact form of disease movement depends on a number of local factors
+ (demographic including population size 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Hagenaars2004"
+
+\end_inset
+
+, growth rate and death rate 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Conlan2007"
+
+\end_inset
+
+, sociological such as school period of children, work tendency from rural
+ to urban, environmental and climatic comprising seasonal variations in
+ seasonality 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Conlan2010,Griffen2009"
+
+\end_inset
+
+, temperature and rainfall, immunological for diseases, etc...) as well as
+ the connections between the different populations (i.e.
+ spatial structure) 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Yan2007"
+
+\end_inset
+
+ such as distance 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Hagenaars2004"
+
+\end_inset
+
+, coupling rate, number of individuals between populations, etc....Hence, we
+ focus on spread of disease in space by using variations in the seasonal
+ aspects of subpopulations and after examine how synchrony could affect
+ the persistence of infectious diseases in a metapopulation.
+\end_layout
+
+\begin_layout Standard
+In modeling of ecological system, presenting interactions between humans,
+ subpopulations, geographic conditions and the metapopulation model is a
+ good choice.
+ Metapopulation is a set of subpopulations with mutual interaction 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Levins1969"
+
+\end_inset
+
+ here a subpopulation can only go extinct locally and be recolonized by
+ another after it is emptied by extinction 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Bolker1996,Hanski1998,Levins1969"
+
+\end_inset
+
+.
+ A metapopulation is also a population of populations (subpopulations).
+ Such a structure implies an heterogeneity in the sense where the probability
+ of contact (or contact rate) between individuals from a same subpopulation
+ is higher than the probability of contact between individuals of different
+ subpopulations 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Hanski2004"
+
+\end_inset
+
+.
+ Such heterogeneity is actually the result of the interaction between two
+ phenomena that are often difficult to disentangle in nature.
+ The first one relates to the granularity of the metapopulation (as rendered
+ by the number of and sizes of subpopulations) and the second one relates
+ to the isolation between subpopulations (as can be rendered, among others,
+ by physical distances separating each pair of subpopulations).
+ Moreover, according to the findings of Benjamin Bolker (1995) 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Bolker1995"
+
+\end_inset
+
+, there is no coexistence between periodicity and disease persistence in
+ non-spatial measles models, and spatial structure is an important factor
+ to both enhance persistence and create new types of dynamic behaviour.
+
+\series bold
+ 
+\end_layout
+
+\begin_layout Standard
+In addition, the disease persistence capability in a metapopulation depends
+ positively on level of synchrony/asynchrony between subpopulations 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Hagenaars2004,Heino1997"
+
+\end_inset
+
+.
+ Many studies showed that the synchronization of epidemics in all asynchronous
+ subpopulations causes the recolonization of diseases for locally extinct
+ subpopulation 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Bolker1996,Hagenaars2004,Hanski1998,Heino1997,Yaari2012"
+
+\end_inset
+
+.
+ So, the recolonization becomes the main reason for which disease persistence
+ exists.
+ The disease always appears in metapopulation if and only if there is at
+ least one non-extinct subpopulation.
+
+\series bold
+ 
+\series default
+In 1996
+\series bold
+, 
+\series default
+in order to explain why measles persists after lot of vaccination policies,
+ Bolker 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Bolker1996"
+
+\end_inset
+
+ used the measles data before and after vaccination from 1964 to 1988 in
+ England and Wales.
+ Vaccination has broken high synchrony between the UK cities in prevaccination
+ era, and at the same time, causes decorrelation and enhances global persistence
+ of the infection, because of decorrelating factors of vaccination such
+ as the starting moment of vaccination policies, number of susceptibles
+ vaccinated and interaction between vaccination policies 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Bolker1996,Rohani1999"
+
+\end_inset
+
+.
+ A decrease in correlation between subpopulations may make a metapopulation
+ more difficult to eradicate infectious diseases
+\series bold
+ 
+\series default
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Bolker1996,Earn1998"
+
+\end_inset
+
+.
+ In addition, the level of synchrony between the subpopulations is strongly
+ governed by the migration rate and distances between them 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Heino1997"
+
+\end_inset
+
+.
+ In our modern world, the distance problem isn't large anymore for individuals
+ who want to travel.
+ There are a lot of cities very remote, but very connected, and thus very
+ synchronous as in the USA 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Choisy2012"
+
+\end_inset
+
+.
+ In contrast, migration among subpopulations has become a big problem.
+ The disease synchrony speed within a metapopulation can strongly increase
+ when migration rate there is strong 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "KeelingRohani2008"
+
+\end_inset
+
+.
+
+\series bold
+ 
+\series default
+The migration rates are directly proportional to the amount of variation
+ in metapopulation size, but inversely to the amount of variation in subpopulati
+on size, over time 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Dey2006,Griffen2009"
+
+\end_inset
+
+.
+ So, migration is key to the recolonization of empty subpopulation and simultane
+ously increases the degree of synchrony between subpopulations in spatially
+ structured metapopulation.
+ However, the vast majority of infectious diseases control policies that
+ are applied in the world are still based on rationales that do not consider
+ the local extinction/recolonization dynamics.
+ This is maybe a reason why measles persists
+\series bold
+ 
+\series default
+around the world, despite highly local vaccine coverages 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Conlan2007"
+
+\end_inset
+
+.
+ For example, in the start of the 2014, the World Health Organization (WHO)
+ had officially stated the global measles epidemic outbreak.
+ In the first three months of the year 2014, there were about 56,000 cases
+ of measle infections in 75 countries 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "WHO2014a"
+
+\end_inset
+
+, including countries in south-east Asia and most particularly, Vietnam
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "http://healthmap.org/site/diseasedaily/article/measles-reemerges-vietnam-22814"
+
+\end_inset
+
+.
+ We discovered measles persistence in the world for many years without extinctio
+n, from one nation to another as well as from cities to other cities.
+ Though the moment of disease outbreaks in each region differs.
+ For neighbouring regions with disease persistence, there is a time-lag
+ differs between disease outbreak.
+ This is explained in sociology by difference in culture, in geographic
+ condition and more particularly seasonality.
+\end_layout
+
+\begin_layout Standard
+Seasonality has been one in rather robust ingredients influencing the disease
+ persistence process.
+ Seasonal changes can alter migration tendency between urban and rural areas
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Ferrari2010"
+
+\end_inset
+
+, also residence time of hosts, vectors and pathogens.
+ Seasonal variation can thus determine population size, migration and interactio
+n capabilities and particularly infection rate at which susceptible individuals
+ become infected 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Altizer2006,Hosseini2004"
+
+\end_inset
+
+.
+ Hence, infectious disease outbreak occurs due to this infection rate.
+ However, finding a clear mechanism of seasonal forcing for modelling is
+ a very difficult work because of unidentified formula for seasonal forcing
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Altizer2006,Ferrari2010"
+
+\end_inset
+
+.
+ For indirectly transmission diseases such as water-born and vector-born,
+ finding seasonality characteristics is less a problem, however, in direct
+ contrast to transmission diseases such as measles.
+ Seasonal forcing in a metapopulation is influenced by weather and climate
+ in region, school schedule of children, and rural-urban migration in countries
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Bolker1995,Conlan2007,Ferrari2010,Gunning2013"
+
+\end_inset
+
+.
+ In these factors, the seasonal aggregation of children in primary schools
+ affects clearly the infection rate in metapopulation.
+ The infection rate decreases due to children holidays but is inverse when
+ the children come back to school 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Conlan2007"
+
+\end_inset
+
+.
+
+\series bold
+ 
+\series default
+So
+\series bold
+, 
+\series default
+exploring the influence of seasonality for the infection rate 
+\begin_inset Formula $\beta$
+\end_inset
+
+ in simulation has been developed in many previous years.
+ If the infection rates given are the same in all subpopulations, so this
+ metapopualtion model is a rather simple model 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Rozhnova2012,Rozhnova12013"
+
+\end_inset
+
+ and the symmetry of the fixed points among subpopulations will not be broken.
+ In contrast, if the infection rate is different in all subpopulations,
+ so we have a more complex oscilation metapopulation model, but close to
+ the oscilations in reality.
+ Thus, realizing the oscilations of infectious diseases in life within metapopul
+ation simulation models to estimate global disease persistence time has
+ become a large problem and the infectious disease eradication has become
+ our aim
+\series bold
+ 
+\series default
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Earn1998"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Here we propose a simulation study to quantify the effect of synchrony on
+ the persistence of infectious diseases.
+ We use stochastic simulations for infectious diseases in a metapopualtion,
+ then we consider different spatial structures from the simplest to more
+ complex.
+ These forcings can reflect local demographic, sociological, environmental,
+ or climatic factors.
+ The level of synchrony is computed from the phases of forcing in the different
+ subpopulations and persistence is quantified by using statistical tools
+ from survival analysis.
+ Here, we are concerned about measles and simultaneously use the parameter
+ values from articles and measles reports.
+ As the persistence of measles has been largely studied in the literature
+ and its still unexplained while global persistence is a growing concern
+ for WHO and public health authorities around the world 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Conlan2010"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+To do this, we first build the deterministic model for a metapopualtion.
+ Then, we describe the spatial structure for the SEIR metapopulation model.
+ Finally, we introduce the characterization of mass extinction, locale extinctio
+n and recolonization in the metapopulation based on the measles characteristics.
+\end_layout
+
+\begin_layout Section
+METHODS
+\end_layout
+
+\begin_layout Subsection
+Metapopulation model
+\end_layout
+
+\begin_layout Standard
+Consider a metapopulation of 
+\begin_inset Formula $n$
+\end_inset
+
+ sub-populations.
+ In a subpopulation 
+\begin_inset Formula $i$
+\end_inset
+
+ of size 
+\begin_inset Formula $N_{i}$
+\end_inset
+
+, disease dynamics can be deterministically described by the following set
+ of differential equations 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Anderson&May1992"
+
+\end_inset
+
+.
+ The formulation of the metapopulation model with environmental and movement-bas
+ed transmission is given by the deterministic system of equations as follows
+ :
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray}
+\frac{dS_{i}}{dt} & = & \mu N_{i}-\lambda_{i}S_{i}-\mu S_{i}\label{eq:dS}\\
+\frac{dE_{i}}{dt} & = & \lambda_{i}S_{i}-\mu E_{i}-\sigma E_{i}\\
+\frac{dI_{i}}{dt} & = & \sigma E_{i}-\mu I_{i}-\gamma I_{i}\label{eq:infectieux}\\
+\frac{dR_{i}}{dt} & = & \gamma I_{i}-\mu R_{i}\label{eq:dR}
+\end{eqnarray}
+
+\end_inset
+
+ where 
+\begin_inset Formula $S_{i}$
+\end_inset
+
+, 
+\begin_inset Formula $E_{i}$
+\end_inset
+
+, 
+\begin_inset Formula $I_{i}$
+\end_inset
+
+ et 
+\begin_inset Formula $R_{i}$
+\end_inset
+
+ are the numbers of susceptible, exposed, infectious and recovered in this
+ sub-population 
+\begin_inset Formula $i$
+\end_inset
+
+ respectively.
+ Individuals are born susceptible, die at a rate 
+\begin_inset Formula $\mu$
+\end_inset
+
+, become infected with the force of infection 
+\begin_inset Formula $\lambda_{i}$
+\end_inset
+
+, infectious after a latency period of an average duration of 
+\begin_inset Formula $1/\sigma$
+\end_inset
+
+ and recover at the rate 
+\begin_inset Formula $\gamma$
+\end_inset
+
+.
+ The force of infection depends not only on the total population size 
+\begin_inset Formula $N_{i}$
+\end_inset
+
+ and the number of infected 
+\begin_inset Formula $I_{i}$
+\end_inset
+
+ in subpopulation 
+\begin_inset Formula $i$
+\end_inset
+
+, but also in other sub-populations 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "KeelingRohani2008"
+
+\end_inset
+
+ :
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\lambda_{i}(t)=\sum_{j}\rho_{ij}\kappa_{j}\log\left[1-\sum_{k=1}^{M}\left(\frac{\left|I_{k}(t)\right|}{N_{k}(t)}\times c_{ik}\times\xi_{jk}\right)\right]\label{eq:force-1}
+\end{equation}
+
+\end_inset
+
+ where 
+\begin_inset Formula $c_{i,k}$
+\end_inset
+
+ (
+\begin_inset Formula $0\leqslant c_{ij}\leqslant1$
+\end_inset
+
+) is the probability that a susceptible individual native from 
+\begin_inset Formula $i$
+\end_inset
+
+ being in contact with another infected individual native from 
+\begin_inset Formula $k$
+\end_inset
+
+ gets infected.
+ 
+\begin_inset Formula $\xi_{jk}$
+\end_inset
+
+ (
+\begin_inset Formula $0\leqslant\xi_{ij}\leqslant1$
+\end_inset
+
+) refers to the probability that an individual 
+\begin_inset Formula $y$
+\end_inset
+
+ meeting 
+\begin_inset Formula $x$
+\end_inset
+
+ in the subpopulation 
+\begin_inset Formula $C_{j}$
+\end_inset
+
+ comes from the subpopulation 
+\begin_inset Formula $C_{k}$
+\end_inset
+
+.
+ 
+\begin_inset Formula $\kappa_{j}$
+\end_inset
+
+ is the average number of contacts per unit of time a susceptible will have
+ when visiting city 
+\begin_inset Formula $j$
+\end_inset
+
+.
+ 
+\begin_inset Formula $\rho_{i,j}$
+\end_inset
+
+ (
+\begin_inset Formula $0\leqslant\rho_{ij}\leqslant1$
+\end_inset
+
+) is denoted as the probability that an individual from subpopulation 
+\begin_inset Formula $i$
+\end_inset
+
+ visits subpopulation 
+\begin_inset Formula $j$
+\end_inset
+
+, of course, 
+\begin_inset Formula $\sum_{j=1}^{M}\rho_{ij}=1$
+\end_inset
+
+.
+ See appendix for detail on the construction of this equation.
+ We can verify that in the limit case on one single subpopulation in the
+ metapopulation (
+\begin_inset Formula $i=j$
+\end_inset
+
+ and 
+\begin_inset Formula $n=1$
+\end_inset
+
+) we have 
+\begin_inset Formula 
+\begin{equation}
+\lambda_{i}=-\kappa_{i}\log(1-\frac{I_{i}}{N_{i}}\times c_{ii})
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Describing the strength of connection 
+\begin_inset Formula $\rho$
+\end_inset
+
+ in a metapopulation (subpopulations connected by individual movement) is
+ quite complex.
+ In this work, we will study the null model (model 
+\begin_inset Formula $0$
+\end_inset
+
+), which is a metapopulation without any explicit spatial distance (all
+ the subpopulations are at the same distance from each other) and where
+ all the metapopulation have the same population size 
+\begin_inset Formula $N$
+\end_inset
+
+.
+ Like the original Levins's model 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Levins1969"
+
+\end_inset
+
+, this model considers that all the subpopulations are at equal distance
+ from each other: 
+\begin_inset Formula 
+\begin{equation}
+\rho_{ij}=\rho,\qquad0\leqslant\rho\leqslant1,\qquad\forall i,\forall j.
+\end{equation}
+
+\end_inset
+
+ Hence, we will focus on studing three key parameters that characterize
+ the metapopulation: (i) the number 
+\begin_inset Formula $n$
+\end_inset
+
+ of sub-populations, (ii) the population size 
+\begin_inset Formula $N$
+\end_inset
+
+ (
+\begin_inset Formula $N_{i}=N$
+\end_inset
+
+, 
+\begin_inset Formula $\forall i$
+\end_inset
+
+) of all these subpopulations and, (iii) the coupling (or distance) 
+\begin_inset Formula $\rho_{ij}$
+\end_inset
+
+ between two subpopulations 
+\begin_inset Formula $i$
+\end_inset
+
+ and 
+\begin_inset Formula $j$
+\end_inset
+
+ that refers to the the probability that an individual from subpopulation
+ 
+\begin_inset Formula $i$
+\end_inset
+
+ visits subpopulation 
+\begin_inset Formula $j$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Environmental forcing 
+\end_layout
+
+\begin_layout Standard
+The average number of contacts per unit of time 
+\begin_inset Formula $\kappa_{i}$
+\end_inset
+
+ is seasonally forced 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Altizer2006"
+
+\end_inset
+
+ and seasonality is an annually periodic function of time 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Grenfell1995"
+
+\end_inset
+
+.
+ As a result, for the subpopulation 
+\begin_inset Formula $i$
+\end_inset
+
+ : 
+\begin_inset Formula 
+\begin{equation}
+\kappa_{i}(t)=\kappa_{i0}\left[1+\kappa_{i1}\cos\left(\frac{2\pi t}{T}+\varphi_{i}\right)\right]\label{eq:beta_i}
+\end{equation}
+
+\end_inset
+
+ where 
+\begin_inset Formula $t$
+\end_inset
+
+ is the time, 
+\begin_inset Formula $\kappa_{i0}$
+\end_inset
+
+ and 
+\begin_inset Formula $\kappa_{i1}$
+\end_inset
+
+ are the mean value and amplitude of the average contact rate 
+\begin_inset Formula $\kappa_{i}$
+\end_inset
+
+ at which a susceptible will have when visiting city 
+\begin_inset Formula $i$
+\end_inset
+
+ per unit of time, 
+\begin_inset Formula $T$
+\end_inset
+
+ and 
+\begin_inset Formula $\varphi_{i}$
+\end_inset
+
+ are the period and the phase of the forcing.
+ With the annual sinusoidal form of the average contact rate, we really
+ have the sinusoidally forced SEIR metapopulation model.
+\end_layout
+
+\begin_layout Standard
+In our metapopulation model, we define a new parameter 
+\begin_inset Formula $\varphi_{\mbox{\tiny max}}$
+\end_inset
+
+, which typifies the synchrony of the metapopulation.
+ A given synchrony value 
+\begin_inset Formula $\varphi_{\mbox{\tiny max}}$
+\end_inset
+
+ in radian that is in the interval from zero to 
+\begin_inset Formula $\pi$
+\end_inset
+
+, we divide the interval [0, 
+\begin_inset Formula $\varphi_{max}$
+\end_inset
+
+] into a set of 
+\begin_inset Formula $(n-1)$
+\end_inset
+
+ equal samples for the metapopulation of 
+\begin_inset Formula $n$
+\end_inset
+
+ the number of subpopulations.
+ Hence, the value of the forcing phase of the 
+\begin_inset Formula $i^{th}$
+\end_inset
+
+ subpopulation is correspondent to 
+\begin_inset Formula $i^{th}$
+\end_inset
+
+ value in the set.
+\end_layout
+
+\begin_layout Subsection
+Measuring persistence (local and global)
+\end_layout
+
+\begin_layout Standard
+The Stochastic Simulation Algorithms (SSA) uses Monte Carlo (MC) methods
+ to study the evolution process of disease in continuous time by solving
+ the corresponding stochastic differential equations.
+ In our work, we focus on studying demographic and environmental stochasticities
+ in epidemic models.
+ Demographic stochasticity is considered as fluctuation in population processes
+ that are based the random nature of events at the level of the individual.
+ Each event is related to one baseline probability fixed, individuals are
+ presented in differing fates due to chance.
+ Besides, the number of infectious, susceptible, exposed and recovered individua
+ls is now required to be an integer.
+ Modeling approaches that incorporate demographic stochasticity are called
+ event-driven methods.
+ These methods require explicit consideration of events.
+ The first approach published by Daniel T.Gillespie in 1976 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "gillespie1977exact"
+
+\end_inset
+
+ is an exact stochastic simulation approach for chemical kinetics.
+ The Gillespie stochastic simulation algorithm (SSA) has become the standard
+ procedure of the discrete-event modelling by taking proper value of the
+ available randomness in such a system.
+ The methods modelling the event-driven model demands explicit presentation
+ of events.
+ For the standard SEIR model, we have to consider the nine events that can
+ occur, each causing the numbers in the relative groups to go up or down
+ by one.
+ Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:stoch_event"
+
+\end_inset
+
+ lists all the events of the model, occurring in subpopulation 
+\begin_inset Formula $i$
+\end_inset
+
+ of a metapopulation:
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\begin_inset Float table
+placement tbph
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+
+\series bold
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:stoch_ev-1-1"
+
+\end_inset
+
+Events of the stochastic version of the model of equations 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:dS"
+
+\end_inset
+
+-
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:dR"
+
+\end_inset
+
+, occuring in subpopulation 
+\begin_inset Formula $i$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\series bold
+\begin_inset Tabular
+<lyxtabular version="3" rows="10" columns="3">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="left" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Events 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Rates 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Transitions 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+birth 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+\begin_inset Formula $\mu N_{i}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+\begin_inset Formula $S_{i}\leftarrow S_{i}+1$
+\end_inset
+
+ 
+\series default
+and
+\series bold
+ 
+\begin_inset Formula $N_{i}\leftarrow N_{i}+1$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+death of a susceptible 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+\begin_inset Formula $\mu S_{i}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+\begin_inset Formula $S_{i}\leftarrow S_{i}-1$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+death of an exposed 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+\begin_inset Formula $\mu E_{i}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+\begin_inset Formula $E_{i}\leftarrow E_{i}-1$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+death of an infected 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+\begin_inset Formula $\mu I_{i}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+\begin_inset Formula $I_{i}\leftarrow I_{i}-1$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+death of an immune 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+\begin_inset Formula $\mu R_{i}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+\begin_inset Formula $R_{i}\leftarrow R_{i}-1$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+infection 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+\begin_inset Formula $\lambda_{i}S_{i}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+\begin_inset Formula $S_{i}\leftarrow S_{i}-1$
+\end_inset
+
+ 
+\series default
+and
+\series bold
+ 
+\begin_inset Formula $E_{i}\leftarrow E_{i}+1$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+becoming infectious 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+\begin_inset Formula $\sigma E_{i}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+\begin_inset Formula $E_{i}\leftarrow E_{i}-1$
+\end_inset
+
+ 
+\series default
+and
+\series bold
+ 
+\begin_inset Formula $I_{i}\leftarrow I_{i}+1$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+recovery 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+\begin_inset Formula $\gamma I_{i}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+\begin_inset Formula $I_{i}\leftarrow I_{i}-1$
+\end_inset
+
+ 
+\series default
+and
+\series bold
+ 
+\begin_inset Formula $R_{i}\leftarrow R_{i}+1$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="none" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:stoch_event"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\series default
+To initialize the variables 
+\begin_inset Formula $S$
+\end_inset
+
+, 
+\begin_inset Formula $E$
+\end_inset
+
+, 
+\begin_inset Formula $I$
+\end_inset
+
+, 
+\begin_inset Formula $R$
+\end_inset
+
+ for subpopulations in a metapopulation, we fixe the metapopulation size
+ 
+\begin_inset Formula $N$
+\end_inset
+
+.
+ We compute the equilibrium values of these variables by using the equilibrium
+ equations of the system (in appendix).
+ We simulate the fluctuation of a single population with the size 
+\begin_inset Formula $N$
+\end_inset
+
+ and the simulation time of 
+\begin_inset Formula $100$
+\end_inset
+
+ years, to obtain stationary regime for disease dynamic.
+ At the 
+\begin_inset Formula $100^{th}$
+\end_inset
+
+ point, we get the stationary values of variables.
+ Now, with 
+\begin_inset Formula $n$
+\end_inset
+
+ subpopulations in the metapopulation, the initial values of variables for
+ each subpopulation are identical and equal to the stationary values divided
+ by 
+\begin_inset Formula $n$
+\end_inset
+
+.
+ Thereby, we build successfully the stationary metapopulation just at the
+ initial step of simulation.
+ 
+\end_layout
+
+\begin_layout Standard
+Previous analyses have demonstrated that there are recurrent waves of extinction
+ and re-colonization in spatial dynamics within subpopulations 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Grenfell2001"
+
+\end_inset
+
+.
+ Estimating the ability of the disease persistence is still a complex problem
+ and there is no exact formule to calculate this ability.
+ Such, estimating global persistence as well as local, recolonization, and
+ the link among local persistence, local extinction, recolonization is the
+ focus of this paper.
+ We will reveal methods how we can measure the rate of the local/global
+ extinction and of the recolonization.
+ 
+\end_layout
+
+\begin_layout Standard
+First, in order to measure global extinction rate, we simulate a metapopulation
+ of 
+\begin_inset Formula $n$
+\end_inset
+
+ subpopulations.
+ We gain 
+\begin_inset Formula $n$
+\end_inset
+
+ independent fluctuations of our stochastic model.
+ Then, we calculate the average metapopulation size by summing subpopulations
+ at each sample time and averaging across the entire time series for each
+ metapopulation.
+ Lastly, we record the dates 
+\begin_inset Formula $t$
+\end_inset
+
+ of global disease extinction in all these 
+\begin_inset Formula $m$
+\end_inset
+
+ metapopulations.
+ These dates allow to draw Kaplan-Meier survival curves from which we estimate
+ the global extinction rates 
+\begin_inset Formula $\chi$
+\end_inset
+
+: 
+\begin_inset Formula 
+\begin{equation}
+M(t)=\exp(-\chi t)
+\end{equation}
+
+\end_inset
+
+ where 
+\begin_inset Formula $M(t)$
+\end_inset
+
+ (
+\begin_inset Formula $0\leqslant M(t)\leqslant m$
+\end_inset
+
+) is the number of metapopulations in which the disease is not extinct at
+ time 
+\begin_inset Formula $t$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+After that, we use the parametric survival model for the exponential distributio
+n (R package '
+\begin_inset Formula $survival$
+\end_inset
+
+' 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "survival-package"
+
+\end_inset
+
+).
+ Due to that, we can capture one of the most important features of stochastic
+ systems in spatial structure : its global extinction characteristics of
+ disease.
+\end_layout
+
+\begin_layout Standard
+Besides, to compute local extinction rate that illustrates the probability
+ of local extinction event in the duration of fluctuations in incidence.
+ We save up all disease duration in all subpopulations of the metapopulation.
+ We consider the data array like a Poisson process and we estimate local
+ extinction rate from this data.
+\end_layout
+
+\begin_layout Standard
+Finally, we also save up durations where there is no disease in all subpopulatio
+ns of the metapopulation.
+ We have a data set like a Poisson process and we assess recolonization
+ rate for the metapopulation.
+\end_layout
+
+\begin_layout Subsection
+Plan of experiment
+\end_layout
+
+\begin_layout Standard
+In this section, we will describe our plan of experience to quantifying
+ the effect of synchrony on the persistence of infectious diseases in a
+ metapopulation.
+ We have three big concerns that we must verify.
+\end_layout
+
+\begin_layout Itemize
+(1) relations between rates: local extinction rate, global extinction rate
+ and recolonization rate.
+\end_layout
+
+\begin_layout Itemize
+(2) effects of the population parameters (such as the number of subpopulations
+ 
+\begin_inset Formula $n$
+\end_inset
+
+ and the coupling rate
+\begin_inset Formula $\rho$
+\end_inset
+
+) and of the environmental parameters ( such as the amplitude of the average
+ contact rate
+\begin_inset Formula $\kappa_{1}$
+\end_inset
+
+and the synchrony parameter 
+\begin_inset Formula $\varphi_{max}$
+\end_inset
+
+).
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+the number of subpopulations 
+\begin_inset Formula $n$
+\end_inset
+
+ : this parameter plays an important role in metapopulation.
+ For a given metapopulation size, this number is inversely scaled the subpopulat
+ion size.
+ 
+\end_layout
+
+\begin_layout Itemize
+The coupling rate 
+\begin_inset Formula $\rho$
+\end_inset
+
+: it illustrates the strength of connextion among subpopulations in a metapopula
+tion.
+ When 
+\begin_inset Formula $\rho=0$
+\end_inset
+
+, the subpopulations are totally independent.
+ But with 
+\begin_inset Formula $\rho=1$
+\end_inset
+
+, the subpopulations are an unified population.
+ The metapopulation becomes a big population.
+\end_layout
+
+\begin_layout Itemize
+The amplitude of the average contact rate
+\begin_inset Formula $\kappa_{1}$
+\end_inset
+
+: this parameter introduces the influence of the season on the disease persisten
+ce of the metapopulation.
+ When 
+\begin_inset Formula $\kappa_{1}=0$
+\end_inset
+
+, the metapopulation is in static state, any environnemental factor affects
+ dynamics of metapopulation.
+ 
+\end_layout
+
+\begin_layout Itemize
+The synchrony parameter 
+\begin_inset Formula $\varphi_{max}$
+\end_inset
+
+: 
+\begin_inset Formula $\varphi_{max}$
+\end_inset
+
+ is an important parameter that we use to break fixed points as well as
+ first fixed points at begining moments between subpopulations.
+ The effect of increasing 
+\begin_inset Formula $\varphi_{max}$
+\end_inset
+
+ drives the synchronization between subpopulations down.
+\end_layout
+
+\end_deeper
+\begin_layout Subsubsection
+Stochastic metapopulation simulations
+\end_layout
+
+\begin_layout Standard
+In order to run simulations, we use the same values of all parameters for
+ all subpopulations.
+ We use the Gillespie's direct algorithm 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "gillespie1977exact"
+
+\end_inset
+
+ for metapopulation model as described in the previous part.
+ With the SEIR metapopulation model, measles is modeled 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Anderson&May1992,Gunning2013"
+
+\end_inset
+
+.
+ Moreover, in this work, we use also the values of parameters for the measles
+ to do experiences.
+ We have a table of the convenient values for parameters of measles as follows
+ :
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways true
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:valuesofparameter"
+
+\end_inset
+
+ Some Disease Parameter Values for Measles from the Literature
+\series bold
+ 
+\series default
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Bolker1995,Choisy2012,Conlan2010,Keeling1997,Keeling2002,KeelingRohani2008"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Tabular
+<lyxtabular version="3" rows="12" columns="4">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="left" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+parameter
+\series default
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+description
+\series default
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+value
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+unit
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\mu$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+birth and death rate per day 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1/(70*365)$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1/(people*day)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\kappa_{0}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+mean value of the number of contacts 
+\begin_inset Formula $\kappa$
+\end_inset
+
+ per unit of time a susceptible will have when visiting one city
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $[20,150]$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+people/day
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\kappa_{1}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+amplitude of the number of contacts 
+\begin_inset Formula $\kappa$
+\end_inset
+
+ per unit of time 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $[0.01,0.1]$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\gamma$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+recovery rate per day 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1/8$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1/(people*day)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\sigma$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+average exposed duration per day 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1/5$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1/day
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\rho$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+coupling rate (
+\begin_inset Formula $\rho_{ij}$
+\end_inset
+
+ the probability that an individual from subpopulation 
+\begin_inset Formula $i$
+\end_inset
+
+ visits subpopulation 
+\begin_inset Formula $j$
+\end_inset
+
+)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+\begin_inset Formula $[0,1]$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\varphi_{max}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+synchrony parameter in radian 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $[0,\pi]$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+radian
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $N$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+population size of subpopulation
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $5000-1000,000$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+people
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $n$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+number of subpopulation
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $[1,30]$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+ number of subpopulation
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $t_{max}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+simulation time
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $50$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+day
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="none" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Following the table in detail about the convenient values of parameters,
+ we will use them throughout all simulations.
+ We start doing a simulation from a initial random number.
+ Then, we aggregate the daily data (number of individuals in the suceptible,
+ exposed, infected and recovered groups) into one-day intervals, and use
+ this as the time step in the model.
+\end_layout
+
+\begin_layout Section
+RESULT
+\end_layout
+
+\begin_layout Subsection
+Effect of the number of subpopulations in the coupled model
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figure/figEXTMETARho0.1N1e6.pdf
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Influence of the number of subpopulations on the local extinction rate in
+ the coupled model.
+ The number of subpopulations 
+\begin_inset Formula $n$
+\end_inset
+
+ from 
+\begin_inset Formula $1$
+\end_inset
+
+ to 
+\begin_inset Formula $30$
+\end_inset
+
+, the coupling rate 
+\begin_inset Formula $\rho=0.1$
+\end_inset
+
+, the fixed metapopulation size 
+\begin_inset Formula $N=1e6$
+\end_inset
+
+, and 
+\begin_inset Formula $\varphi_{\mbox{\tiny max}}=0$
+\end_inset
+
+ or 
+\begin_inset Formula $\pi$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "figInflNubPOP"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+As shown in Fig 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "figInflNubPOP"
+
+\end_inset
+
+, there is a good agreement between simulations and analytic results for
+ the synchronization and phase lag between subpopulations in the metapopulation.
+ We implemented the simulation for the SEIR metapopulation model of subpopulatio
+ns coupled by individual movement with time-varying periodic contact rate.
+ The result shows that the local extinction rate of the synchronization
+ is larger than the one of the asynchronization, and the number of subpopulation
+s in the metapopulation strongly affects the local extinction rate.
+ 
+\end_layout
+
+\begin_layout Standard
+In order to investigate the dependence among subpopulations, we set the
+ coupling interaction 
+\begin_inset Formula $\rho\neq0$
+\end_inset
+
+.
+ Besides, 
+\begin_inset Formula $\varphi_{\mbox{\tiny max}}$
+\end_inset
+
+ is an important parameter which clearly reflects the difference between
+ subpopulation's phases.
+ With the decreasing of 
+\begin_inset Formula $\varphi_{\mbox{\tiny max}}$
+\end_inset
+
+, we increase the similarity between sub-populations, but we limit the chances
+ of re-colonizations within subpopulations.
+ The reason for this adjustment is that there is more chance that a small
+ number of incidences may occur in nearby subpopulations when the focal
+ subpopulation has reached extinction.
+\end_layout
+
+\begin_layout Standard
+To obtain the synchrony in the metapopulation, we set 
+\begin_inset Formula $\varphi_{\mbox{\tiny max}}=0$
+\end_inset
+
+.
+ The subpopulations are grouped into pairs based on their interactions,
+ and particularly their disease phases are in-phase.
+ All the subpopulations are in synchrony.
+ So the ability of rescue effect among subpopulations are small, they simply
+ get extinct.
+ Consequently, the local extinction rate when 
+\begin_inset Formula $\varphi_{\mbox{\tiny max}}$
+\end_inset
+
+ equal 
+\begin_inset Formula $0$
+\end_inset
+
+ is higher than the rest.
+ On the other hand, the asynchrony is presented by 
+\begin_inset Formula $\varphi_{\mbox{\tiny max}}\neq0$
+\end_inset
+
+.
+ The disease phases in the coupled subpopulations are out of phase, the
+ synchrony is interrupted.
+ With 
+\begin_inset Formula $\varphi_{\mbox{\tiny max}}=\pi$
+\end_inset
+
+, the decreased similarity between sub-populations leads an increase of
+ the chance of recolonization among sub-populations.
+ A sub-population has even reached the local extinction, but the disease
+ comes easily back due to the recolonization among sub-populations.
+ Hence, the local extinction rate in the case 
+\begin_inset Formula $\varphi_{\mbox{\tiny max}}\neq0$
+\end_inset
+
+ is lower.
+ Briefly, the local extinction rate of the synchrony is better than that
+ of the asynchrony.
+\end_layout
+
+\begin_layout Standard
+In addition, in order to study the influence of the number of subpopulation
+ on the extinction rate.
+ In our experience, the number of subpopulations is modified from 
+\begin_inset Formula $1$
+\end_inset
+
+ to 
+\begin_inset Formula $30$
+\end_inset
+
+.
+ In the case of Fig 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "figInflNubPOP"
+
+\end_inset
+
+, the local extinction rate significantly increases when subpopulations
+ are asynchronous as well as synchronous.
+ This extinction rate increases with the number of subpopulations.
+ However, it seems that this increase is stagnating after it reaches the
+ peak of extinction, and even it starts decreasing after this peak.
+ To explain this change of these curves, we known that the parameters (the
+ metapopulation size 
+\begin_inset Formula $N$
+\end_inset
+
+, the number of subpopulation 
+\begin_inset Formula $n$
+\end_inset
+
+ and the phase difference 
+\begin_inset Formula $\varphi_{\mbox{\tiny max}}$
+\end_inset
+
+), are three important factors that make the local extinction curve be divided
+ into 3 parts.
+ 
+\end_layout
+
+\begin_layout Standard
+For the first part, the curves are climbed.
+ As, we fixed the values of the metapopulation and 
+\begin_inset Formula $\varphi_{\mbox{\tiny max}}$
+\end_inset
+
+.
+ Hence, when the number of subpopulation is small (less than 
+\begin_inset Formula $20$
+\end_inset
+
+).
+ For the fixed metapopulation size, the increase of the number of subpopulation
+ from 
+\begin_inset Formula $1$
+\end_inset
+
+ to 
+\begin_inset Formula $20$
+\end_inset
+
+ leads a decrease of the subpopulation size.
+ The size of each subpopulation is reduced, but this reduce is negligible,
+ the number of native individual in any subpopulation is much larger than
+ that of tourists, so we do not regard the effect of the decreased subpopulation
+ size on the extinction rate.
+ It is the reason for why 
+\begin_inset Formula $\varphi_{\mbox{\tiny max}}$
+\end_inset
+
+ clearly demonstrates its influence on the local extinction of the metapopulatio
+n.
+ Thus, we increase the number of subpopulations in the metapopulation, we
+ increase the chance of displacement and recolonization among subpopulations.
+ In addition, for a given 
+\begin_inset Formula $\varphi_{\mbox{\tiny max}}$
+\end_inset
+
+, the increase of the number of subpopulations makes subpopulations be more
+ similar.
+ The result is that the local extinction rate has the tendency to augment.
+ 
+\end_layout
+
+\begin_layout Standard
+On the other hand, when the number of subpopulation is large (larger than
+ 
+\begin_inset Formula $20$
+\end_inset
+
+).
+ With the fixed value 
+\begin_inset Formula $\varphi_{\mbox{\tiny max}}$
+\end_inset
+
+, the increase of the the number of subpopulation makes the subpopulations
+ have the tendency to resemble.
+ Then, the subpopulations are in phase of disease.
+ It is the reason why in this case the size of subpopulations strongly affects
+ the local extinction rate.
+ The number of subpopulation is large.
+ The size of each subpopulation is small.
+ According to a sub-population, its size is small, but the sum of the size
+ of the neighbors is large, the number of tourists visiting this subpopulation
+ is high.
+ So when the number of subpopulation is big from 
+\begin_inset Formula $20$
+\end_inset
+
+ to 
+\begin_inset Formula $26$
+\end_inset
+
+, the local extinction rate decreases.
+ In the final part of the curve, when the number of sub-population is too
+ large, then both the sub-populations are in synchrony, and the subpopulation
+ size is very small.
+ Therefore, the local extinction rate increases.
+\end_layout
+
+\begin_layout Subsection
+Effect of the number of subpopulations in the model without the forcing
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figure/res1METAExtSansForc.pdf
+	scale 50
+
+\end_inset
+
+ 
+\begin_inset Graphics
+	filename figure/res1METARecolSansForc.pdf
+	scale 50
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "figInfNbPOPIslandModel_b"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "figInfNbPOPIslandModel_a"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Influence of the number of subpopulations on the local extinction rate in
+ the model without the forcing.
+ The number of subpopulations 
+\begin_inset Formula $n$
+\end_inset
+
+ from 
+\begin_inset Formula $1$
+\end_inset
+
+ to 
+\begin_inset Formula $30$
+\end_inset
+
+, the coupling rate 
+\begin_inset Formula $\rho=0.1$
+\end_inset
+
+, the fixed metapopulation size 
+\begin_inset Formula $N=1e6$
+\end_inset
+
+, the amplitude of season 
+\begin_inset Formula $\kappa_{1}=0$
+\end_inset
+
+ and 
+\begin_inset Formula $\varphi_{\mbox{\tiny max}}=0$
+\end_inset
+
+ or 
+\begin_inset Formula $\pi$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "figInfNbPOPIslandModel"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In this experience, we are interested in the influence of the number of
+ subpopulations on the the local extinction rate for the standard SEIR model
+ without forcing.
+ This simple metapopulation model just investigates subpopulations connected
+ by individual movement without environmental transmission.
+ The average number of contacts per unit of time of a susceptible when visiting
+ another subpopulation is fixed as a constant.
+ The strength of connection 
+\begin_inset Formula $\rho$
+\end_inset
+
+ is set to 
+\begin_inset Formula $0$
+\end_inset
+
+ for the model of isolated subpopulations (island model) and different from
+ 
+\begin_inset Formula $0$
+\end_inset
+
+ for the model of coupled subpopulations (coupling model).
+ Hence, in this case, the main factor affecting the extinction rate is the
+ migration of individuals rather any environmental factor.
+ 
+\end_layout
+
+\begin_layout Standard
+The result shown in the Fig 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "figInfNbPOPIslandModel_a"
+
+\end_inset
+
+ points out that in the isolation model with the fixed metapopulation size,
+ the increased number of subpopulations leads to a decrease of the subpopulation
+ size.
+ This limits the ability of the rescue effect to ensure locally extinct
+ subpopulations become recolonized.
+ Hence the local extinction rate rises significantly.
+ Besides that, due to the disjunction among subpopulations in the metapopulation
+, a subpopulation will obtain the global extinction immediately after it
+ get the first local extinction, so any there won't be any recolonization
+ occurs in this island model.
+ The recolonization rate is zero in all cases as shown in the Fig 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "figInfNbPOPIslandModel_b"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Inverse to the coupled model, the strength of interaction between the two
+ subpopulations have clearly demonstrated its influence on the extinction
+ ability in metapopulation.
+ The curve of the coupled case will be increased notably when the number
+ of subpopulation extends in the range from 
+\begin_inset Formula $1$
+\end_inset
+
+ to 
+\begin_inset Formula $20$
+\end_inset
+
+.
+ As explained in above obtained results of the Fig 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "figInflNubPOP"
+
+\end_inset
+
+, although the number of subpopulation augments but is still small, the
+ number of native individuals in a subpopulation is much larger than the
+ number of tourists in any specific time.
+ Thus, for the fixed metapopulation size, the increased number of subpopulations
+ draws a decline of the subpopulation size.
+ The disease of subpopulation easily get extinct, whenever the local extinction
+ rate augments.
+ However, when the number of subpopulation becomes a large number, then
+ the subpopulation size becomes really small, but the number of neighbours
+ is big.
+ Therefore, the number of native individuals is much smaller than that of
+ tourists, so the tourists arrive and continue to transmit disease within
+ the subpopulation.
+ Hence, the local extinction rate has a significant decline.
+ As pointed out in the Fig 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "figInfNbPOPIslandModel_b"
+
+\end_inset
+
+, the recolonization rate has the same form to the local extinction rate.
+ 
+\end_layout
+
+\begin_layout Subsection
+Influence of the coupling strength on the local extinction rate
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figure/figCoupleMETA.pdf
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Influence of the coupling strength on the local extinction rate of the metapopul
+ation of 4 subpopulations with the metapopulation size 
+\begin_inset Formula $N=1e6$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "figCoupleMETA"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+One more factor that was pointed in the introduction part is coupling strength
+ between subpopulations.
+ Here, the coupling rate or the dispersal rate 
+\begin_inset Formula $\rho$
+\end_inset
+
+ can be considered as migration strength.
+ The disease transmission speed grows fast when coupling rate goes up in
+ metapopulations.
+ Similar to that, global disease persistence surges also.
+ In this part, we permit coupling rate change from weak to strong in a metapopul
+ation of five subpopulations with the population size 
+\begin_inset Formula $N=1e6$
+\end_inset
+
+ for each subpopulation.
+ The dispersal rate 
+\begin_inset Formula $\rho$
+\end_inset
+
+ is divided into three intervals.
+ These are low, intermediate and high coupling rate intervals.
+ In each interval, we chose some coupling rates that highlight the coupling
+ strength among subpopulations in a metapopulation.
+ With each value of coupling rate, we estimated local extinction rate that
+ presents the extinction probability of disease in a subpopulation.
+ We have result as following figure Fig 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "figCoupleMETA"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+When the coupling rate is small from 
+\begin_inset Formula $0.0$
+\end_inset
+
+ to 
+\begin_inset Formula $0.001$
+\end_inset
+
+, the locale extinction rate significantly decreases.
+ However, this rate is minimum when the coupling rate has medium values
+ from
+\begin_inset Formula $0.001$
+\end_inset
+
+ to 
+\begin_inset Formula $0.1$
+\end_inset
+
+.
+ Lastly, the extinction rate augments back when the coupling rate is very
+ strong from 
+\begin_inset Formula $0.1$
+\end_inset
+
+ to 
+\begin_inset Formula $0.5$
+\end_inset
+
+.
+ As shown in the Fig 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "figCoupleMETA"
+
+\end_inset
+
+, the local extinction rate in a metapopulation is one humped function for
+ the coupling rate.
+ The medium coupling rate (from 
+\begin_inset Formula $0.01$
+\end_inset
+
+ to 
+\begin_inset Formula $0.1$
+\end_inset
+
+) minimises the extinction rate of disease in metapopulation.
+ Because in the case of the small and medium coupling rates, the coupling
+ rate and the speed of migration among subpopulations are directly proportional.
+ The dispersal speed increases.
+ Thereby the local recolonization speed rises, the duration of persistence
+ grows, the local extinction rate goes down.
+ However, this trend of local extinction with decreasing coupling rate,
+ is not right any more when the dispersal rate is strong.
+ The metapopulation has tendency to become one big population.
+ In this case, the phase difference or the recolonization among subpopulations
+ are no longer significant.
+ Hence, the local extinction rate rises.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Section
+DISCUSSION
+\end_layout
+
+\begin_layout Standard
+We successfully have built a version for the susceptible-infected-recovered
+ stochastic metapopulation model (subpopulations connected by individual
+ movement), which describes both movement-based and environmental transmission.
+ The infection rate 
+\begin_inset Formula $\lambda_{i}$
+\end_inset
+
+ for 
+\begin_inset Formula $subpopulation_{i}$
+\end_inset
+
+ has portrayed all effects inside as well as outside of the disease tranmission
+ chain between individuals in the same subpopulation or in other subpopulations.
+ Moreover, our metapopulation model became more detailed when we brought
+ seasonality in metapopulation model to create periodic transmission in
+ year that highlighted seasonal changes as well as school period of children
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Bolker1993,Bolker1995,Earn1998,Keeling2002"
+
+\end_inset
+
+.
+ We have metapopulation model with different contact rates for each subpopulatio
+n.
+ This is a more complex model than any used metapopulation model.
+ We have sketched successfully in-phase and sometime out-of-phase (
+\begin_inset Quotes eld
+\end_inset
+
+antiphase
+\begin_inset Quotes erd
+\end_inset
+
+) models across suburbs of He's 2003 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "He2003"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+This complex metapopulation model is also an expected result of Rozhnova(2012)
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Rozhnova2012"
+
+\end_inset
+
+.
+ It's a good result for scientists wanting to use the SEIR metapopulation
+ model for simulating dynamics of infectious diseases.
+ Our results roughly support those of Rozhnova's 2012.
+ The authors gave different values of the contact rates 
+\begin_inset Formula $\beta$
+\end_inset
+
+ of each subpopulation.
+ However, the rates 
+\begin_inset Formula $\beta$
+\end_inset
+
+ here are fixed by constants and the number of subpopulations in experiences
+ are maximum of three.
+ We don't know why these authors made simulations with just three cities.
+ We find that, this number of subpopulations is quite small and the obtained
+ result is not enough strong to ocnfirm.
+ Comparing this result with our's, in a coupling metapopulation, the degree
+ of synchorny is maintained when the coupling rate between subpopulations
+ is weak.
+ 
+\end_layout
+
+\begin_layout Standard
+Moreover, our stochastic SEIR metapopulation model with subpopulations connected
+ to each other, we have quantified disease extinction of seasonality as
+ well as spatial synchrony.
+ With our model, we can easily create level of seasonality in year and at
+ the same time, phase difference in seasonality between subpopulations.
+ It's the reason why we have model quite close to the metapopulation model
+ in reality.
+\end_layout
+
+\begin_layout Standard
+In addition, for approaches of measuring the probability of disease persistence
+ in a metapopulation, as previous analyses, the ability of disease persistence
+ was characterized by fitting an exponential survival model 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Conlan2010,Kleinbaum2005"
+
+\end_inset
+
+ on a data simulated by a stochastic model.
+
+\series bold
+ 
+\series default
+To measure the persistence in ecology and epidemiology, so many methods
+ we can use 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Conlan2010,Gunning2013,Keeling2002"
+
+\end_inset
+
+.
+ For example, Keeling et al.(2002) 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Keeling2002"
+
+\end_inset
+
+ gave two methods.
+ One method was for an isolated metapopulation without migration by calculating
+ the expected extinction time or the extinction rate during a given period.
+ This was a theoretical measure as no real data exists to compare with model
+ results.
+ The other method for a population with migration was found by calculating
+ the number or the total duration of extinctions.
+ Then in 2010, 
+\begin_inset Quotes eld
+\end_inset
+
+mean annual fade-out
+\begin_inset Quotes erd
+\end_inset
+
+ and 
+\begin_inset Quotes eld
+\end_inset
+
+fade-outs post epidemic
+\begin_inset Quotes erd
+\end_inset
+
+ methods proposed by Conlan 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Conlan2010"
+
+\end_inset
+
+ were used to quantify persistence by basing on the proportion or on the
+ frequency of zero reports in a given reporting interval.
+ The above approaches have the same point that they are easily calculated
+ in all models from simple to complex.
+ But, the obtained results are not exact, because as we mentionned above,
+ the curves of disease persistence are Kaplan-Meier survival curves that
+ present the lifetime of every subpopulation, so the ability of disease
+ persistence is estimated as a survival function and in fact, it was proved
+ as an exponential survival model.
+ Hence, in this paper, we have revealed a new method.
+ We have mesured the rates via Kaplan-Meier survival curves and survival
+ functions.
+ Our obtained results held the true values of the rates with the confidence
+ interval of 
+\begin_inset Formula $95\%$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Due to the phase difference between infection coefficient 
+\begin_inset Formula $\beta$
+\end_inset
+
+, we can change by an increase or a decrease in level of synchrony.
+ We want to decrease level of synchrony, by simply increasing the phase
+ difference between forcing phase coefficients in the formulas of contact
+ rate 
+\begin_inset Formula $\beta$
+\end_inset
+
+.
+ Clearly, the level of synchrony between two subpopulations are the worst
+ when the two fluctuations are in antiphase (as figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "figInflNubPOP"
+
+\end_inset
+
+).
+ When the phase difference between oscillations increases, the desynchronizing
+ effect on population dynamics of the subpopulations augments.
+ This declines the ability of disease extinction.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figure/resGlobExt3.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Quantifing the global extinction rate in the metapopulation.
+ The number of subpopulation 
+\begin_inset Formula $n$
+\end_inset
+
+ from 
+\begin_inset Formula $1$
+\end_inset
+
+ to 
+\begin_inset Formula $25$
+\end_inset
+
+, the metapopulation size 
+\begin_inset Formula $N=1e6$
+\end_inset
+
+ and the coupling rate 
+\begin_inset Formula $\rho=0.1$
+\end_inset
+
+.
+ As this result, the global extinction rate of the synchrony with 
+\begin_inset Formula $\varphi_{\mbox{\tiny max}}=0$
+\end_inset
+
+ has the tendance to be larger than that of the asynchrony with 
+\begin_inset Formula $\varphi_{\mbox{\tiny max}}=\pi$
+\end_inset
+
+.
+ Besides, when the number of subpopulation slowly increases from 
+\begin_inset Formula $1$
+\end_inset
+
+ to 
+\begin_inset Formula $15$
+\end_inset
+
+, the subpopulation size has a decrease, but this decrease is very small,
+ the subpopulation size is still very big.
+ Hence, the red curve of the synchrony and the blue curve of the asynchrony
+ have a quite near resemblance.
+ Inversely, the global extinction rate strongly augments when the number
+ of subpopulation is quite big from 
+\begin_inset Formula $20$
+\end_inset
+
+.
+ The increased number of subpopulation leads to strongly decline the subpopulati
+on size.
+ This drives quite the decrease global persitence time of the metapopualtion,
+ so the mass extinction rate of the metapopulation increases significantly.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "figMassExt"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Moreover, as the result above (figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "figInfNbPOPIslandModel"
+
+\end_inset
+
+) and the global extinction rate below (figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "figMassExt"
+
+\end_inset
+
+), our results, along with those of Bolker (1995) 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Bolker1995"
+
+\end_inset
+
+ and Heino (1997) 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Heino1997"
+
+\end_inset
+
+, stress the local extinction rate being inversely proportionnel with the
+ global extinction rate in a metapopulation.
+ When the level of synchrony is at a reduction and the global persistence
+ time gets an increase, the global extinction rate of metapopulation goes
+ down and the local extinction rate goes up.
+ Due to the result about local extinction, we also affirm that disease is
+ always available in metapopulation if and only if at least one subpopulaiton
+ is not extinct.
+ 
+\end_layout
+
+\begin_layout Standard
+Our finding has specified the two main factors influencing the persistence
+ ability of an infectious disease.
+ One factor is transmission characteristics of the infectious disease and
+ the other is interplay between mixing subpopulations in metapopulation.
+ The interaction between the disease persistence and the spatial heterogeneity
+ becomes a major key to unlock questions about infectious disease in epidemiolog
+y.
+ This result takes a large part in epidemic disease persistence domain that
+ has being exploited in scientific epidemically research works.
+ We gained a robust understanding of how disease extinction is affected
+ by local factors such as spatial heterogeneity, demographic asynchrony
+ and seasonality, as well as mixing factors such as migration, disease transmiss
+ion between hosts and pathogens.
+ Lastly, we also highlighted recolonization effects.
+ It is like rescue for disease.
+ Because of connection between subpopulation, individuals can go everywhere.
+ Subpopulation is quickly re-infected althought the disease has became extinct.
+ Thus, the disease rescus makes local extintions difficult to extend into
+ global extinctions.
+\end_layout
+
+\begin_layout Standard
+As a matter of the fact of coupling strength among subpopulations in metapopulat
+ion, we proved that
+\series bold
+ 
+\series default
+the extinction of the disease in the metapopulation is not only computed
+ by a exponential survival function over time, but also a concave function
+ for the coupling rate.
+ In addition, the disease extinction in metapopulation is minimum when the
+ coupling rate between subpopulations is just medium.
+ This finding is similar to those of Huffaker(1958) 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "huffaker1958experimental"
+
+\end_inset
+
+, Holyoak and Lawler(1996) 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "holyoak1996persistence"
+
+\end_inset
+
+, and Yaari et al.
+ (2012) 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Yaari2012"
+
+\end_inset
+
+ when they exhaustively explored the disease persistence behavior of many
+ different metapopulation models.
+ And our result one more time affirms that the disease persistence and the
+ interaction in metapopulation models are significant when
+\series bold
+ 
+\series default
+the interaction strength 
+\begin_inset Formula $\rho$
+\end_inset
+
+ is from 
+\begin_inset Formula $10^{-3}$
+\end_inset
+
+ to 0.1 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "KeelingRohani2008"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+To summarize, we have built successfully a
+\series bold
+ 
+\series default
+sinusoidally forced SEIR stochastic metapopulation model.
+ This model is like a physical system of coupled oscillators.
+ We have pointed out that spatial synchronization consistently and predictably
+ makes extinction risk increase by using the model 
+\begin_inset Formula $0$
+\end_inset
+
+ where all the subpopulations have the same population size 
+\begin_inset Formula $N$
+\end_inset
+
+ and there is no explicit spatial distance.
+ So, it's good for the future, we can continue this work with different
+ population size of each subpopulation and different spatial distance between
+ subpopulations and then, create synchronous metapopulations that optimize
+ vaccination policies.
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+bibfiles "bib/bikBokEpidemics,bib/bikCCS,bib/bikPerSyns"
+options "plain"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Appendix : equilibrium values of the system 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:dS"
+
+\end_inset
+
+--
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:dR"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We start with ordinary differential equations for a 
+\begin_inset Formula $subpopulation_{i}$
+\end_inset
+
+ in a metapopulation as follows:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray}
+\frac{dS_{i}}{dt} & = & \mu N_{i}-\lambda_{i}S_{i}-\mu S_{i}\\
+\frac{dE_{i}}{dt} & = & \lambda_{i}S_{i}-\mu E_{i}-\sigma E_{i}\\
+\frac{dI_{i}}{dt} & = & \sigma E_{i}-\mu I_{i}-\gamma I_{i}\\
+\frac{dR_{i}}{dt} & = & \gamma I_{i}-\mu R_{i}
+\end{eqnarray}
+
+\end_inset
+
+ In simulation, we know that the equilibrium state allow a disease to persist
+ in a population for a long time.
+ So, an infectious disease in the 
+\begin_inset Formula $subpopulation_{i}$
+\end_inset
+
+ is available in long term this system is at equilibrium.
+ It means that at which 
+\begin_inset Formula $\frac{dS_{i}}{dt}=\frac{dE_{i}}{dt}=\frac{dI{}_{i}}{dt}=\frac{dR{}_{i}}{dt}=0$
+\end_inset
+
+ (*).
+ Thus, we let all equations (equations 
+\begin_inset Formula $15$
+\end_inset
+
+ - 
+\begin_inset Formula $18$
+\end_inset
+
+ ) in the system be equal to zero, then calculate the values of the variables
+ (now denoted by 
+\begin_inset Formula $S_{i}^{*}$
+\end_inset
+
+, 
+\begin_inset Formula $E_{i}^{*}$
+\end_inset
+
+, 
+\begin_inset Formula $I_{i}^{*}$
+\end_inset
+
+ , and 
+\begin_inset Formula $R{}_{i}^{*}$
+\end_inset
+
+) that satisfy this condition (*).
+ We have these values as folllows:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray}
+S_{i}^{*} & = & N_{i}\frac{(\gamma+\mu)(\sigma+\mu)}{\beta\sigma}\\
+E_{i}^{*} & = & N_{i}\mu\left(\frac{1}{\sigma+\mu}-\frac{\gamma+\mu}{\beta\sigma}\right)\\
+I_{i}^{*} & = & N_{i}\mu\frac{\beta\sigma-(\sigma+\mu)(\gamma+\mu)}{\beta(\sigma+\mu)(\gamma+\mu)}\\
+R_{i}^{*} & = & N_{i}-S_{i}^{*}-E_{i}^{*}-I_{i}^{*}
+\end{eqnarray}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Here, if we set 
+\begin_inset Formula $R_{0}=\frac{\beta\sigma}{(\gamma+\mu)(\sigma+\mu)}$
+\end_inset
+
+, so we have
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray}
+S_{i}^{*} & = & N_{i}\frac{1}{R_{0}}\\
+E_{i}^{*} & = & N_{i}\frac{\mu\sigma}{R_{0}}\left(R_{0}-1\right)\\
+I_{i}^{*} & = & N_{i}\frac{\mu}{\beta}(R_{0}-1)\\
+R_{i}^{*} & = & N_{i}-S_{i}^{*}-E_{i}^{*}-I_{i}^{*}
+\end{eqnarray}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+One nomal conditions for all population availabes is that the equilibrium
+ values cannot be negative.
+ Therefore, an infectious disease is available in the 
+\begin_inset Formula $subpopulation_{i}$
+\end_inset
+
+ if 
+\begin_inset Formula $R_{0}>1$
+\end_inset
+
+.
+ Now, the endemic equilibrium in the system is given by 
+\begin_inset Formula $(S_{i}^{*},E_{i}^{*},I{}_{i}^{*},R{}_{i}^{*})$
+\end_inset
+
+ = 
+\begin_inset Formula $(N_{i}\frac{1}{R_{0}}$
+\end_inset
+
+, 
+\begin_inset Formula $N_{i}\frac{\mu\sigma}{R_{0}}\left(R_{0}-1\right)$
+\end_inset
+
+, 
+\begin_inset Formula $N_{i}\frac{\mu}{\beta}(R_{0}-1)$
+\end_inset
+
+, 
+\begin_inset Formula $N_{i}(1-\frac{1}{R_{0}}-\frac{\mu\sigma}{R_{0}}\left(R_{0}-1\right)-\frac{\mu}{\beta}(R_{0}-1))$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Stationary distribution in metapopulation
+\end_layout
+
+\begin_layout Standard
+Here we show some assumptions for the stationary distribution model as follows
+ :
+\end_layout
+
+\begin_layout Itemize
+Assumption 1.
+ For each city 
+\begin_inset Formula $V_{i}$
+\end_inset
+
+, there exists a markov chain 
+\begin_inset Formula $M_{i}$
+\end_inset
+
+ describing where (i.e.
+ in which city) individuals native from 
+\begin_inset Formula $V_{i}$
+\end_inset
+
+ travel at each time step.
+ 
+\end_layout
+
+\begin_layout Itemize
+Assumption 2.
+ Each 
+\begin_inset Formula $M_{i}$
+\end_inset
+
+ has a stationary distribution 
+\begin_inset Formula $\rho(M_{i})$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+Assumption 3.
+ At time t=0, each agent is located in a city randomly drawn from 
+\begin_inset Formula $\rho(M_{i})$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+When we consider a simplified model in which the dynamics of the agents
+ is stationary: each agent native from 
+\begin_inset Formula $V_{i}$
+\end_inset
+
+ no more follows a markov chain, but is relocated at each time step on a
+ city randomly drawn from 
+\begin_inset Formula $\rho(M_{i})$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Then, under assumptions 1,2,3, at any time 
+\begin_inset Formula $t$
+\end_inset
+
+, when the total number of agents grows to infinity, the size of the populations
+ under the markovian dynamics converges towards the size of the populations
+ under stationary dynamics.
+\end_layout
+
+\begin_layout Standard
+Hence, any statistics computed on the densities of agents from the same
+ population in various cities will not distinguish the markovian from the
+ stationary dynamics.
+ 
+\end_layout
+
+\begin_layout Standard
+Based on this conclusion, we will deploy a stationary distribution in a
+ metapopulation.
+ First of all, we choose a population size N for the metapopulation.
+ Then, we compute the After that, the transition matrix converge towards
+ a stationary distribution matrix.
+ Finally, we apply the stationary distribution matrix in the metapopulation
+ of n subpopulations
+\end_layout
+
+\begin_layout Section
+Appendix: derivation of the equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:force-1"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Here, we will point out that the contact rate 
+\begin_inset Formula $\beta$
+\end_inset
+
+ is a function of the average contact number per unit of time and the probabilit
+y of successful disease transmission following a contact.
+\end_layout
+
+\begin_layout Definition
+During the small time interval 
+\begin_inset Formula $\delta t$
+\end_inset
+
+, each individual native of the city 
+\begin_inset Formula $i$
+\end_inset
+
+ visits one single city
+\series bold
+ 
+\series default
+
+\begin_inset Formula $j$
+\end_inset
+
+ (with the probability 
+\begin_inset Formula $\rho_{ij}$
+\end_inset
+
+) and will see in average 
+\begin_inset Formula $\kappa_{j}$
+\end_inset
+
+ individuals.
+ These individuals come from all the cities.
+\end_layout
+
+\begin_layout Subsection
+Notation :
+\end_layout
+
+\begin_layout Standard
+Here, we present list of sets and events describing the state of the system
+ at time 
+\begin_inset Formula $t$
+\end_inset
+
+ : 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $C_{i}$
+\end_inset
+
+ is the set of all individuals born in subpopulation 
+\begin_inset Formula $i$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $V_{i,t}$
+\end_inset
+
+ is the set of all individuals physically located in subpopulation 
+\begin_inset Formula $i$
+\end_inset
+
+ from time 
+\begin_inset Formula $t$
+\end_inset
+
+ to time 
+\begin_inset Formula $t+\delta t$
+\end_inset
+
+.
+ This includes foreigners traveling in subpopulation 
+\begin_inset Formula $i$
+\end_inset
+
+ at time 
+\begin_inset Formula $t$
+\end_inset
+
+, and all natives from subpopulation 
+\begin_inset Formula $i$
+\end_inset
+
+ which are not traveling abroad at time 
+\begin_inset Formula $t$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $S_{t},E_{t},I_{t},R_{t}$
+\end_inset
+
+ are the sets of all individuals respectively susceptible, exposed, infected
+ and recovered at time 
+\begin_inset Formula $t$
+\end_inset
+
+.
+ Note that these set include individuals from all subpopulations.
+ 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $S_{i,t},E_{i,t},I_{i,t},R_{i,t}$
+\end_inset
+
+ are the same sets, restricted to natives of subpopulation 
+\begin_inset Formula $i$
+\end_inset
+
+.
+ So formally, 
+\begin_inset Formula $S_{i,t}=S_{t}\cap C_{i}$
+\end_inset
+
+, 
+\begin_inset Formula $E_{i,t}=E_{t}\cap C_{i}$
+\end_inset
+
+, 
+\begin_inset Formula $I_{i,t}=I_{t}\cap C_{i}$
+\end_inset
+
+, and 
+\begin_inset Formula $R_{i,t}=R_{t}\cap C_{i}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $Transmit(y,x)$
+\end_inset
+
+ is an event indicating that individual 
+\begin_inset Formula $x$
+\end_inset
+
+ gets infected by individual 
+\begin_inset Formula $y$
+\end_inset
+
+ which was already infected 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $c_{i,k}$
+\end_inset
+
+ is the probability that a susceptible individual native from 
+\begin_inset Formula $i$
+\end_inset
+
+ being in contact with another infected individual native from 
+\begin_inset Formula $k$
+\end_inset
+
+ gets infected.
+ 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\kappa_{j}$
+\end_inset
+
+ is the average number of contacts per unit of time a susceptible will have
+ when visiting city 
+\begin_inset Formula $j$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\xi_{jk}$
+\end_inset
+
+ refers to the probability that an individual 
+\begin_inset Formula $y$
+\end_inset
+
+ meeting 
+\begin_inset Formula $x$
+\end_inset
+
+ in 
+\begin_inset Formula $C_{j}$
+\end_inset
+
+ comes from 
+\begin_inset Formula $C_{k}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\rho_{i,j}$
+\end_inset
+
+, the probability that an individual from subpopulation 
+\begin_inset Formula $i$
+\end_inset
+
+ visits subpopulation 
+\begin_inset Formula $j$
+\end_inset
+
+.
+ Of course, 
+\begin_inset Formula $\sum_{j=1}^{M}\rho_{ij}=1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proposition
+The coefficient 
+\begin_inset Formula $\kappa$
+\end_inset
+
+ should also depend on 
+\begin_inset Formula $i$
+\end_inset
+
+, because an individual native from city 
+\begin_inset Formula $i$
+\end_inset
+
+ meets more people in his own city than abroad (
+\begin_inset Formula $\kappa_{i,i}>\kappa_{i,j}$
+\end_inset
+
+).
+ 
+\end_layout
+
+\begin_layout Subsection
+The background
+\end_layout
+
+\begin_layout Standard
+One general question is always posed 
+\begin_inset Quotes eld
+\end_inset
+
+how does the population of exposed individuals of subpopulation 
+\begin_inset Formula $i$
+\end_inset
+
+ evolve ?
+\begin_inset Quotes erd
+\end_inset
+
+.
+ For the sake of simplicity, in the process of transmission of the SEIR
+ model, we focus on the incidence and we assume for now that the latent
+ period and the recovery rate, repectively 
+\begin_inset Formula $\mu=\sigma=0$
+\end_inset
+
+.
+ Thus, we write a probabilistic formulation of 
+\begin_inset Formula $\frac{dE_{i}}{dt}$
+\end_inset
+
+.
+ Assuming the time is discrete, we have 
+\begin_inset Formula $\frac{dE_{i}}{dt}\approx\mathbb{E}\left[E_{i,t+1}\setminus E_{i,t}\right]$
+\end_inset
+
+.
+ Then,
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray*}
+\mathbb{E}\left[E_{i,t+1}\setminus E_{i,t}\right] & = & \mathbb{E}\left[E_{i,t+1}\cap S_{i,t}\right]\\
+ & = & \sum_{x\in C_{i}}Pr\left[x\in E_{t+1}\wedge x\in S_{t}\right]\\
+ & = & \sum_{x\in C_{i}}Pr\left[x\in S_{t}\right]*Pr\left[x\in E_{t+1}\mid x\in S_{t}\right]\\
+ & = & Pr_{x\sim\mathcal{X}_{i}}\left[x\in E_{t+1}\mid x\in S_{t}\right]*\sum_{x\in C_{i}}Pr\left[x\in S_{t}\right]\\
+ & = & |S_{i,t}|\times Pr_{x\sim\mathcal{X}_{i}}\left[x\in E_{t+1}\mid x\in S_{t}\right]
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Assume there are 
+\begin_inset Formula $M$
+\end_inset
+
+ cities.
+ An individual 
+\begin_inset Formula $x$
+\end_inset
+
+ of the subpopulation 
+\begin_inset Formula $i$
+\end_inset
+
+ may be visiting another subpopulation, or staying in its own subpopulation.
+ Applying the law of total probabilities, we get:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray*}
+Pr_{x\sim\mathcal{X}_{i}}\left[x\in E_{t+dt}\mid x\in S_{t}\right] & = & \sum_{j=1}^{M}Pr_{x\sim\mathcal{X}_{i}}\left[x\in E_{t+dt}\wedge x\in V_{j,t}\mid x\in S_{t}\right]\\
+ & = & \sum_{j=1}^{M}Pr_{x\sim\mathcal{X}_{i}}\left[x\in E_{t+dt}\mid x\in S_{t}\wedge x\in V_{j,t}\right].Pr_{x\sim\mathcal{X}_{i}}\left[x\in V_{j,t}\right]\\
+ &  & \sum_{j=1}^{M}Pr_{x\sim\mathcal{X}_{i}}\left[x\in E_{t+dt}\mid x\in S_{t}\wedge x\in V_{j,t}\right]\times\rho_{ij}
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Where 
+\begin_inset Formula $\rho_{i,j}=Pr_{x\sim\mathcal{X}_{i}}\left[x\in V_{j,t}\right]$
+\end_inset
+
+, the probability that an individual from subpopulation 
+\begin_inset Formula $i$
+\end_inset
+
+ visits subpopulation 
+\begin_inset Formula $j$
+\end_inset
+
+.
+ Of course, 
+\begin_inset Formula $\sum_{j=1}^{M}\rho_{ij}=1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Study of case where agent 
+\begin_inset Formula $x$
+\end_inset
+
+ native from city 
+\begin_inset Formula $i$
+\end_inset
+
+ visits city 
+\begin_inset Formula $j$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Here, we look at the probability that a susceptible 
+\begin_inset Formula $x\sim\mathcal{X}_{i}$
+\end_inset
+
+ visiting 
+\begin_inset Formula $j$
+\end_inset
+
+ gets infected or not after 
+\begin_inset Formula $\delta t$
+\end_inset
+
+ time steps.
+ Let 
+\begin_inset Formula $\mathcal{Y}$
+\end_inset
+
+ be the uniform distribution over 
+\begin_inset Formula $V_{j,t}$
+\end_inset
+
+.
+ The correct mathematical approach for this would be to assume that for
+ each city 
+\begin_inset Formula $k$
+\end_inset
+
+, the number of people native from 
+\begin_inset Formula $k$
+\end_inset
+
+ that we meet during 
+\begin_inset Formula $\delta t$
+\end_inset
+
+ follows a Poisson process.
+ So both the number of people we meet and the number of infected people
+ we meet during 
+\begin_inset Formula $\delta t$
+\end_inset
+
+ should be random variables.
+\end_layout
+
+\begin_layout Standard
+In the approach described in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "KeelingRohani2008"
+
+\end_inset
+
+, the authors did not do this.
+ They assumed that both the number of people we meet and the number of infected
+ people we meet 
+\emph on
+are fixed
+\emph default
+ (otherwise the maths they write would have been different).
+ We will call this the 
+\begin_inset Quotes eld
+\end_inset
+
+Keeling & Rohani
+\begin_inset Quotes erd
+\end_inset
+
+ interpretation that we will present it in the following parts.
+\end_layout
+
+\begin_layout Standard
+We introduce an alternative approximation, where we assume that the number
+ 
+\begin_inset Formula $\kappa$
+\end_inset
+
+ of people we meet during 
+\begin_inset Formula $\delta t$
+\end_inset
+
+ is 
+\emph on
+fixed
+\emph default
+, but each of these people has 
+\emph on
+some probability
+\emph default
+ to be infected.
+ This is an 
+\emph on
+in-between interpretation
+\emph default
+, easier than the Poisson process maths, but better than Keeling&Rohani's
+ one.
+ We will call this the 
+\begin_inset Quotes eld
+\end_inset
+
+Yann-Giang
+\begin_inset Quotes erd
+\end_inset
+
+ interpretation.
+\end_layout
+
+\begin_layout Subsubsection
+The 
+\begin_inset Quotes eld
+\end_inset
+
+Yann-Giang
+\begin_inset Quotes erd
+\end_inset
+
+ interpretation
+\end_layout
+
+\begin_layout Proposition
+Agent 
+\begin_inset Formula $x$
+\end_inset
+
+ meets 
+\emph on
+exactly
+\emph default
+ 
+\begin_inset Formula $\kappa_{j}$
+\end_inset
+
+ other individuals, and each of these individuals has a probability 
+\begin_inset Formula $\frac{\left|I_{k,t}\right|}{N_{k}}$
+\end_inset
+
+ of being infected, where 
+\begin_inset Formula $k$
+\end_inset
+
+ is its native city.
+ Let 
+\begin_inset Formula $y_{1}\ldots y_{\kappa_{j}}$
+\end_inset
+
+ be the individuals that 
+\begin_inset Formula $x$
+\end_inset
+
+ meets.
+ We get:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray*}
+ &  & Pr_{x\sim\mathcal{X}_{i}}\left[x\in S_{t+\delta t}\mid x\in S_{t}\wedge x\in V_{j,t}\right]\\
+ & = & Pr_{x\sim\mathcal{X}_{i},y_{1}\ldots,y_{\kappa_{j}}\sim\mathcal{Y}}\left[\bigwedge_{p=1}^{\kappa_{j}}\neg\left(y_{p}\in I_{t}\wedge Transmit(y_{p},x)\right)\mid x\in S_{t}\wedge x\in V_{j,t}\right]
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+So we have:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray*}
+ &  & Pr_{x\sim\mathcal{X}_{i}}\left[x\in S_{t+\delta t}\mid x\in S_{t}\wedge x\in V_{j,t}\right]\\
+ & = & Pr_{x\sim\mathcal{X}_{i},y\sim\mathcal{Y}}\left[\neg\left(y\in I_{t}\wedge Transmit(y,x)\right)\mid x\in S_{t}\wedge x\in V_{j,t}\right]^{\kappa_{j}\delta t}
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Moreover, we have:
+\end_layout
+
+\begin_layout Itemize
+the probability so that a susceptible individual 
+\begin_inset Formula $x$
+\end_inset
+
+ is infected by an infected individual 
+\begin_inset Formula $y$
+\end_inset
+
+ :
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray*}
+ &  & Pr_{x\sim\mathcal{X}_{i},y\sim\mathcal{Y}}\left[y\in I_{t}\wedge Transmit(y,x)\mid x\in S_{t}\wedge x\in V_{j,t}\right]\\
+ & = & \sum_{k=1}^{M}Pr_{x\sim\mathcal{X}_{i},y\sim\mathcal{Y}}\left[y\in I_{t}\wedge Transmit(y,x)\mid x\in S_{t}\wedge x\in V_{j,t}\wedge y\in C_{k}\right].Pr_{y\sim\mathcal{Y}}\left(y\in C_{k}\right)\\
+ & = & \sum_{k=1}^{M}\left\{ Pr_{x\sim\mathcal{X}_{i},y\sim\mathcal{X}_{k}}\left[y\in I_{t}\mid x\in S_{t}\wedge x\in V_{j,t}\right]\right.\\
+ &  & \,\,\,\,\,\left.\times Pr_{x\sim\mathcal{X}_{i},y\sim\mathcal{X}_{k}}\left[Transmit(y,x)\mid y\in I_{t}\wedge x\in S_{t}\wedge x\in V_{j,t}\wedge y\in C_{k}\right]\times Pr_{y\sim\mathcal{Y}}\left(y\in C_{k}\right)\right\} \\
+ & = & \sum_{k=1}^{M}\left(\frac{\left|I_{k,t}\right|}{N_{k}}\times c_{ik}\times\xi_{jk}\right)
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\xi_{jk}=\frac{N_{k}\rho_{kj}}{\sum_{v=1}^{M}N_{v}\rho_{vj}}$
+\end_inset
+
+ refers to the probability that an individual 
+\begin_inset Formula $y$
+\end_inset
+
+ meeting 
+\begin_inset Formula $x$
+\end_inset
+
+ in 
+\begin_inset Formula $C_{j}$
+\end_inset
+
+ comes from 
+\begin_inset Formula $C_{k}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+hence, the probability so that a susceptible individual 
+\begin_inset Formula $x$
+\end_inset
+
+ is not infected by an infected individual 
+\begin_inset Formula $y$
+\end_inset
+
+ :
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+1-\sum_{k=1}^{M}\left(\frac{\left|I_{k,t}\right|}{N_{k}}\times c_{ik}\times\xi_{jk}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+thereby, the probability so that a susceptible individual 
+\begin_inset Formula $x$
+\end_inset
+
+ is not infected after 
+\begin_inset Formula $\kappa_{j}$
+\end_inset
+
+ contacts per unit time 
+\begin_inset Formula $\delta t$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\left[1-\sum_{k=1}^{M}\left(\frac{\left|I_{k,t}\right|}{N_{k}}\times c_{ik}\times\xi_{jk}\right)\right]^{\kappa_{j}\delta t}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+thus, the probability so that a susceptible individual 
+\begin_inset Formula $x$
+\end_inset
+
+ becomes infected after 
+\begin_inset Formula $\kappa_{j}$
+\end_inset
+
+ contacts per unit time 
+\begin_inset Formula $\delta t$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray*}
+Pr_{x\sim\mathcal{X}_{i}}\left[x\in E_{t+\delta t}\mid x\in S_{t}\wedge x\in V_{j,t}\right] & = & \left[1-\sum_{k=1}^{M}\left(\frac{\left|I_{k,t}\right|}{N_{k}}\times c_{ik}\times\xi_{jk}\right)\right]^{\kappa_{j}\delta t}
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We now apply the 
+\emph on
+log
+\emph default
+ approximation which consists in approximating 
+\begin_inset Formula $1-(1-u)^{v}$
+\end_inset
+
+ by 
+\begin_inset Formula $v\log(1-u)$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray*}
+Pr_{x\sim\mathcal{X}_{i}}\left[x\in E_{t+\delta t}\mid x\in S_{t}\wedge x\in V_{j,t}\right] & = & -\kappa_{j}\delta t\log\left[1-\sum_{k=1}^{M}\left(\frac{\left|I_{k,t}\right|}{N_{k}}\times c_{ik}\times\xi_{jk}\right)\right]
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+So, the transmission rate per susceptible individual is as follows :
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\frac{dPr_{x\sim\mathcal{X}_{i}}\left[x\in E_{t+dt}\mid x\in S_{t}\wedge x\in V_{j,t}\right]}{dt}\simeq-\kappa_{j}\log\left[1-\sum_{k=1}^{M}\left(\frac{\left|I_{k,t}\right|}{N_{k}}\times c_{ik}\times\xi_{jk}\right)\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In fact, we use the parameter 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ to present this quantity, and it is denoted as the 
+\begin_inset Quotes eld
+\end_inset
+
+force of infection
+\begin_inset Quotes erd
+\end_inset
+
+ :
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\lambda_{i}=\sum_{j}\rho_{ij}\kappa_{j}\log\left[1-\sum_{k=1}^{M}\left(\frac{\left|I_{k,t}\right|}{N_{k}}\times c_{ik}\times\xi_{jk}\right)\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+If there is only one city 
+\begin_inset Formula $i$
+\end_inset
+
+, then
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\lambda_{i}=\kappa_{j}log(1-\frac{\left|I_{i}\right|}{N_{i}}\times c_{ii})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+\begin_inset Quotes eld
+\end_inset
+
+Keeling & Rohani
+\begin_inset Quotes erd
+\end_inset
+
+ Interpretation
+\end_layout
+
+\begin_layout Proposition
+Agent 
+\begin_inset Formula $x$
+\end_inset
+
+ meets 
+\emph on
+exactly
+\emph default
+ 
+\begin_inset Formula $\kappa_{j}\delta t\xi_{jk}\frac{\left|I_{k,t}\right|}{N_{k}}$
+\end_inset
+
+ other infected individuals native from city 
+\begin_inset Formula $k$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Let 
+\begin_inset Formula $l_{k}=\kappa_{j}\delta t\xi_{jk}\frac{\left|I_{k,t}\right|}{N_{k}}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $y_{1}^{k}\ldots y_{l_{k}}^{k}$
+\end_inset
+
+ be the infected individuals native from 
+\begin_inset Formula $k$
+\end_inset
+
+ that our individual 
+\begin_inset Formula $x$
+\end_inset
+
+ meets between 
+\begin_inset Formula $t$
+\end_inset
+
+ and 
+\begin_inset Formula $t+\delta t$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+We have the probability so that a susceptible individual 
+\begin_inset Formula $x$
+\end_inset
+
+ is not infected after having seen 
+\begin_inset Formula $l_{k}$
+\end_inset
+
+ individuals between 
+\begin_inset Formula $t$
+\end_inset
+
+ and 
+\begin_inset Formula $t+\delta t$
+\end_inset
+
+ :
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray*}
+ &  & Pr_{x\sim\mathcal{X}_{i}}\left[x\in S_{t+\delta t}\mid x\in S_{t}\wedge x\in V_{j,t}\right]\\
+ & = & Pr_{x\sim\mathcal{X}_{i}}\left[\bigwedge_{\begin{array}{c}
+k=1\ldots M\\
+p=1\ldots l_{k}
+\end{array}}\neg\left(Transmit(y_{p}^{k},x)\right)\mid x\in S_{t}\wedge x\in V_{j,t}\right]\\
+ & = & \prod_{k=1}^{M}Pr_{x\sim\mathcal{X}_{i}}\left[\bigwedge_{p=1\ldots l_{k}}\neg\left(Transmit(y_{p}^{k},x)\right)\mid x\in S_{t}\wedge x\in V_{j,t}\right]\\
+ & = & \prod_{k=1}^{M}\left(1-c_{ik}\right)^{\kappa_{j}\delta t\xi_{jk}\frac{\left|I_{k,t}\right|}{N_{k}}}
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Then, we plug this back into the previous formula, and we get:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray*}
+Pr_{x\sim\mathcal{X}_{i}}\left[x\in E_{t+\delta t}\mid x\in S_{t}\wedge x\in V_{j,t}\right] & = & 1-\prod_{k=1}^{M}\left(1-c_{ik}\right)^{\kappa_{j}\xi_{jk}\frac{\left|I_{k,t}\right|}{N_{k}}\delta t}
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The first order approximation of 
+\begin_inset Formula $1-\prod_{k=1}^{M}(1-c_{ik})^{v_{k}}$
+\end_inset
+
+ is 
+\begin_inset Formula $\sum_{k=1}^{M}-v_{k}\log(1-c_{ik})$
+\end_inset
+
+.
+ Applying this approximation here, we get:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray*}
+Pr_{x\sim\mathcal{X}_{i}}\left[x\in E_{t+\delta t}\mid x\in S_{t}\wedge x\in V_{j,t}\right] & \simeq & \delta t\sum_{k=1}^{M}\left(-\kappa_{j}\xi_{jk}\frac{\left|I_{k,t}\right|}{N_{k}}\log\left(1-c_{ik}\right)\right)
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Define 
+\begin_inset Formula $\beta_{ijk}=-\kappa_{j}\log\left(1-c_{ik}\right)$
+\end_inset
+
+, let 
+\begin_inset Formula $\delta t$
+\end_inset
+
+ converge to zero, and we get:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\frac{dPr_{x\sim\mathcal{X}_{i}}\left[x\in E_{t+dt}\mid x\in S_{t}\wedge x\in V_{j,t}\right]}{dt}\simeq\sum_{k=1}^{M}\left(\xi_{jk}\frac{\left|I_{k,t}\right|}{N_{k}}\beta_{ijk}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+If there is only one city 
+\begin_inset Formula $i$
+\end_inset
+
+, then we fall back to the formula of 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "KeelingRohani2008"
+
+\end_inset
+
+.
+ We have : 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\beta_{i}=-\kappa_{i}\log\left(1-c_{i}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\frac{d}{dt}\mathbb{E}\left[\left|E_{i,t+dt}-E_{i,t}\right|\right]\simeq-\left|S_{i,t}\right|\left(\frac{\left|I_{i}\right|}{N_{i}}\beta_{i}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+and the force of infection as follows :
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\lambda_{i}=\beta_{i}\frac{\left|I_{i}\right|}{N_{i}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Final Formula
+\end_layout
+
+\begin_layout Standard
+We simply have to plug in the probability 
+\begin_inset Formula $\rho_{ij}$
+\end_inset
+
+ that 
+\begin_inset Formula $i$
+\end_inset
+
+ visits 
+\begin_inset Formula $j$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+We get, for the 
+\begin_inset Quotes eld
+\end_inset
+
+Yann-Giang
+\begin_inset Quotes erd
+\end_inset
+
+ interpretation :
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\frac{d}{dt}\mathbb{E}\left[\left|E_{i,t+dt}-E_{i,t}\right|\right]\simeq-\left|S_{i,t}\right|\sum_{j}\rho_{ij}\kappa_{j}\log\left[1-\sum_{k=1}^{M}\left(\frac{\left|I_{k,t}\right|}{N_{k}}\times c_{ik}\times\xi_{jk}\right)\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+And for the 
+\begin_inset Quotes eld
+\end_inset
+
+Keeling & Rohani
+\begin_inset Quotes erd
+\end_inset
+
+ Interpretation :
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\frac{d}{dt}\mathbb{E}\left[\left|E_{i,t+dt}-E_{i,t}\right|\right]\simeq-\left|S_{i,t}\right|\sum_{j}\rho_{ij}\sum_{k=1}^{M}\left(\xi_{jk}\frac{\left|I_{k,t}\right|}{N_{k}}\beta_{ijk}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Appendix : Characterization of synchrony
+\end_layout
+
+\begin_layout Standard
+Call 
+\begin_inset Formula $\delta_{ij}=\delta_{ji}$
+\end_inset
+
+ (
+\begin_inset Formula $0\leqslant\delta_{ij}<2\pi$
+\end_inset
+
+) the phase difference between subpopulations 
+\begin_inset Formula $i$
+\end_inset
+
+ and 
+\begin_inset Formula $j$
+\end_inset
+
+ : 
+\begin_inset Formula 
+\begin{equation}
+\delta_{ij}=|\varphi_{i}-\varphi_{j}|\bmod2\pi
+\end{equation}
+
+\end_inset
+
+ where 
+\begin_inset Formula $\varphi{}_{i}$
+\end_inset
+
+ and 
+\begin_inset Formula $\varphi{}_{j}$
+\end_inset
+
+ are the phases of the contact rates (equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:beta_i"
+
+\end_inset
+
+) in subpopulations 
+\begin_inset Formula $i$
+\end_inset
+
+ et 
+\begin_inset Formula $j$
+\end_inset
+
+.
+ Populations 
+\begin_inset Formula $i$
+\end_inset
+
+ and 
+\begin_inset Formula $j$
+\end_inset
+
+ are perfectly in phase if 
+\begin_inset Formula $\delta_{ij}=\delta_{ji}=0$
+\end_inset
+
+ or 
+\begin_inset Formula $2\pi$
+\end_inset
+
+ and in opposition of phase if 
+\begin_inset Formula $\delta_{ij}=\delta_{ji}=\pi$
+\end_inset
+
+.
+ We can thus define the degree of synchrony 
+\begin_inset Formula $\xi_{ij}=\xi_{ji}$
+\end_inset
+
+ (
+\begin_inset Formula $0\leqslant\xi_{ij}\leqslant1$
+\end_inset
+
+) between populations 
+\begin_inset Formula $i$
+\end_inset
+
+ and 
+\begin_inset Formula $j$
+\end_inset
+
+ as 
+\begin_inset Formula 
+\begin{equation}
+\xi_{ij}=1-\frac{\left|\delta_{ij}\right|}{\pi}.
+\end{equation}
+
+\end_inset
+
+ 
+\begin_inset Float figure
+placement htpb
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics
+	filename figure/figure1.pdf
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:synchrony-1"
+
+\end_inset
+
+Synchrony in the case of model 0.
+ (A) distribution of synchrony 
+\begin_inset Formula $\xi_{ij}$
+\end_inset
+
+ for various values of 
+\begin_inset Formula $\varphi_{max}$
+\end_inset
+
+.
+ (B) mean and standard deviation of the distribution of 
+\begin_inset Formula $\xi_{ij}$
+\end_inset
+
+ as functions of 
+\begin_inset Formula $\varphi_{\mbox{\tiny max}}$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Consider that in the metapopulation the phases 
+\begin_inset Formula $\varphi_{i}$
+\end_inset
+
+ of the contact rates in the 
+\begin_inset Formula $n$
+\end_inset
+
+ subpopulations are evenly distributed between 0 and 
+\begin_inset Formula $\varphi_{\mbox{\tiny max}}$
+\end_inset
+
+ (
+\begin_inset Formula $0\leqslant\varphi_{\mbox{\tiny max}}\leqslant\pi$
+\end_inset
+
+).
+ We can express the mean of the pairwise phase differences 
+\begin_inset Formula $\delta_{ij}=\delta_{ji}$
+\end_inset
+
+ as 
+\begin_inset Formula 
+\begin{equation}
+<\!\!\delta_{ij}\!\!>\;=\;<\!\!\delta_{ji}\!\!>\;=2\varphi_{\mbox{\tiny max}}\sum_{k=1}^{n-1}\frac{(n-k)k}{(n-1)n^{2}}=\frac{n+1}{3n}\varphi_{\mbox{\tiny max}}
+\end{equation}
+
+\end_inset
+
+ and thus the mean of the synchronies 
+\begin_inset Formula $\xi_{ij}=\xi_{ji}$
+\end_inset
+
+ as 
+\begin_inset Formula 
+\begin{equation}
+<\!\!\xi_{ij}\!\!>\;=\;<\!\!\xi_{ji}\!\!>\;=1-\frac{n+1}{3n}\frac{\varphi_{\mbox{\tiny max}}}{\pi}
+\end{equation}
+
+\end_inset
+
+ and thus 
+\begin_inset Formula 
+\begin{equation}
+\lim_{n\to\infty}<\!\!\xi_{ij}\!\!>\;=1-\frac{\varphi_{\mbox{\tiny max}}}{3\pi}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This last result shows that, for a high enough number 
+\begin_inset Formula $n$
+\end_inset
+
+ of subpopulations, the mean value of the 
+\begin_inset Formula $\xi_{ij}$
+\end_inset
+
+ does not depend on the number of subpopulation.
+\end_layout
+
+\begin_layout Standard
+The values of 
+\begin_inset Formula $\varphi_{i}$
+\end_inset
+
+ are chosen so that they are uniformly distributed between 
+\begin_inset Formula $\varphi_{\mbox{\tiny min}}=0$
+\end_inset
+
+ and 
+\begin_inset Formula $\varphi_{\mbox{\tiny max}}$
+\end_inset
+
+.
+ The distribution of 
+\begin_inset Formula $\xi_{ij}$
+\end_inset
+
+ doesn't depend on 
+\begin_inset Formula $n$
+\end_inset
+
+ the number of subpopulation, but only depends 
+\begin_inset Formula $\varphi_{\mbox{\tiny max}}$
+\end_inset
+
+ and may be is characterized by one single parameter (we choose the average
+ value of all 
+\begin_inset Formula $\xi_{ij}$
+\end_inset
+
+), view figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:synchrony-1"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+------
+\end_layout
+
+\end_body
+\end_document
