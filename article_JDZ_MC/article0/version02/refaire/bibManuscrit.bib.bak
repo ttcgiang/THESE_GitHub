@@ -1,5 +1,103 @@
 % This file was created with JabRef 2.10b2.
 % Encoding: UTF-8
+@ARTICLE{Rozhnova12013,
+  author = {G. Rozhnova1 and A. Nunes and A. J. McKane},
+  title = {Impact of commuting on disease persistence in heterogeneous metapopulations},
+  year = {2013},
+  file = {:/home/tran/Documents/Giang_Document/These/thesegiang/Articles_Jabref/persistence_synchrony/Rozhnova2013 Impactof commuting on desease persistence.pdf:PDF},
+  owner = {tran},
+  timestamp = {2014.04.22}
+}
+
+
+@BOOK{Kleinbaum2005,
+  title = {Survival analysis},
+  year = {2005},
+  author = {David G. Kleinbaum},
+  file = {:/home/tran/Documents/Giang_Document/thesegiang/thesegiang/Book/Survival Analysis - A Self-Learning Text.pdf:PDF},
+  owner = {tran},
+  timestamp = {2014.04.22}
+}
+
+@BOOK{Hanski2004,
+  title = {Ecology, Genetics and evolution of metapopulations},
+  year = {2004},
+  author = {Ilkka Hanski; Oscar E Gaggiotti},
+  file = {:/home/tran/Documents/Giang_Document/thesegiang/thesegiang/Book/Ecology, Genetics and Evolution of Metapopulations.pdf:PDF},
+  owner = {tran},
+  timestamp = {2014.04.22}
+}
+
+@BOOK{AndersonMay1992,
+  title = {Infectious Diseases of Humans: Dynamics and Control},
+  publisher = {Oxford University Press},
+  year = {1992},
+  author = {R. M. Anderson and R. M. May},
+  owner = {tran},
+  timestamp = {2014.04.23}
+}
+
+@Article{tenover1996challenges,
+  Title                    = {The challenges of emerging infectious diseases: development and spread of multiply-resistant bacterial pathogens},
+  Author                   = {Tenover, Fred C and Hughes, James M},
+  Journal                  = {Jama},
+  Year                     = {1996},
+  Number                   = {4},
+  Pages                    = {300--304},
+  Volume                   = {275},
+
+  Publisher                = {American Medical Association}
+}
+
+@Article{patz1996global,
+  Title                    = {Global climate change and emerging infectious diseases},
+  Author                   = {Patz, Jonathan A and Epstein, Paul R and Burke, Thomas A and Balbus, John M},
+  Journal                  = {Jama},
+  Year                     = {1996},
+  Number                   = {3},
+  Pages                    = {217--223},
+  Volume                   = {275},
+
+  Publisher                = {American Medical Association}
+}
+
+
+@Article{morens2004challenge,
+  Title                    = {The challenge of emerging and re-emerging infectious diseases},
+  Author                   = {Morens, David M and Folkers, Gregory K and Fauci, Anthony S},
+  Journal                  = {Nature},
+  Year                     = {2004},
+  Number                   = {6996},
+  Pages                    = {242--249},
+  Volume                   = {430},
+
+  Publisher                = {Nature Publishing Group}
+}
+
+
+@Article{binder1999emerging,
+  Title                    = {Emerging infectious diseases: public health issues for the 21st century},
+  Author                   = {Binder, Sue and Levitt, Alexandra M and Sacks, Jeffrey J and Hughes, James M},
+  Journal                  = {Science},
+  Year                     = {1999},
+  Number                   = {5418},
+  Pages                    = {1311--1313},
+  Volume                   = {284},
+
+  Publisher                = {American Association for the Advancement of Science}
+}
+
+@Article{jones2008global,
+  Title                    = {Global trends in emerging infectious diseases},
+  Author                   = {Jones, Kate E and Patel, Nikkita G and Levy, Marc A and Storeygard, Adam and Balk, Deborah and Gittleman, John L and Daszak, Peter},
+  Journal                  = {Nature},
+  Year                     = {2008},
+  Number                   = {7181},
+  Pages                    = {990--993},
+  Volume                   = {451},
+
+  Publisher                = {Nature Publishing Group}
+}
 
 
 @Article{adalsteinsson2004biochemical,
@@ -83,16 +181,6 @@
   Timestamp                = {2014.04.23}
 }
 
-@Book{AndersonMay1992,
-  Title                    = {Infectious Diseases of Humans: Dynamics and Control},
-  Author                   = {R. M. Anderson and R. M. May},
-  Publisher                = {Oxford University Press},
-  Year                     = {1992},
-
-  Owner                    = {tran},
-  Timestamp                = {2014.04.23}
-}
-
 @Book{Bailey1957,
   Title                    = {The mathematical theory of epidemics},
   Author                   = {Bailey, Norman Thomas John},
@@ -111,7 +199,7 @@
   File                     = {:/home/tran/Documents/Giang_Document/These/thesegiang/Book/1957 Bailey The Mathematical theory of epidemics.pdf:PDF}
 }
 
-@Article{Bartlett1960,
+@Article{bartlett1960critical,
   Title                    = {The critical community size for measles in the United States},
   Author                   = {M. S. Bartlett},
   Journal                  = {Journal of the Royal Statistical Society. Series A (General)},
@@ -165,18 +253,6 @@
   Volume                   = {47},
 
   Publisher                = {American Society for Microbiology (ASM)}
-}
-
-@Article{binder1999emerging,
-  Title                    = {Emerging infectious diseases: public health issues for the 21st century},
-  Author                   = {Binder, Sue and Levitt, Alexandra M and Sacks, Jeffrey J and Hughes, James M},
-  Journal                  = {Science},
-  Year                     = {1999},
-  Number                   = {5418},
-  Pages                    = {1311--1313},
-  Volume                   = {284},
-
-  Publisher                = {American Association for the Advancement of Science}
 }
 
 @Article{BJoeRNSTAD2002,
@@ -609,16 +685,6 @@
   Author                   = {J. Fox},
 
   File                     = {:/home/tran/Documents/Giang_Document/These/thesegiang/Articles_Jabref/persistence_synchrony/doc.persistence.pdf:PDF},
-  Owner                    = {tran},
-  Timestamp                = {2014.04.22}
-}
-
-@Book{Hanski2004,
-  Title                    = {Ecology, Genetics and evolution of metapopulations},
-  Author                   = {Ilkka Hanski; Oscar E Gaggiotti},
-  Year                     = {2004},
-
-  File                     = {:/home/tran/Documents/Giang_Document/thesegiang/thesegiang/Book/Ecology, Genetics and Evolution of Metapopulations.pdf:PDF},
   Owner                    = {tran},
   Timestamp                = {2014.04.22}
 }
@@ -1112,18 +1178,6 @@
   File                     = {:/home/tran/Documents/Giang_Document/These/thesegiang/Articles_Jabref/persistence_synchrony/1958 Huffaker experimental studies on predation.pdf:PDF}
 }
 
-@Article{jones2008global,
-  Title                    = {Global trends in emerging infectious diseases},
-  Author                   = {Jones, Kate E and Patel, Nikkita G and Levy, Marc A and Storeygard, Adam and Balk, Deborah and Gittleman, John L and Daszak, Peter},
-  Journal                  = {Nature},
-  Year                     = {2008},
-  Number                   = {7181},
-  Pages                    = {990--993},
-  Volume                   = {451},
-
-  Publisher                = {Nature Publishing Group}
-}
-
 @Article{Keeling2010,
   Title                    = {Individual identity and movement networks for disease metapopulations},
   Author                   = {M. J. Keeling and L. Danon and M. C. Vernon and T. A. House},
@@ -1244,7 +1298,7 @@
   Title                    = {Modeling Infectious Diseases in Humans and Animals},
   Author                   = {M. J. Keeling and P. Rohani},
   Publisher                = {Princeton University Press},
-  Year                     = {2011}
+  Year                     = {2011},
 }
 
 @Book{Kleinbaum2005,
@@ -1258,16 +1312,6 @@
 }
 
 @Book{Kleinbaum2005a,
-  Title                    = {Survival analysis},
-  Author                   = {David G. Kleinbaum},
-  Year                     = {2005},
-
-  File                     = {:/home/tran/Documents/Giang_Document/thesegiang/thesegiang/Book/Survival Analysis - A Self-Learning Text.pdf:PDF},
-  Owner                    = {tran},
-  Timestamp                = {2014.04.22}
-}
-
-@Book{Kleinbaum2005b,
   Title                    = {Survival analysis},
   Author                   = {David G. Kleinbaum},
   Year                     = {2005},
@@ -1433,36 +1477,12 @@
   Publisher                = {Elsevier}
 }
 
-@Article{morens2004challenge,
-  Title                    = {The challenge of emerging and re-emerging infectious diseases},
-  Author                   = {Morens, David M and Folkers, Gregory K and Fauci, Anthony S},
-  Journal                  = {Nature},
-  Year                     = {2004},
-  Number                   = {6996},
-  Pages                    = {242--249},
-  Volume                   = {430},
-
-  Publisher                = {Nature Publishing Group}
-}
-
 @Article{panum1988observations,
   Title                    = {Observations made during the epidemic of measles on the Faroe Islands in the year 1846},
   Author                   = {Panum, Peter Ludwig},
   Journal                  = {The Challenge of Epidemiology: Issues and Selected Readings, Pan American Health Organization, New York},
   Year                     = {1988},
   Pages                    = {37--41}
-}
-
-@Article{patz1996global,
-  Title                    = {Global climate change and emerging infectious diseases},
-  Author                   = {Patz, Jonathan A and Epstein, Paul R and Burke, Thomas A and Balbus, John M},
-  Journal                  = {Jama},
-  Year                     = {1996},
-  Number                   = {3},
-  Pages                    = {217--223},
-  Volume                   = {275},
-
-  Publisher                = {American Medical Association}
 }
 
 @Article{pettigrew2007multinomial,
@@ -1623,16 +1643,6 @@
   Timestamp                = {2014.04.22}
 }
 
-@Article{Rozhnova12013a,
-  Title                    = {Impact of commuting on disease persistence in heterogeneous metapopulations},
-  Author                   = {G. Rozhnova1 and A. Nunes and A. J. McKane},
-  Year                     = {2013},
-
-  File                     = {:/home/tran/Documents/Giang_Document/These/thesegiang/Articles_Jabref/persistence_synchrony/Rozhnova2013 Impactof commuting on desease persistence.pdf:PDF},
-  Owner                    = {tran},
-  Timestamp                = {2014.04.22}
-}
-
 @Article{salis2005accurate,
   Title                    = {Accurate hybrid stochastic simulation of a system of coupled chemical or biochemical reactions},
   Author                   = {Salis, Howard and Kaznessis, Yiannis},
@@ -1702,18 +1712,6 @@
   File                     = {:/home/tran/Documents/Giang_Document/These/thesegiang/Articles_Jabref/persistence_synchrony/2004 Smith Mapping_the_Antigenic_and_Genetic_Evolution_of_Influenza_Virus.pdf:PDF},
   Owner                    = {tran},
   Timestamp                = {2014.06.05}
-}
-
-@Article{tenover1996challenges,
-  Title                    = {The challenges of emerging infectious diseases: development and spread of multiply-resistant bacterial pathogens},
-  Author                   = {Tenover, Fred C and Hughes, James M},
-  Journal                  = {Jama},
-  Year                     = {1996},
-  Number                   = {4},
-  Pages                    = {300--304},
-  Volume                   = {275},
-
-  Publisher                = {American Medical Association}
 }
 
 @Manual{survival-package,
