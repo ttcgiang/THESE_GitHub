@@ -17,7 +17,7 @@ figs-within-sections
 \language english
 \language_package default
 \inputencoding utf8x
-\fontencoding global
+\fontencoding T1
 \font_roman default
 \font_sans default
 \font_typewriter default
@@ -33,7 +33,7 @@ figs-within-sections
 \output_sync 0
 \bibtex_command bibtex
 \index_command default
-\paperfontsize 12
+\paperfontsize default
 \spacing double
 \use_hyperref false
 \papersize default
