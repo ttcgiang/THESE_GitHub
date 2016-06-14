@@ -1,0 +1,7050 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass article
+\begin_preamble
+\usepackage{babel}
+
+\usepackage{babel}
+\end_preamble
+\use_default_options false
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding utf8x
+\fontencoding T1
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 2
+\use_package amssymb 2
+\use_package cancel 0
+\use_package esint 1
+\use_package mathdots 0
+\use_package mathtools 0
+\use_package mhchem 0
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 2cm
+\topmargin 2cm
+\rightmargin 2cm
+\bottommargin 2cm
+\headheight 2cm
+\headsep 2cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Modélisation, Simulation multi-niveau pour l'optimisation de politiques
+ de vaccination
+\end_layout
+
+\begin_layout Author
+TRAN Thi Cam Giang, Jean Daniel ZUCKER, Marc CHOISY, Yann CHEVALEYRE
+\end_layout
+
+\begin_layout Date
+03/06/2015
+\end_layout
+
+\begin_layout Part
+INTRODUCTION
+\end_layout
+
+\begin_layout Section
+Problematic
+\end_layout
+
+\begin_layout Subsection
+Current Status of Infectious Diseases 
+\end_layout
+
+\begin_layout Standard
+According to the 2004 Global Burden of Disease report of the world Health
+ Organization, infectious disease is the leading cause of death of children
+ and adolescents, and one of the main causes in adults.
+ Infectious disease brings for six of the top 20 leading causes of death
+ worldwide.
+ In low-income countries, infectious disease represents six of the top 10
+ most common causes of death.
+ This thesis is proposed in the context when the world started struggling
+ with a global recession and in the same time, many public health serious
+ events have occurred in the world : SRAS in 2003, avian influenza in 2004
+ or swine flu in 2009, etc.
+ Besides, we had to face up to 
+\begin_inset Quotes eld
+\end_inset
+
+re-emerging
+\begin_inset Quotes erd
+\end_inset
+
+ infectious diseases that were thought to be waning.
+ For example, particularly and quite surprisingly one of the vaccine-preventable
+ diseases is measles that returned backs in all the world and much stronger
+ than before.
+ At the start of 2014, the World Health Organization (WHO) officially stated
+ global measles epidemic outbreak.
+ In the first three months of the year 2014, there were about 56,000 cases
+ of measles infections in 75 countries, particularly in southeast Asia and
+ in Vietnam.
+ More specially, in the United States, measles cases significantly rose
+ in 2014, 14 years after national leaders stated that the disease had been
+ disappeared within the country.
+ There were 288 cases of measles reported in the U.S between Jan.
+ 1 and May 23, 2014 as in figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:measlesUS20012014"
+
+\end_inset
+
+.
+ To explain this sudden outbreak of the measles, epidemiologist found out
+ that the reasons are strongly relative to international travel by unvaccinated
+ people (particularly U.S.
+ residents), and incomplete vaccination that the American government doesn't
+ control.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics
+	filename /home/tran/Desktop/These_TTCGIANG/THESE_GitHub/Manuscrist/Manuscrit/shareLatex/version2/figure/measlesUS20012014.pdf
+	scale 50
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+protect
+\end_layout
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Measles, U.S., 2001-2014: Cumulative Number by Month of Rash Onset
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:measlesUS20012014"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Moreover, the world has to face up new infectious diseases that were once
+ unknown or already known in past but totally to be waning, such as Ebola
+ epidemic, in the same year to the measles.
+ The Ebola epidemic is the largest in human history, affecting almost all
+ countries in West Africa.
+ To date, the WHO have reported a total of 28,575 suspected cases and 11,313
+ deaths.
+ However, it is numbers in documents understated for the magnitude of the
+ outbreak.
+ Now, in Liberia, the government was officially stated Ebola-free in May
+ 2015, however new cases were found in late June and early July.
+ The world suffered two large epidemics in the same year, this has stressed
+ the importance of the epidemiological phenomena anticipation when diseases
+ occur.
+ Many studies proposed by the WHO, the Pasteur Institute and the Inserm
+ in the field of environmental security have tried to understand disease
+ phenomena and spread of disease over a territory, to better manage when
+ diseases occur.
+ 
+\end_layout
+
+\begin_layout Standard
+Hence, infectious diseases is becoming more complex, and more variant.
+ We are difficult to well control the spread of infectious diseases even
+ vaccine-preventable diseases as meals.
+ 
+\end_layout
+
+\begin_layout Standard
+With the current epidemic state of the world, the main reasons to explain
+ the reemergence of old communicable diseases and the emergence of new ones
+ as follows : 
+\end_layout
+
+\begin_layout Itemize
+changes of environment where we live in : 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+(1) Increased movements of people, 
+\end_layout
+
+\begin_layout Itemize
+(2) expansion of international trade in foodstuffs and medicinal biological
+ products, 
+\end_layout
+
+\begin_layout Itemize
+(3) social and environmental changes linked to urbanization, 
+\end_layout
+
+\begin_layout Itemize
+(4) deforestation, 
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+These four reasons change rapidly the nature of the world where we live
+ in, but our human is not becoming to.
+ However, the main agents of infectious diseases such as bacterial, fungal,
+ parasitic, and viral already rapidly adapt to new environment.
+ 
+\end_layout
+
+\begin_layout Standard
+Evolution of drugs that is used for the curative treatments of infectious
+ disease, have become less effective and developed less slowly than the
+ adaption of parasites.
+ 
+\end_layout
+
+\begin_layout Standard
+Hence, we are preceding two great challenges : 
+\end_layout
+
+\begin_layout Itemize
+we keep on promoting the evolution of antimicrobial resistance for infectious
+ disease.
+ 
+\end_layout
+
+\begin_layout Itemize
+It is necessary to understand the environmental factors that contribute
+ to the emergence and re-emergence of infectious diseases and the process
+ of disease spread to develop tools that will enable detecting and monitoring
+ of how diseases spread, so that they can be identified and controlled before
+ these infectious disease become pandemics.
+\end_layout
+
+\begin_layout Standard
+Because the evolution of drugs is always slower than the adaption of parasites
+ in environmental changes, thus now we focus on tools that will enable detecting
+ and predicting diseases spread before they become pandemics.
+ 
+\end_layout
+
+\begin_layout Subsection
+Disease Control Policy
+\end_layout
+
+\begin_layout Standard
+Pathogenic microorganisms such as bacteria, viruses, parasites or fungi
+ are key factors causing infectious diseases.
+ The diseases can be spread directly or indirectly from one person to another,
+ through a mediate environment or contaminated tools.
+ As far as directly infectious diseases are concerned, meaning diseases
+ directly transmitted from one person to another, we have some normal policies
+ to prevent the spread of diseases such as vaccines, anti-viral medications,
+ and quarantine.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+A.
+ Quarantine: 
+\end_layout
+
+\begin_layout Standard
+Quarantine is a policy to protect the public of disease by separating and
+ restricting the movement of people in community who have or may have a
+ contagious disease.
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Advantages: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Quarantine can be applied to humans as well as animals to protect the spread
+ of disease.
+ 
+\end_layout
+
+\begin_layout Itemize
+Quarantine simply is a precautionary measure that breaks the line of transmissio
+n from infected individuals to others.
+ This method allows health authorities to prevent further spread of a disease
+ in the case the quarantined individual develops clinical symptoms of the
+ disease of concern.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Disadvantages: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+The main method of the quarantine is to separate and restrict the movement
+ of people in community.
+ This method really is effective in a public health to prevent spread of
+ a disease.
+ However it has to face adverse consequences for civil liberties (ethical
+ and human rights) and economic status (border closures and travel restrictions).
+ Big challenge is proposed how we can guarantee tradeoffs between personal
+ freedom and public good in preparing for a pandemic.
+ 
+\begin_inset Formula $\backslash$
+\end_inset
+
+cite{choffnes2007ethical} 
+\end_layout
+
+\begin_layout Itemize
+In the case, disease has a long incubation period and do not have highly
+ evident symptoms.
+ Everything needs to be checked for suspected cases, so can be quite time
+ consuming.
+ 
+\end_layout
+
+\begin_layout Itemize
+Quarantine is only effective as a PHYSICAL barrier to disease.
+ Hence, it is not effective for disease of animal, particularly wild birds.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+B.
+ Anti-viral medications: 
+\end_layout
+
+\begin_layout Standard
+Antiviral medications usually are called drugs used specifically for treating
+ viral infections.
+ Antiviral drugs are medicines in form (pills, liquid, an inhaled powder,
+ or an intravenous solution) that makes the ability of viruses decrease
+ to reproduce.
+ So, these drugs may help reduce the duration of symptoms caused by virus.
+ 
+\end_layout
+
+\begin_layout Itemize
+Advantages : 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Antiviral drugs are recommended for both treatment and prevention of virus
+ replication.
+ For example, for influenza, within 48 hours of onset of flu symptoms, antiviral
+ drugs work best, but they may still offer benefits when taken later.
+ These medications may reduce the duration of flu by one to two days and
+ prevent severe flu complications.
+ Moreover, when you get the flu, the antiviral drugs is a best choose.
+ 
+\end_layout
+
+\begin_layout Itemize
+Current antiviral drugs now are designed to help deal with HIV, herpes,
+ viruses, the hepatitis b and C viruses, and influenza A and B viruses.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Disadvantages: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Designing safe and effective antiviral drugs is difficult, because viruses
+ use the host's cells to replicate.
+ 
+\end_layout
+
+\begin_layout Itemize
+Antiviral drugs sometimes are serious, particularly for children and newborn
+ babies.
+ It is necessary to speak with doctor before making any decisions about
+ medications.
+ 
+\end_layout
+
+\begin_layout Itemize
+Antiviral drugs only work best within when taken within 48 hours of onset
+ of flu symptoms.
+ It is not good to prevent diseases before taking diseases.
+ For some diseases that have vaccines, antiviral drugs are a second method
+ of defense to treat diseases if you get it.
+ Vaccines are still the first and best way to prevent diseases.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+C.
+ Vaccination: 
+\end_layout
+
+\begin_layout Standard
+A vaccine is understood as a biological preparation that provides active
+ acquired immunity to a particular disease for our body.
+ After having been vaccinated, we transport microorganisms in weakened or
+ killed form of the microbe into our body.
+ The body's immune system produces the right antibodies to recognize the
+ germs as a threat, destroy them and keep a record of them.
+ Because of that, when the disease occurs, our immune system can recognize
+ and destroy with a better chance of success any of these germs that it
+ later encounters.
+ In past, vaccination has greatly helped human beings.
+ The vaccination of influenza, Human Papillomavirus (HPV) and chicken pox
+ have been particularly appreciated.
+ Smallpox is a particular example.
+ It was a big black point in human history during the closing years of the
+ 18th century.
+ Smallpox killed an estimated 400,000 Europeans annually and among the people
+ that luckily survived, a third had been blinded by the disease.
+ However, the WHO officially stated the eradication of smallpox in 2011
+ 
+\begin_inset Formula $\backslash$
+\end_inset
+
+cite{tognotti2010SmallpoxErad,fenner2001SmallpoxErad}.
+ Many infectious diseases are clearly restricted such as influenza, polio,
+ measles and tetanus from much of the world.
+ 
+\end_layout
+
+\begin_layout Itemize
+Advantages: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+The biggest benefit of vaccine is individual immunity: It provides long-term,
+ sometimes lifelong protection against a disease.
+ The vaccines recommended in the early childhood immunization schedule protect
+ children from common infectious diseases worldwide (measles, chicken pox
+ and other illnesses).
+ As children grow older, additional vaccines protect them from diseases
+ that affect adolescents and adults, as well as for diseases they may encounter
+ during travel to other regions.
+ 
+\end_layout
+
+\begin_layout Itemize
+The secondary benefit of vaccination, is herd immunity (or called also community
+ immunity).
+ When vaccination rates in a community is high, so herd immunity can protect
+ people who are unable to receive vaccinations (including newborns and individua
+ls with chronic illnesses) from diseases.
+ Hence, it is difficult for the disease to gain an outbreak in the community.
+ Vaccination has greatly reduced the burden of infectious diseases.
+ 
+\end_layout
+
+\begin_layout Itemize
+Vaccination is different from giving medicine to an unwell child to make
+ them better.
+ The benefits of vaccination are invisible.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Disadvantages: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+The ability of disease outbreak strongly depends on community vaccination
+ rates.
+ Widespread disease outbreaks can occur if the vaccination rates drop below
+ the threshold of herd immunity.
+ Thus, the problem about the vaccination rates is a big problem for countries
+ that have complex geographic system.
+ 
+\end_layout
+
+\begin_layout Itemize
+Deciding not to vaccinate children puts them at risk of catching a range
+ of potentially serious, even fatal, diseases.
+ 
+\end_layout
+
+\begin_layout Itemize
+Expensive.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+In short, we find that among three policies to prevent spread of diseases,
+ the vaccination policies bring more benefits than two methods left.
+ The vaccination policies build a complete immune system against diseases
+ for children in long-term or lifelong.
+ Moreover, vaccines can prevent spread of disease in an entire community.
+ Due to two strong benefits, the vaccination programmes have been deployed
+ in the world.
+ However, according to the U.S.
+ childhood vaccination schedule for children between birth and six years,
+ 14 different diseases are recommended for immunizations.
+ 14 base vaccines must vaccinate children in an obligatory age is a very
+ difficult financial problem for governments as well as parents in low-income
+ countries.
+ To solve the financial problem and at the same time to prevent the disease
+ outbreak in the world, WHO always try to provide more free vaccines for
+ poor countries.
+ But nowadays, no infectious disease is completely eradicated.
+ 
+\end_layout
+
+\begin_layout Standard
+One question is posed why the human is still facing up to infectious diseases
+ when most of common infectious disease have vaccines.
+ It is obvious that the thorough knowledge of the disease is essential in
+ order to implement large-scale proper infection control measures and prevention
+ campaigns.
+ The disease transmission methods depend on the characteristics of each
+ disease and the nature of the microorganism that causes it.
+ However, as mentioned above, vaccination rates strongly influences the
+ ability of disease outbreak in the community.
+ If in a community, the rate of vaccinated individuals is more than 80%,
+ so this community is completely protected from a disease.
+ But, in fact, it is very rare to have a community of 80% vaccinated individuals
+, and more rarely in pour countries.
+ 
+\end_layout
+
+\begin_layout Standard
+Our current mass policy (for example the routine measles vaccination policy
+ for measles) that vaccinates the maximum number of children before a certain
+ age, is the oldest (started from the 1950s in the rich countries) and is
+ now the most used.
+ The policy has obtained main result that is a clear decrease of the incidence
+ in most countries.
+ However, due to the nature of this mass policy, the problem of this vaccination
+ policy is too expensive, really ineffective and quite impossible to implement
+ in poor countries, especially in Africa because of both financial and logistica
+l problems.
+ (e.g.
+ the WHO project "Extended Program on Immunization" in Vietnam for the measles
+ extinction before 2012 failed).
+ 
+\end_layout
+
+\begin_layout Standard
+Hence, the challenge is posed that there is a way that can help us predict
+ the effective of a vaccination policy before we place it.
+ Because, in fact when a vaccination policy is performed in a country, there
+ is only one policy deployed.
+ One single policy is placed in a community and after a couple of years
+ we can start evaluating the effective of the policy.
+ This is very expensive and loses time.
+ 
+\end_layout
+
+\begin_layout Standard
+Need a tool new optimal vaccination policies in artificial intelligence
+ in order that these policies may become more effective, less expensive,
+ and take into account the spatial dimension for all popular infectious
+ diseases.
+ Modeling tools are proposed to simulate disease transmission dynamics of
+ vaccine-preventable diseases and to investigate and predict the effect
+ of vaccination policies on the spread of diseases in the entire world.
+ 
+\end_layout
+
+\begin_layout Subsection
+Current Modeling Tools 
+\end_layout
+
+\begin_layout Standard
+As we know, increased movements of people world-wide is the leading factor
+ of the ability of spread of infectious disease.
+ Recent works have shown that infectious diseases can spread and outbreak
+ in space [9, 15, 35, 37].
+ There are many factors that affect the spread in space such as: local factors
+ (demographic including population size [19], growth rate and death rate
+ [7], sociological such as school period of children, work tendency from
+ rural to urban, environmental and climatic comprising seasonal variations
+ in seasonality [8, 17], temperature and rainfall, immunological for diseases,
+ etc...), and global factors (the connections between the different populations
+ (i.e.
+ spatial structure) [40] such as distance [19], coupling rate, number of
+ individuals between populations, etc....).
+ Hence, knowledge of these factors is very difficult, but extremely essential
+ to inform models and computational efforts.
+ It is the reason why there are few empirical studies available that provide
+ estimates of the number and duration of contacts between subpopulations
+ in a metapopulation.
+ Moreover, the role of the infectious disease modeling has a big signification
+ for us.
+ For examples, due to these, we can simulate the spread of infectious diseases
+ in subpopulations, the interaction among subpopulations.
+ We can observe and understand the emergent dynamics of epidemics.
+ Then, we can predict and anticipate the scales of infectious disease dynamics.
+ Thus, we can give proper policies to minimize the infected number and better
+ manage when diseases occur.
+ Hence, there are already some packages in R that support us doing simulations,
+ such as : 
+\begin_inset Quotes eld
+\end_inset
+
+adaptivetau
+\begin_inset Quotes erd
+\end_inset
+
+, 
+\begin_inset Quotes eld
+\end_inset
+
+GillespieSSA
+\begin_inset Quotes erd
+\end_inset
+
+ and 
+\begin_inset Quotes eld
+\end_inset
+
+EpiDynamics
+\begin_inset Quotes erd
+\end_inset
+
+.
+ These packages allow us to simulate dynamics of epidemics.
+ However, they have many disadvantages: (1) simulation in R is naturally
+ slow, (2) these packages don't perform modeling for a meta-population of
+ many subpopulations, so simulating the dynamics of a meta-population is
+ very difficult, and the time to implement simulations is very big, (3)
+ R uses virtual memory to hold objects, this causes design limitations on
+ great objects, hence users see always issues in R memory, specially anyone
+ who works with large datasets.
+ 
+\end_layout
+
+\begin_layout Standard
+Therefore, challenge to us is to create a tool that permits us to model
+ infectious disease dynamics in a metapopulation, to hurry up simulations,
+ and become a useful tool to support decision of public healthy policies
+ used by health professionals.
+ 
+\end_layout
+
+\begin_layout Section
+Motivation of thesis
+\end_layout
+
+\begin_layout Standard
+This thesis is proposed in epidemic context where many infectious diseases
+ such as measles, dengue in Asia and most countries of southeast Asia are
+ more and more seriously occurring in incidence and geographic range; and
+ there are emerging infectious diseases such as Ebola, Zika.
+ Besides, the mass policy, the oldest and still most widely used in the
+ world, is to vaccinate a maximal number of children before a certain age.
+ This policy is already obtaining a significant decrease about the incidence
+ in many countries.
+ However, it is too expensive, ineffective and absolutely impossible to
+ implement in many poor and low-income countries, in particular in Africa,
+ Southeast Asia because of financial and logistical problems.
+ On the other hand, the number of the tool supporting prediction of disease
+ spread is still limited.
+ Hence, there are many challenges pointed to this thesis.
+ The first urgent request is to propose an efficient algorithm for optimizing
+ vaccination policies evaluated by spacial and stochastic simulation.
+ More urgently, we must have an informatics tool supporting decision of
+ vaccination policies used by health professionals available in the form
+ of an R package that can integrate R and C++ to speed up simulations.
+ 
+\end_layout
+
+\begin_layout Standard
+In this thesis, we will focus on modeling of popular infectious diseases
+ with transmission by direct contact.
+ This transmission requires a close contact between an infected person and
+ a susceptible person, such as touching an infected individual, kissing,
+ sexual contact with oral saliva, or contact with body lesions.
+ These diseases usually occur between members of the same household or close
+ friends and family.
+ In particular, this thesis will mostly focus on measles.
+ Measles is a highly contagious, serious disease caused by a virus.
+ It is a typical infectious disease with direct transmission.
+ In 1980, approximate 
+\begin_inset Formula $2.6$
+\end_inset
+
+ million people was killed each year before we had the widespread vaccination
+ policies.
+ It spreads very fast by coughing and sneezing in human communities via
+ close interpersonal contact or direct contact with secretions.
+ Its main symptoms consist of high fever, cough, runny nose and red eyes.
+ These first symptoms usually take from 
+\begin_inset Formula $10$
+\end_inset
+
+ to 
+\begin_inset Formula $12$
+\end_inset
+
+ days after exposure to an infectious person, and lasts 
+\begin_inset Formula $4$
+\end_inset
+
+ to 
+\begin_inset Formula $7$
+\end_inset
+
+ days 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "panum1988observations"
+
+\end_inset
+
+.
+ Nowadays, there is no proper treatment for measles to totally prevent the
+ spread of measles except routine measles vaccination policy for children.
+ According to the report by the WHO, since 2002 measles was eradicated from
+ U.S.
+ However, today measles vaccination has not been extensively popularized
+ in the entire world.
+ Beside the obtained results, for example, in 2013, there was about 84
+\begin_inset Formula $\backslash$
+\end_inset
+
+% of the world's children having received one dose of measles vaccine, and
+ during 2000-2013, measles vaccination prevented an estimated 15.6 million
+ deaths; we have had to face up about 145700 measles deaths globally-estimated
+ 400 deaths every day or 16 deaths every hour in 2013.
+ Measles becomes one of the leading causes of death among young children
+ in the world, although now we are having a big stock of safe and readily
+ available measles vaccines.
+ 
+\end_layout
+
+\begin_layout Standard
+In short, build a tool to optimize vaccination policies in order that these
+ policies may become more effective, less expensive, and take into account
+ the spatial dimension for all popular infectious diseases, in particular
+ fir measles.
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Part
+STATE OF THE ART
+\end_layout
+
+\begin_layout Section
+Model
+\end_layout
+
+\begin_layout Subsection
+Spatial structures for metapopulation model 
+\end_layout
+
+\begin_layout Standard
+For directly transmitted infectious diseases by virus and bacteria, susceptible
+ individuals are not only infected by infected individuals in the same location,
+ but also by other infected individuals due to the movement of individuals
+ between populated regions.
+ This is one very important part in the domain studying the geographical
+ spread of infectious diseases.
+ We care for host population characteristics, then characteristics of spatial
+ spread of an infectious disease among populations.
+ Through these characteristics, we find optimal policies to minimize the
+ number of infected individuals in a community.
+ In fact, there are many studies about the interactions among populations.
+ However, we can divide the spatial structure of populations into two main
+ levels: "inter-city level" and "intra-city level".
+ At the inter-city level (or called "micro-level"), we use differential
+ equations to control its models.
+ At the "intra-city level" ( also called "macro-level") in which we provide
+ connections between the populations, simulate the intra-city traffic.
+ We consider the effect of travel through the connections between population
+ regions as a means of spreading a virus 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "shaw2010effective"
+
+\end_inset
+
+.
+ Focusing on the "macro-level", we have two basic models considered : (1)
+ the model has no explicit movement of individuals and (2) the models describes
+ enough travels and movements of individuals among populations and even
+ takes into account the resident population as well as the current population
+ of individuals 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "van2008spatial"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Enumerate
+The spatially-nonexplicit model
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+A population may be simplified as a city, community, or some other geographical
+ region.
+ Population travel (e.g.
+ among animals and among people by foot, birds, mosquitoes and in particular,
+ people travel by air from one city to another), is the main reason why
+ diseases can spread quickly among very distant cities such as SARS disease
+ in 2003.
+ Therefore, the term "metapopulation" arrived in the ecological literature
+ in 1969 by Levins 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Levins1969,hanski1991metapopulation"
+
+\end_inset
+
+.
+ A metapopulation is a population of a set of spatially discrete local populatio
+ns (or subpopulations in short) with mutual interaction 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Levins1969"
+
+\end_inset
+
+.
+ In the metapopulation in which a subpopulation can only go extinct locally
+ and be recolonized by another after it is emptied by extinction 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Bolker1996,Hanski1998,Levins1969"
+
+\end_inset
+
+ and migration between subpopulaitons is significantly restricted.
+ In a metapopulation, if recolonization rates are smaller than extinction
+ rates, then total extinction of all local population will easily be reached.
+ The persistence time of the metapopulation is measured as the time until
+ all subpopulations go extinct.
+ According to Harrison (1991) 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "hanski1991metapopulation"
+
+\end_inset
+
+ there are four types of spatially dynamic populations : classic Levins
+ metapopulation, mainland-island metapopualtion, patchy population and non-equil
+ibrium populations.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Classic Levins metapopulation:
+\end_layout
+
+\begin_layout Standard
+The first metapopulation model was proposed in 1969 by Levins.
+ It is called the classic Levins Metapopulation 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Levins1969"
+
+\end_inset
+
+.
+ Wilson in 1980 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "wilson1980natural"
+
+\end_inset
+
+ stated that in this classic model "A nexus of patches, each patch winking
+ into life as a population colonizes it, and winking out again as extinction
+ occurs.
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics
+	filename figure/classicLevinsMeta.eps
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+protect
+\end_layout
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Classic Levins Metapopulation Model 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "harrison1997empirical"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+All subpopulations in this classic model are relatively small.
+ The levels of interaction among individuals within a subpopulation is much
+ higher than between subpopulations.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Mainland-island metapopulation:
+\end_layout
+
+\begin_layout Standard
+The second model is the mainland-island metapopulation in which there are
+ some small "island" subpopulations within dispersal distance of a much
+ larger "mainland" subpopulation.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics
+	filename figure/mainlandIslandMeta.eps
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+protect
+\end_layout
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Mainland-Island Metapopulation 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "harrison1997empirical"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+It is evident that smaller sub-populations have a high probability of local
+ extinction, but the mainland population will hardly become extinct.
+ The migration from the mainland to the islands is independent of the islands
+ white or filled, but is propagated for the connected islands.
+ Therefore, if the mainland population has a low individual density and
+ there is no immigration, then population growth rate is positive.
+ Inversely, if island populations are in the same conditions as the mainland,
+ then its population growth rate is negative.
+ Thus, the islands would go down to extinction if there are no immigrants.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Patchy population:
+\end_layout
+
+\begin_layout Standard
+The third model is patchy population.
+ The local populations exist in a big habitat population and the dispersal
+ rate between sub-populations is high.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figure/figPatchyPopulation.eps
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+protect
+\end_layout
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Patchy population 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "hanski1991metapopulation"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Here we can find that the population structure is grouped and the interaction
+ among them is frequent.
+ However, this model is not referred as a concept for metapopulation and
+ most researchers do not consider this a meta-population either.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Non-equilibrium populations:
+\end_layout
+
+\begin_layout Standard
+The final model is the non-equilibrium population.
+ The local populations are patches, its local extinctions are much greater
+ than its recolonisation.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics
+	filename figure/figNonEquilibriumPopulation.eps
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+protect
+\end_layout
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Non-equilibrium population 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "hanski1991metapopulation"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+It is obvious that white patches are rarely or never recolonized.
+ Therefore, this model is not considered as a functional metapopulation.
+ We can find this model in forested agricultural fields.
+\end_layout
+
+\begin_layout Standard
+We already have four metapopulation models.
+ In order to model the metapopulations mentioned above, we have three main
+ model to implement : spatially-implicit model, spatially-explicit model
+ and spatially-realistic model.
+ For the first model, this is the type of model used in Levins (1969) 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Levins1969"
+
+\end_inset
+
+ in which supposing that all local populations are connected with each other
+ and they have independent local fluctuations.
+ At any one time, we save track of the proportion of local populations and
+ we do not take care the distance between them and the population size of
+ each subpopulation.
+ This model are mathematically and conceptually easy to implement.
+ But this model can only answer some metapopulation problems because it
+ ignores so many variables of a metapopulation.
+ This model should be used for metapopulation close to a steady state.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+The spatially-explicit model
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+For the second model, the spatially-explicit model is more complex than
+ the first model.
+ Subpopulations may be filled or vacant.
+ Local populations only have interactions with the nearest neighbors.
+ Subpopulations are organized as cells on a grid and migration among them
+ depends on population density.
+ We also only consider presence or absence of a species in each subpopulation.
+ The advantage of this model is easy to model because of same local behaviors
+ from subpopulation to subpopulation.
+ However, we cannot simply describe the state of the metapopulation through
+ filled subpopulations.
+ Finally, the spatially-realistic model uses GIS to realize attributes,
+ geometric coordinates, etc ...
+ to a metapopulation.
+ The first author using this model is Hanski in 1994 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "hanski1994practical"
+
+\end_inset
+
+.
+ His model was defined as the incidence function (IF) model.
+ This model is more realistic, and we can estimate quantitative predictions
+ about metapopulation fluctuation.
+ However, in fact, this model is very complicated, and many geographic data
+ have to be estimated.
+ Hence, the metapopulation concept start to no longer exist.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+In the scope of this thesis, we focus on a metapopulation model that is
+ result of combination between the spatially-explicit model and the patchy
+ population.
+ In general, this a simple spatial model, but is one of the most applicable
+ model to descrire spread of diseases in human communities.
+ This metapopulation consists of distinct subpopulations, each of which
+ fluctuates independently, together with interaction limited by a coupling
+ parameter 
+\begin_inset Formula $\rho$
+\end_inset
+
+.
+ These subpopulations may be filled or empty and contact with any neighbours.
+\end_layout
+
+\begin_layout Subsection
+Epidemic models
+\end_layout
+
+\begin_layout Standard
+It is known that, there are many current models that are used to model complex
+ systems in nature, in ecology system and in epidemiology.
+ Mathematical models in epidemiology are a typical example.
+ These models permit us to present behavior of diseases and disease process
+ in mathematics.
+ However, explaining the transmission of infectious diseases is a difficult
+ problem for an epidemiologist.
+ Because there are many different interacting factors causing the outbreak
+ of diseases such as the environment, the climate, the geography, the culture,...He
+nce, the role of the epidemiologist is how to model the characteristics
+ and the transmission process of an infectious disease.
+ Researchers have proposed compartmental models in epidemiology by dividing
+ the population into “compartments
+\begin_inset Quotes erd
+\end_inset
+
+ that illustrate health states of human through individuals.
+ These compartmental models are called the epidemic models too.
+ The first benefit of these models is to model the transmission process
+ of a communicable disease through compartments.
+ Then, we can predict the properties of the disease dynamics such as the
+ estimated number of infected individual, the time of persistence of disease,
+ further that where and when we can implement vaccination policies to have
+ both a minimum number of vaccined individuals and the minimum number of
+ infected individuals in a given population.
+ Let image that now in your country, there is an infectious disease as measles,
+ a baby can be infected.
+ According to the process of infection of disease, firstly this baby was
+ born, he is fine and he is not infected yet by the measles but he may be
+ infected in the future.
+ We say that he belongs to the susceptible group (in short, S).
+ Then, his mother takes him to a supermarket, there he see so many people,
+ he is really infected through any way.
+ He starts having a high fever, he may have to pass this state from 
+\begin_inset Formula $3$
+\end_inset
+
+ days to 
+\begin_inset Formula $5$
+\end_inset
+
+ days.
+ In this period, he is really infected but he cannot infected others.
+ We say that he belong to the exposed group (in short, E).
+ After that, he start decreasing the temperature, but at the same time,
+ he begins having red rashes on the back of the ears, after a few hours,
+ on the head, on the neck and finally most of the body.
+ This period appears from five to eight days after the exposed step.
+ This duration is very sensible.
+ The baby is completely infected and he can infected others if they see
+ him.
+ He belongs to the infected group (in short, I).
+ Finally, he passes to the final period, he comes back good state.
+ We say that he belongs to the recovered group with immunity (in short,
+ R).
+\end_layout
+
+\begin_layout Standard
+Around these four main health groups presenting the process of infection
+ propagation in community, there are many epidemic models proposed.
+ We give here the development of epidemic models by focusing on acute infections
+, assuming the pathogen causes illness for a periods of time followed by
+ (typically lifelong) immunity.
+ The first simplest model is the S-I-R model created by W.
+ O.
+ Kermack and A.
+ G.
+ McKendrick in 1927.
+ The authors categorized hosts within groups as described above 
+\series bold
+S
+\series default
+usceptible (if not yet exposed to the pathogen), 
+\series bold
+I
+\series default
+nfected (if currently infected by the pathogen) and 
+\series bold
+R
+\series default
+ecovered (if they have successfully cleared the infection).
+ From the simplest SIR model, in order to accord each infectious disease
+ and real property of disease, scientists have modified it, made it different
+ multiform.
+ However, in shape of this thesis, we concentrate on the SEIR model (as
+ the figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:seirmodel"
+
+\end_inset
+
+) that fit many currently infectious diseases in the world.
+ Each patient must pass four health steps : susceptible stage, incubation
+ stage, infectious stage and recovered stage.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement tbph
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics
+	filename figure/seirmodel.eps
+	scale 50
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+protect
+\end_layout
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+SEIR model
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:seirmodel"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In this model, the host population (N) is divided into four classes : susceptibl
+e S(t), exposed E(t), infected I(t) and recovered R(t).
+ We have :
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\begin_inset Formula $N(t)=S(t)+E(t)+I(t)+R(t)$
+\end_inset
+
+ 
+\series default
+ 
+\end_layout
+
+\begin_layout Itemize
+Class S(t) : contains the number of individuals not yet with the disease
+ at time t, or those susceptible to the disease.
+ 
+\end_layout
+
+\begin_layout Itemize
+Class E(t) : contains the number of individuals who are in the exposed or
+ latent period of the disease.
+ 
+\end_layout
+
+\begin_layout Itemize
+Class I(t) : contains the number of individuals who have been infected with
+ the disease and are capable of spreading the disease to those in the susceptibl
+e category.
+ 
+\end_layout
+
+\begin_layout Itemize
+Class R(t) : contains the number of individuals who have been infected and
+ then removed from the disease, either due to immunization or due to death.
+ Individuals of this class are not able to be infected again or to transmit
+ the disease infection to others.
+ 
+\end_layout
+
+\begin_layout Standard
+The conceptual descriptions of the model can be represented by a flow diagram
+ above.
+ The flow diagram for the SEIR model uses arrows to present the movement
+ between the S and I classes, the E and I classes and the I and R classes.
+ Here, individuals are born susceptible, die at a rate 
+\begin_inset Formula $\mu$
+\end_inset
+
+, become infected with the force of infection 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ that is a function among the contact rate 
+\begin_inset Formula $\beta$
+\end_inset
+
+, the number of infected individual I and the population size N, infectious
+ after a latency period of an average duration of 
+\begin_inset Formula $1/\sigma$
+\end_inset
+
+ and recover at the rate 
+\begin_inset Formula $\gamma$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+The SEIR model is investigated by ordinary differential equations (ODE)
+ that are deterministic 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "KeelingRohani2008"
+
+\end_inset
+
+.
+ The value of variable states is only determined by parameters in the model
+ and by sets of previous states of these variables.
+ Moreover, the epidemic models are often proposed for one single population
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "KeelingRohani2008"
+
+\end_inset
+
+.
+ In the scope of this thesis, we propose a deterministic model for many
+ subpopulations in a metapopulation.
+ The standard SEIR model (susceptible-exposed-infective-recovered) has been
+ strongly developed for the dynamics of directly infectious disease 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Bolker1995"
+
+\end_inset
+
+.
+ For disease-based metapopulation models, we give here a suit able new version
+ of the SEIR equation that would be as follows:
+\end_layout
+
+\begin_layout Standard
+Consider a metapopulation of 
+\begin_inset Formula $n$
+\end_inset
+
+ sub-populations.
+ In a subpopulation 
+\begin_inset Formula $i$
+\end_inset
+
+ of size 
+\begin_inset Formula $N_{i}$
+\end_inset
+
+, disease dynamics can be deterministically described by the following set
+ of differential equations 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Anderson&May1992"
+
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray}
+\frac{dS_{i}}{dt} & = & \mu N_{i}-\lambda_{i}S_{i}-\mu S_{i}\label{eq:dS}\\
+\frac{dE_{i}}{dt} & = & \lambda_{i}S_{i}-\mu E_{i}-\sigma E_{i}\\
+\frac{dI_{i}}{dt} & = & \sigma E_{i}-\mu I_{i}-\gamma I_{i}\label{eq:infectieux}\\
+\frac{dR_{i}}{dt} & = & \gamma I_{i}-\mu R_{i}\label{eq:dR}
+\end{eqnarray}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $S_{i}$
+\end_inset
+
+, 
+\begin_inset Formula $E_{i}$
+\end_inset
+
+, 
+\begin_inset Formula $I_{i}$
+\end_inset
+
+ and 
+\begin_inset Formula $R_{i}$
+\end_inset
+
+ are the numbers of susceptible, exposed, infectious and recovered in this
+ sub-population 
+\begin_inset Formula $i$
+\end_inset
+
+ respectively.
+ Individuals are born susceptible, die at a rate 
+\begin_inset Formula $\mu$
+\end_inset
+
+, become infected with the force of infection 
+\begin_inset Formula $\lambda_{i}$
+\end_inset
+
+, infectious after a latency period of an average duration of 
+\begin_inset Formula $1/\sigma$
+\end_inset
+
+ and recover at the rate 
+\begin_inset Formula $\gamma$
+\end_inset
+
+.
+ In a case the infectious contact rate is constant, the equilibrium values
+ of the variables 
+\begin_inset Formula $S$
+\end_inset
+
+, 
+\begin_inset Formula $E$
+\end_inset
+
+, 
+\begin_inset Formula $I$
+\end_inset
+
+ and 
+\begin_inset Formula $R$
+\end_inset
+
+ can be expressed analytically (see late part).
+ The force of infection depends not only on the total population size 
+\begin_inset Formula $N_{i}$
+\end_inset
+
+ and the number of infected 
+\begin_inset Formula $I_{i}$
+\end_inset
+
+ in subpopulation 
+\begin_inset Formula $i$
+\end_inset
+
+, but also in other sub-populations 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "KeelingRohani2008"
+
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\lambda_{i}=\sum_{j}\rho_{ij}\kappa_{j}\log\left[1-\sum_{k=1}^{M}\left(\frac{\left|I_{k,t}\right|}{N_{k}}\times c_{ik}\times\xi_{jk}\right)\right]\label{eq:force-1}
+\end{equation}
+
+\end_inset
+
+where 
+\begin_inset Formula $c_{i,k}$
+\end_inset
+
+ (
+\begin_inset Formula $0\leqslant c_{ij}\leqslant1$
+\end_inset
+
+) is the probability that a susceptible individual native from 
+\begin_inset Formula $i$
+\end_inset
+
+ being in contact with another infected individual native from 
+\begin_inset Formula $k$
+\end_inset
+
+ gets infected.
+ 
+\begin_inset Formula $\xi_{jk}$
+\end_inset
+
+ (
+\begin_inset Formula $0\leqslant\xi_{ij}\leqslant1$
+\end_inset
+
+) refers to the probability that an individual 
+\begin_inset Formula $y$
+\end_inset
+
+ meeting 
+\begin_inset Formula $x$
+\end_inset
+
+ in 
+\begin_inset Formula $C_{j}$
+\end_inset
+
+ comes from 
+\begin_inset Formula $C_{k}$
+\end_inset
+
+.
+ 
+\begin_inset Formula $\kappa_{j}$
+\end_inset
+
+ is the average number of contacts per unit of time a susceptible will have
+ when visiting subpopulation 
+\begin_inset Formula $j$
+\end_inset
+
+.
+ 
+\begin_inset Formula $\rho_{i,j}$
+\end_inset
+
+ (
+\begin_inset Formula $0\leqslant\rho_{ij}\leqslant1$
+\end_inset
+
+) is denoted as the probability that an individual from subpopulation 
+\begin_inset Formula $i$
+\end_inset
+
+ visits subpopulation 
+\begin_inset Formula $j$
+\end_inset
+
+, of course, 
+\begin_inset Formula $\sum_{j=1}^{M}\rho_{ij}=1$
+\end_inset
+
+.
+ See appendix for detail on the construction of this equation.
+ We can verify that in the limit case on one single subpopulation in the
+ metapopulation (
+\begin_inset Formula $i=j$
+\end_inset
+
+ and 
+\begin_inset Formula $n=1$
+\end_inset
+
+), we have:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\lambda_{i}=-\kappa_{i}\log(1-\frac{I_{i}}{N_{i}}\times c_{ii})
+\end{equation}
+
+\end_inset
+
+Consider that the average number of contacts per unit of time 
+\begin_inset Formula $\kappa_{i}$
+\end_inset
+
+ is seasonally forced 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Altizer2006"
+
+\end_inset
+
+ and seasonality is an annually periodic function of time 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Grenfell1995"
+
+\end_inset
+
+.
+ As a result, for the subpopulation 
+\begin_inset Formula $i$
+\end_inset
+
+ :
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\kappa_{i}(t)=\kappa_{i0}\left[1+\kappa_{i1}\cos\left(\frac{2\pi t}{T}+\varphi_{i}\right)\right]\label{eq:beta_i}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $t$
+\end_inset
+
+ is the time, 
+\begin_inset Formula $\kappa_{i0}$
+\end_inset
+
+ and 
+\begin_inset Formula $\kappa_{i1}$
+\end_inset
+
+ are the mean value and amplitude of the average contact rate 
+\begin_inset Formula $\kappa_{i}$
+\end_inset
+
+ at which a susceptible will have when visiting subpopulation 
+\begin_inset Formula $i$
+\end_inset
+
+ per unit of time, 
+\begin_inset Formula $T$
+\end_inset
+
+ and 
+\begin_inset Formula $\varphi_{i}$
+\end_inset
+
+ are the period and the phase of the forcing.
+ With the annual sinusoidal form of the average contact rate, we really
+ have the sinusoidally forced SEIR metapopulation model.
+\end_layout
+
+\begin_layout Standard
+In detail, the deterministic model performs the same way for a given set
+ of initial conditions.
+ It doesn't have randomness, dynamics, and don't present dynamic of diseases
+ in nature.
+ Thus, stochastic models have been proposed.
+ A stochastic model is always more realistic than a deterministic one.
+ These models have stochastic and variable states are not described by unique
+ values, but by probability distributions.
+ It is why we will use the stochastic models to predict extinction probability
+ of disease in spatial context
+\begin_inset CommandInset citation
+LatexCommand cite
+key "KeelingRohani2008"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection
+Algorithms of stochastic simulation
+\end_layout
+
+\begin_layout Standard
+Stochastic simulation works on variables that both are random and can be
+ changed with certain probability.
+ Today, these stochastic models have been used widely in many domain because
+ of some reasons as following : before, in order to model chemically reacting
+ systems, in simple way, we solved a set of coupled ordinary differential
+ equations (ODEs) 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "li2007stochastic"
+
+\end_inset
+
+ of deterministic approaches.
+ Basically, these approaches use the law of mass action that shows a simple
+ relation between reaction rate and molecular component concentrations.
+ We start with a given set of initial molecular concentrations, the law
+ of mass action permits us to see the component concentrations over time.
+ The states of a reaction are a homogeneous, free medium.
+ The reaction rate will be directly scaled with the concentrations of the
+ elements.
+ Most systems can use the traditional deterministic approaches to simulate.
+ It is evident that many systems such as some biochemical systems consist
+ of random, discrete interactions between individual elements.
+ However, in the case, these systems becomes smaller and smaller, the traditiona
+l deterministic models may not be accurate.
+ It is the reason for that the fluctuations of these systems can be simulated
+ exactly by applying stochastic models, particularly as well as the Stochastic
+ Simulation Algorithms (SSA) 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "gillespie1976general,gillespie1977exact"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+The SSA uses Monte Carlo (MC) methods to study the time evolution of the
+ jump process.
+ Because the basis feature of the Monte Carlo simulation is insensitive
+ to the dimensionality of the problem, and the work grows linearly with
+ the number of reaction channels in the model.
+ The SSA describes time-evolution statistically correct trajectories of
+ finite populations in continuous time by solving the corresponding stochastic
+ differential equations.
+ Using the stochastic models can solve three questions.
+ (1) These models take account the discrete character of the number of elements
+ and the evidently random character of collision among elements.
+ (2) They coincide with the theories of the dynamic and stochastic processes.
+ (3) They are a good idea to describe 
+\begin_inset Quotes eld
+\end_inset
+
+small systems
+\begin_inset Quotes erd
+\end_inset
+
+ and "instable systems
+\begin_inset Quotes erd
+\end_inset
+
+.
+ The main idea of the stochastic models is that element reactions are essentiall
+y random processes.
+ We don't know certainly how a reaction occur at a moment.
+ We also call it the process stochasticity.
+ In particular, in the process stochasticity, we talk about demographic
+ and environmental stochasticities in epidemic models.
+ The demographic stochasticity is strongly controlled by population size
+ such as the birth and death rates, contamination,etc.
+ But, the environmental stochasticity is just affected by environmental
+ factors what we can not govern.
+ Therefore, there are many epidemic models that forcus on exploration of
+ demographic stochasticity.
+ Demographic stochasticity is considered as fluctuation in population processes
+ that are based the random nature of events at the level of the individual.
+ Each event is related to one baseline probability fixed, individuals are
+ presented in differing fates due to chance.
+ In addition to the demographic stochasticity, the number of infectious,
+ susceptible, exposed and recovered individuals is now required to be an
+ integer.
+ Modeling approaches that incorporate demographic stochasticity are called
+ event-driven methods.
+ These methods require explicit consideration of events.
+ The first approach published by Daniel T.Gillespie in 1976 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "gillespie1976general"
+
+\end_inset
+
+ is an exact stochastic simulation approach for chemical kinetics.
+ The Gillespie stochastic simulation algorithm (SSA) has become the standard
+ procedure of the discrete-event modelling by taking proper value of the
+ available randomness in such a system.
+ The methods modelling the event-driven model demands explicit presentation
+ of events.
+ For the standard SEIR model, we have to consider the nine events that can
+ occur, each causing the numbers in the relative groups to go up or down
+ by one.
+ Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:stoch_event"
+
+\end_inset
+
+ lists all the events of the model, occurring in subpopulation 
+\begin_inset Formula $i$
+\end_inset
+
+ of a metapopulation:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="9" columns="3">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Events 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Rates 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Transitions 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+birth 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\mu N_{i}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $S_{i}\leftarrow S_{i}+1$
+\end_inset
+
+ and 
+\begin_inset Formula $N_{i}\leftarrow N_{i}+1$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+death of a susceptible 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\mu S_{i}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $S_{i}\leftarrow S_{i}-1$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+death of an exposed 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\mu E_{i}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="none" valignment="top" topline="true" rightline="true" usebox="none" special="c">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $E_{i}\leftarrow E_{i}-1$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+death of an infected 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\mu I_{i}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $I_{i}\leftarrow I_{i}-1$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+death of an immune 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\mu R_{i}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $I_{i}\leftarrow I_{i}-1$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+infection 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\lambda_{i}S_{i}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $S_{i}\leftarrow S_{i}-1$
+\end_inset
+
+ and 
+\begin_inset Formula $E_{i}\leftarrow E_{i}+1$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+becoming infectious 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\sigma E_{i}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $E_{i}\leftarrow E_{i}-1$
+\end_inset
+
+ and 
+\begin_inset Formula $I_{i}\leftarrow I_{i}+1$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+recovery 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\gamma I_{i}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $I_{i}\leftarrow I_{i}-1$
+\end_inset
+
+ and 
+\begin_inset Formula $R_{i}\leftarrow R_{i}+1$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+protect
+\end_layout
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Events of the stochastic version of the model of equations, occurring in
+ subpopulation 
+\begin_inset Formula $i$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:stoch_event"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+To implement this SEIR stochastic model, there are many different methods,
+ thought most researchers often use the method of Gillespie in 1977.
+ Starting from the initial states, the stochastic simulation algorithms
+ simulate the trajectory in population processes by repeatedly answering
+ the following two questions and updating the states.
+\end_layout
+
+\begin_layout Itemize
+When (time 
+\begin_inset Formula $\tau$
+\end_inset
+
+) will the next reaction fire? 
+\end_layout
+
+\begin_layout Itemize
+Which (reaction channel index 
+\begin_inset Formula $\mu$
+\end_inset
+
+) reaction will fire next? 
+\end_layout
+
+\begin_layout Standard
+So the key parameters in the SSA model are 
+\begin_inset Formula $\tau$
+\end_inset
+
+ and 
+\begin_inset Formula $\mu$
+\end_inset
+
+.
+ To calculate these distributions, we set 
+\begin_inset Formula $a_{0}(x)=\sum_{j=1}^{M}a_{j}(x)$
+\end_inset
+
+.
+ The time 
+\begin_inset Formula $\tau$
+\end_inset
+
+, given 
+\begin_inset Formula $X(t)=x$
+\end_inset
+
+, that the reaction will fire at 
+\begin_inset Formula $t+\tau$
+\end_inset
+
+, is the exponentially distributed random variable with mean 
+\begin_inset Formula $\frac{1}{a_{0}(x)}$
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+ & P(\tau=s)=a_{0}(x)exp(-a_{0}(x)s),\\
+\end{align*}
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "eqProbTau"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+and the index 
+\begin_inset Formula $\mu$
+\end_inset
+
+ is the integer random variable of that firing reaction with probability
+ :
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+ & P(\mu=j)=\frac{a_{j}(x)}{a_{0}(x)}\\
+\end{align*}
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "eqProbMu"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In each step, the SSA generates random numbers and calculates 
+\begin_inset Formula $\tau$
+\end_inset
+
+ and 
+\begin_inset Formula $\mu$
+\end_inset
+
+ according to the probability distribution 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eqProbTau"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eqProbMu"
+
+\end_inset
+
+.
+ Below we will show some methods that simulate exactly stochastic models.
+ In this part, we will review the variant formulations of Gillespie's stochastic
+ simulation algorithm (SSA) about the overview and the computational cost
+ of each algorithm, then approximate simulation methods, and finally hybrid
+ and multi-scale methods.
+ We will also point out which algorithm that is most efficient, which algorithm
+ that we have used in this thesis.
+\end_layout
+
+\begin_layout Subsubsection
+Exact stochastic simulation
+\end_layout
+
+\begin_layout Standard
+The key property for a discrete event simulation of a Markovian system basically
+ samples a time for the next event from this distribution and selecting
+ the reaction that occurs at that time.
+ The Markovian simulation methods have the basic steps of the widely used
+ kinetic Monte Carlo (KMC) method.
+ First persons introduced the method (also known as the KBL algorithm) are
+ Young and Elcock in 1966 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "young1966monte"
+
+\end_inset
+
+and independently Lebowitz, Bortz and Kalos in 1975 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "bortz1975new"
+
+\end_inset
+
+.
+ However, Gillespie really is the person who made kinetic Monte Carlo popular
+ in the chemical and biochemical domains, calling the algorithm the Stochastic
+ Simulation Algorithm (SSA) in his seminal articles 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "gillespie1976general,gillespie1977exact"
+
+\end_inset
+
+.
+ Below we will review his two papers.
+\end_layout
+
+\begin_layout Enumerate
+First reaction method (FRM) [GILLESPIE 1976] 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "gillespie1977exact"
+
+\end_inset
+
+: The first reaction method was proposed by Gillespie in 1976.
+ It models demographic stochasticity in the more intuitive and slower way
+ to the deterministic model.
+ The obtained result is "fluctuations in population processes that arise
+ from the random nature of events at the level of the individual" 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "KeelingRohani2008"
+
+\end_inset
+
+.
+ The following pseudo-code provides a clean implementation of Gillespie's
+ first reaction method :
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Float algorithm
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+0.
+ Label all species 
+\begin_inset Formula $X_{1},...,X_{k}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Plain Layout
+1.
+ Label all possible events 
+\begin_inset Formula $E_{1}$
+\end_inset
+
+,...,
+\begin_inset Formula $E_{n}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Plain Layout
+2.
+ For each event determine the rate at which it occurs, 
+\begin_inset Formula $R_{1}$
+\end_inset
+
+,...,
+\begin_inset Formula $R_{n}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Plain Layout
+3.
+ 
+\series bold
+While
+\series default
+ 
+\begin_inset Formula $(t<t_{end}$
+\end_inset
+
+ and 
+\begin_inset Formula $R_{N}=\sum_{v=1}^{n}R_{v}\neq0)$
+\end_inset
+
+ 
+\series bold
+then
+\end_layout
+
+\begin_layout Plain Layout
+4.
+ 
+\series bold
+For
+\series default
+ 
+\begin_inset Formula $ $
+\end_inset
+
+
+\begin_inset Formula $m=1,n$
+\end_inset
+
+ 
+\series bold
+do
+\end_layout
+
+\begin_layout Plain Layout
+5.
+ Generate one random number 
+\begin_inset Formula $U(0,1)$
+\end_inset
+
+ : 
+\begin_inset Formula $RAND_{m}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+6.
+ At the event 
+\begin_inset Formula $m$
+\end_inset
+
+ calculate the time until the next event is 
+\begin_inset Formula $\delta t_{m}=\frac{-1}{R_{m}}log(RAND_{m})$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+7.
+ 
+\series bold
+end for
+\end_layout
+
+\begin_layout Plain Layout
+8.
+ Find the event, 
+\begin_inset Formula $p$
+\end_inset
+
+ , that happens first (has the smallest 
+\begin_inset Formula $\delta t$
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Plain Layout
+9.
+ The time is now updated, 
+\begin_inset Formula $t\rightarrow\delta t_{p}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+10.
+ Update 
+\begin_inset Formula $\{X_{i}\}$
+\end_inset
+
+ following the event 
+\begin_inset Formula $p$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Plain Layout
+11.
+ Return to Step 3.
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+protect
+\end_layout
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Gillespie's first reaction method in 1976 - MONOPOPULATION
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+If supposing that generate one random number takes 
+\begin_inset Formula $C_{rand}$
+\end_inset
+
+ time.
+ Then the FRM takes 
+\begin_inset Formula $nC_{rand}$
+\end_inset
+
+ time per step.
+ It is a big problem for that Gillespie proposed a new improved algorithm
+ in 1976.
+ The FRM has three main disadvantages : (1) generating random numbers is
+ relatively slow, (2) the FRM generates a cycle too many random numbers
+ in the case where the simulation time is big and the random number generator
+ will have tend on saturation when it generates too many numbers, (3) the
+ FRM is difficult for indexing the events to effectively implement the update
+ step.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Direct method (DM) [GILLESPIE 1977] 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "gillespie1976general"
+
+\end_inset
+
+: The Direct Method was proposed by Gillespie in 1977.
+ The main objective is to present the stochastic simulation for chemically
+ reacting systems.
+ The following pseudo-code of this method is :
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Float algorithm
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+0.
+ Label all species 
+\begin_inset Formula $X_{1},...,X_{k}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Plain Layout
+1.
+ Label all possible events 
+\begin_inset Formula $E_{1}$
+\end_inset
+
+,...,
+\begin_inset Formula $E_{n}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Plain Layout
+2.
+ For each event determine the rate at which it occurs, 
+\begin_inset Formula $R_{1}$
+\end_inset
+
+,...,
+\begin_inset Formula $R_{n}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Plain Layout
+3.
+ 
+\series bold
+While
+\series default
+ 
+\begin_inset Formula $(t<t_{end}$
+\end_inset
+
+ and 
+\begin_inset Formula $R_{N}=\sum_{v=1}^{n}R_{v}\neq0)$
+\end_inset
+
+ 
+\series bold
+then
+\end_layout
+
+\begin_layout Plain Layout
+4.
+ 
+\series bold
+For
+\series default
+ 
+\begin_inset Formula $ $
+\end_inset
+
+
+\begin_inset Formula $m=1,n$
+\end_inset
+
+ 
+\series bold
+do
+\end_layout
+
+\begin_layout Plain Layout
+5.
+ Calculate 
+\begin_inset Formula $R_{m}$
+\end_inset
+
+ and 
+\begin_inset Formula $R_{m}=\sum_{v=1}^{m}R_{v}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+6.
+ 
+\series bold
+end for
+\end_layout
+
+\begin_layout Plain Layout
+7.
+ Generate uniformly distributed random numbers 
+\begin_inset Formula $(r_{1},r_{2})$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+8.
+ Determine when 
+\begin_inset Formula $(\tau=ln(1/r_{1})/R_{N}$
+\end_inset
+
+ and which 
+\begin_inset Formula $(min\{p|R_{p}\geq r_{2}R_{N}\})$
+\end_inset
+
+ reaction will occur
+\end_layout
+
+\begin_layout Plain Layout
+9.
+ Set 
+\begin_inset Formula $t=t+\tau$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+10.
+ Update 
+\begin_inset Formula $\{X_{i}\}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+11.
+ Return to step 3
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+protect
+\end_layout
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Direct method of Gillespie in 1977 - MONOPOPULATION 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "gillespie1976general"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We can find that on each step, the Direct Method has to generate two random
+ numbers.
+ Supposing that generate one random number takes 
+\begin_inset Formula $C_{rand}$
+\end_inset
+
+ time.
+ Hence, on each step, the DM takes 
+\begin_inset Formula $(2C_{rand}+O(n))$
+\end_inset
+
+ where 
+\begin_inset Formula $O(n)$
+\end_inset
+
+ is time to search the index 
+\begin_inset Formula $p$
+\end_inset
+
+ of the next reaction channel.
+ For this reason, the DM is more efficient than the FRM.
+\end_layout
+
+\begin_layout Standard
+The Gillespie algorithm plays an very important role and has become a fundamenta
+l method in computational systems biology.
+ Hence, many efforts have been proposed to improve its efficiency.
+ The key step in the DM is to choose the next reaction channel to implement.
+ This step applies a linear search with a complexity 
+\begin_inset Formula $O(n)$
+\end_inset
+
+ where 
+\begin_inset Formula $n$
+\end_inset
+
+ is the number of occurred event in the system.
+ Many methods have focused on this step to improve and give more efficient
+ formulations.
+ For example, Maksym in 1988 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "maksym1988fast"
+
+\end_inset
+
+ separated the set of reactions into subsets with a complexity of 
+\begin_inset Formula $O(n^{1/2})$
+\end_inset
+
+.
+ In 1995, Blue et al.
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "blue1995faster"
+
+\end_inset
+
+ extended the division approach of Maksym, where a 
+\begin_inset Formula $K-level$
+\end_inset
+
+ method results in a search time proportional to 
+\begin_inset Formula $n^{1/K}$
+\end_inset
+
+.
+ Then, in taking K to the limit, they applied a binary tree structure and
+ obtained the complexity 
+\begin_inset Formula $O(logR)$
+\end_inset
+
+.
+ Don't stop improving, the Next Reaction Method (NRM) by Gibson and Bruck
+ is more known to the systems biology domain 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "gibson2000efficient"
+
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Next Reaction Method (NRM) [GIBSON2000] 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "gibson2000efficient"
+
+\end_inset
+
+ In 2000, Gibson and Bruck successful transformed the algorithm FRM into
+ an equivalent but more efficient new structure.
+ The Next Reaction Method applies just a single random number per iteration.
+ Moreover, the initiation times of the reactions can be set as the firing
+ times of independent, unit rate Poisson processes with internal times given
+ by integrated propensity functions.
+ It is evaluated steady faster than the FRM and more efficient than DM in
+ special cases as the system includes many species and loosely coupled reaction
+ channels.
+ The NRM is presented as follows :
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Float algorithm
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+1.
+ Initialize 
+\end_layout
+
+\begin_layout Enumerate
+set initial numbers of species, set 
+\begin_inset Formula $t=0$
+\end_inset
+
+, generate a dependency graph 
+\begin_inset Formula $G$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Enumerate
+calculate the propensity function 
+\begin_inset Formula $R{}_{j}(x)$
+\end_inset
+
+, for all 
+\begin_inset Formula $j$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Enumerate
+for each 
+\begin_inset Formula $j$
+\end_inset
+
+, generate a putative time 
+\begin_inset Formula $\tau_{j}$
+\end_inset
+
+ according to an exponential distribution with parameter 
+\begin_inset Formula $R_{j}(x)$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Enumerate
+store the 
+\begin_inset Formula $\tau_{j}$
+\end_inset
+
+ values in an indexed priority queue 
+\begin_inset Formula $P$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Plain Layout
+2.
+ Let 
+\begin_inset Formula $\mu$
+\end_inset
+
+ be the reaction whose putative time 
+\begin_inset Formula $\tau_{\mu}$
+\end_inset
+
+ stored in 
+\begin_inset Formula $P$
+\end_inset
+
+ is least.
+ Set 
+\begin_inset Formula $\tau=\tau_{\mu}$
+\end_inset
+
+ 3.
+ Update the states of the species to reflect execution of reaction 
+\begin_inset Formula $\mu$
+\end_inset
+
+.
+ Set 
+\begin_inset Formula $t=\tau$
+\end_inset
+
+ 4.
+ For each edge 
+\begin_inset Formula $(\mu,\alpha)$
+\end_inset
+
+ in the dependency graph 
+\begin_inset Formula $G$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Enumerate
+update 
+\begin_inset Formula $R_{\alpha}$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Enumerate
+if 
+\begin_inset Formula $\alpha\neq\mu$
+\end_inset
+
+, set 
+\begin_inset Formula $\tau_{\alpha}=R_{\alpha,old}/R_{\alpha,new}(\tau_{\alpha}-t)+t$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Enumerate
+if 
+\begin_inset Formula $\alpha=\mu$
+\end_inset
+
+, generate a random number 
+\begin_inset Formula $r$
+\end_inset
+
+ and compute 
+\begin_inset Formula $\tau_{\alpha}$
+\end_inset
+
+ according to an equation similar to Step 8 of the DM 
+\begin_inset Formula $\tau_{\alpha}=\frac{1}{R_{\alpha}(x)}log(\frac{1}{r})+t$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Enumerate
+replace the old 
+\begin_inset Formula $R_{\alpha}$
+\end_inset
+
+value in P with the new value.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+Go to step 2.
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+protect
+\end_layout
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Next Reaction Method (NRM) [GIBSON2000]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The data structure presented in the NRM is a dependency graph.
+ Because a propensity function 
+\begin_inset Formula $R_{j}$
+\end_inset
+
+ should be modified when a given reaction is implemented.
+ A node in the graph is correspondent to a reaction channel.
+ A directed edge of the reactions 
+\begin_inset Formula $A_{i}$
+\end_inset
+
+ and 
+\begin_inset Formula $A_{j}$
+\end_inset
+
+ points out that the execution of 
+\begin_inset Formula $A_{i}$
+\end_inset
+
+ really affects the molecules in 
+\begin_inset Formula $A_{j}$
+\end_inset
+
+.
+ Due to the the dependency graph, in step 4, the number of propensity functions
+ recalculated is minimal.
+\end_layout
+
+\begin_layout Standard
+In addition, the indexed priority queue is similar to a heap tree in computer
+ science.
+ It is a tree that includes ordered pairs of the form 
+\begin_inset Formula $(i,\tau_{i})$
+\end_inset
+
+, where 
+\begin_inset Formula $i$
+\end_inset
+
+ is both the reaction channel index and the position in the tree, 
+\begin_inset Formula $\tau_{i}$
+\end_inset
+
+ is the corresponding time when the new 
+\begin_inset Formula $A_{i}$
+\end_inset
+
+ reaction is expected to occur.
+ In the tree, the value 
+\begin_inset Formula $\tau$
+\end_inset
+
+ of each parent is a smaller than that of its children.
+ The top node of the tree is always the minimum value of 
+\begin_inset Formula $\tau$
+\end_inset
+
+ and the order is only vertical.
+ In each step, the nodes of the tree will change its positions according
+ to its value to get the new priority queue.
+\end_layout
+
+\begin_layout Standard
+In short, the NRM solved two additional optimizations : (1) by switching
+ to absolute time, Gibson and Bruck reduced the number of random numbers
+ needed in each step from two to one; (2) because of the use of a dependency
+ graph, the number of propensities needing to be recomputed for every time
+ step is minimum.
+ In estimating the computation time of the NRM, we find that, for every
+ reaction channel, the time until that reaction occurs is computed, maintained
+ in an indexed priority queue, and efficiently implemented as a binary heap.
+ However, the cost for maintaining the priority queue is relatively high.
+ The time to select the next event is done in constant time, but the time
+ to update the propensities is done in logarithmic time.
+ Hence, the NRM is commonly used for systems with many reaction channels
+ and where relatively few propensities change with each reaction.
+ The disadvantage of the NRM is that diffusion is added to the models and
+ the reaction-diffusion master equation is simulated, so systems arise.
+ For such models, in 2004, Elf et al.
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "elf2004spontaneous"
+
+\end_inset
+
+ proposed a variant of the NRM that is called the Next Subvolume Method
+ (NSM).
+ This method can be referred as a clever association of the ideas of NRM
+ and Maksym's method for intracellular 3D chemical reaction systems.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Compare the direct method (DM) to the next reaction method (NRM), which
+ algorithm is most efficient? We find that in the NRM, after the executed
+ first initial step, all sequent time steps only ask one random number to
+ be generated while the DM requests two.
+ Even, the search step for the index 
+\begin_inset Formula $\mu$
+\end_inset
+
+ of the next reaction channel takes 
+\begin_inset Formula $O(M)$
+\end_inset
+
+ time for DM, but the corresponding task of updating the indexed priority
+ queue takes 
+\begin_inset Formula $log(M)$
+\end_inset
+
+.
+ It is the reason for that the NRM is always evaluated more efficient for
+ large scale problems.
+ To evaluate the real cost of two methods (NRM and DM) based on the total
+ simulation time, Yang Cao et al.
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Cao2004"
+
+\end_inset
+
+ made experiments for both formulations of SSA on a 1.4 GHz Pentium IV Linux
+ workstation.
+ The problem used in their experiments is a stochastic model of the heat
+ shock response of E.
+ Coli 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "kurata2001feedback"
+
+\end_inset
+
+, which includes 28 variables and 61 reactions.
+ The experimental resultats pointed out that the average simulation time
+ for DM is larger than that for NRM due to its data structure maintenance.
+ In particular, for the loose coupling system where the components (or elements)
+ in a system are interconnected and dependant on each other to the least
+ extent practicable, NRM works better than DM.
+ Yang et al.
+ found that three main factors that strongly affect the CPU cost, are the
+ costs, 
+\begin_inset Formula $C_{p}$
+\end_inset
+
+ to calculate 
+\begin_inset Formula $M$
+\end_inset
+
+ propensities, 
+\begin_inset Formula $C_{a_{0}}$
+\end_inset
+
+to calculate the sum of all propensity probabilities, and 
+\begin_inset Formula $C_{s}$
+\end_inset
+
+ to search for a event 
+\begin_inset Formula $\mu$
+\end_inset
+
+.
+ Hence, to reduce these costs, Yang et al.
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Cao2004"
+
+\end_inset
+
+ suggested that a new optimization called the Optimized Directed Method
+ (ODM).
+ They found that in a reaction set of a system, some reactions fire much
+ more frequently than others.
+ To reduce the search time 
+\begin_inset Formula $C_{s}$
+\end_inset
+
+, they arranged the index of the reaction ordering, placing the most frequently
+ occurring events first based on how often they fire, combined with a dependency
+ graph, achieves better results than the NRM for moderately large systems.
+ Their optimized direct method (ODM) gives a new search depth smaller than
+ the original method DM.
+ The obtained result is that 
+\begin_inset Formula $C_{s}$
+\end_inset
+
+ can be significantly declined.
+ In the next step to reduce the costs 
+\begin_inset Formula $C_{a_{0}}$
+\end_inset
+
+ and 
+\begin_inset Formula $C_{p}$
+\end_inset
+
+, the authors used an idea from the method NRM.
+ The ODM only recomputes the propensities for those reaction channels affected
+ by the last reaction.
+ Because of an extra cost used for accessing the dependency graph, so this
+ approach applies only to loose-coupling systems.
+ In conclusion, the obtained results of Yang et al.
+ have shown that the ODM is faster than NRM, in particular, unless the system
+ is very nearly uncoupled.
+ This result broken the held belief for a long time that NRM was the fastest.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Through this result, we can say that the efficiency of the ODM, currently
+ is evaluated to be the fastest known algorithm for stochastic simulation
+ for most biological problems.
+ This method can be negatively impacted by transient shifts in the frequency
+ at which reactions occur, and commonly used in biochemical reaction networks
+ because of the inductive and repressive nature of genetic regulation.
+ Due to these shifts, the ODM defeats the pre-simulation strategy employed
+ within the ODM to decrease the time complexity of the SSA's reaction selection
+ step and thus degrade performance.
+ In order to decrease this degradation, in 2005, McCollum et al.
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "mccollum2006sorting"
+
+\end_inset
+
+ introduced the sorting direct method (SDM) that improves on ODM.
+ This method eliminates the pre-simulations required by the ODM and permits
+ the simulator to adapt to sharp changes in reaction execution frequencies.
+ The common point of these two methods is to focus on the optimization of
+ the system instead of the method itself by reducing the average number
+ of operations required to obtain the index of the next reaction to fire.
+ This average number of operations is called the search depth that is highly
+ dependent on the biochemical system.
+ For these two methods, the search depth us 
+\begin_inset Formula $O(M)$
+\end_inset
+
+.
+ Besides, within the paper of McCollum et al.
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "mccollum2006sorting"
+
+\end_inset
+
+, the authors also gave a detailed overview of the difference in the implementat
+ion of DM, NRM, ODM and SDM.
+ In 2006, Li and Petzold introduced an alternative formulation of the SSA,
+ named the Logarithmic Direct Method (LDM).
+ In this method, the computational cost is independent of the ordering of
+ the reactions and no need for a pre-simulation.
+ The LDM declined the search depth to 
+\begin_inset Formula $O(logM)$
+\end_inset
+
+, and pointed out the efficiency of the logarithmic method.
+\end_layout
+
+\begin_layout Standard
+Two years later, in 2008, a different approach is proposed by Hellander
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "hellander2008efficient"
+
+\end_inset
+
+ where the authors used the uniformity and quasi-Monte Carlo to reduce the
+ number of trajectories needed to compute an approximation of the probability
+ density function (PDF) at the price of a higher cost per trajectory.
+ Another is also found to reduce the number of simulation in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "lecot2004quasi"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+A new search direction is very beneficial to generate ensembles of trajectories
+ in parallel.
+ Because the parallelization of a single trajectory is very hard.
+ Apply clusters to implement SSA is proposed by Li 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "liStochKit"
+
+\end_inset
+
+.
+ Then, Li et al.
+ continued executing SSA on the graphics processing unit 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "li2007stochastic,li2010efficient"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection
+Approximate methods
+\end_layout
+
+\begin_layout Standard
+As mentioned above, the methods Direct, First Reaction and Next Reaction
+ are all exact stochastic approaches of the underlying ordinary differential
+ equations.
+ Their advantage give us a really mathematically exact approach to simulate
+ time-to-event model (in condition that the definition of the propensity
+ functions accurately reflects the dynamics of the system).
+ But, their disadvantages are 1) noise in exact simulations only affects
+ the probabilities associated with fates of individuals and the updating
+ of each consecutive event is independent – there is no assumption concerning
+ environmental stochasticity; 2) these exact solutions become too slow and
+ impractical when any one transition rate is large, when there is a big
+ number of subpopulations or one a big number of event in a metapopulation;
+ because the exact algorithms SSA must proceed one reaction at a time and
+ take the task of explicitly simulating each and every reaction event, hence
+ they are much too slow for most practical problems.
+ It is the reason for that, approximate models have been proposed instead
+ of the exact stochastic methods.
+ The approximate approaches ask the question : "How many times does each
+ action channel fire in each subinterval?"
+\end_layout
+
+\begin_layout Standard
+These approaches could be used in larger systems, and made much faster than
+ the exact methods.
+ However, the exact structure of the Markov chain is no longer simulated
+ in the approximate approaches, hence the validity of the approximations
+ become a main issue.
+ Now we will show some mostly used approximate methods.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\tau-leaping$
+\end_inset
+
+ method Gillespie (2001) 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "gillespie2001approximate"
+
+\end_inset
+
+ has proposed a new method that decreases the simulation accuracy, but speeds
+ up the stochastic simulation.
+ This is the explicit Poisson 
+\begin_inset Formula $\tau-leap$
+\end_inset
+
+ method known as an approximate method reduces the number of iterations
+ by treating transition rates as constant over time periods for which this
+ approximation leads to little error 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "KeelingRohani2008"
+
+\end_inset
+
+.
+ The 
+\begin_inset Formula $\tau-leap$
+\end_inset
+
+ method applies a Poisson approximation to can “leap over
+\begin_inset Quotes erd
+\end_inset
+
+ many fast reactions and approximate the stochastic behavior of the system
+ very well.
+ The 
+\begin_inset Formula $\tau-leap$
+\end_inset
+
+ method is described as follows :
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Float algorithm
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+1.
+ Let 
+\begin_inset Formula $\delta t$
+\end_inset
+
+ be the time increment between steps, 
+\begin_inset Formula $\delta t$
+\end_inset
+
+ is fixed as a constant.
+ 2.
+ Let 
+\begin_inset Formula $M_{T}(t)$
+\end_inset
+
+ and 
+\begin_inset Formula $M_{R}(t)$
+\end_inset
+
+ be the number of transmission and recovery events by time 
+\begin_inset Formula $t$
+\end_inset
+
+.
+ 3.
+ Setting 
+\begin_inset Formula $\delta M_{i}=M_{i}(t+\delta t)-M_{i}(t)$
+\end_inset
+
+ 
+\begin_inset Formula $i=T,R)$
+\end_inset
+
+, then 
+\begin_inset Formula 
+\begin{align*}
+ & P(\delta M_{T}=1|X,Y) & = & \frac{\beta XY}{N}\delta t+o(\delta t)\\
+ & P(\delta M_{R}=1|Y) & = & \gamma Y\delta t+o(\delta t)
+\end{align*}
+
+\end_inset
+
+These two equations represent the transition probabilities for transmission
+ and recovery events occurring in the time interval 
+\begin_inset Formula $\delta t$
+\end_inset
+
+.
+ 4.
+ For small 
+\begin_inset Formula $\delta t$
+\end_inset
+
+, the increments 
+\begin_inset Formula $\delta M_{i}$
+\end_inset
+
+ are approximately Poisson, such that: 
+\begin_inset Formula 
+\begin{align*}
+\delta M_{T} & \approx & Poisson(\frac{\beta XY}{N}\delta t)\\
+\delta M_{R} & \approx & Poisson(\gamma Y\delta t)
+\end{align*}
+
+\end_inset
+
+5.
+ Updating the values of the variables : 
+\begin_inset Formula 
+\begin{align*}
+X(t+\delta t) & = & X(t)-\delta M_{T}+\delta M_{R}\\
+Y(t+\delta t) & = & Y(t)+\delta M_{T}-\delta M_{R}
+\end{align*}
+
+\end_inset
+
+6.
+ Updating the time, 
+\begin_inset Formula $t=t+\delta t$
+\end_inset
+
+.
+ 7.
+ Return to Step 4 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+protect
+\end_layout
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Formula $\tau-leap$
+\end_inset
+
+ method proposed by Gillespie (2001)
+\begin_inset CommandInset citation
+LatexCommand cite
+key "KeelingRohani2008"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The main problem in the 
+\begin_inset Formula $\tau-leap$
+\end_inset
+
+ method is relative to the value of the time increment between steps, 
+\begin_inset Formula $\delta t$
+\end_inset
+
+.
+ How do we choose the value fixed of 
+\begin_inset Formula $\delta t$
+\end_inset
+
+? 
+\begin_inset Formula $\delta t$
+\end_inset
+
+ must satisfy two conditions, large enough so that many reaction events
+ occur in that time and small enough of the leap condition.
+ The leap condition is pointed out that 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "cao2007adaptive"
+
+\end_inset
+
+: For the current state 
+\begin_inset Formula $x$
+\end_inset
+
+, the value of 
+\begin_inset Formula $\delta t$
+\end_inset
+
+ is asked to be small enought that the modification in the state during
+ 
+\begin_inset Formula $[t,t+\delta t]$
+\end_inset
+
+ will be so small that no propensity function will suffer an appreciable
+ change in its value.
+ Thus, the key to the success of this technique is to choose a leap size
+ large enough to allow many reactions to occur during the leap (reducing
+ computation) and small enough that none of the propensity functions will
+ change significantly in value (causing an error).
+ Cao et al.
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "cao2005avoiding"
+
+\end_inset
+
+ pointed also out a method to estimating the largest value of 
+\begin_inset Formula $\delta t$
+\end_inset
+
+, the expected change in each propensity function during a leap be limited
+ by 
+\begin_inset Formula $\epsilon a_{0}(x)$
+\end_inset
+
+, where 
+\begin_inset Formula $\epsilon$
+\end_inset
+
+ 
+\begin_inset Formula $(0<\epsilon\ll1)$
+\end_inset
+
+ is the error control parameter.
+ In short, the best advantage of the 
+\begin_inset Formula $\tau-leap$
+\end_inset
+
+ method is to speed up the stochastic simulation for many 
+\begin_inset Quotes eld
+\end_inset
+
+not-too-stiff
+\begin_inset Quotes erd
+\end_inset
+
+ systems 
+\begin_inset Formula $-$
+\end_inset
+
+i.e., systems in which the difference between the characteristic time scales
+ of the fastest and slowest dynamical modes is not too large.
+ However, the number of firings of each reaction channels during a fixed
+ time step 
+\begin_inset Formula $\delta t$
+\end_inset
+
+ is approximated as a Poisson random variable.
+ This Poisson variable can have arbitrarily large sample values.
+ Hence, there exists the possibility that this 
+\begin_inset Formula $\tau-leap$
+\end_inset
+
+ method will cause one or more reaction channels to fire so many times during
+ 
+\begin_inset Formula $\delta t$
+\end_inset
+
+ that number of reactants in each population will be became negative, in
+ particular in systems with multiple timescales (for short the stiff systems).
+ Due its obtained advantage, so this technique has continued to mature,
+ specially in the area of leap-size selection, through the work of a variety
+ of researchers : procedure for determining the maximum leap size for a
+ specified degree of accuracy 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "gillespie2003improved"
+
+\end_inset
+
+; a binomial leaping method developed independently Tian et al.
+\begin_inset CommandInset citation
+LatexCommand cite
+key "tian2004binomial"
+
+\end_inset
+
+ and Chatterjee et al.
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "chatterjee2005binomial"
+
+\end_inset
+
+; based on the multinominal distribution by Pettigrew et al.
+ in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "pettigrew2007multinomial"
+
+\end_inset
+
+; the post-leap checks of Anderson 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Anderson&May1992"
+
+\end_inset
+
+; and a further work in this area can be expected.
+ In detail for the binomial leaping method, this method replaces the Poisson
+ random variables with binomial random variables, whose values are naturally
+ bounded.
+ However, the disadvantage of this method appeared when the system is in
+ the state : there are multiple reactions with common consumed reactants,
+ so the issues of the binomial tau-leaping strategy have not yet been fully
+ resolved, and to write a general binomial tau-leaping program that reliably
+ handles all situations that could possibly arise, this task would seem
+ to be a very challenging task.
+ It is the reason for that, Yang et al.
+ (2005) 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "cao2005avoiding"
+
+\end_inset
+
+ is introduced a modified Poisson tau-leaping procedure that also avoids
+ negative populations and these particular issues, but is easier to implement
+ than the binomial procedure.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Subsubsection
+Hybrid and multiscale methods
+\end_layout
+
+\begin_layout Itemize
+Key word : Langevin equation, a Langevin equation is a stochastic differential
+ equation that could present the time advance of a subset pf the degrees
+ of freedom.
+ In the epidemiology, the Langevin equations are the equation that describe
+ of the dynamics of the individuals between the different compartments depends
+ on the specific disease considered.
+ 
+\end_layout
+
+\begin_layout Standard
+Here, we show an other kind of approximation methods that are based on the
+ validity of different approximations, and are the combination of the determinis
+tic equations and the Langevin equations for subsets of the reactions, the
+ chemical species or both.
+ The results of these methods have pointed out that the speedup obtained
+ applying this hybrid idea can be substantially.
+ For example, Adalsteinsson et al.
+ Combine the deterministic and stochastic approaches in order to develop
+ the software package Biochemical Network Stochastic Simulator (BioNetS)
+ for efficiently and accurately simulating stochastic models of biochemical
+ networks in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "adalsteinsson2004biochemical"
+
+\end_inset
+
+; the method that applies chemical Langevin equations in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "gillespie2000chemical"
+
+\end_inset
+
+ and in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "simpson2003frequency,simpson2004frequency"
+
+\end_inset
+
+; Poisson-Runge-Kutta methods 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "burrage2004poisson"
+
+\end_inset
+
+; multiscale algorithms like the slow-scale stochastic simulation algorithm
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "cao2005slow"
+
+\end_inset
+
+ and use of the quasi-steady state assumption 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "rao2003stochastic"
+
+\end_inset
+
+.
+ Besides, there are many varieties of others, for exemple : Haseltine and
+ Rawlings 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "haseltine2002approximate"
+
+\end_inset
+
+ associate deterministic or Langevin equations for fast reactions with SSA
+ for slow channels.
+ Saliz and Kazessis 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "salis2005accurate"
+
+\end_inset
+
+ introduced a hybrid stochastic method that divides the reaction set of
+ the system into fast and slow reaction subsets, applies a chemical Langevin
+ equation for approximating the fast reactions as a continuous Markov process,
+ and has been used successful to the simulation of the dynamics of a system
+ based on stochastic differential, ordinary differential, and master equations.
+ These methods are one part in the stock of current methods.
+ To find more information, readers can find detailed reviews in Turner et
+ al.
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "turner2004stochastic"
+
+\end_inset
+
+ and Burrage et al.
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "burrage2004poisson"
+
+\end_inset
+
+.
+ In conclusion, so many researches have considered the approximate methods
+ as a strong solution to speed up simulations, however, to exactly answer
+ to question : where general biochemical modelers can know when and when
+ not to apply these methods, these techniques have not matured yet.
+ Inversely, exact stochastic simulation techniques such as “exact method”,
+ “direct method”,..
+ are inferior computational methods, simulation time is large, but they
+ remain effective, trusted, and exact for simulating stochastic models in
+ bio-informatics.
+ It is why, in my thesis, we use the exact method "Direct Method" of Gillespie
+ to modeling stochastic effects.
+\end_layout
+
+\begin_layout Section
+DIZZYS : Description du modèle (ce qui corretspond au package R) 
+\end_layout
+
+\begin_layout Standard
+The SEIR model have successful described hosts within a population as Susceptibl
+e (the number of individuals not yet infected with the disease), Exposed
+ (the number of individuals who are infected with the disease but not infectious
+),Infected (the number of individuals who have been infected with the disease
+ and are capable of spreading the disease), and Recovered (the number of
+ individuals who have successfully cleared the infection).
+ We ignore population demography-births, deaths, and migration.
+ So we have only three transitions: 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+S\rightarrow E & E\rightarrow I & I\rightarrow R.\\
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+It is obvious that the second and third of these are easier, so we focus
+ on the first transition in which the level of the infectious disease influences
+ strongly the disease transmission rate from a susceptible individual into
+ the infected class.
+ If this first step doesn't occur, all infected individuals can go to the
+ recovered class.
+ This first transition plays an important role in studying fluctuation of
+ disease.
+ Many researches have been tried to find the "infectious period" (the amount
+ of time spent in the infectious class).
+ They have found that for acute infections, the "infectious period" is distribut
+ed around some mean values that we can estimate from clinical data.
+ To present enough properties of the "infectious period" by formulations,
+ we have to depend upon three main factors of the disease transmission from
+ S to E : the prevalence of infecteds, the underlying population contact
+ structure, and the probability of transmission given contact.
+ For a directly transmitted disease, the key factor is the contact between
+ susceptible and infected individuals.
+ Hence, in this section, we will interpret the "infectious period" in more
+ detailed, and realistic contexts.
+\end_layout
+
+\begin_layout Standard
+First of all, we define the force of infection, 
+\begin_inset Formula $\lambda$
+\end_inset
+
+, which is referred as the per capita rate at which susceptible individuals
+ contract the infection.
+ The fact that 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ directly scales the number of infectious individuals 
+\begin_inset Formula $I$
+\end_inset
+
+.
+ Moreover, for directly infectious diseases, disease transmission demands
+ contact between infecteds and susceptibles.
+ Hence, there are two proposed general possibilities based on how we present
+ the contact structure to change with population size: 
+\begin_inset Formula $\lambda=\beta I/N$
+\end_inset
+
+ applied when we want to mention frequency dependent (or mass action) transmissi
+on, and 
+\begin_inset Formula $\lambda=\beta I$
+\end_inset
+
+ applied when we want to mention density dependent (or pseudo mass action)
+ transmission, where I is the number of infectious individuals, N is the
+ total population size (N=S+E+I+R), and 
+\begin_inset Formula $\beta$
+\end_inset
+
+ is the product of the contact rates and transmission probability.
+ In the shape of this thesis, we assume that the infection process is frequency-
+dependent, meaning that the force of infection 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ is proportional to a proportion of infected: 
+\begin_inset Formula $I/N$
+\end_inset
+
+.
+ Infection of susceptibles from one population 
+\begin_inset Formula $i$
+\end_inset
+
+ can be due to contacts with infected from the same population 
+\begin_inset Formula $i$
+\end_inset
+
+ or to contacts with infected from another population 
+\begin_inset Formula $j$
+\end_inset
+
+.
+ In the next section, we will introduce a new mechanistic derivation of
+ the transmission term in more detailed, and realistic way.
+\end_layout
+
+\begin_layout Subsection
+Infection force
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Goal :
+\series default
+ 
+\begin_inset Newline newline
+\end_inset
+
+ 
+\series bold
+Probabilistic derivation of multi-population epidemic model with 
+\begin_inset Formula $\beta_{ijk}=-\kappa_{j}\log(1-c_{ik})$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Definition :
+\end_layout
+
+\begin_layout Standard
+During the small time interval 
+\begin_inset Formula $\delta t$
+\end_inset
+
+, each native individual of the city 
+\begin_inset Formula $i$
+\end_inset
+
+ visits 
+\series bold
+a single
+\series default
+ city 
+\begin_inset Formula $j$
+\end_inset
+
+ (with probability 
+\begin_inset Formula $\rho_{ij}$
+\end_inset
+
+) and will meet 
+\series bold
+in average
+\series default
+ 
+\begin_inset Formula $\kappa_{j}$
+\end_inset
+
+ individuals that come from all cities.
+ 
+\end_layout
+
+\begin_layout Subsubsection
+Notation
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Notation :
+\end_layout
+
+\begin_layout Standard
+Here, we present list of sets and events describing the state of the system
+ at time 
+\begin_inset Formula $t$
+\end_inset
+
+ : 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $C_{i}$
+\end_inset
+
+ is the set of all individuals born in subpopulation 
+\begin_inset Formula $i$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $V_{i,t}$
+\end_inset
+
+ is the set of all individuals physically located in subpopulation 
+\begin_inset Formula $i$
+\end_inset
+
+ from time 
+\begin_inset Formula $t$
+\end_inset
+
+ to time 
+\begin_inset Formula $t+\delta t$
+\end_inset
+
+.
+ This includes foreigners traveling in subpopulation 
+\begin_inset Formula $i$
+\end_inset
+
+ at time 
+\begin_inset Formula $t$
+\end_inset
+
+, and all natives from subpopulation 
+\begin_inset Formula $i$
+\end_inset
+
+ which are not traveling abroad at time 
+\begin_inset Formula $t$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $S_{t},E_{t},I_{t},R_{t}$
+\end_inset
+
+ are the sets of all individuals respectively susceptible, exposed, infected
+ and recovered at time 
+\begin_inset Formula $t$
+\end_inset
+
+.
+ Note that these set include individuals from all subpopulations.
+ 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $S_{i,t},E_{i,t},I_{i,t},R_{i,t}$
+\end_inset
+
+ are the same sets, restricted to natives of subpopulation 
+\begin_inset Formula $i$
+\end_inset
+
+.
+ So formally, 
+\begin_inset Formula $S_{i,t}=S_{t}\cap C_{i}$
+\end_inset
+
+, 
+\begin_inset Formula $E_{i,t}=E_{t}\cap C_{i}$
+\end_inset
+
+, 
+\begin_inset Formula $I_{i,t}=I_{t}\cap C_{i}$
+\end_inset
+
+, and 
+\begin_inset Formula $R_{i,t}=R_{t}\cap C_{i}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $Transmit(y,x)$
+\end_inset
+
+ is an event indicating that individual 
+\begin_inset Formula $x$
+\end_inset
+
+ gets infected by individual 
+\begin_inset Formula $y$
+\end_inset
+
+ which was already infected 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $c_{i,k}$
+\end_inset
+
+ is the probability that a susceptible individual native from 
+\begin_inset Formula $i$
+\end_inset
+
+ being in contact with another infected individual native from 
+\begin_inset Formula $k$
+\end_inset
+
+ gets infected.
+ 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\kappa_{j}$
+\end_inset
+
+ is the average number of contacts per unit of time a susceptible will have
+ when visiting city 
+\begin_inset Formula $j$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\xi_{jk}$
+\end_inset
+
+ refers to the probability that an individual 
+\begin_inset Formula $y$
+\end_inset
+
+ meeting 
+\begin_inset Formula $x$
+\end_inset
+
+ in 
+\begin_inset Formula $C_{j}$
+\end_inset
+
+ comes from 
+\begin_inset Formula $C_{k}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\rho_{i,j}$
+\end_inset
+
+, the probability that an individual from subpopulation 
+\begin_inset Formula $i$
+\end_inset
+
+ visits subpopulation 
+\begin_inset Formula $j$
+\end_inset
+
+.
+ Of course, 
+\begin_inset Formula $\sum_{j=1}^{M}\rho_{ij}=1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Note that : The coefficient 
+\begin_inset Formula $\kappa$
+\end_inset
+
+ should also depend on 
+\begin_inset Formula $i$
+\end_inset
+
+, because an individual native from city 
+\begin_inset Formula $i$
+\end_inset
+
+ meets more people in his own city than abroad (
+\begin_inset Formula $\kappa_{i,i}>\kappa_{i,j}$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Subsubsection
+The background
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Let us write a probabilistic formulation of 
+\begin_inset Formula $\frac{dE_{i}}{dt}$
+\end_inset
+
+:
+\series default
+ One general question is always posed "how does the population of exposed
+ individuals of subpopulation 
+\begin_inset Formula $i$
+\end_inset
+
+ evolve ?".
+ For the sake of simplicity, in the process of transmission of the SEIR
+ model, we focus on the incidence and we assume for now that the latent
+ period and the recovery rate, respectively 
+\begin_inset Formula $\mu=\sigma=0$
+\end_inset
+
+.
+ Thus, we write a probabilistic formulation of 
+\begin_inset Formula $\frac{dE_{i}}{dt}$
+\end_inset
+
+.
+ Assuming the time is discrete, we have 
+\begin_inset Formula $\frac{dE_{i}}{dt}\approx\mathbb{E}\left[E_{i,t+1}\setminus E_{i,t}\right]$
+\end_inset
+
+.
+ Then,
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray*}
+\mathbb{E}\left[E_{i,t+1}\setminus E_{i,t}\right] & = & \mathbb{E}\left[E_{i,t+1}\cap S_{i,t}\right]\\
+ & = & \sum_{x\in C_{i}}Pr\left[x\in E_{t+1}\wedge x\in S_{t}\right]\\
+ & = & \sum_{x\in C_{i}}Pr\left[x\in S_{t}\right]*Pr\left[x\in E_{t+1}\mid x\in S_{t}\right]\\
+ & = & Pr_{x\sim\mathcal{X}_{i}}\left[x\in E_{t+1}\mid x\in S_{t}\right]*\sum_{x\in C_{i}}Pr\left[x\in S_{t}\right]\\
+ & = & |S_{i,t}|\times Pr_{x\sim\mathcal{X}_{i}}\left[x\in E_{t+1}\mid x\in S_{t}\right]
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Assume there are 
+\begin_inset Formula $M$
+\end_inset
+
+ cities.
+ An individual 
+\begin_inset Formula $x$
+\end_inset
+
+ of the subpopulation 
+\begin_inset Formula $i$
+\end_inset
+
+ may be visiting another subpopulation, or staying in its own subpopulation.
+ Applying the law of total probabilities, we get:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray*}
+Pr_{x\sim\mathcal{X}_{i}}\left[x\in E_{t+dt}\mid x\in S_{t}\right] & = & \sum_{j=1}^{M}Pr_{x\sim\mathcal{X}_{i}}\left[x\in E_{t+dt}\wedge x\in V_{j,t}\mid x\in S_{t}\right]\\
+ & = & \sum_{j=1}^{M}Pr_{x\sim\mathcal{X}_{i}}\left[x\in E_{t+dt}\mid x\in S_{t}\wedge x\in V_{j,t}\right].Pr_{x\sim\mathcal{X}_{i}}\left[x\in V_{j,t}\right]\\
+ &  & \sum_{j=1}^{M}Pr_{x\sim\mathcal{X}_{i}}\left[x\in E_{t+dt}\mid x\in S_{t}\wedge x\in V_{j,t}\right]\times\rho_{ij}
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Where 
+\begin_inset Formula $\rho_{i,j}=Pr_{x\sim\mathcal{X}_{i}}\left[x\in V_{j,t}\right]$
+\end_inset
+
+, the probability that an individual from subpopulation 
+\begin_inset Formula $i$
+\end_inset
+
+ visits subpopulation 
+\begin_inset Formula $j$
+\end_inset
+
+.
+ Of course, 
+\begin_inset Formula $\sum_{j=1}^{M}\rho_{ij}=1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection
+
+\series bold
+Study of case where agent 
+\begin_inset Formula $x$
+\end_inset
+
+ native from subpopulation 
+\begin_inset Formula $i$
+\end_inset
+
+ visits subpopulation 
+\begin_inset Formula $j$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Here, we look at the probability that a susceptible 
+\begin_inset Formula $x\sim\mathcal{X}_{i}$
+\end_inset
+
+ visiting 
+\begin_inset Formula $j$
+\end_inset
+
+ gets infected or not after 
+\begin_inset Formula $\delta t$
+\end_inset
+
+ time steps.
+ Let 
+\begin_inset Formula $\mathcal{Y}$
+\end_inset
+
+ be the uniform distribution over 
+\begin_inset Formula $V_{j,t}$
+\end_inset
+
+.
+ The correct mathematical approach for this would be to assume that for
+ each subpopulation 
+\begin_inset Formula $k$
+\end_inset
+
+, the number of people native from 
+\begin_inset Formula $k$
+\end_inset
+
+ that we meet during 
+\begin_inset Formula $\delta t$
+\end_inset
+
+ follows a Poisson process.
+ So both the number of people we meet and the number of infected people
+ we meet during 
+\begin_inset Formula $\delta t$
+\end_inset
+
+ should be random variables.
+\end_layout
+
+\begin_layout Standard
+In the approach described in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "KeelingRohani2008"
+
+\end_inset
+
+, the authors did not do this.
+ They assumed that both the number of people we meet and the number of infected
+ people we meet 
+\emph on
+are fixed
+\emph default
+ (otherwise the maths they write would have been different).
+ We will call this the old interpretation of the infection force proposed
+ by "Keeling & Rohani" (for short, OIIF) that we will present it in the
+ following parts.
+\end_layout
+
+\begin_layout Standard
+We introduce an alternative approximation, where we assume that the number
+ 
+\begin_inset Formula $\kappa$
+\end_inset
+
+ of people we meet during 
+\begin_inset Formula $\delta t$
+\end_inset
+
+ is 
+\emph on
+fixed
+\emph default
+, but each of these people has 
+\emph on
+some probability
+\emph default
+ to be infected.
+ This is an 
+\emph on
+in-between interpretation
+\emph default
+, easier than the Poisson process maths, but better than the OIIF.
+ We will call this the new interpretation of the infection force (for short,
+ NIIF).
+\end_layout
+
+\begin_layout Paragraph
+
+\series bold
+1.
+ The new interpretation: NIIF
+\series default
+ 
+\end_layout
+
+\begin_layout Standard
+Agent 
+\begin_inset Formula $x$
+\end_inset
+
+ meets 
+\emph on
+exactly
+\emph default
+ 
+\begin_inset Formula $\kappa_{j}$
+\end_inset
+
+ other individuals, and each of these individuals has a probability 
+\begin_inset Formula $\frac{\left|I_{k,t}\right|}{N_{k}}$
+\end_inset
+
+ of being infected, where 
+\begin_inset Formula $k$
+\end_inset
+
+ is its native subpopulation.
+ Let 
+\begin_inset Formula $y_{1}\ldots y_{\kappa_{j}}$
+\end_inset
+
+ be the individuals that 
+\begin_inset Formula $x$
+\end_inset
+
+ meets.
+ We get: 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray*}
+ &  & Pr_{x\sim\mathcal{X}_{i}}\left[x\in S_{t+\delta t}\mid x\in S_{t}\wedge x\in V_{j,t}\right]\\
+ & = & Pr_{x\sim\mathcal{X}_{i},y_{1}\ldots,y_{\kappa_{j}}\sim\mathcal{Y}}\left[\bigwedge_{p=1}^{\kappa_{j}}\neg\left(y_{p}\in I_{t}\wedge Transmit(y_{p},x)\right)\mid x\in S_{t}\wedge x\in V_{j,t}\right]
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+So we have: 
+\begin_inset Formula 
+\begin{eqnarray*}
+ &  & Pr_{x\sim\mathcal{X}_{i}}\left[x\in S_{t+\delta t}\mid x\in S_{t}\wedge x\in V_{j,t}\right]\\
+ & = & Pr_{x\sim\mathcal{X}_{i},y\sim\mathcal{Y}}\left[\neg\left(y\in I_{t}\wedge Transmit(y,x)\right)\mid x\in S_{t}\wedge x\in V_{j,t}\right]^{\kappa_{j}\delta t}
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Moreover, we have: 
+\end_layout
+
+\begin_layout Itemize
+the probability so that a susceptible individual 
+\begin_inset Formula $x$
+\end_inset
+
+ is infected by an infected individual 
+\begin_inset Formula $y$
+\end_inset
+
+ : 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray*}
+ &  & Pr_{x\sim\mathcal{X}_{i},y\sim\mathcal{Y}}\left[y\in I_{t}\wedge Transmit(y,x)\mid x\in S_{t}\wedge x\in V_{j,t}\right]\\
+ & = & \sum_{k=1}^{M}Pr_{x\sim\mathcal{X}_{i},y\sim\mathcal{Y}}\left[y\in I_{t}\wedge Transmit(y,x)\mid x\in S_{t}\wedge x\in V_{j,t}\wedge y\in C_{k}\right].Pr_{y\sim\mathcal{Y}}\left(y\in C_{k}\right)\\
+ & = & \sum_{k=1}^{M}\left\{ Pr_{x\sim\mathcal{X}_{i},y\sim\mathcal{X}_{k}}\left[y\in I_{t}\mid x\in S_{t}\wedge x\in V_{j,t}\right]\right.\\
+ &  & \,\,\,\,\,\left.\times Pr_{x\sim\mathcal{X}_{i},y\sim\mathcal{X}_{k}}\left[Transmit(y,x)\mid y\in I_{t}\wedge x\in S_{t}\wedge x\in V_{j,t}\wedge y\in C_{k}\right]\times Pr_{y\sim\mathcal{Y}}\left(y\in C_{k}\right)\right\} \\
+ & = & \sum_{k=1}^{M}\left(\frac{\left|I_{k,t}\right|}{N_{k}}\times c_{ik}\times\xi_{jk}\right)
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\xi_{jk}=\frac{N_{k}\rho_{kj}}{\sum_{v=1}^{M}N_{v}\rho_{vj}}$
+\end_inset
+
+ refers to the probability that an individual 
+\begin_inset Formula $y$
+\end_inset
+
+ meeting 
+\begin_inset Formula $x$
+\end_inset
+
+ in 
+\begin_inset Formula $C_{j}$
+\end_inset
+
+ comes from 
+\begin_inset Formula $C_{k}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+hence, the probability so that a susceptible individual 
+\begin_inset Formula $x$
+\end_inset
+
+ is not infected by an infected individual 
+\begin_inset Formula $y$
+\end_inset
+
+ : 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+1-\sum_{k=1}^{M}\left(\frac{\left|I_{k,t}\right|}{N_{k}}\times c_{ik}\times\xi_{jk}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+thereby, the probability so that a susceptible individual 
+\begin_inset Formula $x$
+\end_inset
+
+ is not infected after 
+\begin_inset Formula $\kappa_{j}$
+\end_inset
+
+ contacts per unit time 
+\begin_inset Formula $\delta t$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\left[1-\sum_{k=1}^{M}\left(\frac{\left|I_{k,t}\right|}{N_{k}}\times c_{ik}\times\xi_{jk}\right)\right]^{\kappa_{j}\delta t}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+thus, the probability so that a susceptible individual 
+\begin_inset Formula $x$
+\end_inset
+
+ becomes infected after 
+\begin_inset Formula $\kappa_{j}$
+\end_inset
+
+ contacts per unit time 
+\begin_inset Formula $\delta t$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray*}
+Pr_{x\sim\mathcal{X}_{i}}\left[x\in E_{t+\delta t}\mid x\in S_{t}\wedge x\in V_{j,t}\right] & = & \left[1-\sum_{k=1}^{M}\left(\frac{\left|I_{k,t}\right|}{N_{k}}\times c_{ik}\times\xi_{jk}\right)\right]^{\kappa_{j}\delta t}
+\end{eqnarray*}
+
+\end_inset
+
+We now apply the 
+\emph on
+log
+\emph default
+ approximation which consists in approximating 
+\begin_inset Formula $1-(1-u)^{v}$
+\end_inset
+
+ by 
+\begin_inset Formula $v\log(1-u)$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray*}
+Pr_{x\sim\mathcal{X}_{i}}\left[x\in E_{t+\delta t}\mid x\in S_{t}\wedge x\in V_{j,t}\right] & = & -\kappa_{j}\delta t\log\left[1-\sum_{k=1}^{M}\left(\frac{\left|I_{k,t}\right|}{N_{k}}\times c_{ik}\times\xi_{jk}\right)\right]
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+So, the transmission rate per susceptible individual is as follows: 
+\begin_inset Formula 
+\[
+\frac{dPr_{x\sim\mathcal{X}_{i}}\left[x\in E_{t+dt}\mid x\in S_{t}\wedge x\in V_{j,t}\right]}{dt}\simeq-\kappa_{j}\log\left[1-\sum_{k=1}^{M}\left(\frac{\left|I_{k,t}\right|}{N_{k}}\times c_{ik}\times\xi_{jk}\right)\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In fact, we use the parameter 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ to present this quantity, and it is denoted as the "force of infection"
+ : x
+\end_layout
+
+\begin_layout Standard
+If there is only one subpopulation 
+\begin_inset Formula $i$
+\end_inset
+
+, then 
+\begin_inset Formula 
+\[
+\lambda_{i}=\kappa_{j}log(1-\frac{\left|I_{i}\right|}{N_{i}}\times c_{ii})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+
+\series bold
+2.
+ The old Interpretation : OIIF 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "KeelingRohani2008"
+
+\end_inset
+
+
+\series default
+ 
+\end_layout
+
+\begin_layout Standard
+Agent 
+\begin_inset Formula $x$
+\end_inset
+
+ meets 
+\emph on
+exactly
+\emph default
+ 
+\begin_inset Formula $\kappa_{j}\delta t\xi_{jk}\frac{\left|I_{k,t}\right|}{N_{k}}$
+\end_inset
+
+ other infected individuals native from subpopulation 
+\begin_inset Formula $k$
+\end_inset
+
+.
+ Let 
+\begin_inset Formula $l_{k}=\kappa_{j}\delta t\xi_{jk}\frac{\left|I_{k,t}\right|}{N_{k}}$
+\end_inset
+
+.
+ Let 
+\begin_inset Formula $y_{1}^{k}\ldots y_{l_{k}}^{k}$
+\end_inset
+
+ be the infected individuals native from 
+\begin_inset Formula $k$
+\end_inset
+
+ that our individual 
+\begin_inset Formula $x$
+\end_inset
+
+ meets between 
+\begin_inset Formula $t$
+\end_inset
+
+ and 
+\begin_inset Formula $t+\delta t$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+We have the probability so that a susceptible individual 
+\begin_inset Formula $x$
+\end_inset
+
+ is not infected after having seen 
+\begin_inset Formula $l_{k}$
+\end_inset
+
+ individuals between 
+\begin_inset Formula $t$
+\end_inset
+
+ and 
+\begin_inset Formula $t+\delta t$
+\end_inset
+
+: 
+\begin_inset Formula 
+\begin{eqnarray*}
+ &  & Pr_{x\sim\mathcal{X}_{i}}\left[x\in S_{t+\delta t}\mid x\in S_{t}\wedge x\in V_{j,t}\right]\\
+ & = & Pr_{x\sim\mathcal{X}_{i}}\left[\bigwedge_{\begin{array}{c}
+k=1\ldots M\\
+p=1\ldots l_{k}
+\end{array}}\neg\left(Transmit(y_{p}^{k},x)\right)\mid x\in S_{t}\wedge x\in V_{j,t}\right]\\
+ & = & \prod_{k=1}^{M}Pr_{x\sim\mathcal{X}_{i}}\left[\bigwedge_{p=1\ldots l_{k}}\neg\left(Transmit(y_{p}^{k},x)\right)\mid x\in S_{t}\wedge x\in V_{j,t}\right]\\
+ & = & \prod_{k=1}^{M}\left(1-c_{ik}\right)^{\kappa_{j}\delta t\xi_{jk}\frac{\left|I_{k,t}\right|}{N_{k}}}
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Then, we plug this back into the previous formula, and we get: 
+\begin_inset Formula 
+\begin{eqnarray*}
+Pr_{x\sim\mathcal{X}_{i}}\left[x\in E_{t+\delta t}\mid x\in S_{t}\wedge x\in V_{j,t}\right] & = & 1-\prod_{k=1}^{M}\left(1-c_{ik}\right)^{\kappa_{j}\xi_{jk}\frac{\left|I_{k,t}\right|}{N_{k}}\delta t}
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The first order approximation of 
+\begin_inset Formula $1-\prod_{k=1}^{M}(1-c_{ik})^{v_{k}}$
+\end_inset
+
+ is 
+\begin_inset Formula $\sum_{k=1}^{M}-v_{k}\log(1-c_{ik})$
+\end_inset
+
+.
+ Applying this approximation here, we get:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray*}
+Pr_{x\sim\mathcal{X}_{i}}\left[x\in E_{t+\delta t}\mid x\in S_{t}\wedge x\in V_{j,t}\right] & \simeq & \delta t\sum_{k=1}^{M}\left(-\kappa_{j}\xi_{jk}\frac{\left|I_{k,t}\right|}{N_{k}}\log\left(1-c_{ik}\right)\right)
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Define 
+\begin_inset Formula $\beta_{ijk}=-\kappa_{j}\log\left(1-c_{ik}\right)$
+\end_inset
+
+, let 
+\begin_inset Formula $\delta t$
+\end_inset
+
+ converge to zero, and we get: 
+\begin_inset Formula 
+\[
+\frac{dPr_{x\sim\mathcal{X}_{i}}\left[x\in E_{t+dt}\mid x\in S_{t}\wedge x\in V_{j,t}\right]}{dt}\simeq\sum_{k=1}^{M}\left(\xi_{jk}\frac{\left|I_{k,t}\right|}{N_{k}}\beta_{ijk}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+If there is only one subpopulation 
+\begin_inset Formula $i$
+\end_inset
+
+, then we fall back to the formula of 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "KeelingRohani2008"
+
+\end_inset
+
+.
+ We have : 
+\begin_inset Formula 
+\[
+\beta_{i}=-\kappa_{i}\log\left(1-c_{i}\right)
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\frac{d}{dt}\mathbb{E}\left[\left|E_{i,t+dt}-E_{i,t}\right|\right]\simeq-\left|S_{i,t}\right|\left(\frac{\left|I_{i}\right|}{N_{i}}\beta_{i}\right)
+\]
+
+\end_inset
+
+and the force of infection as follows : 
+\begin_inset Formula 
+\[
+\lambda_{i}=\beta_{i}\frac{\left|I_{i}\right|}{N_{i}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+
+\series bold
+3.
+ Final Formula
+\series default
+ 
+\end_layout
+
+\begin_layout Standard
+We simply have to plug in the probability 
+\begin_inset Formula $\rho_{ij}$
+\end_inset
+
+ that 
+\begin_inset Formula $i$
+\end_inset
+
+ visits 
+\begin_inset Formula $j$
+\end_inset
+
+.
+ We get, for the new interpretation NIIF:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\frac{d}{dt}\mathbb{E}\left[\left|E_{i,t+dt}-E_{i,t}\right|\right]\simeq-\left|S_{i,t}\right|\sum_{j}\rho_{ij}\kappa_{j}\log\left[1-\sum_{k=1}^{M}\left(\frac{\left|I_{k,t}\right|}{N_{k}}\times c_{ik}\times\xi_{jk}\right)\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+And for the old interpretation OIIF 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "KeelingRohani2008"
+
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\frac{d}{dt}\mathbb{E}\left[\left|E_{i,t+dt}-E_{i,t}\right|\right]\simeq-\left|S_{i,t}\right|\sum_{j}\rho_{ij}\sum_{k=1}^{M}\left(\xi_{jk}\frac{\left|I_{k,t}\right|}{N_{k}}\beta_{ijk}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In conclusion, in this thesis, we use the interpretation NIIF to present
+ the infection force in meta-population.
+ This interpretation shows enough interactions between individuals in the
+ same city, individuals in different cities, and between cities in meta-populati
+on.
+\end_layout
+
+\begin_layout Subsection
+The equilibrium state
+\end_layout
+
+\begin_layout Standard
+As mentioned above, we are interested in investigating the SEIR model with
+ demography.
+ This model is an extension of the epidemic simple SEIR model that allows
+ for birth and death.
+ Because, demographic processes play an important role for exploring the
+ longer-term persistence and endemic dynamics of an infectious disease.
+ In SEIR model with demography, assuming that the time scale of disease
+ propagation is fast enough not to be affected by population births and
+ deaths, the model is considered in the case with a constant birth rate
+ and a constant per-capita death rate (that are independent of the population
+ size).
+ Now, we consider a meta-population of many subpopulations.
+ Each subpopulation is modelled by a SEIR model with demography.
+ Again, the ordinary differential equations for a 
+\begin_inset Formula $subpopulation_{i}$
+\end_inset
+
+ in a metapopulation is presented as follows:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray}
+\frac{dS_{i}}{dt} & = & \mu N_{i}-\lambda_{i}S_{i}-\mu S_{i}\\
+\frac{dE_{i}}{dt} & = & \lambda_{i}S_{i}-\mu E_{i}-\sigma E_{i}\\
+\frac{dI_{i}}{dt} & = & \sigma E_{i}-\mu I_{i}-\gamma I_{i}\\
+\frac{dR_{i}}{dt} & = & \gamma I_{i}-\mu R_{i}
+\end{eqnarray}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In simulation, we know that the equilibrium state allow a disease to persist
+ in a population for a long time, and the variables do not change with time.
+ So, an infectious disease in the 
+\begin_inset Formula $subpopulation_{i}$
+\end_inset
+
+ is available in long term this system is at equilibrium.
+ It means that at which 
+\begin_inset Formula $\frac{dS_{i}}{dt}=\frac{dE_{i}}{dt}=\frac{dI{}_{i}}{dt}=\frac{dR{}_{i}}{dt}=0$
+\end_inset
+
+ (*).
+ Thus, we let all ordinary differential equations in the system be equal
+ to zero, then calculate the values of the variables (now denoted by 
+\begin_inset Formula $S_{i}^{*}$
+\end_inset
+
+, 
+\begin_inset Formula $E_{i}^{*}$
+\end_inset
+
+, 
+\begin_inset Formula $I_{i}^{*}$
+\end_inset
+
+, and 
+\begin_inset Formula $R{}_{i}^{*}$
+\end_inset
+
+) that satisfy this condition (*).
+ We have these values as follows:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray}
+S_{i}^{*} & = & N_{i}\frac{(\gamma+\mu)(\sigma+\mu)}{\beta\sigma}\\
+E_{i}^{*} & = & N_{i}\mu\left(\frac{1}{\sigma+\mu}-\frac{\gamma+\mu}{\beta\sigma}\right)\\
+I_{i}^{*} & = & N_{i}\mu\frac{\beta\sigma-(\sigma+\mu)(\gamma+\mu)}{\beta(\sigma+\mu)(\gamma+\mu)}\\
+R_{i}^{*} & = & N_{i}-S_{i}^{*}-E_{i}^{*}-I_{i}^{*}
+\end{eqnarray}
+
+\end_inset
+
+Here, if we set 
+\begin_inset Formula $R_{0}=\frac{\beta\sigma}{(\gamma+\mu)(\sigma+\mu)}$
+\end_inset
+
+, so we have
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray}
+S_{i}^{*} & = & N_{i}\frac{1}{R_{0}}\\
+E_{i}^{*} & = & N_{i}\frac{\mu\sigma}{R_{0}}\left(R_{0}-1\right)\\
+I_{i}^{*} & = & N_{i}\frac{\mu}{\beta}(R_{0}-1)\\
+R_{i}^{*} & = & N_{i}-S_{i}^{*}-E_{i}^{*}-I_{i}^{*}
+\end{eqnarray}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+One normal conditions for all population variables is that the equilibrium
+ values cannot be negative.
+ Therefore, an infectious disease is available in the 
+\begin_inset Formula $subpopulation_{i}$
+\end_inset
+
+ if 
+\begin_inset Formula $R_{0}>1$
+\end_inset
+
+.
+ Now, the endemic equilibrium in the system is given by 
+\begin_inset Formula $(S_{i}^{*},E_{i}^{*},I{}_{i}^{*},R{}_{i}^{*})$
+\end_inset
+
+ = 
+\begin_inset Formula $(N_{i}\frac{1}{R_{0}}$
+\end_inset
+
+, 
+\begin_inset Formula $N_{i}\frac{\mu\sigma}{R_{0}}\left(R_{0}-1\right)$
+\end_inset
+
+, 
+\begin_inset Formula $N_{i}\frac{\mu}{\beta}(R_{0}-1)$
+\end_inset
+
+, 
+\begin_inset Formula $N_{i}(1-\frac{1}{R_{0}}-\frac{\mu\sigma}{R_{0}}\left(R_{0}-1\right)-\frac{\mu}{\beta}(R_{0}-1))$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+DIZZYS : Description of package dizzys
+\end_layout
+
+\begin_layout Standard
+Stochastic and analytical methods are widely applied for the analysis of
+ epidemic models.
+ Many simulation software as well as packages are proposed to help scientists
+ observe fluctuations of infectious diseases over time.
+ These tools simulate epidemic models either by dealing with a set of ordinary
+ differential equations (ODEs) or by applying the stochastic simulation
+ algorithm (SSA) of Gillespie.
+ Simple epidemic models work well on these software tools.
+ However, the accuracy, the simulation speed, and the complexity of models
+ that the tools can simulate are three main drawbacks that always prompt
+ us not to stop improving tools to increase efficient implementations available
+ in software tools.
+ Moreover, rather than dynamics of infectious diseases, predicting the potential
+ spread of an infectious disease in a meta-population is the most difficult
+ problem for scientists.
+ To give an exact prediction about propagation of infectious diseases in
+ a meta-population, we need to make simulations in a complex meta-population
+ with many interconnected sub-populations where the meta-population takes
+ into account many factors about the pathogen, the climatic conditions and
+ simultaneously the interactions between sub-populations.
+ Therefore, we introduce the "dizzysNewInfec" package that allows us to
+ exactly simulate and accurately analyze dynamics of an infectious disease
+ in a meta-population of interconnected sub-populations by using two basic
+ and common disease models SIR and SEIR, and by implementing the direct
+ algorithm of Gillespie in 1977 and the adaptive tau leaping to approximate
+ the trajectory of a continuous-time stochastic process.
+ In addition, on the technical aspect, this package integrates C++ in R,
+ we use C++ to build algorithms, and use R to show two-dimensional and three-dim
+ensional interfaces and use the available statistic functions in R to analyze
+ obtained results.
+ Hence, dizzysNewInfec, it speeds up simulations, it is very easy to install,
+ to use and to show trajectories of disease evolution over time in a meta-popula
+tion of sub-populations.
+\end_layout
+
+\begin_layout Subsubsection
+Introduction
+\end_layout
+
+\begin_layout Standard
+Fundamentally, Kermack-McKendrick gave the first epidemic model to provide
+ a mathematical description of the kinetic transmission of an infectious
+ disease in an unstructured sub-population.
+ Due to this model, today we have known well the SIR and SEIR deterministic
+ epidemic models.
+ These two basic epidemic models are very popularly used by scientists.
+ The reactions in the system are modelled by a set of Ordinary Differential
+ Equations (ODEs) 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "li2007stochastic"
+
+\end_inset
+
+.
+ The deterministic method is the simplest to solve an epidemic model.
+ The main idea of this method is to solve a single differential equation
+ per species of the model.
+ Basically, the deterministic method uses the law of mass action that has
+ applicability in many areas of science.
+ In chemistry, it is also called Fundamental Law of Chemical Kinetics (the
+ study of rates of chemical reactions), introduced by the Norwegian scientists
+ Cato M.
+ Guldberg in 1864-1879 and Peter Waage.
+ The law of mass action shows a simple relation between reaction rate and
+ molecular component concentrations.
+ For a set of initial molecular concentrations given, the law of mass action
+ permits us to see the component concentrations over time.
+ The states of a reaction are a homogeneous, free medium.
+ The reaction rate will be directly scaled with the concentrations of the
+ elements.
+ Most systems can use the traditional deterministic approaches to simulate.
+ It is evident that many systems such as some biochemical systems consist
+ of random, discrete interactions between individual elements.
+ In fact, we have applied the deterministic model in the epidemiology to
+ solve epidemic models such as the SEIR and SIR models.
+ However, in the case, these systems become smaller and smaller, the traditional
+ deterministic models may not be accurate.
+ In addition, in the deterministic approach, the time evolution of a reacting
+ system is assumed that it is both continuous and deterministic.
+ But in fact, molecular population levels can change only by discrete integer
+ amounts.
+ It is the reason for that this time evolution is not both a continuous
+ process and a discrete process.
+ Indeed, the deterministic approach is impossible to predict the exact molecular
+ population levels at some future times unless we can compute exactly the
+ precise positions and velocities of all molecules in the system.
+ It is the reason for that the fluctuations of these systems can be simulated
+ exactly by applying stochastic models via Stochastic Simulation Algorithms
+ (SSA) 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "gillespie1976general,gillespie1977exact"
+
+\end_inset
+
+.
+ The SSA uses Monte Carlo (MC) methods to study the time evolution of the
+ jump process.
+ Because the basis feature of the Monte Carlo simulation is insensitive
+ to the dimensionality of the problem, and the work grows linearly with
+ the number of reaction channels in the model.
+ The SSA describes time-evolution statistically correct trajectories of
+ finite populations in continuous time by solving the corresponding stochastic
+ differential equations.
+ Using the stochastic models can solve three questions.
+ (1) These models take account the discrete character of the number of elements
+ and the evidently random character of collision among elements.
+ (2) They coincide with the theories of the dynamic and stochastic processes.
+ (3) They are a good idea to describe "small systems" and "unstable systems".
+ The main idea of the stochastic models is that element reactions are essentiall
+y random processes.
+ We don't know certainly how a reaction occurs at a moment.
+ We also call it the process stochasticity.
+ Demographic stochasticity is considered as fluctuation in population processes
+ that is based the random nature of events at the level of the individual.
+ Each event is related to one baseline probability fixed, individuals are
+ presented in differing fates due to chance.
+ In addition to the demographic stochasticity, the number of infectious,
+ susceptible, exposed and recovered individuals in a meta-population infected
+ by an infectious disease is now required to be an integer.
+ Modeling approaches that incorporate demographic stochasticity are called
+ event-driven methods.
+ These methods require explicit consideration of events.
+ The first approach published by Daniel T.Gillespie in 1976 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "gillespie1976general"
+
+\end_inset
+
+ is an exact stochastic simulation approach for chemical kinetics.
+ The Gillespie stochastic simulation algorithm (SSA) has become the standard
+ procedure of the discrete-event modelling by taking proper value of the
+ available randomness in such a system.
+ The methods modelling the event-driven model demands explicit presentation
+ of events.
+ Therefore, the "dizzysNewInfec" package permits us to obtain the dynamics
+ of the deterministic and the stochastic dynamics of two basic epidemic
+ models SIR and SEIR.
+ We use the exact algorithm of Gillespie in 1977 and the "adaptive tau-leaping"
+ algorithm in the package.
+ With these two algorithms, each has its private advantages and its private
+ disadvantages.
+ For the exact algorithm, it gives us a really exact approach of simulating
+ population-based time-to-event through two steps with many iterations of
+ 1) searching the time of next event by an exponentially distributed function
+ and 2) searching the nature of next event.
+ Each single event in the Gillespie's solution is explicitly simulated,
+ so this exact simulation becomes exceedingly slow and impractical in systems
+ where the transition rate grows large over time.
+ Hence, approximate models are born instead of the Gillespie's solution,
+ they are concerned with larger transition rates and with increasing simulation
+ speed while still maintaining reasonable accuracy.
+ The "adaptive tau-leaping" algorithm known as an approximate method reduces
+ the number of iterations by treating transition rates as constant over
+ time periods for which this approximation leads to little error 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Cao2007"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+The SEIR epidemic model used in our package have successful described hosts
+ within a population as Susceptible (the number of individuals not yet infected
+ with the disease), Exposed (the number of individuals who are infected
+ with the disease but not infectious), Infected (the number of individuals
+ who have been infected with the disease and are capable of spreading the
+ disease), and Recovered (the number of individuals who have successfully
+ cleared the infection).
+ We ignore population demography-births, deaths, and migration.
+ So we have only three transitions: 
+\begin_inset Formula 
+\begin{equation}
+S\rightarrow E,E\rightarrow I,I\rightarrow R.
+\end{equation}
+
+\end_inset
+
+It is obvious that the second and third of these transitions are easier,
+ so we focus on the first transition in which the level of the infectious
+ disease influences strongly the disease transmission rate from a susceptible
+ individual into the infected class.
+ If this first step doesn't occur, all infected individuals can go to the
+ recovered class.
+ This first transition plays an important role in studying fluctuation of
+ disease.
+ Many researches have been tried to find the "infectious period" (the amount
+ of time spent in the infectious class).
+ They have found that for acute infections, the "infectious period" is distribut
+ed around some mean values that we can estimate from clinical data.
+ To present enough properties of the "infectious period" by formulations,
+ we have to depend upon three main factors of the disease transmission from
+ S to E : the prevalence of infecteds, the underlying population contact
+ structure, and the probability of transmission given contact.
+ For a directly transmitted disease, the key factor is the contact between
+ susceptible and infected individuals.
+ Hence, in this package "dizzysNewInfe", we interpret the "infectious period"
+ in more detailed, and realistic contexts.
+ We introduce a new formula of the probabilistic derivation of multipopulation
+ epidemic model called NIIF.
+ We study the case where agent 
+\begin_inset Formula $x$
+\end_inset
+
+ native from subpopulation 
+\begin_inset Formula $i$
+\end_inset
+
+ visits sub-population 
+\begin_inset Formula $j$
+\end_inset
+
+.
+ In a meta-population of sub-populations, during a small interval of time
+ 
+\begin_inset Formula $\delta t$
+\end_inset
+
+, each native individual of the sub-population 
+\begin_inset Formula $i$
+\end_inset
+
+ visits one single sub-population 
+\begin_inset Formula $j$
+\end_inset
+
+ (with probability 
+\begin_inset Formula $\rho_{ij}$
+\end_inset
+
+) and will see on average 
+\begin_inset Formula $K_{j}$
+\end_inset
+
+.
+ These individuals come from all sub-populations.
+ This is absolutely a new interpretation about the infection between individuals
+ and the propagation of disease between sub-population.
+ In previous research described in [keeling2011], the authors always assumed
+ that both the number of people we meet and the number of infected people
+ we meet are fixed.
+ This assumption simplifies the relations between individuals and between
+ sub-populations.
+ It's the reason for that the formula of the infection force did not present
+ clearly the complex connections between individuals and between sub-populations
+ in a meta-population.
+ In our interpretation, we assume that for each sub-population 
+\begin_inset Formula $k$
+\end_inset
+
+, the number of people native from 
+\begin_inset Formula $k$
+\end_inset
+
+ that we meet during 
+\begin_inset Formula $\delta t$
+\end_inset
+
+ follows a Poisson process.
+ So both the number of people we meet and the number of infected people
+ we meet during 
+\begin_inset Formula $\delta t$
+\end_inset
+
+ should be random variables.
+\end_layout
+
+\begin_layout Standard
+In short, the 
+\series bold
+dizzysNewInfec
+\series default
+ package implements both the exact solution and the approximate solution
+ for the SIR and SEIR models.
+ The package installs well the new interpretation of the infection force
+ NIIF for SIR and SEIR meta-population models by integrating the R package
+ and the C++ implementation.
+ We can choose one of these two solutions to simulate when the number of
+ sub-populations in a meta-population increases.
+ Using C++ to perform the algorithms, and R to create interfaces makes the
+ 
+\series bold
+dizzysNewInfec
+\series default
+ package much faster and much easy to use than any pure R package.
+\end_layout
+
+\begin_layout Subsubsection
+Methods
+\end_layout
+
+\begin_layout Standard
+In this section, first we will talk about the deterministic and stochastic
+ SEIR models.
+ Then, we will present transformation the SEIR model into the SIR model
+ through the usage of the two algorithms.
+ We hope that the models and the algorithms should be well understood before
+ obtaining simulation results.
+\end_layout
+
+\begin_layout Paragraph
+
+\series bold
+1.
+ Deterministic SEIR model:
+\series default
+ 
+\end_layout
+
+\begin_layout Standard
+To describe infectious diseases in a in a spatial context, we consider a
+ meta-population of n sub-populations.
+ In sub-population 
+\begin_inset Formula $i$
+\end_inset
+
+ of size 
+\begin_inset Formula $N_{i}$
+\end_inset
+
+, disease dynamics can be deterministically described by the following set
+ of differential equations:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray}
+\frac{dS_{i}}{dt} & = & \mu N_{i}-\lambda_{i}S_{i}-\mu S_{i}\label{eq:dS-1}\\
+\frac{dE_{i}}{dt} & = & \lambda_{i}S_{i}-\mu E_{i}-\sigma E_{i}\\
+\frac{dI_{i}}{dt} & = & \sigma E_{i}-\mu I_{i}-\gamma I_{i}\label{eq:infectieux-1}\\
+\frac{dR_{i}}{dt} & = & \gamma I_{i}-\mu R_{i}\label{eq:dR-1}
+\end{eqnarray}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $S_{i}$
+\end_inset
+
+, 
+\begin_inset Formula $E_{i}$
+\end_inset
+
+, 
+\begin_inset Formula $I_{i}$
+\end_inset
+
+ et 
+\begin_inset Formula $R_{i}$
+\end_inset
+
+ are respectively the numbers of susceptible, exposed, infectious and recovered
+ in this sub-population 
+\begin_inset Formula $i$
+\end_inset
+
+.
+ Individuals are born susceptible and die at a rate 
+\begin_inset Formula $\mu$
+\end_inset
+
+, become infected with the force of infection 
+\begin_inset Formula $\lambda_{i}$
+\end_inset
+
+, infectious after a latency period of an average duration of 
+\begin_inset Formula $1/\sigma$
+\end_inset
+
+ and recover at the rate 
+\begin_inset Formula $\gamma$
+\end_inset
+
+.
+ In case the infectious contact rate is constant, the equilibrium values
+ of the variables 
+\begin_inset Formula $S$
+\end_inset
+
+, 
+\begin_inset Formula $E$
+\end_inset
+
+, 
+\begin_inset Formula $I$
+\end_inset
+
+ and 
+\begin_inset Formula $R$
+\end_inset
+
+ can be expressed analytically.
+ The force of infection depends not only on the total population size 
+\begin_inset Formula $N_{i}$
+\end_inset
+
+ and the number of infected 
+\begin_inset Formula $I_{i}$
+\end_inset
+
+ in subpopulation 
+\begin_inset Formula $i$
+\end_inset
+
+, but also in other sub-populations :
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\lambda_{i}=\sum_{j}\rho_{ij}\kappa_{j}\log\left[1-\sum_{k=1}^{M}\left(\frac{\left|I_{k,t}\right|}{N_{k}}\times c_{ik}\times\xi_{jk}\right)\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $\rho_{i,j}$
+\end_inset
+
+ the probability that an individual from sub-population 
+\begin_inset Formula $i$
+\end_inset
+
+ visits sub-population 
+\begin_inset Formula $j$
+\end_inset
+
+.
+ 
+\begin_inset Formula $\kappa_{j}$
+\end_inset
+
+ is the average number of contacts per unit of time a susceptible will have
+ when visiting city.
+ 
+\begin_inset Formula $c_{i,k}$
+\end_inset
+
+ is the probability that a susceptible individual native from 
+\begin_inset Formula $i$
+\end_inset
+
+ being in contact with another infected individual native from 
+\begin_inset Formula $k$
+\end_inset
+
+.
+ 
+\begin_inset Formula $\xi_{jk}$
+\end_inset
+
+ refers to the probability that an individual 
+\begin_inset Formula $y$
+\end_inset
+
+ meeting 
+\begin_inset Formula $x$
+\end_inset
+
+ in 
+\begin_inset Formula $C_{j}$
+\end_inset
+
+ comes from 
+\begin_inset Formula $C_{k}$
+\end_inset
+
+.
+ See appendix for detail on the construction of this equation.
+ We can verify that in the limit case on one single subpopulation in the
+ metapopulation (
+\begin_inset Formula $i=j$
+\end_inset
+
+ and 
+\begin_inset Formula $n=1$
+\end_inset
+
+), we have :
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\lambda_{i}=-\kappa_{i}\log(1-\frac{I_{i}}{N_{i}}\times c_{ii})
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In the case, we consider that the contact number 
+\begin_inset Formula $K_{i}$
+\end_inset
+
+ is seasonally forced [Altizer2006]: 
+\begin_inset Formula 
+\begin{equation}
+K_{i}(t)=K_{i0}\left[1+K_{i1}\cos\left(\frac{2\pi t}{T}+\varphi_{i}\right)\right]\label{eq:beta_i-1}
+\end{equation}
+
+\end_inset
+
+where 
+\begin_inset Formula $K_{i0}$
+\end_inset
+
+ and 
+\begin_inset Formula $K_{i1}$
+\end_inset
+
+ are the mean value and amplitude of the contact number and 
+\begin_inset Formula $T$
+\end_inset
+
+ and 
+\begin_inset Formula $\varphi_{i}$
+\end_inset
+
+ are the period and the phase of the forcing.
+\end_layout
+
+\begin_layout Paragraph
+
+\series bold
+2.
+ Stochastic models
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+The stochastic model is built by depending upon the deterministic model.
+ More detailed, this stochastic model relies on chance variation in risks
+ of exposure, disease, and other factors.
+ It is referred as an individual-level modeling, because every individual
+ plays an important role in the model, so this stochastic model can consider
+ well most small population size that the deterministic model can not do.
+ To implement this SEIR stochastic model, there are many different methods.
+ The first method "First Reaction Method" is born in 1976 by Gillespie.
+ Then, according to this first method and these two key factors of demographic
+ stochasticity models (event, randomness), many scientists have improved
+ the first method, and created many better algorithms for stochastic simulations.
+ There are two main types of methods, exact methods and approximative methods.
+ The typical approach in exact methods most practitioners use, is the algorithm
+ "Direct Method" of Gillespie(1977) improved from the first approach "First
+ Reaction Method", and in approximative methods, is the "tau-leaping" method.
+ For the Direct Method (Gillespie 1977), the first step estimates the time
+ until the next event, by accumulating the rates of all possible events.
+ Then, by transforming event rates into probabilities, the method randomly
+ selects one of these events.
+ The time and numbers in each class are then updated according to which
+ event is chosen.
+ We repeat this process to iterate model through time.
+ For the "tau-leaping" method, the main crux is the use of Poisson random
+ variables to approximate the number of occurrences of each type of reaction
+ event during a carefully selected time period, 
+\begin_inset Formula $\tau$
+\end_inset
+
+ .
+ According to these two types of algorithms, the common point is both methods
+ use continuous-time Markov process for which the transition rates are constants
+, isn't a function of time.
+ The future state of the process, is only conditional on the present state,
+ but independent of the past.
+ However, for the exact algorithm, its advantage give us a really exact
+ approach to simulate time-to-event model.
+ This process is repeated to iterate the mode.
+ GibsonBruck(2000) 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "KeelingRohani2008"
+
+\end_inset
+
+ modified the first reaction method and created the Next Reaction method
+ that substantially more challenging to program but is significantly faster
+ than even the method when there are a large number of different event types.
+ The Direct, First Reaction and Next Reaction methods are all exact stochastic
+ approaches of the underlying ordinary differential equations.
+ But, its disadvantages are 1) noise in exact simulations only affects the
+ probabilities associated with fates of individuals and the updating of
+ each consecutive event is independent – there is no assumption concerning
+ environmental stochasticity; 2) these exact solutions become too slow and
+ impractical when any one transition rate is large, when there is a big
+ number of sub-populations or one a big number of event in a meta-population.
+ It is the reason for that, approximate models have been proposed instead
+ of the exact stochastic methods.
+ Gillespie (2001) has proposed a new method that decreases the simulation
+ accuracy, but increases simulation speed.
+ This is the "tau-leap method" known as an approximate method reduces the
+ number of iterations by treating transition rates as constant over time
+ periods for which this approximation leads to little error [KeelingRohani2008]
+ as mentioned above.
+ However, when we use the "tau-leap method", there is a possibility, the
+ number of individual in each class can become negative.
+ According to Keeling2008
+\begin_inset CommandInset citation
+LatexCommand cite
+key "KeelingRohani2008"
+
+\end_inset
+
+, the authors compared these methods together, they pointed out that when
+ the population size increases, the simulation time of the three methods
+ (First Reaction, Direct Method, tau -leap ) is almost augmented.
+ The simulation time of the method "First Method" is maximum, it means that
+ this is the slowest method, but the simulation time of the method "tau-leap"
+ is minimum or the fastest.
+ In the shape of my package, we use the direct method to exactly estimate
+ spread of diseases in meta-population.
+ Because the direct method is one exact approach and its simulation time
+ isn't too slow and too fast.
+ We use the approximate method to speed up simulations in the case where
+ there are many sub-populations in a meta-population.
+\end_layout
+
+\begin_layout Subparagraph
+a.
+ Direct method
+\end_layout
+
+\begin_layout Standard
+Based on the differential equations above, we give a stochastic version
+ of this model.
+ We use for that a population-based time-to-next-event model based on Gillespie'
+s algorithm [Daniel.T.Gillespie1977].
+ Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:stoch_ev"
+
+\end_inset
+
+ lists all the events of the model, occurring in subpopulation 
+\begin_inset Formula $i$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+placement htpb
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:stoch_ev"
+
+\end_inset
+
+Events of the stochastic version of the model of equations, occuring in
+ subpopulation 
+\begin_inset Formula $i$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\end_layout
+
+\end_inset
+
+
+\begin_inset Tabular
+<lyxtabular version="3" rows="10" columns="3">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="left" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Events
+\series default
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Rates
+\series default
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Transitions 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+birth
+\series default
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\mu N_{i}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $S_{i}\leftarrow S_{i}+1$
+\end_inset
+
+ and 
+\begin_inset Formula $N_{i}\leftarrow N_{i}+1$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+death of a susceptible
+\series default
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+\begin_inset Formula $\mu S_{i}$
+\end_inset
+
+
+\series default
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+\begin_inset Formula $S_{i}\leftarrow S_{i}-1$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+death of an exposed
+\series default
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+\begin_inset Formula $\mu E_{i}$
+\end_inset
+
+
+\series default
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+\begin_inset Formula $E_{i}\leftarrow E_{i}-1$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+death of an infected
+\series default
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+\begin_inset Formula $\mu I_{i}$
+\end_inset
+
+
+\series default
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+\begin_inset Formula $I_{i}\leftarrow I_{i}-1$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+death of an immune
+\series default
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+\begin_inset Formula $\mu R_{i}$
+\end_inset
+
+
+\series default
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+\begin_inset Formula $I_{i}\leftarrow I_{i}-1$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+infection
+\series default
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+\begin_inset Formula $\lambda_{i}S_{i}$
+\end_inset
+
+
+\series default
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+\begin_inset Formula $S_{i}\leftarrow S_{i}-1$
+\end_inset
+
+ 
+\series default
+and
+\series bold
+ 
+\begin_inset Formula $E_{i}\leftarrow E_{i}+1$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+becoming infectious
+\series default
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+\begin_inset Formula $\sigma E_{i}$
+\end_inset
+
+
+\series default
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+\begin_inset Formula $E_{i}\leftarrow E_{i}-1$
+\end_inset
+
+ 
+\series default
+and
+\series bold
+ 
+\begin_inset Formula $I_{i}\leftarrow I_{i}+1$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+recovery
+\series default
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+\begin_inset Formula $\gamma I_{i}$
+\end_inset
+
+
+\series default
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+\begin_inset Formula $I_{i}\leftarrow I_{i}-1$
+\end_inset
+
+ 
+\series default
+and
+\series bold
+ 
+\begin_inset Formula $R_{i}\leftarrow R_{i}+1$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="none" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+To apply the Direct Method in a meta-population of n sub-populations, we
+ know that at a moment 
+\begin_inset Formula $t$
+\end_inset
+
+, there are only one single event fired in one single sub-population during
+ one time unit 
+\begin_inset Formula $tstep$
+\end_inset
+
+.
+ Hence, we improve the Direct Method for one single population by adding
+ a random number to calculate chance which sub-population to fire.
+ Starting from the initial states, the stochastic simulation algorithms
+ simulate the trajectory in population processes by repeatedly answering
+ the following three big questions and updating the states.
+\end_layout
+
+\begin_layout Itemize
+When (time) will the next event occur? 
+\end_layout
+
+\begin_layout Itemize
+Which subpopulation where the event will occur next? 
+\end_layout
+
+\begin_layout Itemize
+Which event in the subpopulation will occur next? 
+\end_layout
+
+\begin_layout Standard
+Although, it is a small improvement in the original Direct Method, however
+ it turns back much more benefits for a meta-population, it well presents
+ the interactions between subpopulations in the metapopulation.
+\end_layout
+
+\begin_layout Subparagraph
+b.
+ Adaptive tau-leaping algorithm
+\end_layout
+
+\begin_layout Standard
+In this step, we provide basic concepts for the adaptive tau-leaping algorithm
+ by using the detailed description of Cao [Cao2007].
+\end_layout
+
+\begin_layout Standard
+For the Markov process at time t, to describe a metapopulation of n subpopulatio
+ns, we have:
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+state set:
+\series default
+ X(t)
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $X(t):=[S_{1}(t),...,S_{n}(t),E_{1}(t),...,E_{n}(t),I_{1}(t),...,I_{n}(t),R_{1}(t),...,R_{n}(t)]$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+each variables of 
+\begin_inset Formula $X(t)$
+\end_inset
+
+ is defined on the non-negative integers.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+set of allowable transitions:
+\series default
+ 
+\begin_inset Formula ${\triangle_{j}}$
+\end_inset
+
+, for each allowable transition, 
+\begin_inset Formula $j$
+\end_inset
+
+, we define a rate 
+\begin_inset Formula $\lambda_{j}$
+\end_inset
+
+, by using a function independent on t but dependent on the current state
+ 
+\begin_inset Formula $X(t)$
+\end_inset
+
+, to calculate transition rates given the state 
+\begin_inset Formula $(\lambda(X))$
+\end_inset
+
+ through the deterministic model, and a vector of 
+\begin_inset Formula $n$
+\end_inset
+
+ integers, 
+\begin_inset Formula $\triangle_{j}:=[\triangle_{j,1},...,\triangle_{j,n}]$
+\end_inset
+
+, that reflects the change in state if this transition were followed: 
+\begin_inset Formula $X(t)+\triangle_{j}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+time process: 
+\series default
+modeling on a time-homogeneous process.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+operation:
+\series default
+ with the SEIR model, the package simulates a trajectory from time 
+\begin_inset Formula $0$
+\end_inset
+
+ to a stopping time 
+\begin_inset Formula $tmax$
+\end_inset
+
+.
+ Based on the description of Cao and al.
+ in 2007, a good time period of length 
+\begin_inset Formula $\tau$
+\end_inset
+
+ is during which all transition rates remain approximately constant and
+ all 
+\begin_inset Formula $n$
+\end_inset
+
+ state variables remain greater than zero with probability
+\begin_inset Formula $\thicksim1$
+\end_inset
+
+.
+ Then, by using the Poisson-dustributed number of transitions, that should
+ have occurred during this period: 
+\begin_inset Formula $X(t+\tau)\approx X(t)+\sum_{j}y_{j}\triangle_{j}$
+\end_inset
+
+ where 
+\begin_inset Formula $y_{j}\thicksim Poisson(\tau\lambda_{j})$
+\end_inset
+
+.
+ To successfully apply this algorithm, we need to know that, transition
+ rates frequently change and in balancing efficiency with accuracy when
+ selecting these time periods to leap over.
+\end_layout
+
+\begin_layout Standard
+In short, in the package "dizzysNewInfec" we have build successfully the
+ Direct method and "tau-leap method" for a meta-population.
+ In the particular case, there is one single sub-population, the Direct
+ Method and "tau-leap" method for a meta-population are similar to the original
+ methods.
+\end_layout
+
+\begin_layout Paragraph
+3.
+ Transformation SEIR model into SIR model:
+\end_layout
+
+\begin_layout Standard
+The deterministic SEIR model with one subpopulation by exploiting the 'seir'
+ function in the package.
+\end_layout
+
+\begin_layout Subsubsection
+Example
+\end_layout
+
+\begin_layout Standard
+%%%%%%%%%%
+\end_layout
+
+\begin_layout Subsubsection
+Comparison between the packages 
+\begin_inset Quotes eld
+\end_inset
+
+dizzysNewInfec
+\begin_inset Quotes erd
+\end_inset
+
+ and other packages
+\end_layout
+
+\begin_layout Paragraph
+a.
+ Between the packages 
+\begin_inset Quotes eld
+\end_inset
+
+dizzysNewInfec
+\begin_inset Quotes erd
+\end_inset
+
+ and 
+\begin_inset Quotes eld
+\end_inset
+
+GillespieSSA
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "pineda2008gillespiessa"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Introduction 
+\begin_inset Quotes eld
+\end_inset
+
+GillespieSSA
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+the possibility of GillespieSSA and of Dizzys
+\end_layout
+
+\begin_layout Itemize
+Fastness
+\end_layout
+
+\begin_layout Itemize
+Conclusion
+\end_layout
+
+\begin_layout Standard
+%%%%%%%%%%%%%%
+\end_layout
+
+\begin_layout Paragraph
+b.
+ Between the packages 
+\begin_inset Quotes eld
+\end_inset
+
+dizzysNewInfec
+\begin_inset Quotes erd
+\end_inset
+
+ and 
+\begin_inset Quotes eld
+\end_inset
+
+adaptivetau
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "johnson2011adaptivetau"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+comparaison avec ce qui existe déjà en termes de (1) possibilité (ce que
+ l’on peut faire) et de (2) rapidité.
+ En gros il y a un compromis entre flexibilité et rapidité
+\end_layout
+
+\begin_layout Itemize
+à comparer avec “adaptivetau” et “GillespieSSA”.
+ Voir aussi les autres outils qu’il existe
+\end_layout
+
+\begin_layout Itemize
+Kullback-Leibler Divergence or Kolmogorov–Smirnov test to compare the simulation
+ results.
+\end_layout
+
+\begin_layout Itemize
+Package ‘EpiDynamics’
+\end_layout
+
+\begin_layout Paragraph
+c.
+ Between the packages 
+\begin_inset Quotes eld
+\end_inset
+
+dizzysNewInfec
+\begin_inset Quotes erd
+\end_inset
+
+ and 
+\begin_inset Quotes eld
+\end_inset
+
+EpiDynamics
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "baquero2014EpiDynamics"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%%%%%%
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+%%%%%%
+\end_layout
+
+\begin_layout Standard
+%%%
+\end_layout
+
+\begin_layout Section
+Relation structure/dynamique spatiale et persistence 
+\end_layout
+
+\begin_layout Standard
+C’est ce que tu es en train d’explorer pour le moment.
+ Plusieurs questions à explorer.
+ Chaque question constitue un sous-chapitre.
+ A toi de développer et structurer cette partie plus en détails.
+\end_layout
+
+\begin_layout Section
+Contrôle par reinforcement learning: 
+\end_layout
+
+\begin_layout Itemize
+comment utiliser ton simulateur pour faire du reinforcement learning.
+ Partie qui reste à développer.
+ 
+\end_layout
+
+\begin_layout Section
+Conclusion et discussion générales.
+\end_layout
+
+\begin_layout Standard
+Commence donc à écrire certaines parties dès que tu peux (un peu chaque
+ semaine et de plus en plus au fur et à fur que le temps avance).
+ Pense aussi à bien faire la bibliographie (il faut que tu sois incollable
+ sur le sujet).
+ Les nouveau login et mot de passe de Bibliovie (http://bibliovie.inist.fr)
+ sont 15SCBUMR5290 et 4NX9E5.
+ Ou, on peux utiliser l'account de Giang à UPMC selon les conseil de la
+ site : http://www.jubil.upmc.fr/fr/ressources_en_ligne2/mode_acces_ressources.html.
+\end_layout
+
+\begin_layout Standard
+ 
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+bibfiles "biblio/bibManuscrit"
+options "plain"
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

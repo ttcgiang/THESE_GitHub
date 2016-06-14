@@ -365,13 +365,6 @@
   Year                     = {2007}
 }
 
-@Book{choffnes2007ethical,
-  Title                    = {Ethical and Legal Considerations in Mitigating Pandemic Disease:: Workshop Summary},
-  Author                   = {Choffnes, Eileen R and Sparling, P Frederick and Hamburg, Margaret A and Lemon, Stanley M and Mack, Alison and others},
-  Publisher                = {National Academies Press},
-  Year                     = {2007}
-}
-
 @Article{Choisy2012,
   Title                    = {Changing spatial epidemiology of pertussis in continental USA},
   Author                   = {M. Choisy and P. Rohani},
@@ -613,6 +606,16 @@
   Author                   = {J. Fox},
 
   File                     = {:/home/tran/Documents/Giang_Document/These/thesegiang/Articles_Jabref/persistence_synchrony/doc.persistence.pdf:PDF},
+  Owner                    = {tran},
+  Timestamp                = {2014.04.22}
+}
+
+@Book{Hanski2004,
+  Title                    = {Ecology, Genetics and evolution of metapopulations},
+  Author                   = {Ilkka Hanski; Oscar E Gaggiotti},
+  Year                     = {2004},
+
+  File                     = {:/home/tran/Documents/Giang_Document/thesegiang/thesegiang/Book/Ecology, Genetics and Evolution of Metapopulations.pdf:PDF},
   Owner                    = {tran},
   Timestamp                = {2014.04.22}
 }

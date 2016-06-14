@@ -1,6 +1,32 @@
 % This file was created with JabRef 2.10b2.
 % Encoding: UTF-8
+%% Packages in R
+@article{pineda2008gillespiessa,
+  title={Gillespiessa: Implementing the stochastic simulation algorithm in r},
+  author={Pineda-Krch, Mario},
+  journal={Journal of Statistical Software},
+  volume={25},
+  number={12},
+  pages={1--18},
+  year={2008}
+}
 
+@article{johnson2011adaptivetau,
+  title={adaptivetau: Tau-leaping stochastic simulation},
+  author={Johnson, P},
+  journal={R Package Version 0.902},
+  year={2011}
+}
+
+
+@article{jBaquero2014EpiDynamics,
+  title={EpiDynamics: Dynamic Models in Epidemiology},
+  author={Oswaldo Santos Baquero, Fernando Silveira Marques},
+  year={2014}
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%
 
 @Article{adalsteinsson2004biochemical,
   Title                    = {Biochemical network stochastic simulator (BioNetS): software for stochastic modeling of biochemical networks},
@@ -262,18 +288,6 @@
   Organization             = {Science Press}
 }
 
-@Article{burrage2004poisson,
-  Title                    = {Poisson Runge-Kutta methods for chemical reaction systems},
-  Author                   = {Burrage, Kevin and Tian, Tianhai},
-  Year                     = {2004},
-  Number                   = {1},
-  Pages                    = {82--96},
-  Volume                   = {1},
-
-  Booktitle                = {Third International Workshop on Scientific Computing and Applications},
-  Organization             = {Science Press}
-}
-
 @Article{cao2007adaptive,
   Title                    = {Adaptive explicit-implicit tau-leaping method with automatic tau selection},
   Author                   = {Cao, Yang and Gillespie, Daniel T and Petzold, Linda R},
@@ -356,20 +370,6 @@
   Volume                   = {10},
 
   Publisher                = {Springer}
-}
-
-@Book{choffnes2007ethical,
-  Title                    = {Ethical and Legal Considerations in Mitigating Pandemic Disease:: Workshop Summary},
-  Author                   = {Choffnes, Eileen R and Sparling, P Frederick and Hamburg, Margaret A and Lemon, Stanley M and Mack, Alison and others},
-  Publisher                = {National Academies Press},
-  Year                     = {2007}
-}
-
-@Book{choffnes2007ethical,
-  Title                    = {Ethical and Legal Considerations in Mitigating Pandemic Disease:: Workshop Summary},
-  Author                   = {Choffnes, Eileen R and Sparling, P Frederick and Hamburg, Margaret A and Lemon, Stanley M and Mack, Alison and others},
-  Publisher                = {National Academies Press},
-  Year                     = {2007}
 }
 
 @Article{Choisy2012,
@@ -613,6 +613,16 @@
   Author                   = {J. Fox},
 
   File                     = {:/home/tran/Documents/Giang_Document/These/thesegiang/Articles_Jabref/persistence_synchrony/doc.persistence.pdf:PDF},
+  Owner                    = {tran},
+  Timestamp                = {2014.04.22}
+}
+
+@Book{Hanski2004,
+  Title                    = {Ecology, Genetics and evolution of metapopulations},
+  Author                   = {Ilkka Hanski; Oscar E Gaggiotti},
+  Year                     = {2004},
+
+  File                     = {:/home/tran/Documents/Giang_Document/thesegiang/thesegiang/Book/Ecology, Genetics and Evolution of Metapopulations.pdf:PDF},
   Owner                    = {tran},
   Timestamp                = {2014.04.22}
 }
@@ -1116,13 +1126,6 @@
   File                     = {:/home/tran/Documents/Giang_Document/These/thesegiang/Articles_Jabref/persistence_synchrony/1958 Huffaker experimental studies on predation.pdf:PDF}
 }
 
-@Article{johnson2011adaptivetau,
-  Title                    = {adaptivetau: Tau-leaping stochastic simulation},
-  Author                   = {Johnson, P},
-  Journal                  = {R Package Version 0.902},
-  Year                     = {2011}
-}
-
 @Article{Keeling2010,
   Title                    = {Individual identity and movement networks for disease metapopulations},
   Author                   = {M. J. Keeling and L. Danon and M. C. Vernon and T. A. House},
@@ -1426,12 +1429,6 @@
   Publisher                = {Elsevier}
 }
 
-@Article{baquero2014EpiDynamics,
-  Title                    = {EpiDynamics: Dynamic Models in Epidemiology},
-  Author                   = {Oswaldo Santos Baquero, Fernando Silveira Marques},
-  Year                     = {2014}
-}
-
 @Article{panum1988observations,
   Title                    = {Observations made during the epidemic of measles on the Faroe Islands in the year 1846},
   Author                   = {Panum, Peter Ludwig},
@@ -1450,16 +1447,6 @@
   Volume                   = {126},
 
   Publisher                = {AIP Publishing}
-}
-
-@Article{pineda2008gillespiessa,
-  Title                    = {Gillespiessa: Implementing the stochastic simulation algorithm in r},
-  Author                   = {Pineda-Krch, Mario},
-  Journal                  = {Journal of Statistical Software},
-  Year                     = {2008},
-  Number                   = {12},
-  Pages                    = {1--18},
-  Volume                   = {25}
 }
 
 @Article{Plowright2011,
@@ -1720,18 +1707,6 @@
   Publisher                = {OLoeP}
 }
 
-@Article{turner2004stochastic,
-  Title                    = {Stochastic approaches for modelling in vivo reactions},
-  Author                   = {Turner, Thomas E and Schnell, Santiago and Burrage, Kevin},
-  Journal                  = {Computational biology and chemistry},
-  Year                     = {2004},
-  Number                   = {3},
-  Pages                    = {165--178},
-  Volume                   = {28},
-
-  Publisher                = {Elsevier}
-}
-
 @InCollection{van2008spatial,
   Title                    = {Spatial structure: Patch models},
   Author                   = {Van den Driessche, P},
@@ -1849,6 +1824,30 @@
 
   Publisher                = {IOP Publishing}
 }
+
+@article{turner2004stochastic,
+  title={Stochastic approaches for modelling in vivo reactions},
+  author={Turner, Thomas E and Schnell, Santiago and Burrage, Kevin},
+  journal={Computational biology and chemistry},
+  volume={28},
+  number={3},
+  pages={165--178},
+  year={2004},
+  publisher={Elsevier}
+}
+
+@article{burrage2004poisson,
+  title={Poisson Runge-Kutta methods for chemical reaction systems},
+  author={Burrage, Kevin and Tian, Tianhai},
+  booktitle={Third International Workshop on Scientific Computing and Applications},
+  volume={1},
+  number={1},
+  pages={82--96},
+  year={2004},
+  organization={Science Press}
+}
+
+
 
 @comment{jabref-meta: selector_publisher:}
 
