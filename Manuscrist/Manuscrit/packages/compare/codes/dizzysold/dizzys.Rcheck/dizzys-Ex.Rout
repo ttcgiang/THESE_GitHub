@@ -1,0 +1,221 @@
+
+R version 3.2.0 (2015-04-16) -- "Full of Ingredients"
+Copyright (C) 2015 The R Foundation for Statistical Computing
+Platform: x86_64-pc-linux-gnu (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> pkgname <- "dizzys"
+> source(file.path(R.home("share"), "R", "examples-header.R"))
+> options(warn = 1)
+> library('dizzys')
+My package is so cool
+so I will print these lines each time you load it
+Loading required package: deSolve
+Loading required package: rgl
+Loading required package: survival
+Loading required package: KMsurv
+> 
+> base::assign(".oldSearch", base::search(), pos = 'CheckExEnv')
+> cleanEx()
+> nameEx("coef.seir")
+> ### * coef.seir
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: coef.seir
+> ### Title: Coefficient of seir Object
+> ### Aliases: coef.seir
+> ### Keywords: coefficients seir object
+> 
+> ### ** Examples
+> 
+> 	seirobj1<-seir(N=1e7)
+> 	coef(seirobj1)
+@initial values of variables:
+       N        S        E        I        R 
+10000000   741559     2795     1673  9253973 
+
+@values of parameters :
+    duration     unitTIME     nbVilles            T           mu        beta0 
+1.825000e+03 1.000000e+00 1.000000e+00 3.650000e+02 3.913894e-05 2.739726e+00 
+       beta1        sigma        gamma      epsilon          rho          phi 
+1.000000e-01 1.250000e-01 2.000000e-01 0.000000e+00 0.000000e+00 0.000000e+00 
+        seed 
+1.446030e+09 
+> 
+> 	seirobj2<-seir(nbVilles=3, N=c(1e7,1e6))
+> 	coef(seirobj2)
+@initial values of variables:
+      N1       N2       N3       S1       S2       S3       E1       E2 
+10000000  1000000 10000000   741559    74156   741559     2795      279 
+      E3       I1       I2       I3       R1       R2       R3 
+    2795     1673      167     1673  9253973   925398  9253973 
+
+@values of parameters :
+    duration     unitTIME     nbVilles            T          mu1          mu2 
+1.825000e+03 1.000000e+00 3.000000e+00 3.650000e+02 3.913894e-05 3.913894e-05 
+         mu3       beta01       beta02       beta03       beta11       beta12 
+3.913894e-05 2.739726e+00 2.739726e+00 2.739726e+00 1.000000e-01 1.000000e-01 
+      beta13       sigma1       sigma2       sigma3       gamma1       gamma2 
+1.000000e-01 1.250000e-01 1.250000e-01 1.250000e-01 2.000000e-01 2.000000e-01 
+      gamma3      epsilon          rho         phi1         phi2         phi3 
+2.000000e-01 0.000000e+00 0.000000e+00 0.000000e+00 0.000000e+00 0.000000e+00 
+        seed 
+1.446030e+09 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("equilibrium")
+> ### * equilibrium
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: equilibrium
+> ### Title: Finding Endemic Equilibrium of a seasonally-forced SEIR/SIR
+> ###   model
+> ### Aliases: equilibrium
+> ### Keywords: SEIR/SIR model limit cycle equilibrium
+> 
+> ### ** Examples
+> 
+> ## The point on the limit cycle depends on the input phase value 'phi':
+> 	equilibrium(mu=.000456, beta0=1000/365, beta1=.1, sigma=1/7, gamma=1/7, phi=0, T=365,duration=100,unitTIME=1)
+          S           E           P           R           N 
+  478771.87    27614.15    28998.98  9464615.00 10000000.00 
+> 	equilibrium(mu=.000456, beta0=1000/365, beta1=.1, sigma=1/7, gamma=1/7, phi=pi/2, T=365, duration=100,unitTIME=7)
+          S           E           P           R           N 
+  581004.45    23575.92    23600.65  9371818.97 10000000.00 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("lines.seir")
+> ### * lines.seir
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: lines.seir
+> ### Title: Add Connected Line Segments of an seir object to a Plot 2D/3D
+> ### Aliases: lines.seir
+> ### Keywords: lines projection on plane
+> 
+> ### ** Examples
+> 
+> #creating a plot
+> #adding a line to the plot
+> 	seir(nbVilles=2)->obj
+> 	seir(nbVilles=1)->obj1
+> 	#2D
+> 	plot(obj,col="red")
+> 	lines(obj1,col="blue",lwd=2)
+> 	#3D
+> 	plot(obj,z="S",col="red",proj=list(c("time","P")))
+Warning in par3d(userMatrix = c(1, 0, 0, 0, 0, 0.342020143325668, -0.939692620785909,  :
+  font family "sans" not found, using "bitmap"
+> 	lines(obj1,z="S",col="blue",proj=list(c("time","P")))
+> 
+> 
+> 
+> cleanEx()
+> nameEx("persistence")
+> ### * persistence
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: persistence
+> ### Title: Persistence in a Metapopulation
+> ### Aliases: persistence
+> ### Keywords: metapopulation persistence
+> 
+> ### ** Examples
+> 
+> 	obj1<-seir.stoch(nbVilles=10,N=1e5)
+> 	objper<-persistence(obj1)
+> 	objper@persistence
+       time nbVilles ndie dieVille remain
+pop 1   221       10    1        1      9
+pop 7   596        9    1        7      8
+pop 4   617        8    1        4      7
+pop 9   656        7    1        9      6
+pop 3   686        6    1        3      5
+pop 2   861        5    1        2      4
+pop 5  1001        4    1        5      3
+pop 6  1264        3    1        6      2
+pop 8  1345        2    1        8      1
+pop 10 1826        1    1       10      0
+> 
+> 
+> 
+> cleanEx()
+> nameEx("plot.comp.surv.estim")
+> ### * plot.comp.surv.estim
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: plot.comp.surv.estim
+> ### Title: Plotting Survival Probability upon Time
+> ### Aliases: plot.comp.surv.estim
+> ### Keywords: persistence Cox regression
+> 
+> ### ** Examples
+> 
+> 	p<-persistence(seir(type="sto",nbVilles=15,N=1e5))	
+> 	plot.comp.surv.estim(p)
+> 
+> 
+> 
+> cleanEx()
+> nameEx("plot.pers")
+> ### * plot.pers
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: plot.pers
+> ### Title: Plotting Kaplan Meier Survival Curve
+> ### Aliases: plot.pers
+> ### Keywords: Kaplan–Meier curve Kaplan–Meier estimator
+> 
+> ### ** Examples
+> 
+> 	p<-persistence(seir(type="sto",nbVilles=15,N=1e5))	
+> 	plot.pers(p)
+> 	x11()
+> 	plot.pers(p,curvetype="pop",col=c("green","blue"),vilabline=c(1,3))
+> 
+> 
+> 
+> cleanEx()
+> nameEx("plot.seir")
+> ### * plot.seir
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: plot.seir
+> ### Title: Plotting 2D/3D a seir Object
+> ### Aliases: plot.seir
+> ### Keywords: seir model
+> 
+> ### ** Examples
+> 
+> 	 obj<-seir(nbVilles=3, N=1e7)
+> 	plot(obj,col=c("red","blue"),lwd=2,xlab="time (day)", ylab="number of infectives")
+> 	plot(obj,z="S",col=c("red","blue"),lwd=2,xlab="time (day)", ylab="number of infectives",zlab="number of susceptible")
+> 	plot(obj,z="S",col=c("red","blue"),lwd=2,proj=list(c("time","P"),c("time","S")),box=F,xlab="time (day)", ylab="number of infectives",zlab="number of susceptible")
+Error in do.call("bbox3d", c(list(nticks = nticks, draw_front = box, expand = expand),  : 
+  F used instead of FALSE
+Calls: plot ... plot3d -> plot3d.default -> decorate3d -> axes3d -> do.call
+Execution halted
