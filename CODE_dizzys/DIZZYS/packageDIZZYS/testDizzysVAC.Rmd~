@@ -1,0 +1,22 @@
+---
+title: "testDizzysVAC"
+author: "TRAN THI CAM GIANG"
+date: "May 30, 2017"
+output: pdf_document
+---
+
+Verifier "dizzysVAC":
+
+```{r, echo=TRUE}
+#stoSEIRNewInfec<-function(sigma=1/8,gamma=1/5,mu=1/(70*365),seed=as.numeric(Sys.time()),S=NULL,E=NULL,I=NULL,R=NULL,N=1e5,
+#		nbCONTACT0=300, nbCONTACT1=0.1,phiPHASE=c(0),
+#		probVISITER=0.01, probINFECTER=0.1, duration=1000, nbVilles=2, unitTIME=1,periDISE=365,
+#		typeRNG="good",typeSIMU="stoch",method="direct",statSTATE=FALSE,
+#		flagVac=0,flagOptVac=0,tstart=0,tstop=0,totalVac=0,periodVac=0,percentVac=0,...)
+rm()
+library("dizzysNewInfecVAC")
+obj<-stoSEIRNewInfec(duration=0.1,S=83000,E=290,I=80,N=1e6,nbCONTACT0=300,nbCONTACT1=0.0,phiPHASE=c(0),probVISITER=0.01, probINFECTER=0.1,nbVilles=1,unitTIME=1,periDISE=365,sigma=1/7,gamma=1/7,mu=1/(50*365),method="direct",                    flagVac=0,flagOptVac=0,tstart=0,tstop=0,totalVac=0,periodVac=0,percentVac=0)
+plot(obj)
+
+
+```
